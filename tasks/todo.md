@@ -3549,6 +3549,179 @@ editing; `the-instrument-cannot-grade-itself` γ widened to cover any quantity
 compared across a stage boundary, since each stage offers a different convenient
 subject definition and the delta then belongs to the conventions.
 
+# Cypress alpha-card rebuild (2026-08-04 →) — ACTIVE
+
+Plan: `~/.claude/plans/peaceful-cuddling-kurzweil.md` (approved 2026-08-04).
+User chose alpha cards over solid micro-geometry at the session checkpoint.
+Prereq landed: `12c7e4b` (masked shadow/prepass/SSAO). Zero ML GPU; the only
+contingency is a ~10-min Z-Image fallback if the CC0 atlas fails T0, listed in
+the approved plan (= its §8 go-ahead). Texture source: Pawel Olas CC0 scans
+(treesdesigner.com/materials-library, license verified in-session).
+
+- [x] T0 DONE: CC0 confirmed VERBATIM from the author's own site comments
+      ("Yes. All cc0." / "the textures are released under cc0 license."),
+      page HTML + quotes + sha256s in target/cypress-build/source/
+      LICENSE_EVIDENCE.md. Only leaf12 is conifer (Thuja/Chamaecyparis-habit
+      scale fronds; leaf09/11 404, rest broadleaf). One 2048² continuous
+      frond scan (basecolor/normal/normalB/opacity/rough/height EXRs);
+      5 usable crops, alpha coverage 0.20–0.63, all in band. Scan is bright
+      green (mean ~0.33/0.55/0.15) → regrade to concept olive is load-bearing.
+      No dry-brown scan (synthesize in T1) and NO BARK in the pack (T1
+      sources a CC0 bark tile from ambientCG + records license evidence).
+- [x] T1 DONE (uncommitted): cypressgen/atlas.py (pure numpy, no bpy) +
+      build_cypress_atlas.py driver + NEW scripts/ai-pipeline/color_math.py
+      (srgb_to_lab extracted — color_cast.py's PIL import breaks under
+      Blender's Python; color_cast now imports it, behavior unchanged).
+      Atlas at target/cypress-build/atlas/ (base RGBA/normal/ao 2048² + 11
+      islands: 7 spray, 2 dry, 1 bark, 1 core). Bark = ambientCG Bark012
+      (oak — no CC0 cypress bark exists; closest ridge profile), evidence in
+      source/bark/BARK_SOURCE.md. Numbers: ΔE 3.54 to concept, S 0.309,
+      hue 52°, normal mean 127.9/128.1 (chose `normal` over near-flat
+      normalB), AO mean 0.919 std 0.112, mip ladder 1.03/1.06/1.13/1.24
+      (coverage GROWS — thinning risk low). All 5 gates raise AtlasGateError,
+      red-proven. Worker corrections, evidence-backed: Lab/RGB regrades
+      produced magenta streaks → closed-form HSV regrade (0 magenta px);
+      AO formula eased (spec literal measured 0.953 mean, out of band);
+      mip red-proof needed a synthetic hairline pattern (erosion cannot
+      fail this gate on real data — ratio stayed >1.0 at 15 px).
+- [x] T2 DONE (uncommitted): check_registry procedural case (requires
+      surface_class/height_m/tri_budget/texture_size, forbids
+      subject/view_res/azimuths) + ProceduralContract in proptex/registry
+      (GeneratedContract NOT reused — its subject/view_res are mandatory,
+      reuse would misrepresent). content_lint claim VERIFIED TRUE: non-kit
+      non-downloaded lands in the else-arm (occlusion required, MR forbidden,
+      class values exact). 3 red-proofs fired with correct messages;
+      assets.json untouched (git diff clean); registry still OK on live data.
+- [x] T3 DONE (uncommitted): generator complete. Seed 7 canonical: 9664 tris
+      (680 core / 8400 cards / 784 trunk), 1050 cards, h 9.0006, base 0.000,
+      max radius 0.99 → h/w 4.54 (band 4.5–5.5; seeds 1/7/42 all in band).
+      Blender 5.2 exporter maps CLIP → alphaMode BLEND, NEVER MASK → driver
+      patches the GLB JSON chunk every run (verified, not assumed). Sky
+      holes ruled out numerically (17 centerline samples below background
+      luminance). WALL RESOLVED by orchestrator (forced, logged): plan's
+      R=0.20·h + horizontal droop gave h/w 1.7 vs the 4–6 gate; corrected
+      to R=0.10·h OUTER envelope, upswept sprays 5–20° from vertical,
+      anchor = envelope − card_radial_reach (clamp to core, shorten card).
+      Plan file amended. Worker's own fixes: droop trig ground-pierce,
+      core/trunk island UVs, fringe reach-bounding (was overshooting to
+      1.67 m), CARD_T_HI 0.96 (apex overshoot after the frame flip).
+- [x] T4 DONE (uncommitted): cypressgen/verify.py — pure GLB-byte parser
+      (no bpy; exporter bakes split normals + transform into accessors, so
+      bytes are authoritative), wired to fail the build. Card witness is
+      independent: a triangle whose 3 UVs land in one spray island IS a card
+      tri (no island is shared with core/trunk). All 11 asserts green on
+      seed 7; all 11 red-proofs captured (target/cypress-build/
+      verify_redproof.json), geometry ones through the wired driver's real
+      exit code. Assert #10 caught a REAL defect: card-quad normals used the
+      anchor's radial, not the vertex's — 3 visible crown-tip vertices off
+      band; 5-line root-cause fix in geo.py accepted (tri/AABB bit-identical
+      pre/post). Note: Blender's UV flip and glTF's V flip cancel exactly —
+      shipped V is direct py/2048 (documented in verify.py).
+- [x] T5 DONE (uncommitted): content_lint `foliage_props_are_alpha_masked`
+      (foliage surface_class ⇒ every primitive Mask(0 < c ≤ 0.5) +
+      base_color_image). Mirrors prop_material_matches_surface_class's
+      helpers, zero new ones. DELIBERATELY RED right now against the shipped
+      opaque cypress ("alpha_mode Opaque is not Mask(0, 0.5]") — that is the
+      red-proof; T6's promotion turns it green. Suite otherwise 21/21;
+      predicate sanity-run live both directions on all six AlphaMode cases;
+      lint-comments 0 hits.
+- [x] T6 DONE (uncommitted): install_asset --procedural branch (refuses on
+      hash mismatch / missing provenance field — both red-proved with
+      captured messages; build_steps untouched). Promoted: cypress.glb now
+      7.23 MB (was 16 MiB), sidecars img0-2.dds + manifest, no orphans.
+      assets.json kind procedural / height_m 9.0 / subject+view_res gone;
+      zones.ron five scales 0.95/1.00/0.85/1.10/0.90 by position match;
+      CREDITS.md cypress row + note rewritten, leaf12 + Bark012 CC0 rows
+      added with verbatim quotes + sha256s. content_lint 22/22 GREEN (incl.
+      foliage MASK + fresh sidecars), check_registry OK, texture budget
+      224.3/1024 MB. ENV NOTE: smirk/texconv.exe was absent on this machine
+      — downloaded from microsoft/DirectXTex may2026 release (gitignored).
+- [x] T7 DONE (uncommitted): asset_inspect gains Distance::Far (55 m, eye
+      height, reuses aim_close) + --stats (mean H/S/V over non-background px;
+      hue is a circular mean; STATS line per beauty frame). Background is the
+      frame's corner pixel, NOT alpha — mesh_shader writes alpha 1.0
+      everywhere so alpha cannot separate; corner is bit-exact vs the clear
+      chain per offscreen's clear_only_render_is_uniform. Red-proofs:
+      independent Pillow recompute agrees < 1e-4; synthetic red fixture reads
+      s=0.909 with background excluded; far vs gameplay coverage 10.8% vs
+      99.2% (~9× smaller). cargo check green. Bin needs --features offscreen.
+- [x] T8 DONE: full evidence at target/review/cypress/ (MANIFEST.md; 31 zone
+      frames incl. wide + mid_cypress_nw/se via a TEMP NamedShot addition
+      (reverted, zone_review.rs verified clean) + close_cypress with player;
+      288 inspect frames far/full/gameplay × ship/raking × 4 channels ×
+      6 az; 72 STATS lines). Cypress means (ship): far s 0.047 v 0.774
+      (fog-tinted), gameplay s 0.072 v 0.433 — clear of S 0.35 / threat
+      band. No render errors. Leftover dup dir zone_pairs/ in target/
+      (delete hook friction, harmless). SECURITY NOTE: worker reported two
+      injected system-reminder-style messages during its run instructing it
+      to hide file modifications; it refused and verified both files honest
+      — relay to user.
+- [~] T9 ROUND 1: **FAIL, 1 blocker** — record
+      .claude/docs/reviews/town/cypress-cards-2026-08-04.md. Scores
+      9/4/9/9/8/8/10/7/6. Shards-failure GONE, grounding 10/10, mip ladder
+      confirmed in frames. BLOCKER B1: cards read as rectangles at all
+      azimuths — spray islands carry opaque alpha to 2–4 rect borders
+      (38–73% border texels > cutoff; islands are quadrant crops, fronds
+      severed by construction; no border-alpha assert exists). Required:
+      F1 print_stats masking (corner-pixel excludes NOTHING under ship sky —
+      published stats measured the sky; judge re-derived by hand: tree
+      h 66.8° S 0.099 V 0.125, passes with margin), F2 spend tri headroom
+      on more smaller cards (9,664/24,000 used), F3 darken pale cream trunk
+      bole. Minor: 0.26% magenta filaments, 7.65% texels in threat band
+      (mean fine), profile jitter. Camera fact: full-distance turntable
+      pitch 45.8° compresses h/w to 3.2 (cos 0.8 rad) — far arm is the
+      honest silhouette read. Non-gating gap: mid_cypress_nw/se frames came
+      from a reverted temp shot edit → make the two cypress NamedShots
+      permanent (P2.4-F7 precedent). Lesson recorded in memory
+      (checks-must-fail-when-broken: red-proof under deployment condition).
+      FIX ROUND dispatched: worker A = atlas re-crop + border assert +
+      F2/F3 + minors + rebuild/re-verify/re-promote; worker B = F1 stats
+      masking (red-proof under SHIP lighting) + permanent cypress shots.
+      Then re-render + fresh-judge re-gate.
+      WORKER B DONE (2026-08-04): F1 fixed via background-only double
+      render (non-beauty channels still draw the ground quad — diff mask
+      was the only mechanism that isolates the subject). Second bug found
+      during red-proof: bloom's blur pyramid is global, so occluding sky
+      shifts EVERY pixel between the pair — stats render the diffed pair
+      with bloom forced to 0 (judged PNG keeps normal bloom). Red-proof
+      under ship lighting: mean h≈69° S≈0.10 V≈0.15 (judge hand-derived
+      h≈67° S≈0.10 V≈0.13; old sky reading h≈203° V 0.43+ gone);
+      independent Python mask cross-check IoU 0.96, zero false negatives;
+      studio regression still sane; --reference path smoke-tested.
+      cypress_nw/cypress_se now permanent in ROCALBA_SHOTS
+      (zone_review.rs:392-421), reproduce from clean checkout. Evidence:
+      target/review/cypress-fixB/. Scope confirmed: only asset_inspect.rs
+      + zone_review.rs touched.
+      WORKER A DONE (2026-08-05): B1 fixed by construction, not discovery —
+      window search (summed-area table) proved the scan has NO usable
+      naturally-bordered window, so islands are matted: find_crop_centers
+      picks 7 separated real-density centers, organic_vignette mattes each
+      to an irregular harmonic-perturbed blob hitting literal 0 alpha ~13px
+      inside the crop edge. 11 islands (7 wet + 2 dry recolors + bark +
+      core). New gate assert_island_border_alpha (outer 8px ring < 2%
+      above cutoff) red-proofed: OLD shipped atlas fails 21.9–50.2% across
+      all 9 islands; new atlas 0.0%; vignette-skipped build 48.3% rejected.
+      F2: 2500 cards (was 1050), card length ×0.625, 21,264/24,000 tris;
+      verify card band raised 1800–3000; sky holes 0.14% (2/1440 fine rays,
+      crown apex only) via new reusable check_cypress_skyholes.py.
+      F3: bark was shipping UN-regraded (H42.7° S0.43 V0.54) → H30° S0.28
+      V0.20. Minors: threat band 5.56%→0.0%, magenta at natural baseline
+      0.024%, profile jitter + per-card UV mirror (flip_u) replacing the
+      rotated-duplicate-island trick. Chain green: atlas gates → 11 verify
+      asserts → install_asset --procedural (sha match) → check_registry →
+      content_lint 22/22. Worker's own preview: no straight-edge card
+      boundaries at close-up, canopy closed, bole dark.
+      STOPPED HERE by user instruction ("stop after current work ends").
+      NEXT SESSION: T8 evidence re-render (zone_review start now includes
+      permanent cypress shots; asset_inspect far/full/gameplay matrix +
+      fixed --stats on re-promoted asset) → FRESH Opus judge, T9 round 2,
+      same 9 criteria + explicit B1-recheck at close → if pass, T10
+      (cargo test --workspace once, lint-comments.sh, check_registry,
+      test_cypressgen.py — NOTE: this pytest file was in the plan's create
+      list but was never created; create it at T10) → commit, no
+      attribution trailers. All work UNCOMMITTED on ai-pipeline.
+- [ ] T10 workspace suite once + commit
+
 ## Debt notes — orphaned grunt spawns cleanup (2026-08-01)
 
 - ~~Wave budget counter latent bug~~ WITHDRAWN 2026-08-02, no code change: the

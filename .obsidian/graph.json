@@ -8,10 +8,17 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "path:agents  ",
+      "query": "file:CLAUDE.md",
       "color": {
         "a": 1,
         "rgb": 14701138
+      }
+    },
+    {
+      "query": "file:MEMORY.md",
+      "color": {
+        "a": 1,
+        "rgb": 14701652
       }
     },
     {
@@ -29,6 +36,13 @@
       }
     },
     {
+      "query": "path:agents  ",
+      "color": {
+        "a": 1,
+        "rgb": 374200
+      }
+    },
+    {
       "query": "path:skills  ",
       "color": {
         "a": 1,
@@ -36,10 +50,10 @@
       }
     },
     {
-      "query": "file:",
+      "query": "path:docs",
       "color": {
         "a": 1,
-        "rgb": 5431473
+        "rgb": 9367988
       }
     }
   ],
@@ -53,6 +67,6 @@
   "repelStrength": 10,
   "linkStrength": 1,
   "linkDistance": 250,
-  "scale": 0.3628873693012096,
+  "scale": 0.7132754626224375,
   "close": false
 }
