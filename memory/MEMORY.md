@@ -1,0 +1,38 @@
+# Memory index
+
+- [Orchestration model](orchestration-model.md) — fable orchestrates and never implements (investigation included); opus = constrained subagent + backup orchestrator; sonnet implements, never analyzes; substitute upward; tokens over wall time
+- [Model rules expire with the model](model-rules-expire-with-the-model.md) — a rule naming a tier's capability dies on upgrade; delete, don't reinterpret
+- [Opus effort ceiling: high](opus-medium-effort.md) — Opus at medium or high; never xhigh/max
+- [Quality over cost ruling](quality-over-cost-ruling.md) — quality outranks time/coding/change cost; replacing whole technologies is in scope (licensing still gates)
+- [Serious project, not learning](serious-project-not-learning.md) — evaluate on engineering merit only
+- [Pre-content foundation stage](pre-content-foundation-stage.md) — no real enemies/NPCs yet; benchmarks guide foundation fixes
+- [Dev single-player pack](dev-singleplayer-pack.md) — server+client as single-player pack during dev; MMO architecture stays; auth deferred
+- [Save state = notes only](save-state-means-notes-only.md) — "save the state" means write notes and stop; no new code, no runs
+- [AA art direction](aa-art-direction.md) — semi-realistic dark fantasy locked; low-poly rejected; player+environment scope
+- [Model asset full autonomy](model-asset-full-autonomy.md) — choose assets yourself under a written place premise; don't ask
+- [Visual verification](visual-verification.md) — headless only; Opus judges in-engine gameplay-framing renders; turntables never clear a ship
+- [Image base: Z-Image](image-base-zimage.md) — ruled on trainability; Qwen fallback; 3 constraints
+- [Strict NC tooling ruling](strict-nc-tooling-ruling.md) — NC-licensed tools never touch the shipping asset path; Hi3DGen primary, TRELLIS eval-only
+- [Incumbent tools ≠ gates](incumbent-tools-not-gates.md) — never reject a candidate for incompatibility with a current tool; licensing is the only gate
+- [Research needs comparisons](research-needs-comparisons.md) — head-to-head + practitioner experience, recency-constrained
+- [Use RustRover MCP, not shell](use-rustrover-mcp-not-shell.md) — no sed/grep/cat on source; ide_* to navigate, Edit/Write to change
+- [Commit style: no attribution](commit-style-no-attribution.md) — no Co-Authored-By/Claude trailers; short pure descriptions only
+- [Claude config untracked](claude-config-untracked.md) — .claude/ is its own repo (ClaudeConfig) holding memory (harness junction) and tasks; push after edits
+- [Finding review = alignment only](finding-review-alignment-only.md) — review worker diffs against the audit finding directly, never via /code-review
+- [Reworks queue: mark done](reworks-queue-mark-done.md) — strike completed reworks unprompted; a strike inherits its subject's pending gate
+- [Guarantees need full enumeration](guarantees-need-full-enumeration.md) — "never X" asks: close EVERY source, no partial fixes
+- [Background work pitfalls](background-work-pitfalls.md) — foreground + long timeout; ~68-min kill cap on background shells; verify via git diff, not prose
+- [Checks must fail when broken](checks-must-fail-when-broken.md) — red-proof every check; assert shipped bytes, never exit codes or tautologies
+- [A number is not the thing](a-number-is-not-the-thing.md) — metrics must detect the claimed failure; look at the frames; argmax needs margins; floor every claimed metric
+- [Instrument cannot grade itself](instrument-cannot-grade-itself.md) — build-or-drop counts come from outside the candidate; sweep free parameters to a plateau
+- [Attribution before fixes](attribution-before-fixes.md) — measure the magnitude before fixing or disowning; unbundle paired changes; diff successors against principled rejections
+- [Synthetic cannot validate real](synthetic-cannot-validate-real.md) — a premise about real data tests on a real artifact already on disk, as step 1
+- [Dispatch discipline](dispatch-discipline.md) — gated work waits for its gate; plan evidence re-checked at dispatch; stage exact paths during campaigns
+- [Summary is a transcription](summary-is-a-transcription.md) — cell over summary, artifact over table; never repeat a "done so far" line as state
+- [Keep verification artifacts](keep-verification-artifacts.md) — keep ruling-cited outputs; commit metric scripts behind decision-bearing numbers
+- [Benches are heavy compute](benches-are-heavy-compute.md) — announce bench runs; a load-tainted run never writes a baseline
+- [Recheck standing rulings on reuse](recheck-standing-rulings-on-reuse.md) — "proven" chains re-checked against standing rulings per tool
+- [Fallback firing is evidence](fallback-firing-is-evidence.md) — read the input before widening the matcher; silent fallback on a named input is the defect
+- [Placed extents, not nominal](placed-extents-not-nominal.md) — clearance/fit claims from shipped geometry under the actual transform
+- [Test the impolite path](test-the-impolite-path.md) — abrupt death, instant relaunch, double login; every request needs an observable outcome
+- [Policy docs carry abstractions only](policy-docs-carry-abstractions-only.md) — directives only; no numbers, identifiers, or justifying facts

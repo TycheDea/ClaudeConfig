@@ -1,0 +1,19 @@
+---
+name: background-work-pitfalls
+description: "Two failure modes around subagent background execution — fire-and-forget shells die silently, and notification streams can lag behind real progress"
+metadata: 
+  node_type: memory
+  type: feedback
+  originSessionId: 35107497-f9ac-4767-a61f-b9503bf67957
+  modified: 2026-07-30T20:52:12.216Z
+---
+
+**Fire-and-forget background shells die silently.** Twice a worker's background shell command died with no error surfaced (a haiku downloader running after an SDXL job; a sonnet venv worker's pip torch install). Long-running commands inside worker agents must run FOREGROUND with explicit long timeouts (up to 600000 ms), re-running resumable commands (`curl -C -`, `pip`, `huggingface-cli`) across multiple calls if one window isn't enough.
+
+**Background shells are killed at ~68 minutes.** Confirmed twice: a worker's combined asset_inspect matrix run (4 lighting groups, ~2.3 h) was silently killed at ~68 min elapsed both times, always at the same matrix position, with healthy GPU/disk state — a fixed background-task lifetime cap, not a crash. Fix: split any >1 h render/compute into sequential sub-runs each well under ~60 min (per-lighting-group invocations worked: ~35-40 min each). Foreground calls have their own 10-min tool timeout, so >10-min jobs are forced into background shells — plan the split at dispatch time, don't let a worker discover the cap at minute 68.
+
+**Notification streams can lag behind real agent progress.** A haiku worker routed to capture+attribute a flaky test failure across up to 30 stress-suite runs sent several consecutive task-notifications with an *identical* `tool_uses` count, each reporting "task complete, Case C (0/30 failures)" — reading as a stuck agent replaying a stale summary. The orchestrator accepted that result and committed it. More notifications then arrived from the *same* agent ID with `tool_uses` now higher, reporting the true result (Case A: 3 real failures, root cause confirmed); the premature commit needed a follow-up correction. An unchanged `tool_uses` count across notifications is NOT proof the agent is stuck — the Monitor-driven background batches it kicked off can still be running underneath, and notification delivery itself can simply be backlogged. This is independent of model tier; it bit a haiku worker but is a property of the notification channel, not the model's capability.
+
+**How to apply:** dispatch prompts for downloads/installs must say "no fire-and-forget background shells, and no Monitor; foreground with long timeout; re-run resumable commands." Naming background shells alone is not enough — a sonnet worker warned off background shells for its GPU runs finished all 12 of them and then stopped mid-step "waiting for the monitor notification" on a Monitor with nothing live behind it; one resume naming the on-disk artifacts recovered it with no work lost. If a worker reports "running in background / standing by", treat it as probably-dead: verify the artifact on disk and nudge with foreground instructions. For any step whose result determines a branch with real consequences, never accept a "complete" report on prose alone — check `git status`/`git diff` for what the agent's own edits say, and treat a later notification from the same agent ID that contradicts an earlier one as authoritative (higher `tool_uses`/duration wins). Don't stop engaging just because several notifications in a row look identical.
+
+See also [[keep-verification-artifacts]].
