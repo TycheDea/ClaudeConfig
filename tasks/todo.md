@@ -1261,6 +1261,42 @@ goal." Consequences, binding for the rest of the campaign:
       studio read ≥ old, silhouette held, no transfer artifacts) →
       install+commit on PASS. No more generation rolls for the arch
       (4 consecutive failures, floor 6.23×).
+      (11) TRANSFER EXECUTED (Cycles CPU EMIT selected-to-active bake,
+      15k shipped clean.glb → 103k atlas UVs, params from export.py's
+      own constants): pre-screen **1.61× / 0.34%** — clears the gate,
+      tighter than the shipped anchor. Deliverables at
+      `target/arch-retess/cand_transfer/` (textured.glb,
+      transfer_manifest.json, transfer_albedo.py, bake log); renders at
+      `renders_round3/`. Shipped maps enumerated: albedo+normal+AO;
+      roughness/metallic are glTF SCALAR factors from surface_classes
+      limestone (no map to re-derive). Two walls surfaced honestly:
+      (a) cand_0 top-level normal.png is STALE (dir-reuse leftover, 87%
+      off the manifest's bake) — correct files taken from
+      prop-cache/bake_{normal,ao} and verified byte-identical to
+      textured.glb's embedded images (instrument caveat: NEVER trust
+      top-level cand files over manifest-hashed cache entries);
+      (b) install_asset.py requires a content-addressed texture.stages
+      chain — no `transfer` stage type exists, so the manifest is
+      deliberately NOT install-compatible (no forged records); a real
+      `transfer` stage in proptex/ is the honest path, to be built
+      only after judge PASS. IN FLIGHT: seam fix — a chart-boundary
+      bleed/speckle line (0.028% of atlas, visible in macro_02 under
+      both lightings) is being root-caused at the bake level (ray
+      miss vs wrong-hit vs margin drag), then full re-render → judge.
+      (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
+      texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
+      Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
+      (2.0+2.1 verbatim) — quality leader unusable here; the standing
+      "TRELLIS = NC" ruling may actually be "nvdiffrast = NC" (TRELLIS
+      weights are MIT; Hi3DGen itself is a TRELLIS derivative that
+      stripped the NVIDIA deps) — needs user re-read, would unblock
+      TRELLIS.2 (top shortlist, outcome 8/10 conf 5/10); permissive
+      shortlist TRELLIS.2 / Material Anything / MVPainter; named cheap
+      probe before any adoption: two-opposed-light albedo differencing
+      on one prop. NO adoption decided — licensing is the user's call.
+      (13) S5 EXECUTION STARTED under the (6) protocol: H3 retablo
+      chain dispatched (C3 seed 1, derived budget, per-roll
+      pre-screen ≤3 seeds). H4/H6/H7/brazier queue behind it.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
