@@ -37,3 +37,4 @@
 - [Placed extents, not nominal](placed-extents-not-nominal.md) — clearance/fit claims from shipped geometry under the actual transform
 - [Test the impolite path](test-the-impolite-path.md) — abrupt death, instant relaunch, double login; every request needs an observable outcome
 - [Policy docs carry abstractions only](policy-docs-carry-abstractions-only.md) — directives only; no numbers, identifiers, or justifying facts
+- [Judge gates match priced mechanism](judge-gates-match-priced-mechanism.md) — gate = mechanism's priced deliverable + no-regression, never the defect's headline band; physics-bound check at gate-writing time
