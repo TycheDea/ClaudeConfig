@@ -1,15 +1,18 @@
 ---
 name: orchestration-model
 description: "Four model tiers by thinking depth (fable plans and orchestrates, opus is a constrained-subagent implementor/judge and the backup orchestrator, sonnet implements with minimum thinking, haiku with none); the orchestrator never implements — investigation included; an unavailable tier substitutes UPWARD; discovery stays in audit/plan-rework; optimize the weekly token budget, not wall time"
-metadata:
+metadata: 
+  node_type: memory
   type: feedback
+  originSessionId: a38eccbe-e253-4073-8a05-baa0bd7d9b10
+  modified: 2026-08-05T11:06:50.775Z
 ---
 
 **The tier taxonomy — the model layer itself, not a rule on top of it.** Each Anthropic tier is a point on one axis, thinking depth × implementation: **fable** = thinking/planning model → planning; **opus** = constrained-subagent implementor (below); **sonnet** = implementor with minimum thinking → easy implementations; **haiku** = implementor with no thinking → tool automation needing no judgment. Any rule naming a tier's *capability* expires when that tier is upgraded ([[model-rules-expire-with-the-model]]).
 
 **Opus is subagent-only, under tight constraints.** Opus makes too many errors of assumption and decision when given latitude. It gets hard/sensitive tasks needing high-quality code, always as a subagent with hard boundaries stated in the prompt — exact scope, exact deliverable, what it must NOT touch or decide. Outside those boundaries it stops and reports, never improvises. Opus never plans, and does not hold the orchestrator seat while fable is available — but it IS the backup orchestrator when fable is out of credits. Its output must be concise and minimal. If addressed directly (not as a dispatched subagent), it refuses and points back to this model. Effort ceiling: [[opus-medium-effort]].
 
-**Substitute UPWARD when a tier is unavailable** (haiku→sonnet→opus→fable); only when nothing remains above is a downgrade the answer, and it is named as one.
+**Substitute UPWARD when a tier is unavailable** (haiku→sonnet→opus→fable); only when nothing remains above is a downgrade the answer, and it is named as one. **A capacity fallback expires when capacity returns:** a recorded "route analysis/design to opus" constraint from a fable-tier-limit event binds only while fable is actually out. Designing an implementation approach — proportions, math, sequencing, text — is planning, and planning never routes to opus while fable holds the seat (fired 2026-08-05: user rejected a Plan-agent dispatch to opus made under an expired capacity note).
 
 **The orchestrator never implements — and investigation is work.** The main session plans, dispatches with exact contracts, verifies what comes back, and interprets surprises — in campaigns and ordinary interactive sessions alike. This covers discovery too: reading source to understand it, running probes, grepping trees, inspecting tool installs, web research. "It's only a few reads" is how a fact-find becomes twenty tool calls of orchestrator context; a fact-find is a task with a contract like any other. Exempt: reading back an agent's deliverable to verify it; plans/queue notes/tasks bookkeeping (the orchestrator's own); a single lookup that only decides which agent to spawn; committing on a worker's behalf. Routing is EXPLICIT on every spawn — pass the model parameter deliberately; an inherited-but-correct model is still a routing miss.
 

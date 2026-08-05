@@ -1119,7 +1119,25 @@ goal." Consequences, binding for the rest of the campaign:
       Caveat recorded by the probe against its own grid: the new C1 concepts pass
       the crispness criterion partly because they contain almost NO carving —
       plain marble panels, no ornament. U6 is a weak test on that grid either way.
-- [ ] **DECIMATION-AS-ROOT-CAUSE STUDY IN FLIGHT** — the hypothesis is that this
+- [x] **DECIMATION-AS-ROOT-CAUSE STUDY DONE — REFUTED as the campaign's
+      stone-read deficit.** Record: docs/reviews/town/
+      decimation-attribution-2026-08-01.md. Decimation loses <=0.4% of the
+      60-124 mm band on every prop; the blind-test winner is the coarsest
+      mesh in the study; rank correlation runs the wrong way (-0.80 vs
+      direct damage). Survives only as chapel_arch's 4-17 mm melted-carving
+      defect (retess ~171k tris prescribed, GPU-perf-probe gated). Follow-up
+      probe docs/reviews/town/albedo-band-table-2026-08-01.md then killed
+      the 60-124 mm figure itself (mislabelled denominator, 14-26x off on
+      the control); best surviving predictor is beauty/albedo gain G
+      (rho -0.90) - a material-response lead, not geometry. NOTE record
+      integrity: that band-table file is incomplete on disk (s6 is a
+      literal SWEEP_TABLE placeholder, s7 cuts mid-sentence; verdict s1-s5
+      complete; sweep JSONs lost with the session scratchpad - flagged,
+      not re-run). Next phase plan: ~/.claude/plans/
+      glittery-chasing-rossum.md (approved 2026-08-05: cobble choice, GPU
+      probe, retess + surface-area tri_budget, H chains approved in-phase,
+      kit-bevel probe-then-decide).
+      Original hypothesis text, kept for the record: this
       is not one prop but the campaign's central unresolved defect. The blind test
       that beat the whole texture-detail campaign left a **residual deficit at
       60–124 mm**, two orders above the millimetre grain band the texel arithmetic

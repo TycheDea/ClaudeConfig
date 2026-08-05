@@ -1,6 +1,7 @@
 # Memory index
 
-- [Orchestration model](orchestration-model.md) — fable orchestrates and never implements (investigation included); opus = constrained subagent + backup orchestrator; sonnet implements, never analyzes; substitute upward; tokens over wall time
+- [Orchestration model](orchestration-model.md) — fable orchestrates and never implements (investigation included); design is fable's own, capacity fallbacks expire when capacity returns; opus = constrained subagent + backup orchestrator; sonnet implements, never analyzes; substitute upward; tokens over wall time
+- [Numeric outcome weights](numeric-outcome-weights.md) — options to the user carry outcome/confidence as /10 numbers, context-agnostic; cost in concrete units
 - [Model rules expire with the model](model-rules-expire-with-the-model.md) — a rule naming a tier's capability dies on upgrade; delete, don't reinterpret
 - [Opus effort ceiling: high](opus-medium-effort.md) — Opus at medium or high; never xhigh/max
 - [Quality over cost ruling](quality-over-cost-ruling.md) — quality outranks time/coding/change cost; replacing whole technologies is in scope (licensing still gates)
