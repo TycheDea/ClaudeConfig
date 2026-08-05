@@ -822,6 +822,27 @@ down to sonnet; sonnet still implements. Capacity event, not a reasoning fault
       cheaper and cannot introduce new geometry; A is the only one that keeps
       the softened-arris intent. Either way P3.0's §4.1 tri table and the G2
       records' counts go stale and must be re-measured.
+      **FORK TAKEN 2026-08-05 (self-approved under user autonomy grant): B,
+      hard edge — decided-while-unsure item for the user.** Probe re-run
+      refuted this note's root cause a second time: `create_cube` is welded
+      (remove_doubles a no-op); the degeneracy is `segments=2` +
+      `clamp_overlap=True` at offset 0.02 on kit-scale boxes — segments=1/3
+      cut a real chamfer. Three pixel-distinct variants rendered; judge
+      scored current 3/10 (13–15% luma trough on every arris),
+      real_chamfer 9/10, hard_edge 9/10 — indistinguishable at gameplay
+      framing (2 cm ≈ 1.5 px), and hard edge is 12 tris vs 44 and deletes
+      the degenerate path (swap rule). Probe artifacts:
+      `target/kit-bevel-probe/`. KIT-WIDE REBUILD DONE (uncommitted):
+      bevel params deleted from geo.py/buildings.py (curve-bar
+      `bevel_depth` for reja is a distinct mechanism, untouched), all 9
+      pieces rebuilt+installed, lint 22/22, tri table
+      `target/kit-rebuild/tri_table.md` (e.g. wall_segment 420→84,
+      casa_small_a 4066→2578; reja_set 576 unchanged). Regression judge
+      **PASS** (9/8/10/10): hard edge removes three measured OLD artifacts
+      (−5.7% sub-shadow trough, +39% ghost spike, floating slivers);
+      chamfer already invisible at mid range. SHIPPED in `45bab1d`.
+      Record + new tri table (supersedes P3.0 §4.1 / G2 counts):
+      `docs/reviews/town/kit-hard-edge-rebuild-2026-08-05.md`. CLOSED.
       PROCESS NOTE from the adjudication, worth keeping: **byte-identity
       licenses skipping a REGRESSION check, not a fresh look.** The worker
       skipped 14 close-ups on byte-identity grounds and was right about
