@@ -1643,6 +1643,41 @@ goal." Consequences, binding for the rest of the campaign:
       SD2.1 base terms, TRELLIS.2 texturing-path nvdiffrast surface +
       existing swaps/forks + 12GB paths, plus a since-June-2026
       landscape delta. Adoption/no-license plan follows its report.
+      AUDIT DELIVERED + persisted (`docs/reviews/props/
+      texgen-dependency-audit-2026-08-05.md`): MVPainter TAINTED
+      (vendored Hunyuan-NC baker + NVIDIA-header nvdiffrast file);
+      TRELLIS.2 TAINTED as shipped (texturing pipeline itself imports
+      nvdiffrast for the UV bake; no clean fork; 12GB unproven);
+      Material Anything license-CLEAN but deleted-for-cause history
+      (monochrome cream d037686) + matching community reports.
+      NO PROVEN LICENSE-CLEAN TOOL → third branch delivered:
+      LICENSE-FREE PLAN at `tasks/texgen-license-free-plan.md`
+      (P0 light-steering probe ~1-2h GPU → P1a AO-basis delight +
+      P1b robust blend + P1c emissive discipline → P2 paired-light →
+      P3 procedural MR → P4 own-data LoRA; optional gated tracks:
+      TRELLIS.2 bake surgery, MA eval retest). AWAITS USER: P0
+      go-ahead (§8 spend) + plan review.
+      (27) G3 VERDICTS: LIMESTONE FAILS (both cands 5/2/4 — painted
+      lit-shrine interior in albedo: 4 phantom flames, glow washes;
+      view-consistent, class-level; record g3-limestone-2026-08-05).
+      NEW GHOST VARIANT: painted LIGHT — v2 open_dark structurally
+      blind to it (bright, not dark); judge layer caught it; subject
+      spec'd "warm candle-gold flame" invited it → P1c emissive
+      discipline added to the plan (flames = engine emissive VQ-C3,
+      texture subjects lose lighting adjectives). shrine_pillar entry
+      REVERTED again; shrine blocked pending the texture program.
+      OAK_DARK PASSES — WINNER cand_2 (7/8/7), ESCALATE clearance
+      granted on decisive evidence (gilt holds constant value through
+      the near-black transit; record g3-oak-dark-2026-08-05); cand_1
+      failed on a painted candle flame in albedo, cand_3 on baked
+      directional lighting. Blind mappings verified: both judges
+      correctly ID'd B = control. Judge's summary misattributed
+      C=cand_2 (mapping: C=cand_1, D=cand_2) — blind tells against D
+      were superseded by the labeled 1:1 clearance; verdict stands.
+      RETABLO INSTALL DISPATCHED (sonnet; byte-equality vs judged
+      final.glb sha, lint, no commit — orchestrator commits).
+      Residual for the ledger: retablo roughness flat 1.0 → gilt
+      never reads metallic (P3 material-response item).
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
