@@ -1594,6 +1594,22 @@ goal." Consequences, binding for the rest of the campaign:
       BATCH SUITE GATE PASS 2026-08-05: 457 passed / 0 failed over
       the batch `21ebf7a`+`0ae35fb`+`84e2092`; no fixes needed, no
       confirm run required (§7 precedent). G3 is next.
+      (25) G3 KICKOFF: spec written + pre-registered at
+      `tasks/town/p33-g3-gate.md` (first G3 execution; criteria: 4
+      axes, winner needs ≥7 on subject-read / no-ghost-at-1:1 /
+      no-regression; retablo cand_2 judge-only per its ESCALATE).
+      Facts from a fable inventory dispatch: color_cast hard-requires
+      final.textures (all 4 cands stopped at --through texture →
+      preprocess/turntable resume is CPU + GPU-seconds); asset_inspect
+      takes a glb path, reads DDS-or-embedded, --reference interleaves
+      rock_face_01; prop_audit by-path skips coverage machinery (blend
+      coverage quoted from blend cache instead). shrine_pillar entry
+      RESTORED verbatim from item 16 (uncommitted, ships with
+      install). TWO STAGE-A WORKERS DISPATCHED (sonnet, per class:
+      resume chains --through turntable, run instruments, render
+      asset_inspect matrix, assemble anonymized blind sets with
+      mapping held outside the blind dirs). Opus judges dispatch on
+      their completion; orchestrator holds mappings.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
