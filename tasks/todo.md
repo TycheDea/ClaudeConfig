@@ -1150,6 +1150,18 @@ goal." Consequences, binding for the rest of the campaign:
       per-prop perceptual deficit across the set, the statistic must be able to
       come out zero, and the photoscan control's own tessellation must be checked
       — if the control is also coarse and still wins, the hypothesis dies.
+- [x] S2 GPU PERF PROBE DONE — GATE PASS 2026-08-05. Record: docs/reviews/
+      rendering/gpu-frame-baseline-2026-08-05.md (+ logs zip alongside).
+      First GPU timing record of this renderer: RTX 3080 Ti, 1920x1080,
+      release sandbox, ~45 s x3 configs. Geometry-isolated delta
+      (bare171k - bare15k, same rig placement): frame_ms +0.011 (gate
+      <=1.0), absolute median 1.738 ms (gate <=14) - PASS both. Attribution:
+      the 11x tri swap reads only in shadow_ms (+0.014, 3 cascades);
+      main_ms within noise. Rig: chapel_arch temp-placed 20 m from spawn
+      (frustum-proved Visibility::Both), zones.ron + glb swaps reverted,
+      verified clean. Instrumentation (frame bracket + VORDAR_GPU_LOG, plus
+      TIMESTAMP_QUERY_INSIDE_ENCODERS device request found necessary
+      mid-capture) landing as its own commit. UNBLOCKS S3 retess chain.
 - [x] P3.1c RE-ROLL EXECUTED — 32/32 on disk at `target/concept-c1b/`, ~10 min,
       seeds 101-108/201-208/301-308/401-408 (distinct from run 1, so this is a
       genuine re-roll and not a re-render), all prompts verbatim from the screen
