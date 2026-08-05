@@ -1183,6 +1183,36 @@ goal." Consequences, binding for the rest of the campaign:
       verified clean. Instrumentation (frame bracket + VORDAR_GPU_LOG, plus
       TIMESTAMP_QUERY_INSIDE_ENCODERS device request found necessary
       mid-capture) landing as its own commit. UNBLOCKS S3 retess chain.
+- [ ] S3 RETESS — CODE SHIPPED `466edb7`, FIRST INSTALL FAILED JUDGE,
+      ARCH REVERTED TO 15k, ITERATION OPEN. 2026-08-05 chain of findings:
+      (1) Formula derives 103,068 tris at 40 mm (not the pre-registered
+      ~171k) because the interior-face strip (`1f32bbe`/`323c55c`,
+      post-dates every arch build) removes 38% of raw area: real
+      post-strip area 82.455 m² vs the study's 136.7 m² (measured on
+      stale pre-strip shipped bytes). Adjudicated: 40 mm footprint is the
+      goal, 103k accepted (decided-while-unsure). Decimation conserves
+      area 99.94%; mean edge 47.86 mm in-band. Also shipped in `466edb7`:
+      `--max-tris` clamp + gen_character passes 30000 (silent-fallback
+      fix; character budget was file-size/joint-capped, not footprint).
+      (2) Fresh chain ran (cand at `target/arch-retess/cand_fresh/
+      cand_0/`), installed, judged old-vs-new on matched macro frames —
+      **FAIL** (5/9/3/5): (a) texture roll ghosted — surface-locked baked
+      shading + painted arcade silhouette in albedo, atlas p95/p5 7.55×
+      vs 3.42× photoscan ref (old arch albedo clean at 1.3–1.4×, so a
+      clean roll is achievable → seed re-roll is the fix path);
+      (b) judge's "defect dead at 4–17 mm" criterion was over-strict —
+      study §8 itself priced 20 mm at ~683k and chose 40 mm; measured
+      band gains 8–17 mm 2.36×, 17–40 mm 2.62× = the prescribed 1–5 cm
+      carving band improved as designed; 4–8 mm is normal-map territory
+      at any sane budget. Install REVERTED (arch back at shipped 15k).
+      (3) Judge side-finding: `prop_audit.py --asset chapel_arch` errors
+      on the retess UVs (stale cached coverage artifact
+      `target/prop-coverage/holes_chapel_arch.png`) — regen needed at
+      next install. (4) IN FLIGHT: normal-map provenance investigation
+      (is the 4–17 mm band carriable by a hires normal bake?) — decides
+      re-roll-only vs re-roll+normal-fix before the next judge round.
+      Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
+      `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] P3.1c RE-ROLL EXECUTED — 32/32 on disk at `target/concept-c1b/`, ~10 min,
       seeds 101-108/201-208/301-308/401-408 (distinct from run 1, so this is a
       genuine re-roll and not a re-render), all prompts verbatim from the screen
