@@ -1539,6 +1539,18 @@ goal." Consequences, binding for the rest of the campaign:
       resumable invocations, per-roll v2 gate persisted to
       cand_S/pre_screen_v2.txt; seed 8 only on FAIL; ESCALATE stops;
       seed-8 FAIL ⇒ BLOCKED at 3 FAILs).
+      (20) H7 + BRAZIER PREPPED while the cart roll runs. Spec check
+      resolved (p31-c1-concepts.md:172,446): H7 REUSES the
+      candelabra_shrine entry — C6 votive stand replaces the shipped
+      ghost carrier under the same name, all 4 zone placements
+      inherit, no zones.ron edit. assets.json edits made
+      (uncommitted, ship with installs): candelabra_shrine subject →
+      C6 string verbatim (registry subject drives texture prompts;
+      args 1.3 m/painted_metal/1024 kept per spec), gate_brazier
+      entry added (C8 subject verbatim, 1.0 m/painted_metal/1024).
+      Concepts verified on disk: concept-c1/C6/seed_4 (winner),
+      concept-c1b/C8/seed_407 (re-roll winner). Both chains --body
+      dark at pre-screen. Dispatch sequentially after H6 settles.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
