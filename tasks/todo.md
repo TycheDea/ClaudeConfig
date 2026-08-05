@@ -1591,6 +1591,9 @@ goal." Consequences, binding for the rest of the campaign:
       stage + arch install, then G3 dispatches (retablo oak_dark +
       shrine limestone: prop_audit table + named frames + blind test
       vs photoscan control; candidate selection = opus at G3).
+      BATCH SUITE GATE PASS 2026-08-05: 457 passed / 0 failed over
+      the batch `21ebf7a`+`0ae35fb`+`84e2092`; no fixes needed, no
+      confirm run required (§7 precedent). G3 is next.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
