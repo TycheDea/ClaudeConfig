@@ -40,6 +40,11 @@ shipped 1.78× (seed 0, same mesh) and the 103k rolls' floor (6.23×).
    4.52 (single samples each — seed and era are confounded at n=1). The
    103k mesh's four rolls (6.2–10.9×) are consistently worse than the
    15k mesh's one today-roll (4.5×).
+   [CORRECTED 2026-08-05, `era-attribution-2026-08-05.md`: the 1.78-vs-
+   4.52 pair is delit-vs-direct plus seed, not era evidence — July's
+   1.78× went through the MaterialAnything delighting removed for cause
+   in `d037686`; the July direct-path arch variant scores 3.61×/5.27%.
+   Era is exonerated at hash level.]
 3. **Root mechanism (from round-1 provenance trace):** `blend_views`
    averages every visible view per texel with facing-weight² and
    visibility masking only — no color-consistency or outlier rejection

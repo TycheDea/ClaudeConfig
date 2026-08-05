@@ -1401,14 +1401,37 @@ goal." Consequences, binding for the rest of the campaign:
       s0-s3 + s7, retablo ×3, shrine ×3) vs July's 4/6 props.
       H6 cart / H7 votive / brazier NOT dispatched (~75 min GPU
       withheld; would likely reconfirm the pattern, not break it).
-      ERA-ATTRIBUTION INVESTIGATION DISPATCHED (fable tier,
-      findings-only): separate code/config era vs model weights vs
-      prop identity vs seed luck; git log of scripts/ai-pipeline
-      since July ship; shipped-manifest param/cache-key diff (CPU
-      discriminator); authorized ≤2 bounded GPU probe runs, canonical
-      = today's pipeline on July's exact arch inputs at seed 0,
-      texel-diffed against shipped base. Queue resumes (or reroutes)
-      on its finding.
+      ERA-ATTRIBUTION DELIVERED (fable tier, 0/2 GPU probes needed) —
+      record `docs/reviews/props/era-attribution-2026-08-05.md`.
+      NO ERA REGRESSION: code/config/weights hash-identical in the
+      texture closure since the July ship. The 0/11 decomposes as:
+      (a) all-dark/recess-dense prop batch (the class July also
+      failed), (b) pre-screen mis-anchored on the 1.78× DELIT
+      artifact — delighting was deleted for cause in d037686 and the
+      July direct-path arch scores 3.61×/5.27%, (c) July "4/6 clean"
+      was winner-selected vs today's unselected rolls (survivorship).
+      Validated discriminator: OPEN-DARK fraction (dark_frac ×
+      open-face fraction vs mesh occlusion) separates ghost-class
+      (3.5–7.6%) from pass-class AND spec'd-soot shrine (≤2.9%) on
+      all 9 measured props — shrine s203's dark is 95–97% occluded =
+      spec'd soot, not ghost. Memory updated (anchor/baseline must be
+      producible by the current process + selection-matched; metric
+      must not count spec'd content as defect). Prior attribution
+      record finding 2 annotated (1.78-vs-4.52 was delit-vs-direct +
+      seed, not era). Shipped-arch albedo noted as delit-era: judge-
+      accepted look, preserved by the transfer by construction; G(λ)
+      probe (deferred) is where that gets revisited.
+      (18) PRE-SCREEN V2 DISPATCHED (sonnet, implementation of the
+      reviewed design): standing `scripts/ai-pipeline/pre_screen.py`,
+      open-dark gate <2.9% PASS / >3.5% FAIL / between ESCALATE,
+      ratio ≤4.0 gates pale bodies only, dark-frac report-only;
+      red-proof = reproduce the 9-prop separation exactly or STOP
+      (no retuning). On green: commit v2, re-verdict S5 candidates
+      under it — shrine s203 expected shippable-pending-G3, retablo
+      cands measured fresh — and RESUME the S5 queue (H6/H7/brazier)
+      under v2. Structural remainder: spec'd-dark + recess-dense
+      stays hostile to per-view generation → fix class 4 (texture-
+      native, licensing on the user), unchanged.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
