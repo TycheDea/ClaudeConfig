@@ -1316,13 +1316,24 @@ goal." Consequences, binding for the rest of the campaign:
       model scales with difficulty. Killed worker left only diag
       scripts (frame_to_atlas.py, diag_hit_uv.py, uv_raster.py,
       diag/) + unverified note "wrong-surface hits, not margin
-      filler". DIAGNOSIS RE-DISPATCHED (fable tier, findings-only:
-      mechanism confirmed by discriminating measurements, A-vs-B
-      same-mechanism ruling, full-atlas red-proofed cluster scan,
-      fix prescription; diag/ writes only). Implementation dispatch
-      follows after orchestrator review of the finding.
-      Round-4 judge scope: axes 2/3/5 on fresh renders; axes 1/4
-      stand where geometry sha unchanged.
+      filler". DIAGNOSIS DELIVERED (fable tier) — record
+      `docs/reviews/town/arch-transfer-diagnosis-2026-08-05.md`.
+      TWO mechanisms, both reproduced: CLASS C (chalky patch + y828
+      groove) = wrong-surface ray hits — max_ray heuristic 0.4%·diag
+      = 41.5mm exceeds 23–32mm wall gaps while cage 10mm < local
+      deviation 10.5–15.3mm; cage 15mm snaps all probed texels
+      correct; 7,833 texels/1,185 clusters full-atlas. CLASS A
+      (y505–525 dashes) = the seam fix's OWN 8px erosion falsified
+      54% of source island; thin charts flood-refilled flat; 186k
+      texels rewritten. Manifest known_residual MISATTRIBUTED (its
+      cluster invisible in macro_02; the y828 artifact was class C).
+      Prior worker's note half right. IMPLEMENTATION DISPATCHED
+      SEPARATELY (opus, constrained to the prescription): keep-island
+      source cleaning (≤2px rim only), cage sweep {15,20,25} gated on
+      the diag/s8 detector (red-proofed, correspondence-based,
+      independent of the tuned parameter), max_ray = cage+15mm, final
+      bake, honest manifest rewrite, renders_round4. Then round-4
+      judge: axes 2/3/5; axes 1/4 stand (geometry sha unchanged).
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
       texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
       Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
