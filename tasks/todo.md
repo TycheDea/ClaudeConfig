@@ -1307,11 +1307,20 @@ goal." Consequences, binding for the rest of the campaign:
       informative frames per set, note for any macro-rig work.
       Instrument lesson recorded in memory (percentile gate blind to
       localized patch; fix's own diagnostic can't do the residual
-      accounting). ROUND 4 FIX DISPATCHED (opus): map frame patches
-      to atlas+source texels, confirm mechanism from evidence
-      (refill-flood / sliver-UV / wrong-hit hypotheses to test), fix
-      at bake input only, full-atlas red-proofed residual scan,
-      honest manifest correction, re-render to renders_round4.
+      accounting). ROUND 4, corrected flow after USER CORRECTION
+      (2026-08-05): my first dispatch bundled diagnose+implement in
+      one opus agent — killed. Rule recorded in orchestration-model
+      memory: thinking (investigation/plan/audit/root-cause) and
+      implementation NEVER share a dispatch; all thinking runs on
+      the fable tier except visual judging (opus); implementation
+      model scales with difficulty. Killed worker left only diag
+      scripts (frame_to_atlas.py, diag_hit_uv.py, uv_raster.py,
+      diag/) + unverified note "wrong-surface hits, not margin
+      filler". DIAGNOSIS RE-DISPATCHED (fable tier, findings-only:
+      mechanism confirmed by discriminating measurements, A-vs-B
+      same-mechanism ruling, full-atlas red-proofed cluster scan,
+      fix prescription; diag/ writes only). Implementation dispatch
+      follows after orchestrator review of the finding.
       Round-4 judge scope: axes 2/3/5 on fresh renders; axes 1/4
       stand where geometry sha unchanged.
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/

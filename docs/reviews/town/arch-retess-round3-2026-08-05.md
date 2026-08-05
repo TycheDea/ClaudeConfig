@@ -68,7 +68,8 @@ future judge dispatch.
 
 Axes 1–4 stand for round 4 wherever geometry is bit-identical (axis 1/4 are
 geometry-driven); axes 2/3/5 re-judge on fresh renders after the albedo
-fix, since the fix touches the albedo channel they measure. Fix round
-dispatched: root-cause the top-edge patch + course-line dash family at bake
-input (no output painting, no frame-space masking), honest manifest
-correction, full-atlas residual accounting.
+fix, since the fix touches the albedo channel they measure. Round 4 runs as
+two dispatches: a fable-tier diagnosis delivering the confirmed mechanism +
+fix prescription + full-atlas red-proofed cluster accounting (no code
+changes), then a separate implementation of the reviewed prescription (no
+output painting, no frame-space masking, honest manifest correction).

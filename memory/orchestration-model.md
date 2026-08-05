@@ -1,11 +1,11 @@
 ---
 name: orchestration-model
-description: "Four model tiers by thinking depth (fable plans and orchestrates, opus is a constrained-subagent implementor/judge and the backup orchestrator, sonnet implements with minimum thinking, haiku with none); the orchestrator never implements — investigation included; an unavailable tier substitutes UPWARD; discovery stays in audit/plan-rework; optimize the weekly token budget, not wall time"
+description: "Four model tiers by thinking depth (fable plans and orchestrates, opus is a constrained-subagent implementor/judge and the backup orchestrator, sonnet implements with minimum thinking, haiku with none); all thinking (plans, audits, investigations, root-cause) runs on the fable tier except visual judging (opus); thinking and implementation NEVER share a dispatch; the orchestrator never implements; substitute UPWARD; optimize the weekly token budget, not wall time"
 metadata: 
   node_type: memory
   type: feedback
   originSessionId: a38eccbe-e253-4073-8a05-baa0bd7d9b10
-  modified: 2026-08-05T11:06:50.775Z
+  modified: 2026-08-05T16:04:18.061Z
 ---
 
 **The tier taxonomy — the model layer itself, not a rule on top of it.** Each Anthropic tier is a point on one axis, thinking depth × implementation: **fable** = thinking/planning model → planning; **opus** = constrained-subagent implementor (below); **sonnet** = implementor with minimum thinking → easy implementations; **haiku** = implementor with no thinking → tool automation needing no judgment. Any rule naming a tier's *capability* expires when that tier is upgraded ([[model-rules-expire-with-the-model]]).
@@ -15,6 +15,8 @@ metadata:
 **Substitute UPWARD when a tier is unavailable** (haiku→sonnet→opus→fable); only when nothing remains above is a downgrade the answer, and it is named as one. **A capacity fallback expires when capacity returns:** a recorded "route analysis/design to opus" constraint from a fable-tier-limit event binds only while fable is actually out. Designing an implementation approach — proportions, math, sequencing, text — is planning, and planning never routes to opus while fable holds the seat (fired 2026-08-05: user rejected a Plan-agent dispatch to opus made under an expired capacity note).
 
 **The orchestrator never implements — and investigation is work.** The main session plans, dispatches with exact contracts, verifies what comes back, and interprets surprises — in campaigns and ordinary interactive sessions alike. This covers discovery too: reading source to understand it, running probes, grepping trees, inspecting tool installs, web research. "It's only a few reads" is how a fact-find becomes twenty tool calls of orchestrator context; a fact-find is a task with a contract like any other. Exempt: reading back an agent's deliverable to verify it; plans/queue notes/tasks bookkeeping (the orchestrator's own); a single lookup that only decides which agent to spawn; committing on a worker's behalf. Routing is EXPLICIT on every spawn — pass the model parameter deliberately; an inherited-but-correct model is still a routing miss.
+
+**Thinking and implementation never share a dispatch.** A subagent brief delivers a finding (root cause, audit, structural map, plan) OR a change — never both; "investigate and fix" is two tasks at two tiers, with the finding reviewed by the orchestrator in between. Non-visual root-cause diagnosis is analysis and runs on the fable tier even when the defect shows up in renders — opus's seat is judging images, not tracing mechanisms (fired 2026-08-05: a bundled diagnose+implement dispatch to opus on the arch transfer albedo defect was killed on user correction; diagnosis re-routed to a fable-tier agent, implementation to be dispatched separately to the tier the fix's difficulty demands).
 
 **Sonnet is an implementation tier only:** bounded code, edits, doc rewrites, gates with pass/fail — never a task whose deliverable is a *finding* (analysis, audit, structural map, contract surface, defect ledger, root cause, comparison, recommendation). Enumeration that feeds a decision is analysis, however mechanical it looks; the test is what the output is used for. Analysis → fable; when fable is out, analysis → opus, never down to sonnet — the artifact a design rests on is the worst place to economize.
 
