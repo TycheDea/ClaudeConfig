@@ -1678,6 +1678,44 @@ goal." Consequences, binding for the rest of the campaign:
       final.glb sha, lint, no commit — orchestrator commits).
       Residual for the ledger: retablo roughness flat 1.0 → gilt
       never reads metallic (P3 material-response item).
+      INSTALL BLOCKED CLEANLY (worker stopped, nothing installed,
+      tree clean except assets.json): install_asset.py verifies only
+      the texture.stages export record (= textured.glb sha 34a41705…)
+      but the judged artifact is final.glb (e3d331f1…, glTF-Transform
+      preprocess output, 20 bytes smaller, recorded in the manifest's
+      top-level final_glb_sha256 which the validator never reads).
+      retablo cand_2 is the FIRST candidate with a preprocess step —
+      chapel_arch predates it (final==textured there). Fix direction
+      forced: extend the chain check (export record → textured.glb
+      AND final_glb_sha256 → final.glb; install final.glb). NO CODE
+      TODAY per user stop.
+- [ ] SESSION END 2026-08-05 (user: "we should A/B them but tomorrow,
+      we end for today"). TOMORROW'S QUEUE, in order:
+      (1) install_asset.py chain-extension fix (forced direction
+      above; red-proof: current retablo refusal is the red case,
+      chapel_arch re-validation the no-regression case) → install
+      retablo cand_2 (byte-equality e3d331f1…) → content_lint →
+      commit WITH the assets.json retablo entry → suite gate rides
+      the next batch.
+      (2) TEXTURE PROGRAM, USER-RULED: A/B the license-free track
+      (P0 probe ~1-2h GPU → P1a/b/c) AGAINST the TRELLIS.2 surgery
+      track (nvdiffrast bake swap + 12GB proof + two-light probe) —
+      both run, verdict by measurement on the same gate (v2 +
+      re-blend of blocked cart/votive artifacts + judge frames).
+      Plan: tasks/texgen-license-free-plan.md; audit:
+      docs/reviews/props/texgen-dependency-audit-2026-08-05.md.
+      (3) Retablo apse placement in zones.ron after install (layout
+      task, §6 doc: retablo → apse; clearance-check against the
+      votive-stand placeholders).
+      DECIDED-WHILE-UNSURE delivered at this checkpoint: brazier
+      withheld on attribution (~20 min GPU saved, roll on request);
+      shrine_pillar + gate_brazier + candelabra-subject registry
+      edits unwound (nothing ships from blocked classes); cart entry
+      reverted; pre-screen albedo = blend-stage base.png (export
+      embeds byte-identical); oak judge's C/D blind misattribution
+      accepted as harmless (labeled 1:1 clearance supersedes);
+      limestone class-fail accepted without re-roll (defect is
+      class-level painted light, re-rolls can't fix it).
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
