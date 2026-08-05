@@ -1221,11 +1221,35 @@ goal." Consequences, binding for the rest of the campaign:
       script: `target/arch-retess/pre_screen.py`; rolls at
       `target/arch-retess/cand_reroll_s{1,2,3}/`.
       (6) **S5 H CHAINS HELD** — same texture stage would feed all 5 new
-      props; launching before the ghost is attributed risks 5 bad
-      albedos. IN FLIGHT: attribution probe — shipped-set albedo metric
-      map (CPU) + one roll of today's pipeline on July's 15k arch
-      geometry (GPU ~5 min) → discriminates mesh/UV-dependent vs
-      pipeline-era-wide before any blend fix is designed.
+      props; two of six shipped generated props already carry the defect.
+      (7) ATTRIBUTION DONE (record: `docs/reviews/props/
+      albedo-ghost-attribution-2026-08-05.md` + pre_screen.py alongside):
+      ghost is campaign-wide, mechanism not seed/mesh — shipped set maps
+      olive_stump 7.34×/11.1%, candelabra_shrine 8.62×/11.7% (ghost-
+      class) vs photoscan truth ≤3.10×; today's pipeline on July's 15k
+      arch = 4.52×/7.2% (between eras, seed-confounded n=1).
+      (8) HISTORY RECOVERED (prop-texture-redesign.md rows 43-45):
+      hwta (consensus-LF@14mm + 28mm gain-ratio + winner-HF) judged
+      "confirmed as an improvement and refuted as a solution" (2.5→4,
+      worth building, never built, scratch code lost); plain wta
+      REJECTED (seam excess 3.28 vs 1.45 floor) — rejected comparator,
+      successors must not match it. Ghost charge ≠ the stone-read charge
+      hwta failed on: ghost lives largely in LF, where hwta's mean-
+      consensus would keep averaging it in → median-LF variant added to
+      the probe. Constraints honored: coverage gate untouchable
+      (quality-over-cost), CoverageFailure must keep refusing to build,
+      no-regression rule vs incumbent on every prop.
+      (9) IN FLIGHT: CPU-only blend-estimator probe
+      (`target/blend-probe/`) — offline re-blend from cached view
+      canvases (5 candidates: 103k seeds 0-3, 15k seed 7), variants
+      mean/hwta/med-hwta, harness validated against shipped base.png
+      (MAD ≤0.5/255) before variants; metrics = ghost pre-screen, seam
+      excess vs 1.45-floor, 7.2mm band std. Winner (if any clears
+      ≤4.0×/≤6.5%) gets wired into blend_views (swap rule), arch
+      re-blend is pure CPU (generate cache hits), then install → judge
+      round 3 → S5 unhold. If no variant clears: wall report to user;
+      fix class 4 (3D-consistent generation, licensing-gated) is the
+      named root-cause successor.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
