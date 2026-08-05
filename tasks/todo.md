@@ -1571,6 +1571,26 @@ goal." Consequences, binding for the rest of the campaign:
       persisted). Known risk: matte-black iron body is spec'd-dark —
       if it FAILs, run the same attribution probe before accepting a
       block. Brazier (gate_brazier, C8/seed_407) queues behind it.
+      (23) H7 VOTIVE BLOCKED — 3/3 FAILs (8.89/9.98/11.00%), probe
+      run per the pre-registered risk: generated body is charcoal
+      ABOVE the dark threshold (gate not counting spec'd body);
+      flagged near-black is an edge/junction tail 49-61% on open
+      surfaces + baked specular sheen on matte iron; rolls score
+      2.5-3x the shipped candelabra ghost (3.47%). Gate vindicated.
+      BRAZIER WITHHELD on attribution (extreme member of the same
+      class — openwork black iron; ~20 min GPU buys no information;
+      decided-while-unsure, user can order the roll). Record:
+      `docs/reviews/props/dark-iron-class-blocked-2026-08-05.md`.
+      Registry unwound: candelabra subject reverted, gate_brazier
+      entry removed; assets.json now carries ONLY retablo (pending
+      G3 install). CLASS RULE recorded: dark + recess-dense subjects
+      stay out of the S5 queue until fix-class-4 lands.
+      (24) S5 QUEUE SETTLED (retablo + shrine → G3; cart/votive
+      blocked; brazier withheld) → batch workspace-suite gate (§7)
+      now due: one run over export.py fix + pre_screen v2 + transfer
+      stage + arch install, then G3 dispatches (retablo oak_dark +
+      shrine limestone: prop_audit table + named frames + blind test
+      vs photoscan control; candidate selection = opus at G3).
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
