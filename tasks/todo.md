@@ -1293,6 +1293,27 @@ goal." Consequences, binding for the rest of the campaign:
       renders_round3, re-anchored gate: 8–40 mm band ≥ old /
       light-dependence / studio read / silhouette / artifact
       visibility ruling on the 37-texel residual).
+      ROUND 3 VERDICT: FAIL, AXIS 5 ONLY — record
+      `docs/reviews/town/arch-retess-round3-2026-08-05.md`. Axes 1–4
+      PASS (relief ≥ old every band on the shading-isolated
+      instrument; ghost dead; studio read matched, HF energy UP;
+      silhouette IoU 0.995+). Blocker: undocumented ~2500–3200 px
+      chalky desaturated albedo patch, macro_02 top edge (Weber
+      +0.55 studio / +1.38 raking, half surround chroma,
+      surface-locked) — NOT in the worker's 37-texel accounting;
+      manifest's "not visible in raking" claim on the documented
+      residual REFUTED (+0.34 raking). Also: macro_01/03 are EMPTY
+      frames (macro aim point in the arch void at those yaws) — 4
+      informative frames per set, note for any macro-rig work.
+      Instrument lesson recorded in memory (percentile gate blind to
+      localized patch; fix's own diagnostic can't do the residual
+      accounting). ROUND 4 FIX DISPATCHED (opus): map frame patches
+      to atlas+source texels, confirm mechanism from evidence
+      (refill-flood / sliver-UV / wrong-hit hypotheses to test), fix
+      at bake input only, full-atlas red-proofed residual scan,
+      honest manifest correction, re-render to renders_round4.
+      Round-4 judge scope: axes 2/3/5 on fresh renders; axes 1/4
+      stand where geometry sha unchanged.
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
       texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
       Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
