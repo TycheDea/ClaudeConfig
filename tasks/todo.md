@@ -1351,6 +1351,29 @@ goal." Consequences, binding for the rest of the campaign:
       bit-identical to round3 (harness-match proof). ROUND-4 JUDGE
       DISPATCHED (fresh opus, axes 2/3/5, no-recommendations; rules
       on bright-cluster frame visibility).
+      ROUND 4 VERDICT: OVERALL PASS (9/9/8) — record
+      `docs/reviews/town/arch-retess-round4-2026-08-05.md`. Judge
+      calibrated against round-3 numbers (one scale). All round-3
+      blockers dead (chalky patch Weber +0.009/−0.011, chroma ratio
+      1.00); restored bright clusters ruled lit relief, zero ≥225
+      luma pixels; honest residuals: dash C at −66–69% magnitude
+      (reads as course seam), 423px corner facet (plausible stone).
+      Judge instrument caveat recorded: round-3's "studio-locked
+      dark fraction" instrument does not reproduce — ruled
+      inconclusive; axis 2 rests on cross-rig correlation (stable).
+      LEDGER ITEM FOR USER: non-scored mesh carryovers — the m00
+      raking through-aperture blown backface with black polygonal
+      cutouts is the loudest feature in any frame (accepted-mesh
+      property, present since round 1, not a transfer defect); any
+      rework = new scoped decision. INSTALL CHAIN DISPATCHED (opus,
+      implementation of my design): real `transfer` stage in
+      proptex/ (2px rim clean + cage15/ray30 EMIT bake, ported from
+      the judged scripts), genuine cache entry, GATE = stage albedo
+      sha == judged 497f37b5… and installed glb == judged 56cf4cfd…
+      (mismatch = STOP, tolerance ruling is mine), honest manifest
+      chain or STOP, install + coverage-cache regen + lint (only
+      retablo/cart bijection FAILs tolerated), NO commits (I stage
+      exact paths myself on its report).
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
       texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
       Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
