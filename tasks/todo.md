@@ -1527,6 +1527,18 @@ goal." Consequences, binding for the rest of the campaign:
       cand) — no GPU waste. Retablo G3 pool: cand_1 + cand_3 (v2
       PASS); cand_2 only via judge (ESCALATE). Candidate selection =
       opus visual judgment at G3 time.
+      (19) H6 CART ROLL 1 (seed 6) = v2 FAIL 7.11% open_dark
+      (p95/p5 14.64, dark_frac 16.4%, dark_open 0.433; frames confirm
+      baked-in shading on sacks + bed interior; spoked wheels stay
+      informational under the standing ruling). The chain worker died
+      silently after its background job completed — chain artifacts
+      landed 19:02, gate never ran, no report; I ran the gate myself
+      ~3 h later (`cand_6/pre_screen_v2.txt`) and updated the
+      background-work-pitfalls memory (job-finished ≠ worker-resumes).
+      ROLL 2 (seed 7) DISPATCHED fresh (sonnet, foreground-loop
+      resumable invocations, per-roll v2 gate persisted to
+      cand_S/pre_screen_v2.txt; seed 8 only on FAIL; ESCALATE stops;
+      seed-8 FAIL ⇒ BLOCKED at 3 FAILs).
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /

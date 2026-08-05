@@ -22,7 +22,7 @@
 - [Finding review = alignment only](finding-review-alignment-only.md) — review worker diffs against the audit finding directly, never via /code-review
 - [Reworks queue: mark done](reworks-queue-mark-done.md) — strike completed reworks unprompted; a strike inherits its subject's pending gate
 - [Guarantees need full enumeration](guarantees-need-full-enumeration.md) — "never X" asks: close EVERY source, no partial fixes
-- [Background work pitfalls](background-work-pitfalls.md) — foreground + long timeout; ~68-min kill cap on background shells; verify via git diff, not prose
+- [Background work pitfalls](background-work-pitfalls.md) — foreground + long timeout; ~68-min kill cap on background shells; a quiet worker whose job finished is probably dead — poll disk, finish gates yourself; verify via git diff, not prose
 - [Checks must fail when broken](checks-must-fail-when-broken.md) — red-proof every check; assert shipped bytes, never exit codes or tautologies
 - [A number is not the thing](a-number-is-not-the-thing.md) — metrics must detect the claimed failure; look at the frames; argmax needs margins; floor every claimed metric
 - [Instrument cannot grade itself](instrument-cannot-grade-itself.md) — build-or-drop counts come from outside the candidate; sweep free parameters to a plateau
