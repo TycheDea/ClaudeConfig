@@ -1307,6 +1307,35 @@ goal." Consequences, binding for the rest of the campaign:
       (13) S5 EXECUTION STARTED under the (6) protocol: H3 retablo
       chain dispatched (C3 seed 1, derived budget, per-roll
       pre-screen ≤3 seeds). H4/H6/H7/brazier queue behind it.
+      (14) H3 RETABLO BLOCKED per protocol — 3/3 seeds fail pre-screen
+      (p95/p5 | dark-frac vs gate ≤4.0× AND ≤6.5%): seed 1 6.63×/6.92%,
+      seed 2 5.95×/7.95%, seed 3 4.93×/6.17% (ratio-only fail). Trend
+      monotonic toward the gate but not through it. Derived budget
+      60,879 tris (48.70 m² @ 40 mm). Candidates kept at
+      `target/prop-batch/h3-retablo/cand_{1,2,3}`; blend atlases in
+      `target/prop-cache/blend/{40ce92d2,e0cadb4c,d7dcbc25}…`.
+      USER DECISION QUEUED: concept-level re-roll for retablo, or
+      accept blocked until the texgen successor lands (the ghost enters
+      at generation — more seeds of the same class are unlikely to be
+      the lever; trend says close, mechanism says no).
+      DECIDED WHILE UNSURE (m): reverted the uncommitted retablo
+      assets.json entry — blocked prop, keeps the tree clean for the
+      arch install commit. Recreate verbatim when unblocked:
+      `"retablo": { "kind": "generated", "subject": "small poor parish
+      altarpiece, three-bay dark oak frame, shallow empty central niche
+      flanked by flat painted panels, plain low pediment above, thin
+      gilt beading catching warm candle-gold, dark oak, deep near-black
+      brown, silvered light-grey weathering on raised grain, modest
+      village work", "height_m": 3.0, "surface_class": "oak_dark",
+      "texture_size": 2048, "view_res": 1536 }` (alphabetical, between
+      reja_set and rock_07; no tri_budget — derived).
+      (15) LATENT EXPORT BUG exposed by H3 (blocks H6 cart identically):
+      `proptex/export.py:_validate_export` reads absent MR factor keys
+      as None instead of the glTF 2.0 spec default (Blender's exporter
+      omits factors equal to 1.0; oak_dark roughness=1.0 is the first
+      generated-path class to hit it). Fix dispatched (sonnet,
+      spec-default fallback + 3-case red-proof). H4 shrine dispatch
+      gated behind this fix landing.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
