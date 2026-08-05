@@ -1610,6 +1610,31 @@ goal." Consequences, binding for the rest of the campaign:
       asset_inspect matrix, assemble anonymized blind sets with
       mapping held outside the blind dirs). Opus judges dispatch on
       their completion; orchestrator holds mappings.
+      LIMESTONE STAGE A DONE (clean; both cands final.glb + 96
+      frames + instruments; color_cast a* 1.44/0.85 near-neutral;
+      blend coverage 0.9759 both; fresh same-bin turntable control;
+      flag for judge: cand_203 ship_beauty/macro_00 hue-wrap
+      outlier). LIMESTONE OPUS JUDGE DISPATCHED (blind-first
+      protocol, record → docs/reviews/props/g3-limestone-2026-08-05).
+      (26) METAL/TEXGEN DIRECTIVE (user, 2026-08-05 evening): do the
+      legal read; if licensing still blocks, extensive research for a
+      viable tool; if none, plan a 100% license-free solution.
+      LEGAL READ DONE by orchestrator, license texts fetched + quoted:
+      RULING A — Hunyuan 2.1 license "DOES NOT APPLY IN THE EUROPEAN
+      UNION", Territory excludes EU/UK/SK, and use of Works AND
+      Outputs outside Territory is expressly forbidden → NO grant for
+      an EU developer; Hunyuan-Paint + all weight descendants
+      (RomanTex, MaterialMVP, LumiTex deps, future NaTex) are OUT.
+      RULING B — standing "TRELLIS = NC" NARROWED to
+      "nvdiffrast/nvdiffrec = NC" (both verified 1-way-commercial NC;
+      TRELLIS.2 code+weights MIT; Hi3DGen precedent already in our
+      shipping path). Strict-NC principle unchanged: those two libs
+      never ship; MIT weights un-tainted if the pipeline is purged.
+      DEPENDENCY AUDIT DISPATCHED (fable, web): MVPainter rasterizer
+      + IDArb provenance, Material Anything weight-card licenses +
+      SD2.1 base terms, TRELLIS.2 texturing-path nvdiffrast surface +
+      existing swaps/forks + 12GB paths, plus a since-June-2026
+      landscape delta. Adoption/no-license plan follows its report.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
