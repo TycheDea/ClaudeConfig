@@ -1374,6 +1374,29 @@ goal." Consequences, binding for the rest of the campaign:
       chain or STOP, install + coverage-cache regen + lint (only
       retablo/cart bijection FAILs tolerated), NO commits (I stage
       exact paths myself on its report).
+      ARCH INSTALLED + COMMITTED `84e2092`. All three sha gates
+      MATCHED first run (albedo 497f37b5, base_clean 703117f3,
+      installed glb 56cf4cfd — verified by me directly, byte-faithful
+      copyfile install). content_lint 22/0; check_registry error =
+      exactly the cart/retablo in-flight bijection. Coverage cache
+      regenerated (blend_coverage 0.8589, max_hole_depth 0.0132).
+      install_asset.py needed NO change (validation binds glb to the
+      single export record; transfer needed no registration).
+      Worker's two decided-while-unsure calls REVIEWED AND ACCEPTED:
+      (1) stage source = the shipped asset's pre-DDS provenance
+      files (b3/arch/cand_0 clean.glb 7286ec2a + base.png 3b80afc6;
+      shipped glb's BC7 repack could never byte-reproduce the judged
+      albedo; clean.glb sha equals the pre-install manifest's
+      cleanup sha) — note: that pre-install manifest now lives only
+      in git history (pre-84e2092 HEAD); (2) cache output filename
+      albedo_transferred.png is load-bearing (glTF names the
+      embedded image from the datablock → byte equality).
+      Stale-but-untouched judged evidence: cand_transfer/
+      transfer_manifest.json's provenance_gap section (predates the
+      stage; left as judged evidence). ARCH CAMPAIGN CLOSED pending
+      the batch workspace-suite gate (§7: one run covering export.py
+      fix + pre_screen v2 + transfer stage + install, to run when
+      the S5 queue settles).
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
       texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
       Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
