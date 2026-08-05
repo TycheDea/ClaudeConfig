@@ -1220,8 +1220,12 @@ goal." Consequences, binding for the rest of the campaign:
       average, never compete), not seed luck. Nothing installed. Metric
       script: `target/arch-retess/pre_screen.py`; rolls at
       `target/arch-retess/cand_reroll_s{1,2,3}/`.
-      (6) **S5 H CHAINS HELD** — same texture stage would feed all 5 new
-      props; two of six shipped generated props already carry the defect.
+      (6) S5 H CHAINS: held 2026-08-05 am on the ghost risk; **UNHELD
+      same day by the estimator-probe verdict** under a per-roll
+      pre-screen protocol — every texture roll pre-screened
+      (pre_screen.py, ≤4.0×/≤6.5%) before bake/judge spend, ≤3 seeds
+      per prop, 3 failures = prop reported blocked, never shipped
+      (decided-while-unsure; worst-case overhead ≈ +45 min GPU).
       (7) ATTRIBUTION DONE (record: `docs/reviews/props/
       albedo-ghost-attribution-2026-08-05.md` + pre_screen.py alongside):
       ghost is campaign-wide, mechanism not seed/mesh — shipped set maps
@@ -1239,17 +1243,24 @@ goal." Consequences, binding for the rest of the campaign:
       the probe. Constraints honored: coverage gate untouchable
       (quality-over-cost), CoverageFailure must keep refusing to build,
       no-regression rule vs incumbent on every prop.
-      (9) IN FLIGHT: CPU-only blend-estimator probe
-      (`target/blend-probe/`) — offline re-blend from cached view
-      canvases (5 candidates: 103k seeds 0-3, 15k seed 7), variants
-      mean/hwta/med-hwta, harness validated against shipped base.png
-      (MAD ≤0.5/255) before variants; metrics = ghost pre-screen, seam
-      excess vs 1.45-floor, 7.2mm band std. Winner (if any clears
-      ≤4.0×/≤6.5%) gets wired into blend_views (swap rule), arch
-      re-blend is pure CPU (generate cache hits), then install → judge
-      round 3 → S5 unhold. If no variant clears: wall report to user;
-      fix class 4 (3D-consistent generation, licensing-gated) is the
-      named root-cause successor.
+      (9) ESTIMATOR PROBE DONE — **no variant clears on any candidate;
+      blend-side fix class CLOSED** (record + reblend.py + report.json:
+      `docs/reviews/props/blend-estimator-probe-2026-08-05.md`; live
+      outputs `target/blend-probe/`). Harness reproduced the shipped
+      estimator to MAD 3e-5/255 on all 5 candidates, then mean/hwta/
+      med-hwta moved the ghost metric <10% (slightly worse). A weighted
+      MEDIAN removing nothing ⇒ the views AGREE on the painted shading
+      ⇒ ghost enters at GENERATION, not blend — attribution finding 3
+      refuted as the lever. Fix class 4 (texture-native 3D-consistent
+      generator, licensing-gated) confirmed as root-cause successor;
+      licensing research dispatched.
+      (10) ROUND 3 REDIRECTED: transfer the shipped judge-clean albedo
+      (1.78×) onto the accepted 103k geometry via UV resample (normal
+      stays the candidate's hires bake; honest manifest or STOP), then
+      pre-screen → renders → fresh Opus judge (8–40 mm band ≥ old,
+      studio read ≥ old, silhouette held, no transfer artifacts) →
+      install+commit on PASS. No more generation rolls for the arch
+      (4 consecutive failures, floor 6.23×).
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /

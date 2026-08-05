@@ -1,0 +1,243 @@
+{
+  "anchors": {
+    "old_shipped_arch": {
+      "p95_over_p5": 1.78,
+      "below_45pct": 0.0023
+    },
+    "photoscan_ref_max": {
+      "p95_over_p5": 3.1,
+      "below_45pct": 0.0423
+    },
+    "pre_screen_gate": {
+      "p95_over_p5_max": 4.0,
+      "below_45pct_max": 0.065
+    }
+  },
+  "candidates": {
+    "chapel_arch_103k_s0": {
+      "mm_per_texel": 7.41264459031231,
+      "validation_mad_255": 3.044926402004498e-05,
+      "variants": {
+        "mean": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.07217255234718323,
+          "luma_p50": 0.3712972402572632,
+          "luma_p95": 0.7848981022834778,
+          "p95_over_p5": 10.875299220509152,
+          "below_45pct_median_frac": 0.20269201149138277,
+          "seam_excess": 2.101475954055786,
+          "band_std_7p2mm": 9.907855033874512,
+          "pre_screen_gate_pass": false
+        },
+        "hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.07110744714736938,
+          "luma_p50": 0.374400794506073,
+          "luma_p95": 0.782276451587677,
+          "p95_over_p5": 11.001329438341639,
+          "below_45pct_median_frac": 0.21224363203393795,
+          "seam_excess": 2.1147236824035645,
+          "band_std_7p2mm": 10.364664077758789,
+          "pre_screen_gate_pass": false
+        },
+        "med_hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.06404156982898712,
+          "luma_p50": 0.3821607828140259,
+          "luma_p95": 0.7848823666572571,
+          "p95_over_p5": 12.255826469481638,
+          "below_45pct_median_frac": 0.2236200221311626,
+          "seam_excess": 2.1842217445373535,
+          "band_std_7p2mm": 10.775818824768066,
+          "pre_screen_gate_pass": false
+        }
+      }
+    },
+    "chapel_arch_103k_s1": {
+      "mm_per_texel": 7.41264459031231,
+      "validation_mad_255": 3.115738643911576e-05,
+      "variants": {
+        "mean": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.09451647102832794,
+          "luma_p50": 0.4265003800392151,
+          "luma_p95": 0.7863341569900513,
+          "p95_over_p5": 8.319546301663925,
+          "below_45pct_median_frac": 0.14509119248066152,
+          "seam_excess": 2.1083381175994873,
+          "band_std_7p2mm": 9.523096084594727,
+          "pre_screen_gate_pass": false
+        },
+        "hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.0928407832980156,
+          "luma_p50": 0.4284690320491791,
+          "luma_p95": 0.7843992114067078,
+          "p95_over_p5": 8.44886464269495,
+          "below_45pct_median_frac": 0.1509893313077099,
+          "seam_excess": 2.0300371646881104,
+          "band_std_7p2mm": 9.9259672164917,
+          "pre_screen_gate_pass": false
+        },
+        "med_hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.08696863055229187,
+          "luma_p50": 0.4346604347229004,
+          "luma_p95": 0.7856196761131287,
+          "p95_over_p5": 9.033368366548636,
+          "below_45pct_median_frac": 0.15725873221556066,
+          "seam_excess": 2.0865862369537354,
+          "band_std_7p2mm": 10.29543399810791,
+          "pre_screen_gate_pass": false
+        }
+      }
+    },
+    "chapel_arch_103k_s2": {
+      "mm_per_texel": 7.41264459031231,
+      "validation_mad_255": 3.767211269456724e-05,
+      "variants": {
+        "mean": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.09350431710481644,
+          "luma_p50": 0.43526744842529297,
+          "luma_p95": 0.7253600358963013,
+          "p95_over_p5": 7.757503165155331,
+          "below_45pct_median_frac": 0.15845268478338007,
+          "seam_excess": 1.9300028085708618,
+          "band_std_7p2mm": 9.532546997070312,
+          "pre_screen_gate_pass": false
+        },
+        "hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.09156470745801926,
+          "luma_p50": 0.4390023648738861,
+          "luma_p95": 0.7246710062026978,
+          "p95_over_p5": 7.914304826834576,
+          "below_45pct_median_frac": 0.16651794280066973,
+          "seam_excess": 1.8714916706085205,
+          "band_std_7p2mm": 9.951961517333984,
+          "pre_screen_gate_pass": false
+        },
+        "med_hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.08644313365221024,
+          "luma_p50": 0.4436878561973572,
+          "luma_p95": 0.7267129421234131,
+          "p95_over_p5": 8.406832462219883,
+          "below_45pct_median_frac": 0.1705788271535172,
+          "seam_excess": 1.8949955701828003,
+          "band_std_7p2mm": 10.290931701660156,
+          "pre_screen_gate_pass": false
+        }
+      }
+    },
+    "chapel_arch_103k_s3": {
+      "mm_per_texel": 7.41264459031231,
+      "validation_mad_255": 3.15822598905583e-05,
+      "variants": {
+        "mean": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.11826274544000626,
+          "luma_p50": 0.449126273393631,
+          "luma_p95": 0.7362235188484192,
+          "p95_over_p5": 6.225320713714527,
+          "below_45pct_median_frac": 0.13949400592442288,
+          "seam_excess": 1.9025753736495972,
+          "band_std_7p2mm": 9.475607872009277,
+          "pre_screen_gate_pass": false
+        },
+        "hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.11587098240852356,
+          "luma_p50": 0.45218273997306824,
+          "luma_p95": 0.7336972951889038,
+          "p95_over_p5": 6.332019285053826,
+          "below_45pct_median_frac": 0.14690216291374367,
+          "seam_excess": 1.8241959810256958,
+          "band_std_7p2mm": 9.901047706604004,
+          "pre_screen_gate_pass": false
+        },
+        "med_hwta": {
+          "island_texels": 1521836,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.10937020182609558,
+          "luma_p50": 0.45556941628456116,
+          "luma_p95": 0.7357404232025146,
+          "p95_over_p5": 6.727064693291696,
+          "below_45pct_median_frac": 0.15171345664053157,
+          "seam_excess": 1.8578529357910156,
+          "band_std_7p2mm": 10.26602554321289,
+          "pre_screen_gate_pass": false
+        }
+      }
+    },
+    "chapel_arch_15k_s7": {
+      "mm_per_texel": 8.836843673018015,
+      "validation_mad_255": 3.6665650985989915e-05,
+      "variants": {
+        "mean": {
+          "island_texels": 1774817,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.15172548592090607,
+          "luma_p50": 0.393226683139801,
+          "luma_p95": 0.6852745413780212,
+          "p95_over_p5": 4.516542077415078,
+          "below_45pct_median_frac": 0.07236746098330138,
+          "seam_excess": 1.850213646888733,
+          "band_std_7p2mm": 6.839693069458008,
+          "pre_screen_gate_pass": false
+        },
+        "hwta": {
+          "island_texels": 1774817,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.14499922096729279,
+          "luma_p50": 0.403087854385376,
+          "luma_p95": 0.6858925819396973,
+          "p95_over_p5": 4.730319082848126,
+          "below_45pct_median_frac": 0.0857541932492195,
+          "seam_excess": 1.990333914756775,
+          "band_std_7p2mm": 7.791698455810547,
+          "pre_screen_gate_pass": false
+        },
+        "med_hwta": {
+          "island_texels": 1774817,
+          "atlas_w": 2048,
+          "atlas_h": 2048,
+          "luma_p5": 0.1426410973072052,
+          "luma_p50": 0.4136274456977844,
+          "luma_p95": 0.6894478797912598,
+          "p95_over_p5": 4.833444868321507,
+          "below_45pct_median_frac": 0.090058298968288,
+          "seam_excess": 1.9732003211975098,
+          "band_std_7p2mm": 8.101801872253418,
+          "pre_screen_gate_pass": false
+        }
+      }
+    }
+  }
+}
