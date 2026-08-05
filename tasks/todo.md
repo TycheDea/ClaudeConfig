@@ -1334,6 +1334,23 @@ goal." Consequences, binding for the rest of the campaign:
       independent of the tuned parameter), max_ray = cage+15mm, final
       bake, honest manifest rewrite, renders_round4. Then round-4
       judge: axes 2/3/5; axes 1/4 stand (geometry sha unchanged).
+      IMPLEMENTATION DELIVERED: source rewrite 53.68%→17.67% of
+      island (nothing deeper than 2px differs from base); cage sweep
+      picked 15mm/ray 30mm — class C 7,833→294 tx (0 clusters ≥50),
+      NOT the diagnosis's expected 20–25mm, cross-checked with a
+      cage-independent excess detector (same ordering at every
+      threshold; at cage 25 a wrong-surface cluster REAPPEARS inside
+      the judged patch). Class A 98,804→8,352 tx. All judged round-3
+      boxes: zero detector fires; blocker box Weber +0.358→+0.010
+      studio, +0.800→−0.008 raking. Honest regression: luma>240
+      texels 9→443 (24 clusters ≤102px, 0.029% island; 79% =
+      genuine bright source the erosion had smeared). Manifest
+      rewritten (known_residual misattribution REMOVED, ray-travel
+      inference withdrawn). SHAs: albedo 497f37b5…, glb 56cf4cfd…,
+      base_clean 703117f3…. renders_round4 8 frames, macro_01/03
+      bit-identical to round3 (harness-match proof). ROUND-4 JUDGE
+      DISPATCHED (fresh opus, axes 2/3/5, no-recommendations; rules
+      on bright-cluster frame visibility).
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
       texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
       Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
