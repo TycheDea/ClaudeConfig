@@ -18,6 +18,9 @@ the subject at all.
 
 ## Verdict
 
+*Superseded for the shipped asset by **Round 3 — 2026-08-05** (below): B1 dead,
+B2 dead, F4 verified. Round 3 verdict: PASS, minors only.*
+
 # FAIL — 1 blocker, 3 required fixes, 3 minor
 
 The rebuild is a large, real success on eight of nine criteria and the named prior
@@ -402,3 +405,741 @@ townkit/, footprints.ron`).
   P2.4's F7 raised the same shot-coverage gap; it is still open.
 - `target/review/cypress/zone_pairs/` is leftover duplicate output from that
   temporary run — target/ trash, superseded by `zone/`.
+
+---
+
+# Round 2 — 2026-08-05 (fresh judge)
+
+Subject: the rebuilt procedural cypress promoted 2026-08-05 (`1a5bf6c`),
+`content/models/props/cypress/cypress.glb`, 2500 cards / 21 264 tris.
+Evidence: `target/review/cypress-r2/` (32 zone frames, 288 `asset_inspect`
+frames, 72 subject-masked `STATS` lines). Round 1's stale set
+(`target/review/cypress/`) was re-measured alongside for every diff below.
+
+Every number here was re-derived from the shipped pixels, the shipped
+`cypress.glb` accessors and the shipped `target/cypress-build/atlas/`, by this
+judgment. Nothing is taken from `MANIFEST.md`'s prose.
+
+## Verdict
+
+*Superseded for the shipped asset by **Round 3 — 2026-08-05** (below): B2 dead,
+F4 verified. Round 3 verdict: PASS, minors only.*
+
+# FAIL — 1 blocker, 1 required fix, 2 minor
+
+**B1 is dead.** Not healed-with-residue — dead. The rebuild closed it at the
+root (organic-matted islands, border alpha 0.000 on all nine sprays, a
+red-proofed gate) and the pixels agree at every azimuth and every distance.
+Seven of nine criteria pass, five of them better than round 1, and all three
+round-1 required fixes plus both colour minors verify in pixels.
+
+One new thing fails, and it fails on all five placements at every distance from
+30 m in: **the core spindle is exposed at the crown as a bare, smooth,
+untextured cone.** That is the same class round 1 blocked — a hard-edged
+geometry read on a foliage silhouette — relocated from the card boundaries to
+the apex. It does not ship.
+
+| # | Criterion | R1 | R2 | |
+|---|---|---|---|---|
+| 1 | Columnar (h/w 4–6) | 9 | **9** / 10 | PASS |
+| 2 | Fine, not shard-like | 4 | **8** / 10 | PASS |
+| 3 | No sky holes | 9 | **9** / 10 | PASS |
+| 4 | Distance survival at 55 m | 9 | **9** / 10 | PASS |
+| 5 | Colour law | 8 | **9** / 10 | PASS (instrument now honest) |
+| 6 | Trunk = basal bole only | 8 | **4** / 10 | **FAIL** |
+| 7 | Grounding, all five | 10 | **10** / 10 | PASS |
+| 8 | Five read as five | 7 | **6** / 10 | PASS |
+| 9 | Concept fidelity | 6 | **6** / 10 | PARTIAL |
+
+---
+
+## B1 recheck — **DEAD**
+
+Read at close range and at gameplay distance, all six azimuths, three channels.
+
+- `zone/close_cypress.png` (2.3 m, player beside the tree). Round 1 named two
+  specific defects here: a straight vertical at x ≈ 1080 running y ≈ 70→370
+  with a horizontal step, and a second at x ≈ 1040, y ≈ 390→600. Both regions
+  re-cropped at 2.4× brightness and 2× zoom: the R1 frame shows the two
+  straight verticals with square corners exactly as recorded; the R2 frame has
+  no straight run and no square corner anywhere on either flank. The silhouette
+  is organic top to bottom.
+- `inspect/ship_beauty/gameplay_00..05.png`, 2.6×-brightened sky-backed upper
+  canopy montage, all six azimuths. Round 1's "staircase of straight-sided
+  rectangles at every one of them" is gone; every azimuth shows individually
+  shaped sprigs. The R1 montage rendered from the same crop still shows the
+  staircase, so the difference is the asset, not the montage recipe.
+- `inspect/ship_normal/gameplay_00.png` and `gameplay_03.png` — the channel that
+  round 1 used to prove the rectangles were geometry. Continuous radial normal
+  gradient across card boundaries, zero flat facets, zero geometric blocks.
+- Longest straight vertical run on the left/right silhouette boundary in the
+  sky band of `ship_normal/gameplay_*`: R1 9–40 px, R2 8–19 px.
+
+Root cause closed at the atlas, not papered over: `atlas_report.json`
+`border_alpha_gate` = **0.000 on all nine spray islands** (round 1: 0.383–0.734
+on at least two borders of every island, 0.412–0.662 on all four of
+`spray_center`), and `red_proofs.island_border_alpha` shows the gate failing an
+un-inset probe at 0.483 — the assert round 1 asked for exists and is red-proofed.
+The islands are no longer quadrant crops: nine independent window picks, each
+multiplied by an `organic_vignette` that reaches literal zero alpha inside the
+crop's own edge.
+
+## Fix verification
+
+**F1 — stats measure the subject. DONE, one residual.**
+Round 1's `ship` lines counted ~1 048 500 of 1 048 576 px. Round 2's count
+5 432–5 699 px at `far` and 474k–556k at `gameplay`. Sanity-checked against my
+own masks (subject isolated from `ship_normal`, background classes sampled from
+the frame corners):
+
+| stats line | stats.txt | this judgment, independent mask |
+|---|---|---|
+| `ship_beauty/far_01` | h 215.47 s 0.085 v 0.404 px 5650 | h 216.9 s 0.071 v 0.415 px 5380 |
+| `ship_beauty/gameplay_01` | h 59.13 s 0.115 v 0.197 px 548 977 | h 56.7 s 0.119 v 0.136 px 482 102 |
+
+Hue agrees to ≤ 3°, saturation to ≤ 0.005. The instrument measures the tree.
+Residual: the shipped mask runs ~14 % wider than a hard silhouette at
+`gameplay` and the extra pixels are partially-covered edges carrying mostly
+background, which lifts reported V by ≈ 0.06 (0.197 vs 0.136). Harmless against
+a 0.6 ceiling; recorded as minor M4, not a blocker.
+
+**F2 — headroom spent on card count. PARTIAL.**
+1050 → 2500 cards, 9 664 → 21 264 tris against the 24 000 budget; per-card
+length ×0.625. The *silhouette* did get finer — perimeter/area over the
+sky-backed gameplay silhouette rises from 0.0178 to 0.0193 mean, enclosed holes
+fall (below), detached fringe islands rise from 5–12 to 13–32 per frame. But
+two things went the wrong way and both are visible:
+
+- The *internal* needle register got coarser, not finer. At matched screen
+  scale (`ship_beauty/gameplay_02`, identical crop, 3.2× brightness) R1's
+  fronds resolve into pinnate fern branching; R2's are fat smooth-lobed
+  branchlets with no serration. The cause is in the shipped atlas, not the
+  render: all nine spray islands are 5–10 thick coral-like lobes (montage of
+  every island from `cypress_base.png`). The window search picked a
+  magnification at which individual branchlets fill the 384 px island.
+- Crown card density is too low to cover the core (see B2).
+
+**F3 — trunk bole darkened. DONE.**
+`atlas_report.json.bark_regrade` pre H 42.745 S 0.4296 V 0.5407 — round 1's
+measured pale cream to three decimals — regraded to H 30 / S 0.28 / V 0.20.
+Re-measured on the shipped `cypress_base.png` bark island: **H 29.9, S 0.275,
+V 0.200**. In pixels, `ship_beauty/full_01` base zoom: R1's bole is bright
+cream-tan and the brightest element on the tree; R2's is a dark warm brown,
+darker than the canopy skirt around it. No longer a light pip at 55 m.
+
+**M1 — magenta filaments. DONE.** Subject-masked over 6 azimuths at gameplay,
+2.88 M px: fraction in hue [260, 350) in `ship_albedo` is **0.000 %** at every
+saturation threshold (R1: 0.116–0.165 %). In `ship_beauty` at S > 0.15,
+0.481 % → **0.007 %**. The lavender sprigs still visible in a 3× brightened
+crop are low-saturation blue-grey sky rim light, not asset magenta.
+
+**M2 — threat-band texels. DONE.** `color_minor_fixes.threat_band_pct`
+0.0556 → **0.0** on opaque spray texels. Rendered subject-masked albedo in
+[350, 25) falls 7.44 % → 3.75 %, the remainder being the bark island (H 30)
+and edge AA.
+
+**M3 — profile jitter. OPEN, and now more visible.** See criterion 8.
+
+---
+
+## 1. Columnar — 9/10, PASS
+
+`far` arm only (the `full` arm is a 45.8° turntable and still cannot judge
+vertical proportion — it measures h/w 3.1–3.4 on the same asset). Silhouette
+bbox over `ship_normal/far_*`, azimuths 01/02/04/05 (00 and 03 excluded: the
+cast shadow merges with the tree in those two): **h/w = 4.55, 4.55, 4.41,
+4.53.** GLB POSITION accessor: height 9.000 m, max radius 0.9517 m →
+**h/w 4.73**. Every value in the 4–6 band, and slightly slimmer than round 1's
+4.11–4.23. `wide.png` still reads as slim dark exclamation marks bracketing the
+settlement.
+
+## 2. Fine, not shard-like — 8/10, PASS
+
+No plate, no shard, no cross-plane read, no card rectangle at any azimuth or
+distance — see the B1 section. At shipped exposure `close_cypress.png` reads as
+a dense dark columnar tree with a finely serrated edge and legible individual
+sprigs.
+
+Held at 8, not 9–10, for the register loss recorded under F2: the shipped
+island alpha carries no needle serration, so under inspection the foliage unit
+reads as a small fat lobed leaf rather than a needle spray. Not shard-like — but
+not the fern-like spray round 1 praised either. The bare crown cone is a
+hard-edged geometric read on this silhouette and is scored under criterion 6
+rather than double-counted here.
+
+## 3. No sky holes — 9/10, PASS
+
+Enclosed background inside the filled silhouette, `ship_normal`, 6 azimuths:
+
+| | gameplay, enclosed | gameplay, >4 px in |
+|---|---|---|
+| R1 | 0.81–1.93 % | 0.77–1.86 % |
+| **R2** | **0.69–1.09 %** | **0.65–1.05 %** |
+
+Improved over round 1 despite 2.4× the card count. At `far`, per-row coverage
+inside the silhouette span is 0.986–0.989 and bbox fill 0.726–0.743 — no
+enclosed hole survives at 55 m. Confirmed visually in `wide.png`, both pair mids
+and `mid_graveyard.png`.
+
+## 4. Distance survival at 55 m — 9/10, PASS. Mip watch item resolved.
+
+`ship_beauty/far_01/02/04` at 4× zoom: a coherent dark columnar mass with a
+ragged edge, no lacing, no dissolve, no transparency. Subject pixels 5 381 vs
+round 1's 5 979 — 10 % fewer, from a genuinely slimmer tree (silhouette width
+40 px vs 43), not from thinning.
+
+**The round-1 watch item is answered.** The new atlas's mip coverage ladder is
+`[1.009, 1.021, 1.056, 1.109]` — still *rising*, still far above the D6 gate of
+0.55, and flatter than round 1's `[1.026, 1.059, 1.129, 1.241]`. Smaller cards
+did **not** thin the chain. The Castaño per-mip rescale in `bake_textures.mjs`
+stays deferred.
+
+## 5. Colour law — 9/10, PASS on all three ceilings, instrument now honest
+
+Subject-masked, 6 azimuths, gameplay, `ship`, 2.88 M px:
+
+| | hue (sat-weighted circular mean) | S | V |
+|---|---|---|---|
+| `ship_beauty` | **58.8°** | **0.101** | **0.133** |
+| `ship_albedo` | **52.5°** | **0.281** | **0.201** |
+| concept tree pixels (round 1) | 52.7° | 0.331 | 0.194 |
+
+- **S ≤ 0.35** — PASS (0.101 rendered, 0.281 albedo).
+- **V ≤ 0.6** — PASS (0.133 rendered, 0.201 albedo).
+- **hue outside 350°–25°** — PASS (58.8° rendered, 52.5° albedo).
+
+Raised from 8 to 9 because the gate is now gateable from `stats.txt` (F1) and
+both colour minors closed. Not 10 for the residual mask bias (M4) and the
+far-distance caveat below.
+
+### The far 217° reading — attribution rejected, conclusion accepted
+
+The render worker attributes `ship_beauty/far_*` h ≈ 217° to "edge/AA
+contribution in a small sample". **That attribution is wrong.** Two independent
+disproofs, both on the identical pixel set:
+
+1. Eroding the mask 1/2/3 px inward — which removes every edge and AA pixel —
+   leaves the hue at 216.9 → 216.4 → 216.2 → 216.1° on `far_01`, and
+   218.4° unchanged at every erosion step on `far_04`. Saturation *rises*
+   (0.071 → 0.076) as edges are removed, the opposite of sky dilution.
+2. The same pixels read **h 58.2° s 0.249 v 0.180** in `ship_albedo` and
+   **h 57.7° s 0.222 v 0.076** in `raking_beauty`.
+
+The mechanism is the `ship` preset's fog / aerial perspective repainting the
+55 m silhouette in the fog's own blue-grey — the same phenomenon round 1
+recorded in its §5, and the authored zone fog doing its job. The *conclusion*
+stands: not a defect, and not a colour-law event (217° is outside the threat
+band, S 0.08 ≤ 0.35, V 0.41 ≤ 0.6). But the consequence is a new watch item:
+the `far` `ship_beauty` STATS rows measure the fog, not the asset, and cannot
+gate the colour law for this asset under that preset.
+
+## 6. Trunk — 4/10, **FAIL** — B2
+
+**The bole half is fully answered.** F3 verified above: dark, no longer the
+brightest element, no bare trunk through mid-canopy at any azimuth or distance,
+canopy skirt closing over it completely (`ship_beauty/full_01` base zoom,
+`raking_beauty/full_01`, `close_cypress.png`). On its own that half is a 9.
+
+**The crown is not.** The core spindle is exposed above the canopy as a smooth,
+untextured, straight-sided cone — a dark blade standing clear of the foliage.
+
+Read in four places:
+- `inspect/ship_normal/full_01.png`, apex crop: a continuous smooth radial
+  normal gradient over a triangle with perfectly straight sides and **zero
+  alpha cutouts**. Alpha cards always cut their own silhouette; solid geometry
+  does not.
+- `inspect/raking_beauty/full_01.png`: the cone is lit as a solid shaded
+  surface with its own terminator, visibly distinct from the foliage grain
+  around it.
+- `inspect/ship_beauty/full_01.png` and `far_01/02/04`: the apex is a hard
+  point at 55 m.
+- **`zone/mid_cypress_nw.png` and `zone/mid_cypress_se.png`** — the frames that
+  matter. At ~30 m all four crowns terminate in the same smooth hard-edged dark
+  blade against the ground. `mid_graveyard.png` shows the fifth doing the same.
+
+Measured cause, from the shipped GLB and the shipped atlas:
+- The core spindle runs to the full **y = 9.000 m** (top spray vertex 8.878 m).
+- Card centroids per height band: **37 cards in y ∈ [8.6, 9.0)** (92 /m, mean
+  card length 0.186 m) against **602 in y ∈ [5.0, 7.0)** (301 /m, mean length
+  0.402 m).
+- Each island's vignetted alpha covers only 0.129–0.148 of its own quad.
+
+37 tiny cards at ~14 % alpha coverage cannot clothe a 0.4 m cone. The fully
+solid, cutout-free run measured from the apex is 0.17–0.23 m across azimuths,
+and the cone's straight-sided profile stays legible for roughly 0.7 m — ~8 % of
+the tree's height, on the asset's most prominent feature.
+
+This is a regression: round 1's asset had a blunt-rounded card crown and no
+exposed core.
+
+## 7. Grounding — 10/10, PASS
+
+`mid_cypress_nw.png` and `mid_cypress_se.png`: all four boles meet the ground,
+each with its own tapered contact shadow, no float and no sink.
+`mid_graveyard.png`: the fifth planted beside the chapel at credible height.
+`wide.png` carries all five with ground shadows. The `12c7e4b` renderer
+prerequisite still holds — every cast shadow is a tapered tree shape through
+the alpha mask, not a quad blob.
+
+## 8. Variety — 6/10, PASS
+
+Four across the two pair mids read as four; the 0.85–1.10 scale spread is
+legible between neighbours in both frames and free yaw varies the fringe bumps.
+The fifth reads independently against the chapel.
+
+Down one from round 1. The envelope is still identical at all five — one mesh,
+scale and yaw the only differentiators — and the rebuild made the repeat *more*
+legible, because every crown now terminates in the same distinctive hard blade
+(criterion 6). Once B2 is fixed this returns to round 1's 7; M3 (per-instance
+profile seed) stays open either way.
+
+## 9. Concept fidelity — 6/10, PARTIAL
+
+**Colour — effectively exact, and better than round 1.** Shipped albedo
+H 52.5 / S 0.281 / V 0.201 against concept tree pixels H 52.7 / S 0.331 /
+V 0.194; `atlas_report.json` masked-Lab ΔE **3.47**.
+
+**Island variety — fixed.** Round 1 shipped 9 declared islands carrying only 5
+unique alpha cutouts. Round 2 ships **9 distinct cutouts** (nine independent
+window picks, each with its own vignette phase seed), meeting D7's 6–10.
+
+**Silhouette envelope — closer.** Columnar, proud fringe sprigs breaking the
+envelope, foliage carried to the ground, and the apex is now pointed as the
+concept's is.
+
+**Needle register — moved further away, not closer.** The concept's sprigs are
+small sharp needles with fine serration; the shipped islands are 5–10 fat
+smooth-lobed branchlets with none. Round 1's complaint was that the render's
+fringe units were ~2× the concept's sprig scale but at least resolved as ferns;
+round 2 halved the unit and lost the resolution. And the concept's crown is
+needled foliage to the tip where the shipped one is bare geometry.
+
+Held at 6 — the gains and the loss cancel.
+
+## Regression spot-check — clean
+
+`zone/contact_sheet.png` opened in full plus `mid_graveyard.png`,
+`mid_cypress_nw/se.png`: the plaza well and paving, both chapel interiors, the
+chapel exterior and skyline, all four casa types, gate arch, wall segment,
+crucero, gravestone, broken column, candelabra shrine, olive stump and all
+three rock props render normally — no black frames, no missing textures, no
+changed framing. The cypress change disturbed nothing else.
+
+## Non-gating observations
+
+- **Normals remain the quiet win.** `ship_normal/gameplay_00/03` show a smooth
+  radial gradient continuous *across* card boundaries on a 2500-card mesh, no
+  per-card facets, and `raking_beauty/full_01` has a clean vertical terminator
+  with no card banding.
+- **AO is clean but darker.** `ship_ao/gameplay_00` is soft and even with no
+  ringing; the atlas gate mean drops 0.919 → **0.739** (std 0.112 → 0.092).
+  Consistent with the denser card mass; not a defect.
+
+## Fix list
+
+**Blocker — 1. Nothing ships until this clears.**
+
+- **B2 — the core spindle must not read at the crown.** It is bare, smooth and
+  hard-edged above the canopy on all five placements at every distance from
+  30 m in. Two measured facts bound the fix: the spindle runs to y = 9.000 m
+  while the topmost spray vertex is 8.878 m, and crown card density is 92 /m in
+  the top 0.4 m against 301 /m at mid-canopy with each card covering only ~14 %
+  of its quad. Either clothe the crown (more and/or longer cards in the top
+  ~0.8 m, or a crown-specific island with higher alpha coverage) or end the
+  spindle below the card band — the choice is the generator's, but the gate is
+  the pixels.
+
+  **Add the numeric assert that would have caught it** to `cypressgen/verify.py`:
+  for the top N % of the envelope, the summed projected alpha coverage of the
+  cards enclosing the core must exceed the core's projected silhouette there.
+  Red-proof it by shortening the crown cards, per the T1 pattern.
+
+  Verify on re-render: `zone/mid_cypress_nw.png`, `zone/mid_cypress_se.png`,
+  `zone/mid_graveyard.png`, and `inspect/ship_normal/full_*` — no cutout-free,
+  straight-sided run at the apex in the normal channel at any azimuth.
+
+**Required — 1. Rides B2's rebuild round; a rebuild is happening anyway.**
+
+- **F4 — restore the needle register in the atlas islands.** The nine shipped
+  spray islands carry no serration: each is 5–10 thick smooth lobes
+  (`target/cypress-build/atlas/cypress_base.png`). This is what keeps criteria
+  2 and 9 off 9–10 and it moved *away* from the concept between rounds. The
+  cause is the crop magnification, not the vignette: `find_crop_centers` picks
+  384 px windows at native scan resolution, at which individual branchlets fill
+  the window. Pick larger windows (or downsample the scan before the search) so
+  each island carries a whole multiply-branched spray, then vignette as now —
+  the border-alpha gate is orthogonal to window size and stays green.
+
+**Minor — 2**
+
+- **M3 (carried, worse) — profile jitter.** All five still share one envelope,
+  and the identical crown blade makes the repeat more legible than in round 1.
+  A per-instance profile seed. Re-assess after B2.
+- **M4 — `print_stats` mask includes partially-covered edge pixels.** The
+  gameplay mask runs ~14 % wider than a hard silhouette and the extra pixels
+  carry mostly background, lifting reported V by ≈ 0.06 (0.197 vs an
+  independent 0.136). Harmless against a 0.6 ceiling; tighten if the law is
+  ever gated on V with less margin.
+
+## Watch items carried
+
+- **NEW — the `far` `ship_beauty` STATS rows measure the fog, not the asset.**
+  Proved by erosion (hue immobile at 216–218° through 3 px of inward erosion,
+  saturation rising) and by the same pixels reading h 58° in `ship_albedo` and
+  `raking_beauty`. Every ceiling still clears, so it is not a colour-law event,
+  but the colour law cannot be gated at `far` under `ship` — gate it at
+  `gameplay`, or on `ship_albedo`.
+- **The rendered tree is still much darker and flatter than its albedo**
+  (V 0.133 vs 0.201, S 0.101 vs 0.281). Inside every ceiling. Carried unchanged
+  from round 1; still a lighting/exposure question, not an asset one.
+- **`asset_inspect`'s `full` arm is a 45.8°-pitch turntable** and still cannot
+  judge vertical proportion — it reads h/w 3.1–3.4 where the level `far` arm
+  reads 4.4–4.6 on the same asset. Carried.
+- **Mip-ladder watch item — RESOLVED.** Smaller cards did not thin the chain
+  (see criterion 4). Struck.
+- **`zone_review` shot-coverage gap — CLOSED.** `cypress_nw` and `cypress_se`
+  are permanent `ROCALBA_SHOTS` entries as of `1a5bf6c`; both frames are
+  reproducible from a clean checkout and criteria 7 and 8 no longer lean on a
+  temporary edit. Round 1's carry of P2.4's F7 for *this* asset is struck.
+
+---
+
+# Round 3 — 2026-08-05 (fresh judge)
+
+Subject: the working-tree procedural cypress on top of `1a5bf6c`,
+`content/models/props/cypress/cypress.glb`, 2 820 cards / 23 824 tris
+(uncommitted `cypressgen/` + `asset_inspect.rs` `BG_EPS` 8→32 fixes).
+Evidence: `target/review/cypress-r3/` (32 zone frames, 288 `asset_inspect`
+frames, 72 subject-masked `STATS` lines). `cypress-r2/` and `cypress/` were
+re-measured alongside for every diff below.
+
+Every number here was re-derived by this judgment from the shipped pixels, the
+shipped `cypress.glb` accessors and the shipped
+`target/cypress-build/atlas/cypress_base.png`. Nothing is taken from
+`MANIFEST.md`'s prose or from `generation_manifest.json`'s `verify` block —
+the generator's own `crown_coverage` assert cannot grade its own candidate, so
+B2 was re-measured from the render and from the vertex buffer instead.
+
+## Verdict
+
+# PASS — 0 blockers, 0 required fixes, 2 minor
+
+**B2 is dead** and **B1 stayed dead**. The crown is clothed at every azimuth,
+every distance and all five placements; the re-cropped atlas reintroduced no
+border rectangles. F4 landed and is the round's biggest visible gain — the
+foliage unit is a multiply-branched serrated spray again. Seven of nine
+criteria hold or improve, none regressed, and every fix from rounds 1 and 2
+still verifies in pixels.
+
+| # | Criterion | R1 | R2 | R3 | |
+|---|---|---|---|---|---|
+| 1 | Columnar (h/w 4–6) | 9 | 9 | **9** / 10 | PASS |
+| 2 | Fine, not shard-like | 4 | 8 | **9** / 10 | PASS |
+| 3 | No sky holes | 9 | 9 | **9** / 10 | PASS |
+| 4 | Distance survival at 55 m | 9 | 9 | **9** / 10 | PASS |
+| 5 | Colour law | 8 | 9 | **9** / 10 | PASS |
+| 6 | Trunk = basal bole only | 8 | 4 | **9** / 10 | PASS |
+| 7 | Grounding, all five | 10 | 10 | **10** / 10 | PASS |
+| 8 | Five read as five | 7 | 6 | **7** / 10 | PASS |
+| 9 | Concept fidelity | 6 | 6 | **7** / 10 | PARTIAL |
+
+---
+
+## B2 recheck — **DEAD**, not healed-with-residue
+
+Round 2 named four reads; all four were re-opened at the same crops.
+
+- **`inspect/ship_normal/full_00..05`, apex crop (440,175)–(600,295) at 6×.**
+  Round 2's frame shows the smooth straight-sided cone standing clear of the
+  canopy with zero alpha cutouts. The round-3 frame at the identical crop shows
+  the apex clothed in cards: cutout-punctured, ragged, no smooth spike, at
+  **every one of the six azimuths**.
+- **Cutout-free run measured down from the apex** (rows whose fill inside the
+  silhouette span is 1.000): R2 **5–15 px** across the six azimuths, R3
+  **0–3 px**. Apex boundary rms curvature over the top 60 rows rises
+  2.7–6.2 px (R2) → 4.6–7.5 px (R3), i.e. the tip edge went from
+  near-straight to foliage-ragged.
+- **`inspect/raking_beauty/full_01`, apex at 5×/2.2 brightness.** R2's cone is
+  a solid shaded surface with its own terminator; R3's terminator runs through
+  card grain — no solid facet anywhere at the tip.
+- **`inspect/ship_beauty/full_00..05`, six-azimuth apex montage at 2.2×.** R2:
+  a grey cone spike on all six. R3: a foliage crown on all six.
+- **`zone/mid_cypress_nw.png`, `zone/mid_cypress_se.png`, `zone/mid_graveyard.png`
+  — the frames that decided round 2.** All five crowns terminate in ragged
+  sprig-broken foliage. The R2 crop at (1120,70)–(1340,240) of
+  `mid_cypress_nw.png` shows the black blade unmistakably; the R3 crop at the
+  same coordinates shows none.
+- At 55 m (`ship_normal/far_01`) the tip is blunter and more ragged than R2's
+  needle point — the crown survives the distance without becoming a hard pip.
+
+**Root cause closed at the generator, verified from the shipped vertex buffer**
+(POSITION/TEXCOORD accessors parsed directly; the first 1 264 tris are the core
+spindle, the remaining 22 560 are the 2 820 eight-triangle cards):
+
+| | R2 (record) | R3 (measured here) |
+|---|---|---|
+| core radius at the crown | runs to y = 9.000 at full radius | rings at y ≈ 7.75 r = 0.177 m, at y ≈ 8.9 r = **0.0011 m** |
+| topmost card vertex | 8.878 m | **8.9845 m** |
+| cards centred in y ∈ [8.6, 9.0) | 37 (92 /m) | **129 (322 /m)** |
+| cards centred in y ∈ [8.0, 8.6) | — | **329 (548 /m)**, above the 296 /m mid-band |
+
+The core is geometrically absent where the cards thin, and the cards are denser
+at the crown than at mid-canopy. Both halves of round 2's measured cause are
+reversed.
+
+## B1 recheck — **still DEAD** on the re-cropped atlas
+
+The re-crop was the obvious way to reintroduce round 1's rectangles. It did not.
+
+- **Border alpha re-measured from the shipped `cypress_base.png`** (not from
+  `atlas_report.json`): fraction of border-row/column texels above the shipped
+  `alphaCutoff` 0.35 is **0.0000 on all four borders of all nine spray
+  islands**. Round 1 scored 0.383–0.734 on at least two borders of every island.
+- **Longest straight vertical run on the sky-backed silhouette boundary**,
+  `ship_normal/gameplay_00..05`: R1 9–40 px, R2 8–19 px, **R3 8–16 px**.
+- **`ship_beauty/gameplay_00..05`, 2.6×-brightened sky-backed canopy montage**:
+  individually shaped multiply-branched fronds at every azimuth, no straight
+  run, no square corner.
+- **`zone/close_cypress.png` (2.3 m, player beside the tree)**: organic
+  silhouette top to bottom at both flanks; round 1's two named verticals
+  (x ≈ 1080 and x ≈ 1040) have no counterpart.
+- `ship_normal/gameplay_00` full frame: continuous radial normal gradient across
+  card boundaries on a 2 820-card mesh, zero flat facets, zero geometric blocks.
+
+## Fix verification
+
+**F4 — needle register restored. DONE, and it is the round's biggest gain.**
+Montage of all seven unique spray islands from the shipped atlas: each is now a
+whole multiply-branched spray with serrated scale-leaf branchlets, replacing
+round 2's 5–10 thick smooth coral lobes. In render, the identical crop of
+`zone/close_cypress.png` at (480,60)–(820,320), 3×/1.9 brightness, shows R2's
+blunt lobes against R3's pinnate serrated fronds. Numerically, perimeter/area
+over the sky-backed gameplay silhouette rises **0.0190–0.0219 (R2) → 0.0256–0.0288
+(R3)**, a 42 % gain in edge fineness at unchanged silhouette area.
+
+**M4 — stats mask tightened. DONE.** Subject mask rebuilt independently from
+`ship_normal` (sky = black, ground = flat plane colour) and applied to the
+matching beauty frame:
+
+| stats line | `stats.txt` | this judgment, independent mask |
+|---|---|---|
+| `ship_beauty/gameplay_01` | h 60.78 s 0.107 v 0.132 px 471 715 | h 61.33 s 0.106 v 0.137 px 475 171 |
+| `ship_beauty/gameplay_03` | h 54.11 s 0.098 v 0.120 px 474 855 | h 57.47 s 0.096 v 0.125 px 478 993 |
+
+Hue agrees to ≤ 3.4°, saturation to ≤ 0.002, **value to ≤ 0.005**, pixel count
+to ≤ 0.9 %. Round 2's ≈ 0.06 V inflation is gone; the shipped mask now sits
+just *inside* an any-coverage mask rather than 14 % outside it.
+
+**F1 / F3 / M1 / M2 — no regression.** `stats.txt` counts 464k–481k of
+1 048 576 px at gameplay (F1 holds). Bark island re-measured on the shipped
+atlas: **H 28.9 S 0.266 V 0.194** — dark warm brown, and the base zoom of
+`ship_beauty/full_01` shows a small bole that is no longer the brightest element
+on the tree (F3 holds). Subject-masked `ship_albedo` over six gameplay azimuths,
+219 400 sampled px: hue [260, 350) = **0.0000 %** (M1 holds); hue [350, 25) =
+4.58 % against R2's 3.75 %, still the bark island plus edge AA and still not a
+law event since the law gates the mean (M2 unchanged).
+
+## M3 arbitration — the fix worker's judgment call is **upheld**
+
+The fix worker shipped no separate mechanism for M3, on the escape clause
+"unless the apex silhouette still reads copy-paste at mids". Arbitrated on
+`zone/mid_cypress_nw.png` and `zone/mid_cypress_se.png` at 4× apex zoom, plus
+`mid_graveyard.png` for the fifth:
+
+- NW-left: blunt shoulder, tip carried left, one proud side sprig.
+- NW-right: taller symmetric cone with a notch on the right shoulder.
+- SE-left: broad stepped shoulder, tip is a wide tuft.
+- SE-right: narrow sharp tip with a long clean right flank.
+- Graveyard: full feathered tip, blunter than any of the four.
+
+**No copy-paste cue.** Round 2's aggravating factor — every crown terminating in
+the same distinctive hard blade — is gone, and because the crown is now foliage,
+per-instance yaw rotates a different set of crown cards into the silhouette, so
+the apexes differ without any new mechanism. The escape clause is satisfied and
+no crown-specific fix is owed. Criterion 8 returns to round 1's 7; M3 stays open
+at its original round-1 weight (one envelope, scale and yaw the only
+differentiators), no longer aggravated.
+
+---
+
+## 1. Columnar — 9/10, PASS
+
+GLB POSITION accessor: height **9.000 m**, max radius **0.9517 m** →
+**h/w 4.73**. Rendered on the level `far` arm (`ship_normal/far_00..05`,
+identical measurement recipe on both rounds): **R3 4.17–4.28, R2 4.07–4.30** —
+unchanged and in the 4–6 band. `wide.png` still reads as five slim dark
+exclamation marks bracketing the settlement under fog. The `full` arm's
+45.8° turntable still measures 3.1–3.4 and still cannot judge this criterion.
+
+## 2. Fine, not shard-like — 9/10, PASS
+
+No plate, no shard, no cross-plane read, no card rectangle at any azimuth or
+distance (B1 section). The register loss that held round 2 at 8 is repaired:
+the shipped islands carry serrated multi-branchlet sprays and the sky-backed
+perimeter/area rises 42 %. `zone/close_cypress.png` at shipped exposure reads
+as a dense dark columnar tree with legible individual fern-like fronds.
+
+Not 10 because at matched tree width the frond unit is still roughly **2×** the
+concept's sprig (criterion 9), and the triangle budget that would buy the
+halving is now spent.
+
+## 3. No sky holes — 9/10, PASS
+
+Enclosed background inside the sky-backed silhouette, `ship_normal`,
+six azimuths at gameplay: **R3 0.94–1.28 %** against R2 0.69–1.09 % and R1
+0.81–1.93 %. The small rise is the finer cutouts of F4 and sits inside the
+range a real tree gives. At 55 m the tree's own component holds bbox fill
+**0.724–0.725** with **15–36 px** enclosed — no hole survives the distance.
+Confirmed visually in `wide.png`, both pair mids and `mid_graveyard.png`.
+
+## 4. Distance survival at 55 m — 9/10, PASS
+
+`ship_beauty/far_01/04` at 4× zoom: a coherent dark columnar mass with a ragged
+edge and a small pale bole, no lacing, no dissolve, no transparency. Subject
+px 4 806–5 096.
+
+**The round-2 mip re-check is answered.** The re-cropped atlas's coverage ladder
+is `[1.024, 1.054, 1.113, 1.209]` — still rising, still far above the D6 gate of
+0.55, and flatter than round 1's. Finer alpha features did **not** thin the box
+mips. The Castaño per-mip rescale in `bake_textures.mjs` stays deferred.
+
+## 5. Colour law — 9/10, PASS on all three ceilings
+
+Independent subject mask (from `ship_normal`), six gameplay azimuths,
+saturation-weighted circular hue mean:
+
+| | hue | S | V |
+|---|---|---|---|
+| `ship_beauty` | **57.5–106.9°** (mean ≈ 65°) | **0.076–0.113** | **0.125–0.147** |
+| `ship_albedo` | **53.2–54.2°** | **0.265–0.272** | **0.193–0.196** |
+| concept tree pixels (round 1) | 52.7° | 0.331 | 0.194 |
+
+- **S ≤ 0.35** — PASS (0.113 worst rendered, 0.272 albedo).
+- **V ≤ 0.6** — PASS (0.147 worst rendered, 0.196 albedo).
+- **hue outside 350°–25°** — PASS (53–107° rendered, 53–54° albedo).
+
+The az-05 outlier the manifest flags (`h = 84.96` in `stats.txt`, 106.9° on my
+mask) is a low-saturation frame (s 0.076) where circular hue is unstable; it is
+nowhere near the threat band and both other ceilings clear.
+
+Held at 9 for two instrument caveats, neither asset-side: the `far` rows still
+measure fog (below), and `raking_beauty/full_*` reads **h 25.7–26.6°** — inside
+1.6° of the forbidden band under a warm grazing sun on the turntable arm, where
+the same asset reads 36–40° at raking gameplay and 53° in albedo.
+
+## 6. Trunk — 9/10, PASS
+
+**Bole:** small, dark warm brown (bark island H 28.9 S 0.266 V 0.194), no bare
+trunk through mid-canopy at any azimuth or distance, canopy skirt closing over
+it completely. Not the brightest element at any distance including 55 m.
+
+**Crown:** clothed — see the B2 section. The measured cause is closed at both
+ends (core radius 0.0011 m above 8.8 m; crown card density 322–548 /m against a
+296 /m mid-band).
+
+Not 10: at 6× zoom on `ship_beauty/full_01` the bole is a visibly faceted
+low-poly cylinder, and at 2.3 m the core shaft shows through canopy gaps as a
+smooth dark surface. Both read as interior shadow at shipped exposure — a note,
+not a defect.
+
+## 7. Grounding — 10/10, PASS
+
+`mid_cypress_nw.png` and `mid_cypress_se.png`: all four boles meet the ground,
+each with its own tapered contact shadow, no float and no sink.
+`mid_graveyard.png`: the fifth planted beside the chapel at credible height.
+`wide.png` carries all five with ground shadows. The `12c7e4b` renderer
+prerequisite still holds — every cast shadow is a tapered tree shape through the
+alpha mask, not a quad blob.
+
+## 8. Variety — 7/10, PASS
+
+Four across the two pair mids read as four; the 0.85–1.10 scale spread is
+legible between neighbours and free yaw varies both the fringe bumps and now the
+crown tip. The fifth reads independently against the chapel. Up one from round 2
+because the identical-blade cue is gone (M3 arbitration above). Held at 7, not
+higher, because the envelope is still one mesh at all five and at `wide.png`
+framing the four field cypresses remain interchangeable.
+
+## 9. Concept fidelity — 7/10, PARTIAL
+
+**Colour — effectively exact, marginally better than round 2.**
+`atlas_report.json` masked-Lab ΔE **3.43** (R2 3.47); shipped albedo
+H 53–54 / S 0.27 / V 0.19 against concept tree pixels H 52.7 / S 0.331 / V 0.194.
+
+**Island variety — 7 unique alpha cutouts**, inside D7's 6–10. Correcting the
+round-2 record: `spray_dry_00` and `spray_dry_01` are **byte-identical in alpha**
+to `spray_02` and `spray_05` (md5 of the thresholded alpha), so the shipped
+count is 7 distinct cutouts over nine declared islands, not 9.
+
+**Silhouette envelope and crown — match.** Columnar, proud fringe sprigs
+breaking the envelope, foliage to the ground, and the crown is needled to the
+tip as the concept's is. Round 2's "the concept's crown is needled foliage where
+the shipped one is bare geometry" is closed.
+
+**Needle register — recovered, still one step short.** Side-by-side at matched
+tree width (concept upper canopy vs `ship_beauty/gameplay_02` scaled to the same
+tree width): the render's fronds are now multiply branched and serrated, but the
+frond unit still spans roughly **twice** the concept's sprig, and the dark core
+shows through canopy gaps where the concept is dense needle mass throughout.
+Round 2's regression is undone; round 1's original register gap is not.
+
+Raised to 7 — everything moved toward the concept and nothing away from it.
+
+## Regression spot-check — clean
+
+`zone/contact_sheet.png` opened in full plus `mid_graveyard.png` and both pair
+mids: the plaza well and paving, both chapel interiors, the chapel exterior and
+skyline, all four casa types, gate arch, wall segment, crucero, gravestone,
+broken column, candelabra shrine, olive stump and all three rock props render
+normally — no black frames, no missing textures, no changed framing. The cypress
+change disturbed nothing else.
+
+## Non-gating observations
+
+- **Normals remain the quiet win.** `ship_normal/gameplay_00` shows a continuous
+  radial gradient across card boundaries on a 2 820-card mesh with no per-card
+  facets, and the pinnate branching of the new islands is legible in the channel.
+- **AO gate** mean 0.748 std 0.080 (R2 0.739 / 0.092) — soft, even, no ringing.
+- **`atlas_report.json` red-proofs all fire**, including
+  `island_border_alpha` failing an un-inset probe at 0.311.
+
+## Fix list
+
+**Blockers — none. Required — none.**
+
+**Minor — 2**
+
+- **M3 (carried, no longer aggravated) — profile jitter.** All five placements
+  share one envelope; scale and yaw are the only differentiators. Worth a
+  per-instance profile seed if these ever appear outside a formal planted row.
+  Round 2's aggravation (identical crown blade) is resolved and is not part of
+  this item any more.
+- **M5 (new) — the needle unit is still ~2× the concept's sprig**, and the
+  lever round 1's F2 used is now spent: the mesh is **23 824 of 24 000 tris**,
+  so card count cannot buy another halving. Closing the remaining gap needs
+  finer island content (more branchlets per island at the same crop scale) or a
+  budget raise, not more cards. Not gating — criterion 2 passes at 9 and
+  criterion 9 at 7 with this open.
+
+## Watch items carried
+
+- **`far` `ship_beauty` STATS rows measure the fog, not the asset** (h 216–219°,
+  v 0.36–0.37 at 55 m). Instrument-level, established in round 2 by erosion and
+  cross-channel disproof; nothing in round 3 contradicts it. Gate the colour law
+  at `gameplay`, or on `ship_albedo`. Not re-litigated.
+- **NEW — `raking_beauty/full_*` reads h 25.7–26.6°**, within 1.6° of the
+  forbidden 350°–25° band. A warm grazing sun on the 45.8° turntable arm, not
+  the asset: the same pixels read 36–40° at raking gameplay and 53–54° in
+  `ship_albedo`. If the law is ever gated on raking, this is the row that trips.
+- **NEW — the triangle budget is effectively spent** (23 824 / 24 000). Any
+  future fineness ask has to come from the atlas, not from card count. Recorded
+  so a later round does not re-issue round 1's F2.
+- **The rendered tree is still much darker and flatter than its albedo**
+  (V 0.13 vs 0.19, S 0.10 vs 0.27). Inside every ceiling. Carried unchanged from
+  rounds 1 and 2; a lighting/exposure question, not an asset one.
+- **`asset_inspect`'s `full` arm is a 45.8°-pitch turntable** and cannot judge
+  vertical proportion — 3.1–3.4 against the level `far` arm's 4.2–4.3 on the
+  same asset. Carried.
+- **Enclosed sky holes rose** 0.57–1.15 % → 0.94–1.28 % at gameplay with F4's
+  finer cutouts. Well inside the passing range; the tripwire if a future round
+  makes the islands finer again.

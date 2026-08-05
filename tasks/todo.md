@@ -3720,7 +3720,98 @@ the approved plan (= its §8 go-ahead). Texture source: Pawel Olas CC0 scans
       test_cypressgen.py — NOTE: this pytest file was in the plan's create
       list but was never created; create it at T10) → commit, no
       attribution trailers. All work UNCOMMITTED on ai-pipeline.
-- [ ] T10 workspace suite once + commit
+      SUPERSEDED 2026-08-05: the rebuild was COMMITTED `1a5bf6c` (00:45)
+      by the prior session WITHOUT the round-2 gate, and the on-disk T8
+      evidence predated the re-promoted glb. Chain resumed this session.
+      T8 RE-RENDER DONE: target/review/cypress-r2/ (32 zone + 296 inspect
+      PNGs, MANIFEST.md, stats.txt; asset confirmed the 2500-card build;
+      no tracked source touched).
+      T9 ROUND 2 (fresh Opus judge): **FAIL — 1 blocker, 1 required,
+      2 minor.** Scores 9/8/9/9/9/4/10/6/6. Record appended to
+      .claude/docs/reviews/town/cypress-cards-2026-08-04.md ("Round 2").
+      B1 DEAD at source (border_alpha_gate 0.000 all sprays; zero
+      straight runs at the exact R1 defect coordinates). F1/F3/M1/M2
+      verified DONE from pixels; F2 PARTIAL (silhouette finer, internal
+      register coarser — islands are 5-10 fat lobes, no serration).
+      NEW BLOCKER B2: core spindle bare at the crown — smooth untextured
+      cone above the canopy on all 5 placements from 30 m in; spindle
+      runs to y=9.0 vs top spray vertex 8.878; crown card density 92/m
+      vs 301/m mid-band; blade legible ~0.7 m. Regression vs R1's
+      blunt-rounded crown. M3 (crown repeat) rides B2.
+      REQUIRED F4 (rides B2's round): restore needle register —
+      find_crop_centers picks 384 px windows at native scan res where
+      single branchlets fill the window; larger windows or downsample
+      first. Border-alpha gate is orthogonal, stays green.
+      MINOR M4: fixed stats mask ~14% wider than hard silhouette,
+      inflates V by ≈0.06.
+      NEW WATCH: far-arm STATS measure the ship fog, not the asset
+      (55 m silhouette repainted to h≈217°; judge REJECTED the AA/edge
+      attribution with an erosion probe, S rose when eroded). Mip
+      ladder RESOLVED; shot-coverage gap CLOSED. Fix round dispatched
+      (worker A: B2+F4+M3 + crown-coverage verify assert red-proofed +
+      rebuild/re-verify/re-promote; worker B: M4). Then re-render +
+      fresh-judge round 3.
+      FIX ROUND 2 DONE (both workers, 2026-08-05, UNCOMMITTED):
+      M4 = BG_EPS 8→32 in asset_inspect print_stats (erosion tried and
+      rejected with numbers — card-edge halos riddle the interior);
+      V 0.197→0.133 vs hand-derived 0.136, IoU 0.991-0.994 (was 0.96),
+      --reference + studio paths sane. B2 = three levers (CARD_T_HI
+      0.96→0.97 AABB-safe over 100 seeds; +320 crown cards t∈[0.82,0.97]
+      via a second generate_cards call; core_radius taper above t=0.85)
+      after an offline ray-cast sim showed cards alone can't close it in
+      budget; new verify assert _assert_crown_coverage (area-ratio ≥4.0,
+      alpha_coverage scalar persisted in atlas_islands.json; ray-cast
+      form rejected — wrong pass/fail shape, and PIL absent in Blender
+      py), red-proofed on the real GLB (ratio 0.000 with crown cards
+      dropped); shipped ratio 5.93. F4 = crop search on 2× downsampled
+      mask, CROP_WIN 840 native px (islands now multi-branchlet
+      serrated sprays, confirmed on cypress_base.png); border gate 0.0
+      all islands, red-proof intact. M3 judged satisfied by B2 (escape
+      clause used — flag for the round-3 judge). Build: 2820 cards,
+      23824/24000 tris, h/w 4.73, skyholes 0/432. Chain 1-7 all green
+      incl. content_lint 22/22 + re-promotion sha match.
+      T9 ROUND 3 RE-RENDER: target/review/cypress-r3/ (same matrix;
+      gameplay ship stats mean h~65.5 s~0.094 v~0.121).
+      T9 ROUND 3 (fresh Opus judge): **PASS — 0 blockers, 0 required,
+      2 minor.** Scores 9/9/9/9/9/9/10/7/7. Record "Round 3" appended
+      at line 807 of cypress-cards-2026-08-04.md; supersession pointers
+      on rounds 1+2 now point at round 3. B2 DEAD (cutout-free apex run
+      0-3 px all azimuths; core radius above y=8.8 is 0.0011 m; top card
+      vertex 8.9845; crown density 322/m). B1 still dead on re-cropped
+      atlas (border alpha 0.0000 all sprays; longest straight run 8-16 px).
+      M3 upheld — five crowns read distinct, no crown mechanism owed,
+      stays open at original weight. F4 verified (+42% perimeter/area);
+      M4 verified (V within 0.005 of judge's independent mask).
+      Colour law clear with margin. CARRIED MINORS: M3 (profile jitter);
+      M5 NEW — needle unit ~2x concept sprig, tri budget spent
+      (23824/24000): further fineness must come from the atlas, not
+      card count. WATCH: raking_beauty full hue 25.7-26.6 within 1.6
+      of threat band (warm grazing preset, not asset — albedo hue 53);
+      enclosed holes 0.94-1.28% (was 0.57-1.15). RECORD CORRECTION:
+      unique alpha cutouts are 7, not 9 (both spray_dry_* byte-identical
+      in alpha to spray_02/05) — still inside D7's 6-10.
+- [x] T10 DONE 2026-08-05, committed `8e43a97` ("Close crown gap and
+      re-crop needle atlas for the cypress alpha-card canopy", 13 files,
+      +299/-44, tree clean, not pushed).
+      test_cypressgen.py CREATED (scripts/asset-pipeline/cypressgen/):
+      6 pytest tests, pure-math only (card count band across seeds,
+      t-range, core taper monotone, card AABB under 9.1 via reproduced
+      _card_quad formula, verify_export green on shipped glb +
+      rejects corrupt glb). Runs via C:\Python314\python -m pytest
+      (numpy 2.5.1 + pytest 9.1.1 there). Every assert red-proofed
+      (temp perturb -> red -> revert, git diff clean). bpy paths
+      (geo/material/atlas orchestration) left untested — no shims.
+      lint-comments.sh 0 hits (scope excludes scripts/; worker
+      self-reviewed comments, removed one plan-citation).
+      check_registry.py OK — NOTE actual path is scripts/ai-pipeline/
+      check_registry.py, not asset-pipeline. cargo test --workspace
+      ONCE: 456 passed, 0 failed, 5 ignored (loss/soak, release-only).
+
+CYPRESS ALPHA-CARD REBUILD CAMPAIGN CLOSED 2026-08-05 at `8e43a97`
+(gate record: docs/reviews/town/cypress-cards-2026-08-04.md, Round 3
+PASS). Open follow-ups carried as minors, NOT scheduled: M3 profile
+jitter; M5 needle unit ~2x concept sprig — tri budget spent, any
+further fineness must come from the atlas.
 
 ## Debt notes — orphaned grunt spawns cleanup (2026-08-01)
 
