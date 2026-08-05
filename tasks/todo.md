@@ -1208,11 +1208,30 @@ goal." Consequences, binding for the rest of the campaign:
       (3) Judge side-finding: `prop_audit.py --asset chapel_arch` errors
       on the retess UVs (stale cached coverage artifact
       `target/prop-coverage/holes_chapel_arch.png`) — regen needed at
-      next install. (4) IN FLIGHT: normal-map provenance investigation
-      (is the 4–17 mm band carriable by a hires normal bake?) — decides
-      re-roll-only vs re-roll+normal-fix before the next judge round.
+      next install. (4) Normal-map provenance SETTLED: the shipped
+      normal IS a true hires Cycles bake (`proptex/export.py:49-71`) in
+      both builds — geometry accepted at 103k, round 2 is texture-only.
+      (5) ROUND-2 RE-ROLL FAILED PRE-SCREEN, all 3 seeds (island-masked
+      albedo p95/p5: old shipped arch **1.78× / 0.23%** dark-frac;
+      new-mesh seeds 0/1/2/3 = 10.88/8.32/7.76/6.23× with 14–20%
+      dark-frac; gate ≤4.0× & ≤6.5%). Four consecutive ghosted rolls =
+      mechanism defect (blend has no color-consistency/outlier
+      rejection — `proptex/albedo.py:113-128`: disagreeing views
+      average, never compete), not seed luck. Nothing installed. Metric
+      script: `target/arch-retess/pre_screen.py`; rolls at
+      `target/arch-retess/cand_reroll_s{1,2,3}/`.
+      (6) **S5 H CHAINS HELD** — same texture stage would feed all 5 new
+      props; launching before the ghost is attributed risks 5 bad
+      albedos. IN FLIGHT: attribution probe — shipped-set albedo metric
+      map (CPU) + one roll of today's pipeline on July's 15k arch
+      geometry (GPU ~5 min) → discriminates mesh/UV-dependent vs
+      pipeline-era-wide before any blend fix is designed.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
+- [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
+      0 failed / 5 ignored (51 binaries) in one run over the committed
+      batch `abb9619`+`f154d2e`+`45bab1d`+`466edb7`; no fixes needed, so
+      the confirm run was not required.
 - [x] P3.1c RE-ROLL EXECUTED — 32/32 on disk at `target/concept-c1b/`, ~10 min,
       seeds 101-108/201-208/301-308/401-408 (distinct from run 1, so this is a
       genuine re-roll and not a re-render), all prompts verbatim from the screen
