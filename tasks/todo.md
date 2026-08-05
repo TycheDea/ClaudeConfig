@@ -1495,6 +1495,15 @@ goal." Consequences, binding for the rest of the campaign:
       v2 gate --body dark, ≤3 seeds, ESCALATE stops rolling).
       retablo + cart registry entries re-added by me (uncommitted;
       ship with installs). H7 votive + brazier next after H6.
+      RETABLO EXPORTS FINISHED (~1 min total): all 3 cands have
+      textured.glb + generation_manifest.json (shas 05165cba /
+      34a41705 / 2aaa8300; geometry byte-identical across cands,
+      only texture seed differs; invocation `--through texture`).
+      Cache-miss blast radius = exactly the 3 stages defined in the
+      fixed export.py (bake_normal/bake_ao rebaked once + export per
+      cand) — no GPU waste. Retablo G3 pool: cand_1 + cand_3 (v2
+      PASS); cand_2 only via judge (ESCALATE). Candidate selection =
+      opus visual judgment at G3 time.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
