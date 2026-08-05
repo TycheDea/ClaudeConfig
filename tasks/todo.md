@@ -1279,10 +1279,20 @@ goal." Consequences, binding for the rest of the campaign:
       chain — no `transfer` stage type exists, so the manifest is
       deliberately NOT install-compatible (no forged records); a real
       `transfer` stage in proptex/ is the honest path, to be built
-      only after judge PASS. IN FLIGHT: seam fix — a chart-boundary
-      bleed/speckle line (0.028% of atlas, visible in macro_02 under
-      both lightings) is being root-caused at the bake level (ray
-      miss vs wrong-hit vs margin drag), then full re-render → judge.
+      only after judge PASS. SEAM FIXED AT ROOT (bake input, not
+      output): 76% of bright texels sampled the SHIPPED bake's own
+      8px margin-dilation band as if it were content —
+      `clean_source_margin.py` erodes each shipped chart to trusted
+      interior (depth-capped so thin charts keep pixels) and refills
+      before the transfer bake reads it. Ray-miss/wrong-hit ruled out
+      by experiment (0% position error). Bright texels 1296→37
+      (residual = sliver-triangle UV artifact in the 103k unwrap's
+      own charts, genuine content repeated, faint in studio macro_02
+      only); pre-screen 1.608×/0.40%. All 8 frames re-rendered.
+      JUDGE ROUND 3 DISPATCHED (fresh Opus, renders_old vs
+      renders_round3, re-anchored gate: 8–40 mm band ≥ old /
+      light-dependence / studio read / silhouette / artifact
+      visibility ruling on the 37-texel residual).
       (12) LICENSING BRIEF DELIVERED: `docs/reviews/props/
       texgen-licensing-brief-2026-08-05.md`. Headlines FOR THE USER:
       Tencent Hunyuan licenses EXCLUDE THE EU from the grant territory
