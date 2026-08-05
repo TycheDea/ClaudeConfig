@@ -1372,10 +1372,9 @@ goal." Consequences, binding for the rest of the campaign:
       60,879 tris (48.70 m² @ 40 mm). Candidates kept at
       `target/prop-batch/h3-retablo/cand_{1,2,3}`; blend atlases in
       `target/prop-cache/blend/{40ce92d2,e0cadb4c,d7dcbc25}…`.
-      USER DECISION QUEUED: concept-level re-roll for retablo, or
-      accept blocked until the texgen successor lands (the ghost enters
-      at generation — more seeds of the same class are unlikely to be
-      the lever; trend says close, mechanism says no).
+      ~~USER DECISION QUEUED: concept-level re-roll for retablo~~
+      MOOT (18): retablo's fails were the mis-anchored gate measuring
+      its spec'd near-black body; cand_1/cand_3 PASS pre-screen v2.
       DECIDED WHILE UNSURE (m): reverted the uncommitted retablo
       assets.json entry — blocked prop, keeps the tree clean for the
       arch install commit. Recreate verbatim when unblocked:
@@ -1449,6 +1448,30 @@ goal." Consequences, binding for the rest of the campaign:
       under v2. Structural remainder: spec'd-dark + recess-dense
       stays hostile to per-view generation → fix class 4 (texture-
       native, licensing on the user), unchanged.
+      V2 DELIVERED + COMMITTED `0ae35fb`
+      (`scripts/ai-pipeline/pre_screen.py`). Validation 13/14 as
+      pre-registered; the one deviation: candelabra_shrine open-dark
+      3.473% → ESCALATE (0.027pp inside the 2.9–3.5 band), not FAIL.
+      RULED ACCEPTED (decided while unsure, o): the band exists
+      because the separation margin is thin; a known-ghost prop
+      routing to a judge loses no safety (it can never auto-pass),
+      and moving the line to force one labeled datapoint = tuning
+      the instrument on its own validation set. My "FAIL" expectation
+      came from the finding's rounded 3.5–7.6 summary — spec error,
+      not instrument error. Worker's AO-resolution fallbacks (glb
+      embedded AO for pre-cache-era arch/variant; clean.glb-sha
+      cache match for retablo cands) reviewed and sound.
+      RE-VERDICTS: retablo cand_1 2.58% PASS / cand_2 3.14% ESCALATE
+      / cand_3 1.93% PASS → RETABLO UNBLOCKED (old gate measured its
+      spec'd near-black body); shrine s203 0.40% + s501 0.26% PASS,
+      s777 FAIL (ratio 5.04, pale body); shipped candelabra_shrine
+      ESCALATE = the known July ghost, fix-class-4 backlog, not this
+      queue. QUEUE RESUMED: retablo export-finisher dispatched
+      (sonnet; export bug now fixed, caches make it CPU-cheap;
+      STOP-on-cache-miss guard) + H6 cart chain dispatched (sonnet,
+      v2 gate --body dark, ≤3 seeds, ESCALATE stops rolling).
+      retablo + cart registry entries re-added by me (uncommitted;
+      ship with installs). H7 votive + brazier next after H6.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
