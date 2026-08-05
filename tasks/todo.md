@@ -1616,6 +1616,14 @@ goal." Consequences, binding for the rest of the campaign:
       flag for judge: cand_203 ship_beauty/macro_00 hue-wrap
       outlier). LIMESTONE OPUS JUDGE DISPATCHED (blind-first
       protocol, record → docs/reviews/props/g3-limestone-2026-08-05).
+      OAK_DARK STAGE A DONE (clean; 3 cands final.glb + 96 frames +
+      instruments; color_cast a* 3.0-3.4 R−B 17-19, inside the July
+      anchor; luma p50 0.18-0.20 = spec'd dark body; identical blend
+      coverage across cands EXPECTED — shared geometry, texture seed
+      only differs; fresh same-bin turntable control). OAK_DARK OPUS
+      JUDGE DISPATCHED (blind-first; cand_2 ESCALATE clearance
+      required explicitly; record → docs/reviews/props/
+      g3-oak-dark-2026-08-05).
       (26) METAL/TEXGEN DIRECTIVE (user, 2026-08-05 evening): do the
       legal read; if licensing still blocks, extensive research for a
       viable tool; if none, plan a 100% license-free solution.
