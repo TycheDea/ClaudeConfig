@@ -1363,9 +1363,41 @@ goal." Consequences, binding for the rest of the campaign:
       `proptex/export.py:_validate_export` reads absent MR factor keys
       as None instead of the glTF 2.0 spec default (Blender's exporter
       omits factors equal to 1.0; oak_dark roughness=1.0 is the first
-      generated-path class to hit it). Fix dispatched (sonnet,
-      spec-default fallback + 3-case red-proof). H4 shrine dispatch
-      gated behind this fix landing.
+      generated-path class to hit it). FIXED + COMMITTED `21ebf7a`
+      (spec-default fallback, 3-case red-proof: absent+default PASS,
+      absent+nondefault FAIL, present-mismatch FAIL).
+      (16) H4 SHRINE_PILLAR BLOCKED per protocol — 3/3 rolls fail
+      (p95/p5 | dark-frac): s203 3.58×/8.67%, s501 3.59×/8.60% (both
+      dark-frac ONLY), s777 5.04×/12.95%. Derived budget 6,269 tris
+      (5.02 m² @ 40 mm). Cands `target/prop-batch/h4-shrine/
+      cand_{203,501,777}`; blend keys 8b33c8c2/0e572917/ceed2f6e.
+      Concept sha dab771fc…. shrine_pillar assets.json entry
+      REVERTED (same rationale as retablo); recreate verbatim:
+      `"shrine_pillar": { "kind": "generated", "subject":
+      "freestanding wayside shrine pillar, plain square stone post
+      with a deep hooded recess near the top, flat slab hood, one lit
+      white wax candle standing inside the recess, warm candle-gold
+      flame, pale grey dressed limestone ashlar, cool light grey with
+      faint sandy flecks, matte, thin dark-grey soot in the recess,
+      undecorated", "height_m": 2.0, "surface_class": "limestone",
+      "texture_size": 2048, "view_res": 1536 }` (between rock_face_01
+      and wall_segment). OPEN QUESTION flagged: this subject SPECS
+      dark content (soot in recess) — a dark-frac gate may never pass
+      it; era-probe agent assesses.
+      (17) S5 QUEUE RE-HELD (decided while unsure, n): the unhold
+      premise ("defect is roll-dependent; July rolled 4/6 clean")
+      is refuted by S5's own data — today's rolls are 0/11 (arch
+      s0-s3 + s7, retablo ×3, shrine ×3) vs July's 4/6 props.
+      H6 cart / H7 votive / brazier NOT dispatched (~75 min GPU
+      withheld; would likely reconfirm the pattern, not break it).
+      ERA-ATTRIBUTION INVESTIGATION DISPATCHED (fable tier,
+      findings-only): separate code/config era vs model weights vs
+      prop identity vs seed luck; git log of scripts/ai-pipeline
+      since July ship; shipped-manifest param/cache-key diff (CPU
+      discriminator); authorized ≤2 bounded GPU probe runs, canonical
+      = today's pipeline on July's exact arch inputs at seed 0,
+      texel-diffed against shipped base. Queue resumes (or reroutes)
+      on its finding.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
