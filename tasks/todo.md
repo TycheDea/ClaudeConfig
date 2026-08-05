@@ -1551,6 +1551,26 @@ goal." Consequences, binding for the rest of the campaign:
       Concepts verified on disk: concept-c1/C6/seed_4 (winner),
       concept-c1b/C8/seed_407 (re-roll winner). Both chains --body
       dark at pre-screen. Dispatch sequentially after H6 settles.
+      (21) H6 CART BLOCKED — 3/3 v2 FAILs (seed 6/7/8 open_dark
+      7.11/7.57/9.26%, all ~2-2.6x over the line). Attribution run
+      BEFORE accepting the block (record
+      `docs/reviews/props/cart-blocked-2026-08-05.md`, probe
+      artifacts `target/prop-batch/h6-cart/dark_probe/`):
+      median-dislocation hypothesis (pale sacks pulling the median so
+      spec'd near-black wood counts as dark) REFUTED — sacks are
+      12.8% of island mass, median 0.282 sits in the wood mode, and
+      the flagged texels are a near-black tail (p50 0.077) of painted
+      contact shadows at junctions/hubs/under-sack contacts, 41-46%
+      on open surfaces. Gate fired correctly; cart = recess-densest
+      prop, joins the fix-class-4 (texture-native) backlog, licensing
+      user-owned. Registry entry REVERTED from assets.json (re-add
+      verbatim from the record if unblocked). Roll artifacts stay.
+      (22) H7 VOTIVE DISPATCHED (sonnet; asset candelabra_shrine,
+      concept C6/seed_4, out target/prop-batch/h7-votive, seeds
+      4→5→6 on FAILs, --body dark, ESCALATE stops, per-roll gate
+      persisted). Known risk: matte-black iron body is spec'd-dark —
+      if it FAILs, run the same attribution probe before accepting a
+      block. Brazier (gate_brazier, C8/seed_407) queues behind it.
       Renders: `target/arch-retess/renders_{old,new}/`. Red-proof v2 log:
       `target/arch-retess/red_proof_shipped_v2.log`.
 - [x] S4 BATCH GATE PASS 2026-08-05: `cargo test --workspace` 457 passed /
