@@ -1691,12 +1691,14 @@ goal." Consequences, binding for the rest of the campaign:
       TODAY per user stop.
 - [ ] SESSION END 2026-08-05 (user: "we should A/B them but tomorrow,
       we end for today"). TOMORROW'S QUEUE, in order:
-      (1) install_asset.py chain-extension fix (forced direction
+      ~~(1) install_asset.py chain-extension fix (forced direction
       above; red-proof: current retablo refusal is the red case,
       chapel_arch re-validation the no-regression case) → install
       retablo cand_2 (byte-equality e3d331f1…) → content_lint →
       commit WITH the assets.json retablo entry → suite gate rides
-      the next batch.
+      the next batch.~~ DONE 2026-08-06 (`185af6b`): export and selected-final
+      provenance are verified separately; five focused tests, both dry-runs,
+      registry check, content lint, and source/install/manifest byte hash green.
       (2) TEXTURE PROGRAM, USER-RULED: A/B the license-free track
       (P0 probe ~1-2h GPU → P1a/b/c) AGAINST the TRELLIS.2 surgery
       track (nvdiffrast bake swap + 12GB proof + two-light probe) —
