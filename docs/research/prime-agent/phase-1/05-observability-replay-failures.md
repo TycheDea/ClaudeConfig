@@ -1,0 +1,143 @@
+# PRIME Agent observability, replay, and failure closure
+
+**Baseline:** user-authorized Prime Intellect PRIME Agent `v0.7.0`, commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387` (tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`). P1's launch-revision binding remains **UNRESOLVED**. **Audit/retrieval date:** 2026-08-06. Public read-only exact-commit source only; no acquisition, execution, account, service, crash, recovery, or training action.
+
+## Central verdict
+
+**The pilot's persisted trajectory/reward/replay requirement is not source-satisfied.** PRIME persists a useful session transcript: session/parent identity, cwd and Git context, timestamped user/assistant/tool-result messages, requested and response provider/model IDs, usage/cost, stop/error state, and refinement records can be read, resumed, queried, exported, or uploaded. [S1–S6] But it has no episode/task identity contract, exact system/harness/model revision per inference, required file/artifact hashes, external judge/metric outcome schema, reward or reward provenance, reward→trajectory→learned-artifact linkage, later-use receipt, or deterministic/re-execution replay. [S1][S4][S6–S9]
+
+Hard failure remains materially silent: transcript appends are not fsynced and malformed lines are skipped; a corrupt session can be replaced, corrupt harness state becomes empty, corrupt kernel state restores empty/error, best-effort logs can drop writes, and a killed provider/tool/refinement can leave no terminal trajectory event. [S4][S6][S8][S10][S11] Daemon command journaling does fsync and converts an interrupted **same command ID** into a durable result or `uncertain`, but that is command deduplication—not episode replay, refinement idempotency, or proof of external side effects. [S12–S14]
+
+## Requirement matrix
+
+`present` requires an evidenced producer, persisted representation, and query/export consumer. `absent` means the exact baseline has no required record/link. `unresolved` means only a subset closes or an external/service edge is opaque.
+
+| Requirement | State | Producer → persisted representation → query/export consumer; limit |
+|---|---|---|
+| Session identity | **present** | UUIDv7 session producer → v3 JSONL header `{id,timestamp,cwd,parentSession,rlmDepth,git}` → `open/list/getHeader`, daemon/RPC state, HTML/trace export. [S4][S5][S15] |
+| Episode identity / duplicate episode | **absent** | Session/active-session IDs exist, but no episode schema, task-match key, attempt number, or episode terminal record exists. [S4][S13] |
+| Task inputs | **unresolved** | Prompt normalization → user message content/images → session context/get-messages/export; source file arguments and external input bytes are not obligatorily identified or hashed. [S1–S5] |
+| User prompts | **present** | Agent-loop prompt events → timestamped user message entry → resume/context, JSON event output, RPC/daemon query, export. [S1–S5] |
+| System prompt | **unresolved** | Runtime composes base/resources/harness → current in-memory prompt; `get_system_prompt` and HTML can inspect the **current** value, but no per-provider-call prompt snapshot/hash is stored in the trajectory. [S7][S15][S16] |
+| Harness revision | **unresolved** | Refinement apply → `harness_state.json` entries with scope/version plus refinement histories → prompt formatter/rollback/RPC refine result; no whole-harness revision/hash binds a specific inference. [S6][S7] |
+| PRIME/harness code revision | **unresolved** | Project Git commit is captured in session/git-state and trace headers; trace upload adds package version, while daemon hello exposes runtime build identity. Neither PRIME commit/build nor package bytes are persisted per trajectory entry. [S4][S5][S13][S17] |
+| Provider and requested/response model IDs | **present** | Model selection/provider adapter → `model_change` and assistant `{api,provider,model,responseModel?,responseId?}` → context/get-messages/export. [S1][S4][S15] |
+| Exact model/weight revision | **absent** | Model ID/response ID is not a weight, base-model, routing, or immutable provider revision; no such field is persisted or queried. [S1] |
+| Tool definitions | **unresolved** | Runtime tool registry → current in-memory definitions → `get_tool_definition`/HTML current tools; exact definitions or hashes used for each call are not persisted. [S2][S15][S16] |
+| Tool calls/results/rejections | **present** | Assistant `toolCall{id,name,arguments}` and executor → `toolResult{toolCallId,toolName,content,details,isError,timestamp}` → transcript/context/get-messages/export; blocked/unknown/validation failures become error results if the loop reaches `message_end`. [S1–S4] |
+| Child agents | **unresolved** | Child session creation → child JSONL with parent path/depth plus parent child-usage attribution → live watch, session listing, recursive trace discovery; there is no mandatory exported parent+all-descendant trajectory or child-output/artifact hash linkage. [S4][S5][S15] |
+| File/artifact exact bytes/hashes | **absent** | Tool text/details and `DaemonArtifactReference` may name paths/metadata, but no required digest/size/byte identity exists in the session, refinement, or artifact schema. [S2][S13] |
+| Timestamps | **present** | Session, entry, message, refinement, command, worker, and checkpoint producers emit ISO/millisecond timestamps → their stores → loaders/query/export. [S1][S4][S6][S8][S12][S18] |
+| Environment identity | **unresolved** | Header stores cwd and Git context; selected client env is runtime metadata, not a complete persisted OS/dependency/credential/service environment revision. [S4][S13][S17] |
+| Full trajectory | **unresolved** | Completed `message_end` user/assistant/tool results persist and export; streaming deltas, in-memory queues, exact system/tool definitions, external side effects, and hard-death tails do not reliably survive. [S2–S5][S10] |
+| External judge / priced metric outcome | **absent** | Such text could be inserted as an ordinary message/tool result, but no required independent producer, outcome schema, artifact identity, or consumer exists. [S1][S2][S6] |
+| Reward / reward provenance | **absent** | `expectedOutcome`/`outcome` is refiner-model-authored pre-validation text. There is no observed reward producer, reward schema, provenance, or updater consumer. [S6] |
+| Refinement/update identity | **present** | Planner creates time-derived `refine_*` ID → state event, global/session `RefinementResult` with before/after/applied/error/path/scope → history merge, rollback, prompt overview, RPC result. Identity exists, but is not caller-idempotent. [S6] |
+| Kernel/checkpoint identity and integrity | **unresolved** | Snapshot producer → `kernel-state.dill` plus JSON `{version,savedNames,skipped,bytes,pythonVersion,timestamp}` → restore code/result; no digest, generation, episode/refinement link, durable commit barrier, or manifest-to-payload verification. [S8] |
+| Reward→trajectory→learned-artifact identity | **absent** | No reward record exists; refinement sees a sliced conversation and writes a state path/ID, but neither a trajectory hash nor observed reward links to it. [S6] |
+| Later load/use linkage | **absent** | Global/local harness state is loaded and rendered into later prompts, but there is no entry/refinement use receipt, later episode match ID, inference prompt hash, or causal outcome link. [S6][S7] |
+| Query/inspection | **present** | Session loaders/list/tree/context plus RPC/daemon `get_*`, JSON event output, HTML and JSONL surfaces consume persisted transcript/state. [S4][S13][S15][S16][S19] |
+| Export | **present** | Session JSONL is itself exportable; daemon exposes `export_jsonl`, HTML serializes header/entries/leaf and optional current system/tools, and trace upload PUTs the raw NDJSON file with session/Git/version headers. [S5][S13][S15][S16] |
+| Retention/deletion | **unresolved** | Local stores and rotating diagnostic logs exist, but no session/harness/checkpoint TTL or retention guarantee is defined; remote trace retention/deletion/query implementation is not in this source. [S5][S6][S17] |
+| Operator diagnostics/recovery visibility | **unresolved** | `status/doctor --json` queries daemon version/schema/build/process/session count; logs and trace outcomes expose paths/errors. Logs are best-effort, and no surface joins transcript integrity, uncertain commands, corrupt state, Pi state, remote request outcome, and exact recovery steps. [S5][S10][S17][S20] |
+| Failure causes | **unresolved** | Graceful assistant/tool failures persist `stopReason`, raw reason, error text, diagnostics and `isError`; command failures carry error/errorInfo. There is no complete stable taxonomy for quota/auth/provider/MCP/outage/external commit state, and hard death may emit nothing. [S1][S2][S13] |
+
+## Producer → record → consumer map
+
+| Flow | Closed chain | Missing boundary |
+|---|---|---|
+| Conversation trajectory | Agent events at `message_end` → append-only session JSONL entries → `SessionManager.open/buildSessionContext/list`, RPC/daemon getters, print JSON, JSONL/HTML/trace export. [S2–S5][S15][S16][S19] | No fsync/checksum/terminal episode envelope; malformed tails disappear. |
+| Provider/model failure | Adapter final assistant message → assistant fields `provider/model/responseId/stopReason/errorMessage/diagnostics/usage` → transcript queries/export and headless terminal selection. [S1][S3][S4][S19] | Provider request payload/system prompt/model revision and remotely committed outcome are not bound. |
+| Tool execution | Assistant call + validated executor → assistant call and tool-result message joined by `toolCallId` → context/tree/get-messages/HTML tool renderer. [S1–S4][S16] | External side effects/files have no required transaction ID or digest. |
+| Refinement | Conversation/harness/history → atomic-replace state, append histories, session custom entry with refinement ID/before/after → load/merge/prompt rendering/history/rollback/RPC response. [S6][S7] | No external reward, trajectory hash, semantic idempotency key, or later-use receipt. |
+| Kernel continuity | Live namespace → dill payload + best-effort manifest → restore routine and live result. [S8] | No hash, generation, transaction with trajectory, durable alert, or checkpoint query/export surface. |
+| Command recovery | Client stable `{clientId,commandId}` envelope → fsynced received/result/ack journal → reconnect resends same envelope; daemon returns stored result or `command_result_uncertain`. [S12–S14] | Only daemon mutations; not an episode/refinement/external-side-effect exactly-once guarantee. |
+| Trace export | Session persistence notification → same raw session JSONL read from disk → preview, explicit/all/automatic PUT and local upload-outcome log. [S5] | Host death can lose pending upload; server query, retention, deletion, integrity hash and reconciliation are opaque. |
+| Operator process diagnosis | Daemon/socket/worker producers → hello/descriptors/logs → `status/doctor/shutdown --json` and log paths. [S10][S17][S20] | No Prime+Pi combined state or source-defined recovery decision for corrupt/uncertain episodes. |
+
+## Replay semantics: do not conflate these classes
+
+| Class | Baseline meaning | Result |
+|---|---|---|
+| Deterministic replay | Reproduce recorded model/tool outputs and state transitions without invoking them. | **absent**: no replay engine, exact request/system/tool/environment revision, artifact bytes, or deterministic state log. [S1–S4] |
+| Re-execution | Re-run recorded model/tool calls against an environment. | **absent** as a product trajectory primitive; ordinary resume/retry can invoke new work but has no equivalence or side-effect guarantee. [S3][S12–S14] |
+| Client cursor replay | Attach with event `{generation,sequence}` cursor. | Schema says `complete/partial/unavailable`, but source returns complete only at current cursor/no cursor and otherwise `unavailable` (`event_replay_not_available`, generation change, or cursor ahead); snapshots resynchronize state. It is UI transport recovery, not trajectory playback. [S13] |
+| Session resume | Load valid JSONL branch, rebuild context, restore selected artifacts/harness, continue with a fresh provider call. | **present but non-deterministic**; malformed entries are skipped and external side effects are not replayed. [S4][S7][S8] |
+| Inspection/export | Read/list/tree/query or emit JSONL/HTML/raw trace bytes. | **present** for persisted records, not evidence that missing events occurred. [S4][S5][S15][S16] |
+| Learning | Global refinement state is loaded into a later prompt. | Separate from every replay class; adaptation is supplemental prompt state, with no reward or later-use proof. [S6][S7] |
+
+## Lifecycle closure
+
+| Lifecycle | Observable record/outcome | Silent end or recovery gap |
+|---|---|---|
+| Success | Completed assistant message has stop reason, provider/model, usage and timestamp; optional model-authored `agent_status` can say completed. [S1][S4] | No independent task success, judge/metric, reward, episode terminal, or artifact hash. |
+| Rejected action/request | Tool absence/schema/block becomes persisted error tool result; daemon command returns success/failure and mutating result can be journaled. [S2][S12][S13] | Auto-refine rejection/failure and some pre-admission/client parse failures are not a durable episode outcome; service-side rejection after hard death is unknown. |
+| Timeout | Live provider/tool abort can yield assistant `aborted/error` or error tool result; trace uploader returns/logs timeout failure; headless limit prints failure. [S1–S3][S5][S19] | Process/host death before terminal emission leaves no timeout/terminal trajectory record; printed diagnostics are not the trajectory. |
+| Orderly shutdown | Daemon emits closing/session-closed reasons; print mode disposes on signals; session/refinement disposal attempts to drain live work. [S13][S19] | Session JSONL has no mandatory `episode_ended: shutdown` record; best-effort drain errors can therefore be absent from trajectory. |
+| Abrupt worker/process/host death | Fsynced worker journal records `{sessionId,busy,operation,recordedAt}`; command receipt without result becomes `uncertain`. [S11–S13] | Transcript/provider/tool/refinement tail can have no terminal entry; host power durability and remote outcome remain unknown. |
+| Downtime/restart | Operator starts CLI/daemon; session/harness/checkpoint loaders reconstruct available local state and snapshots resync clients. [S4][S7][S8][S13] | No durable downtime/restart event, persisted-byte audit, automatic dependency-order report, or remote reconciliation receipt. |
+| Immediate retry | Same daemon client+command ID returns stored result or uncertain and is not blindly replayed. [S12–S14] | New ID, episode retry, direct Python harness update, and refinement retry can duplicate semantic work; external exactly-once is unknown. |
+| Duplicate session/episode/command/refinement | Explicit duplicate session file ID is rejected; same daemon command key is deduplicated; refinement baseline rejects touched-entry conflicts. [S4][S6][S12] | No episode key; refinement IDs are time-derived and retries/cross-session edits lack semantic idempotency. |
+| Partial/torn write | Session/history loaders skip malformed JSONL lines; host state uses temp+rename. [S4][S6] | Skips are not persisted as corruption events; session append/state rename lack evidenced fsync transaction, and multi-file refine publication can split. |
+| Corrupt session/harness/checkpoint | Kernel restore emits a live error; session/harness loaders continue. [S4][S6][S8] | Session may be rewritten fresh; harness becomes empty and later save can overwrite; corrupt checkpoint restores empty/error—none requires a durable operator-visible incident. |
+| Quota/auth/provider outage | If adapter terminates normally, assistant error fields/diagnostics persist; command/trace failures expose text/status. [S1][S5][S13] | No standardized quota/auth/outage provenance, model revision, provider request reconciliation, or hard-death outcome. |
+| MCP/tool/service outage | Completed tool failure persists `isError`, details/content and call ID. [S1–S3] | Remote commit/idempotency and failure taxonomy are service-internal; death between remote effect and tool result is silent locally. |
+| In-flight episode disposition | Worker journal can show a session was busy in an operation; update manifest can snapshot coarse busy flags. [S11][S13] | There is no episode terminal/disposition record. An in-flight provider/tool/refine may be absent, externally completed, or only command-uncertain. |
+
+## Failure-silence and operator-recovery audit
+
+| Silent/degraded path | Why it is not closed | Required explicit operator visibility |
+|---|---|---|
+| Malformed/torn transcript line | Parser skips it; invalid session can become a new file state. [S4] | Name file, byte/line offset, session ID, rejected bytes/hash, and `corrupt—not resumed`; never silently “no messages.” |
+| Corrupt harness/history | Loader substitutes empty; malformed history line is skipped. [S6] | Name scope/path/refinement IDs, preserve corrupt bytes, block overwrite, and report which later prompts omitted state. |
+| Corrupt kernel checkpoint | Restore reports live error but manifest has no digest and is not the restore authority. [S8] | Name payload/manifest identities and restore disposition; do not call empty restore success. |
+| Hard death mid-provider/tool/refine | `message_end`/history may never be appended. [S2–S4][S6] | Durable episode operation must end `completed`, `failed`, `cancelled`, or `uncertain`, with remote reconciliation required before retry. |
+| Diagnostic/trace loss | Log writer and persistence observers swallow failures; automatic trace scheduling catches failures; pending upload is volatile. [S5][S10] | Surface dropped-log/upload state and last durable trajectory signature; logs cannot be recovery authority. |
+| Auto-refine bypass/failure | Review counters/pending work are volatile and model rejection is not an observed outcome. [S6] | Persist requested/rejected/failed/applied disposition without calling expected outcome reward. |
+| Pi/Prime coexistence | PRIME intends `~/.prime/agent` and `.prime/agent`, but inherits some `PI_*` controls and shares OS user/temp/process/GPU resources; `doctor` inventories PRIME daemons only. [S17][S20] | Recovery output must name Prime paths/processes/credentials/resources separately from Pi and explicitly report collision/contention or “not inspected.” |
+
+No source-defined operator surface answers: “Which exact episode was in flight; which bytes survived; did a remote side effect occur; which refinement/reward/checkpoint was loaded; is retry safe; and is Pi untouched?” Therefore recovery visibility is **unresolved**, not inferred from logs or `doctor`.
+
+## Claim falsifiers
+
+| Claim | It is false if phase 2 observes |
+|---|---|
+| “Transcript captures completed model/tool turns” | A normal `message_end` is absent from exported JSONL, or call/result IDs do not join. |
+| “Same daemon command ID is not blindly replayed” | Restart executes an already-resulted or uncertain mutation again instead of returning the stored result/uncertain outcome. |
+| “Global refinement reaches a later prompt” | Persisted refinement ID/bytes cannot be found in the exact later provider-bound system-prompt bytes. |
+| “JSONL export is the persisted trajectory” | Exported bytes differ from the session file consumed by resume/trace upload without an explicit transform/identity. |
+| “Operator sees failure disposition” | Any tested request/episode ends without a durable terminal or explicit `uncertain` record queryable after restart. |
+| “Artifact/reward/replay requirement is met” | Required artifact digest, external reward provenance, learned-artifact ID, later-load/use receipt, or replay-class declaration is missing or mismatched; current source already fails all five. |
+
+## Phase-2 red-proof required
+
+Phase 2 cannot treat a green run on the current schemas as proof of the missing properties. Before a matched pilot can count, an independent verifier must read the **same persisted bytes consumed after restart** and require: episode/task/attempt identity; exact input, output, file/artifact, trajectory, system/harness, checkpoint, and code hashes; provider/model immutable revision; complete root+child call/result linkage; externally produced judge/metric outcome; reward value and provenance; refinement/checkpoint identity; and an exact later fresh-session load/use link. Each cited output and verifier must be retained.
+
+Fail-first evidence must independently mutate or remove each claimed link—artifact byte, trajectory entry, reward/trajectory ID, refinement/checkpoint ID, later prompt entry, provider/model revision—and show the verifier red before the intact run can be green. Recovery must then exercise orderly shutdown and hard process/host-death equivalents at provider, tool, transcript append, checkpoint, and each refinement publication boundary; downtime/restart; same-ID and new-ID immediate retry; duplicate episode/command/refinement; torn JSONL; corrupt harness/checkpoint; quota/auth/provider/MCP/service outage; and Pi/Prime coexistence. Every path must yield a post-restart queryable `completed`, `failed`, `cancelled`, or `uncertain` disposition, exact surviving byte hashes, explicit dependency restart order, and an operator-safe retry decision. Deterministic replay, re-execution, cursor replay, session resume, inspection, and learning must be tested and reported as separate classes.
+
+## Immutable source ledger
+
+All sources are first-party exact-baseline code at commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`, retrieved 2026-08-06.
+
+- **S1 — message/model/tool-result schema:** [`packages/ai/src/types.ts` L1–265](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/ai/src/types.ts#L1-L265).
+- **S2 — agent/tool event schema:** [`packages/agent/src/types.ts` L1–365](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/agent/src/types.ts#L1-L365).
+- **S3 — message/tool producers and terminal behavior:** [`packages/agent/src/agent-loop.ts` L247–986](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/agent/src/agent-loop.ts#L247-L986).
+- **S4 — session schema, serializer, corruption handling, queries:** [`session-manager.ts` L33–175](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/session-manager.ts#L33-L175), [L429–560](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/session-manager.ts#L429-L560), [L1180–1499](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/session-manager.ts#L1180-L1499), [L1567–1584](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/session-manager.ts#L1567-L1584).
+- **S5 — raw trajectory preview/upload/export outcomes:** [`agent-traces.ts` L1–730](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/agent-traces.ts#L1-L730).
+- **S6 — refinement schemas/storage/history/apply/consumer:** [`refinement.ts` L21–120](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/refinement/refinement.ts#L21-L120), [L269–515](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/refinement/refinement.ts#L269-L515), [L664–1057](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/refinement/refinement.ts#L664-L1057).
+- **S7 — harness-to-later-system-prompt consumer:** [`system-prompt.ts` L9–168](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/system-prompt.ts#L9-L168).
+- **S8 — checkpoint schema/write/restore:** [`state-snapshot.ts` L1–186](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/kernel/state-snapshot.ts#L1-L186).
+- **S9 — complete exact source tree/absence boundary:** [recursive tree, `truncated:false`](https://api.github.com/repos/PrimeIntellect-ai/prime-agent/git/trees/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387?recursive=1).
+- **S10 — best-effort log/storage paths:** [`config.ts` L490–645](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/config.ts#L490-L645).
+- **S11 — worker operation recovery record:** [`worker-recovery-journal.ts` L1–110](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/worker-recovery-journal.ts#L1-L110).
+- **S12 — fsynced command result/uncertain journal:** [`command-recovery-journal.ts` L1–172](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/command-recovery-journal.ts#L1-L172).
+- **S13 — daemon identities, queries, replay and error schemas:** [`daemon-protocol.ts` L35–225](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/daemon-protocol.ts#L35-L225), [L228–520](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/daemon-protocol.ts#L228-L520), [L548–760](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/daemon-protocol.ts#L548-L760), [L823–900](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/daemon-protocol.ts#L823-L900).
+- **S14 — stable command-envelope reconnect resend:** [`daemon-client.ts` L1–390](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/daemon/daemon-client.ts#L1-L390).
+- **S15 — persisted-state query/export consumers:** [`in-process-agent-connection.ts` L70–145](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/agent-connection/in-process-agent-connection.ts#L70-L145), [L330–430](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/agent-connection/in-process-agent-connection.ts#L330-L430).
+- **S16 — HTML serializer fields and output:** [`export-html/index.ts` L1–250](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/export-html/index.ts#L1-L250).
+- **S17 — Prime paths/version/log identity:** [`config.ts` L415–645](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/config.ts#L415-L645).
+- **S18 — checkpoint manifest timestamp/schema:** [`state-snapshot.ts` L1–131](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/core/kernel/state-snapshot.ts#L1-L131).
+- **S19 — JSON/headless query and terminal output:** [`print-mode.ts` L1–170](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/print-mode.ts#L1-L170); [`rpc-types.ts` L1–280](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/modes/rpc/rpc-types.ts#L1-L280).
+- **S20 — operator status/doctor and process recovery output:** [`public-command.ts` L80–250](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/cli/public-command.ts#L80-L250); [`daemon-ps.ts` L30–390](https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/packages/coding-agent/src/cli/daemon-ps.ts#L30-L390).
+
+**Result: NOT SOURCE-SATISFIED; phase-2 red-proof is mandatory, and current missing schemas/linkages must remain failed rather than inferred.**
