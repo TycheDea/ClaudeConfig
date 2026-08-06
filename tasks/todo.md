@@ -4431,3 +4431,13 @@ further fineness must come from the atlas.
   overrides `test_zones()`, a synthetic fixture, not the shipped file — it never
   claimed to verify zones.ron, so there is nothing to un-overwrite. The shipped
   topology is verified separately by `shipped_topology_is_valid`.
+
+## Prime Agent learning-loop pilot — QUEUED 2026-08-06
+
+- [ ] **NEXT SESSION:** start with `tasks/prime-agent-learning-pilot.md`.
+      User asked to pause the texture A/B and evaluate Prime Agent instead of
+      Pi dev so the long asset/model-quality loop can retain learning. Confirm
+      the exact Prime product first; audit learning mechanism, license/runtime
+      closure, hardware/cost, and integration before any install. Keep Pi as
+      the matched control until a sandboxed repeated-episode pilot proves a
+      measured quality win. Texture item (2) and retablo placement are held.
