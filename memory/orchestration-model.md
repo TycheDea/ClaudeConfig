@@ -1,33 +1,95 @@
 ---
 name: orchestration-model
-description: "Four model tiers by thinking depth (fable plans and orchestrates, opus is a constrained-subagent implementor/judge and the backup orchestrator, sonnet implements with minimum thinking, haiku with none); all thinking (plans, audits, investigations, root-cause) runs on the fable tier except visual judging (opus); thinking and implementation NEVER share a dispatch; the orchestrator never implements; substitute UPWARD; optimize the weekly token budget, not wall time"
-metadata: 
+description: "Durable role-based orchestration: the main session coordinates but never implements; findings and changes use separate dispatches; explicit quality-first model seats, upward substitution, serial work, and independent artifact verification apply across harnesses"
+metadata:
   node_type: memory
   type: feedback
   originSessionId: a38eccbe-e253-4073-8a05-baa0bd7d9b10
-  modified: 2026-08-05T16:04:18.061Z
+  modified: 2026-08-06
 ---
 
-**The tier taxonomy — the model layer itself, not a rule on top of it.** Each Anthropic tier is a point on one axis, thinking depth × implementation: **fable** = thinking/planning model → planning; **opus** = constrained-subagent implementor (below); **sonnet** = implementor with minimum thinking → easy implementations; **haiku** = implementor with no thinking → tool automation needing no judgment. Any rule naming a tier's *capability* expires when that tier is upgraded ([[model-rules-expire-with-the-model]]).
+# Orchestration model — durable rationale
 
-**Opus is subagent-only, under tight constraints.** Opus makes too many errors of assumption and decision when given latitude. It gets hard/sensitive tasks needing high-quality code, always as a subagent with hard boundaries stated in the prompt — exact scope, exact deliverable, what it must NOT touch or decide. Outside those boundaries it stops and reports, never improvises. Opus never plans, and does not hold the orchestrator seat while fable is available — but it IS the backup orchestrator when fable is out of credits. Its output must be concise and minimal. If addressed directly (not as a dispatched subagent), it refuses and points back to this model. Effort ceiling: [[opus-medium-effort]].
+The taxonomy names responsibilities, not vendors. Planning errors multiply into
+every downstream edit, while routine implementation and mechanical execution
+do not need the same reasoning budget. Preserve the role boundary when models,
+providers, or harness commands change; re-measure which model can fill a role.
+Any capability claim tied to a model generation expires with that generation
+([[model-rules-expire-with-the-model]]).
 
-**Substitute UPWARD when a tier is unavailable** (haiku→sonnet→opus→fable); only when nothing remains above is a downgrade the answer, and it is named as one. **A capacity fallback expires when capacity returns:** a recorded "route analysis/design to opus" constraint from a fable-tier-limit event binds only while fable is actually out. Designing an implementation approach — proportions, math, sequencing, text — is planning, and planning never routes to opus while fable holds the seat (fired 2026-08-05: user rejected a Plan-agent dispatch to opus made under an expired capacity note).
+## Roles
 
-**The orchestrator never implements — and investigation is work.** The main session plans, dispatches with exact contracts, verifies what comes back, and interprets surprises — in campaigns and ordinary interactive sessions alike. This covers discovery too: reading source to understand it, running probes, grepping trees, inspecting tool installs, web research. "It's only a few reads" is how a fact-find becomes twenty tool calls of orchestrator context; a fact-find is a task with a contract like any other. Exempt: reading back an agent's deliverable to verify it; plans/queue notes/tasks bookkeeping (the orchestrator's own); a single lookup that only decides which agent to spawn; committing on a worker's behalf. Routing is EXPLICIT on every spawn — pass the model parameter deliberately; an inherited-but-correct model is still a routing miss.
+- **Orchestrator:** the main/parent session. It receives goals, sequences work,
+  reviews findings, verifies artifacts, manages queue/commits, and resolves
+  surprises. It never implements or conducts an unbounded investigation.
+- **Analysis worker:** produces plans, audits, root causes, comparisons, maps,
+  or decision-bearing enumeration. Analysis receives the strongest reasoning
+  seat because a cheap wrong finding is expensive downstream.
+- **Visual judge:** independently evaluates supplied images and reports only
+  pass/fail, severity, axes, and frame-cited defects. It does not produce the
+  frames or recommend fixes; planning returns to the orchestrator
+  ([[visual-verification]]).
+- **Hard implement worker:** applies a settled but difficult or sensitive change
+  under exact scope, deliverable, and stop boundaries. Strength does not grant
+  design latitude.
+- **Default implement worker:** applies ordinary bounded code, tests,
+  documentation, gates, or content changes from settled requirements.
+- **Mechanical worker:** performs exact commands, moves, downloads, transforms,
+  probes, or metric runs whose output requires no judgment.
 
-**Thinking and implementation never share a dispatch.** A subagent brief delivers a finding (root cause, audit, structural map, plan) OR a change — never both; "investigate and fix" is two tasks at two tiers, with the finding reviewed by the orchestrator in between. Non-visual root-cause diagnosis is analysis and runs on the fable tier even when the defect shows up in renders — opus's seat is judging images, not tracing mechanisms (fired 2026-08-05: a bundled diagnose+implement dispatch to opus on the arch transfer albedo defect was killed on user correction; diagnosis re-routed to a fable-tier agent, implementation to be dispatched separately to the tier the fix's difficulty demands).
+Current semantic seats are Sol for orchestrator/analysis/judge/hard implement,
+Terra for default implementation, and Luna for mechanical execution. In pi,
+select available runtime IDs matching those seats. Claude compatibility uses
+the strongest reasoning/vision model for Sol roles, Sonnet-class workers for
+Terra, and Haiku-class workers for Luna. These mappings are compatibility
+layers, not the rationale itself.
 
-**Sonnet is an implementation tier only:** bounded code, edits, doc rewrites, gates with pass/fail — never a task whose deliverable is a *finding* (analysis, audit, structural map, contract surface, defect ledger, root cause, comparison, recommendation). Enumeration that feeds a decision is analysis, however mechanical it looks; the test is what the output is used for. Analysis → fable; when fable is out, analysis → opus, never down to sonnet — the artifact a design rests on is the worst place to economize.
+## Why the main session does not implement
 
-**Visual judgment runs on opus:** any decision made by looking at an image (candidate selection, render review, material critique, blind tests, before/after) that is not escalated to the user goes to an opus agent, overriding the surrounding task's tier. Producing the render and judging it are separate dispatches when tiers differ — a haiku worker may capture the sheet, never rule on it. **Opus judges and only judges**: its brief states what is wrong and how wrong, never what to change — carry an explicit no-recommendations clause, because a verdict agent asked what it would do will answer, and that is the one output of the tier that is not trusted. The fix plan goes back to fable with the verdict as input. Evidence requirements: [[visual-verification]]. Tiers are semantic (what the task needs), never wired to a config value.
+The main session must retain enough clean context to compare a worker's output
+with the user's goal and current gates. If it also authors the change, maker
+and checker collapse into one perspective, exploration consumes integration
+context, and “one quick fix” bypasses routing. Investigation therefore counts
+as work: source tracing, web research, audits, and probes get bounded finding
+contracts. Narrow exceptions are verification reads, bookkeeping, one lookup
+to choose a worker, and committing a verified worker change.
 
-Narrower axis — which model runs ONE finding-worker — lives in `.claude/skills/implement-finding/SKILL.md`, applying this taxonomy (haiku mechanical, sonnet default, opus hard steps; fable never, because a step needing design needs a planner).
+## Why findings and changes are separate
 
-**Campaign execution mechanics:** before each phase of an approved plan, a fable planner agent writes a subplan splitting the phase into single-agent tasks tagged with tier + verify command; the orchestrator reviews the split, dispatches serially, verifies via git diff/test output (never agent prose), commits green steps. Escalate a worker one tier after two verify failures. Bake an "Execution model" section into every campaign plan. Rationale: planning errors multiply downstream — sonnet-authored subplans produced a dependency miss, an impossible verify spec, and a broken camera spec in one campaign.
+“Investigate and fix” lets tentative assumptions become code without review.
+A dispatch must produce either a **finding** or a **change**. The orchestrator
+reviews evidence between them and freezes the implementation boundary. A
+finding worker does not edit; a change worker does not redesign. On an
+unexpected condition, one bounded check may establish measured reality, after
+which the worker implements within the contract or stops and reports tension.
 
-**Discovery stays with the planning tier:** in audit→plan→implement, deep searching/thinking belongs to the audit skills and the rework-planner — finding workers are pure execution (no throwaway modeling scripts, no rerun campaigns, no dependency spelunking). On a surprise: one bounded check, file the observation, implement against measured reality, flag the tension. Enforced in `.claude/agents/finding-worker.md` (rule 2) and `.claude/agents/rework-planner.md` (rule 5).
+Every dispatch explicitly names six fields: model seat, deliverable, scope,
+do-not-touch/do-not-decide boundary, orchestrator verification, and finding or
+change type. Inherited model selection is not evidence of intentional routing.
 
-**Optimize tokens, not wall time:** the user runs a weekly token budget; wall time is cheap. The user declined a parallel-worker rework whose gate was met: less token cost, not less time cost. Never propose spawn-heavy designs to save wall time; prefer the cheapest model that lands a step and accept slower serial loops.
+## Quality, escalation, and execution order
 
-**How to apply:** default every campaign/queue plan to this execution model unasked; workers get foreground shells with long timeouts, never fire-and-forget background ([[background-work-pitfalls]]).
+Use the least expensive seat that reliably meets the bar, but never route
+analysis or visual ship judgment downward to save tokens. Substitute upward
+when a seat is unavailable and after two verification failures
+(Luna → Terra → Sol); name a downgrade if no upward path exists. Quality
+outranks time and change cost, while licensing remains a hard gate.
+
+Optimize the weekly token budget rather than wall time. Serial dispatch is the
+default because later tasks often depend on earlier answers and gates. Parallel
+work is justified only when answers are independent. Do not launch work that an
+in-flight gate may invalidate; refresh plan evidence at dispatch and stage
+exact paths ([[dispatch-discipline]]).
+
+Before an approved campaign phase, a strong planning worker decomposes it into
+single-worker tasks tagged with role and verification. The orchestrator reviews
+dependency order, dispatches serially, verifies diffs/tests/frames/files rather
+than prose, and commits only green steps. Every campaign plan records this in
+an “Execution model” section.
+
+## Recalibration trigger
+
+When a harness or model generation changes, smoke-test one analysis task and
+one bounded implementation task. Re-run the visual bake-off when vision changes.
+Update only the compatibility mapping proven by those results; do not weaken
+the role separation or silently preserve generation-specific folklore.

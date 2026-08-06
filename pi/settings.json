@@ -1,0 +1,12 @@
+{
+  "defaultProvider": "openai-codex",
+  "defaultModel": "gpt-5.6-sol",
+  "defaultThinkingLevel": "high",
+  "extensions": [
+    "extensions/vordar-bootstrap/index.ts"
+  ],
+  "enableSkillCommands": true,
+  "packages": [
+    "../tools/pi-phoenix"
+  ]
+}

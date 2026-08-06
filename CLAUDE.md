@@ -1,115 +1,156 @@
-# CLAUDE.md
-## 1. Think Before Coding
+# Vordar shared standing law
 
-**Don't assume. Don't hide confusion. Surface tradeoffs.**
+This is the sole standing-law body for both Claude Code and pi. Root
+`AGENTS.md` is only pi's entry pointer. At startup load this file and
+`memory/MEMORY.md`; load design, tasks, guides, and individual memory bodies
+only when the work requires them.
 
-Before implementing:
-- State your assumptions explicitly. If uncertain, ask.
-- If multiple interpretations exist, present them - don't pick silently.
-- If a simpler approach exists, say so. Push back when warranted.
-- If something is unclear, stop. Name what's confusing. Ask.
+## 1. Orchestrate; do not implement in the main session
 
-## 2. Simplicity First
+The main session is the orchestrator. It hears the goal, plans and decomposes
+work, dispatches workers, verifies their artifacts, maintains queue state, and
+commits. It does not write production code/content/configuration, perform deep
+investigation, or judge ship visuals.
 
-**Minimum code that solves the problem. Nothing speculative.**
+Investigation is work: source exploration, audits, root-cause analysis, install
+probes, and web research belong in a worker dispatch. Exceptions are one lookup
+to choose a worker, reading a returned artifact to verify it, bookkeeping, and
+committing on a worker's behalf.
 
-- No features beyond what was asked.
-- No abstractions for single-use code.
-- No "flexibility" or "configurability" that wasn't requested.
-- No error handling for impossible scenarios.
-- If you write 200 lines and it could be 50, rewrite it.
+A dispatch produces exactly one kind of deliverable:
 
-Ask yourself: "Would a senior engineer say this is overcomplicated?" If yes, simplify.
+- **finding** — plan, audit, root cause, comparison, map, or verdict; no change
+- **change** — bounded implementation from settled requirements; no redesign
 
-## 3. Surgical Changes
+Never dispatch “investigate and fix.” Review a finding before dispatching its
+change. If measured reality conflicts with the brief, allow one bounded check,
+then stop and report the tension rather than improvising scope.
 
-**Touch only what you must. Clean up only your own mess.**
+## 2. Route by role, quality first
 
-When editing existing code:
-- Don't "improve" adjacent code, comments, or formatting.
-- Don't refactor things that aren't broken.
-- Match existing style, even if you'd do it differently.
-- If you notice unrelated dead code, mention it - don't delete it.
+Use the cheapest seat that reliably preserves the quality bar. Optimize weekly
+tokens rather than wall time; dispatch serially unless tasks are independent of
+each other's answers. Quality outranks speed and cost, while licensing still
+gates every option.
 
-When your changes create orphans:
-- Remove imports/variables/functions that YOUR changes made unused.
-- Don't remove pre-existing dead code unless asked.
+| Seat | Default work |
+|---|---|
+| **Sol orchestrator** | Main session only; planning and integration, never implementation |
+| **Sol analysis** | Audits, root cause, plans, comparisons, and decision-bearing enumeration |
+| **Sol visual judge** | Image pass/fail, axes, blind rank, and frame-cited defects only |
+| **Sol hard implement** | Sensitive or difficult implementation under a tight boundary |
+| **Terra default implement** | Bounded code, tests, documentation, gates, and ordinary content work |
+| **Luna mechanical** | Exact downloads, moves, transforms, probes, and metric execution requiring no judgment |
 
-The test: Every changed line should trace directly to the user's request.
+Analysis and visual ship judgment never route down to Terra or Luna. Substitute
+upward on unavailability or after two verification failures
+(Luna → Terra → Sol). If no upward substitute exists, name any downgrade.
+Hard-implement workers stop at the stated boundary. A visual judge must be
+separate from frame production and reports only defects and severity—never
+fixes, tools, or next steps. The orchestrator decides what follows.
 
-## 4. Goal-Driven Execution
+These are semantic seats, not permanent product IDs. In pi, use the available
+Sol/Terra/Luna model IDs shown by the runtime. Claude compatibility mapping is:
+strongest reasoning/vision model for Sol roles, Sonnet-class model for Terra,
+and Haiku-class model for Luna. Re-evaluate capability claims when models
+change; preserve the roles and gates.
 
-**Define success criteria. Loop until verified.**
+## 3. Every worker gets a six-part contract
 
-Transform tasks into verifiable goals:
-- "Add validation" → "Write tests for invalid inputs, then make them pass"
-- "Fix the bug" → "Write a test that reproduces it, then make it pass"
-- "Refactor X" → "Ensure tests pass before and after"
+State all six fields explicitly:
 
-For multi-step tasks, state a brief plan:
-```
-1. [Step] → verify: [check]
-2. [Step] → verify: [check]
-3. [Step] → verify: [check]
-```
+1. **Model seat** — Sol analysis/judge/hard-implement, Terra, or Luna
+2. **Deliverable** — exact path or artifact shape
+3. **Scope** — files and systems in bounds
+4. **Do not touch / decide** — hard boundary
+5. **Verify** — command or artifact check the orchestrator will run
+6. **Type** — finding or change, never both
 
-Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
+Before each campaign phase, dispatch a Sol planning worker to split approved
+work into dependency-ordered tasks tagged with seat and verification. Review
+the split, dispatch serially, independently inspect each diff/output/test, and
+commit only green steps. Every campaign plan records an “Execution model.” Do
+not trust worker prose in place of artifacts.
 
-## 5. Comment Policy
+Do not dispatch work that an in-flight gate could moot. Refresh plan evidence
+at dispatch time and stage exact paths while other work exists. See
+`memory/dispatch-discipline.md` when those rules fire.
 
-**A comment states a constraint or a why the code itself cannot show — never history, never narration.**
+## 4. Think clearly; change surgically
 
-Allowed, and only these:
-- **Constraint the code cannot show** — an invariant, guarantee, or ordering requirement enforced by convention rather than the type system. Exemplar: `server/vordar-server/src/db.rs:218-221` (the `Drop` impl's comment states that dropping the sender closes the channel before the worker drains pending saves, so shutdown is safe).
-- **Why not derivable from the code** — a fact about the world the reader cannot get from the next line alone. Exemplars: `client/vordar-client/src/weapons.rs:204-206` (the socket matrix bakes a cm→m scale, so only rotation+translation carry over to weapon transforms); `game/vordar-game/src/motion/movement.rs:9-15` (why `PLAY_RADIUS` is set where it is, relative to the client's ground mesh).
-- **Module header** — intent plus scheduling/ownership contracts at the top of a file. Exemplar: `smirk/engine-app/src/scheduler.rs:1-11`.
-- **Spec-clause reference** — a pointer into a living spec doc that anchors a stated constraint: `DESIGN.md §N`, `docs/visual-quality.md` clause ids (`VQ-B2` in a lint assert, "HDR emissive (VQ-C3)"). The reference must ride a constraint; a bare tag with no constraint, or a tag explaining when/why code was written, is provenance and forbidden.
+- Surface ambiguity, assumptions, and real tradeoffs. Do not guess.
+- A clearly superior, reversible path should proceed; genuine scope,
+  licensing, branch/base, irreversible, or close-outcome forks go to the user.
+- Describe options independently by outcome, confidence/evidence, and cost.
+- Implement the minimum requested behavior. No speculative abstractions,
+  adjacent cleanup, or unrequested flexibility.
+- Match existing style. Every changed line must trace to the task. Remove only
+  orphaned code introduced by the change.
+- Prefer root-cause fixes. Do not weaken tests or add shims around a constraint.
+- Escalate uncertainty up the model ladder before asking the user; log any
+  autonomy-forced uncertain decision for the next checkpoint.
 
-Forbidden:
-- Narration of the next line — a comment that just restates the code below it.
-- PR/change-log talk — finding/rework/audit citations, "used to be", "now we", roadmap tags (`VQ-*`, `Phase N`) used as provenance. Provenance belongs to git history and `docs/reviews/`, not to source.
-- Restated function/struct signatures.
-- Stale claims — a comment asserting something the code no longer does.
-- TEMP scaffolding that outlives its stated removal condition.
+## 5. Tests and verification
 
-## 6. Uncertain Decisions Escalate
+Define observable success before editing. For behavior changes and bugs, write
+a focused failing test when practical, observe the expected failure, implement
+the minimal fix, and rerun it. Use cheap local checks per task; run expensive
+suites once after a coherent batch, fix all failures, then run once to confirm.
+Workers do not run `cargo test --workspace` unless their contract owns the
+batch gate.
 
-**Not clearly forced by the plan, the code, or a verified fact → escalate. Up the model ladder first, to the user last.**
+Verification must inspect the actual artifact: exact diff, relevant diagnostics
+or tests, generated files, and frames/metrics where applicable. A check must
+fail when the promised behavior is broken. Metrics pre-screen; they do not
+replace visual evidence. Visual shipping requires in-engine gameplay framing
+and an independent Sol judge. Detailed visual procedure is on demand in
+`memory/visual-verification.md`.
 
-- **An agent's doubt goes up a tier, never into a guess.** What an agent cannot settle from the code or a verified fact it hands to a deeper-thinking model; that model may route it further up instead of answering. Only a doubt no tier can settle reaches the user.
-- **Think twice before asking.** Quality outranks time, tokens and change cost, so a clearly best outcome is not a question — take it and say you took it. Anything with a **reasonable** alternative: AskUserQuestion, don't decide — and reasonable means *close on outcome*, because an option that ends worse is not an alternative, it is a worse plan, however much cheaper it is. The call is the user's by right regardless of the weights when it is theirs to make: scope, licensing, branch/base, anything irreversible.
-- **Every option carries three independent weights** in its description: **outcome** (how good the end result is), **confidence** (how sure you are of that outcome, and on what evidence), and **cost** (resources/difficulty). Outcome is scored as if the work were free — cost never discounts it, and the three never merge into one number. Confidence rates the *evidence*, not the appeal: an option that looks best but rests on a code read alone is high-outcome and low-confidence, and must say so. Where confidence is low, name the cheap probe that would raise it — that probe is often the better thing to do first.
-- If autonomy forces an in-flight call (mid-rebase, blocked pipeline), keep a running list and present every "decided while unsure" item at the next checkpoint, unprompted.
-- Forced or reversible-and-conventional calls proceed without asking — log them if any doubt remains.
+Ask before expensive CPU/GPU generation and state expected wall time. Approved
+plans authorize only the runs they list. Compiles, tests, and seconds-scale
+smoke checks do not require separate approval.
 
-## 7. Batched Test Cadence
+## 6. Code and documentation discipline
 
-**Test suites are expensive (time + tokens). Never run them per small change.**
+Comments state a constraint/why the code cannot express, a module ownership or
+scheduling contract, or a living spec citation attached to a constraint.
+Forbid narration, signature restatement, history/change-log prose, stale
+claims, and open-ended temporary scaffolding.
 
-- Cadence: finish a batch of tasks → run the suite ONCE for the batch → fix every failure → run ONCE more to confirm. Two suite runs per batch, not one per change.
-- Per-task checks stay cheap and local: script exit codes, output-file existence, compiling the touched crate.
-- Applies to subagents too: workers don't run `cargo test --workspace` unless their task IS the batch check.
+Use semantic IDE/LSP navigation when available. Exclude `reference/` from
+searches and sweeps unless the task explicitly studies it. Keep context lean:
+persist state at phase gates and compact when useful, but no reset command is a
+prerequisite for new work. Resume from indexed task material only when asked or
+when the current goal requires it.
 
-## 8. Heavy Compute Needs a Go-Ahead
+## 7. Repositories, locks, and content
 
-**Ask the user before launching expensive CPU/GPU workloads.**
+The game tree and `.claude/` are separate Git repositories. Inspect, stage,
+verify, and commit them separately; use exact pathspecs and never sweep in
+unrelated changes. Commits are short descriptions with no AI attribution.
 
-- Applies to generation runs: textures, HDRIs, meshes, seed sweeps, inference batches — name the expected wall-time when asking.
-- Does NOT apply to test suites or compiles. Seconds-scale smoke checks (one small preview, a 2-step verify) are exempt.
-- A user-approved plan that explicitly lists its generation runs counts as the go-ahead for exactly those runs; bundle asks into existing checkpoints rather than interrupting per run.
+Without explicit user approval, do not alter:
 
-## 9. Compact at Phase Gates
+- `content/source/CREDITS.md` or license verdicts
+- the non-commercial-tooling rule
+- credentials, tokens, live databases, or user-global configuration
 
-**Never carry a spent context into the next phase.**
+`DESIGN.md`, visual-quality law, and town premise change only as the explicit
+task—not as cleanup, mid-batch adaptation, or automated refinement. Assets
+need the written premise and documented install path after a passed gate.
+Factory refinement may improve process (GPU ordering, metrics, manifests),
+never art law, design law, premise, or licensing. Use one heavy GPU job at a
+time; keep generation manifests beside candidates.
 
-- At every phase gate: persist all state to files (subplan struck, todo.md updated, "decided while unsure" delivered), then end the turn telling the user to `/compact` before the next phase starts — or `/clear` instead when the next task is unrelated to the finished one (nothing in the conversation is worth carrying).
-- Mid-phase, when context reaches ~150k tokens, do the same at the next clean checkpoint — unless the task in flight genuinely needs the accumulated context to finish.
-- A compact point must be self-sufficient: everything needed to resume lives in tasks/ files and commits, never only in conversation.
+## 8. On-demand map
 
-## 10. Exclude `reference/` from Searches
+- Design law: `DESIGN.md` (cite by section)
+- Live work and resume state: `tasks/todo.md`
+- Session operation: `docs/agent-usage-guide.md`
+- Harness status and remaining gates: `docs/harness-migration-plan.md`
+- Durable-ruling index: `memory/MEMORY.md`
+- Full orchestration rationale: `memory/orchestration-model.md`
+- Asset/GPU runbook: `../scripts/ai-pipeline/README.md`
 
-`reference/` contains downloaded external projects for study only — exclude it from all searches and sweeps (including raw shell recursion like `Get-ChildItem -Recurse` / `find`) unless the task is explicitly analyzing those projects.
-
----
-
-IMPORTANT: When applicable, prefer using rustrover-index MCP tools for code navigation and refactoring.
+Open only the material relevant to the current task. “Save the state” means
+write notes and stop; do not begin new work.

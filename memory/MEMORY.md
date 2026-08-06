@@ -1,9 +1,10 @@
 # Memory index
 
-- [Orchestration model](orchestration-model.md) — all thinking (plans, audits, investigations, root-cause) on the fable tier, opus only for visual judging; thinking and implementation never share a dispatch; fable never implements; capacity fallbacks expire; sonnet implements, never analyzes; substitute upward; tokens over wall time
+Open only the memory body whose trigger applies; this file is an index, not a second standing-law body.
+
+- [Orchestration model](orchestration-model.md) — role-based Sol/Terra/Luna routing across pi and Claude; main orchestrates only; findings and changes are separate; explicit contracts, upward substitution, serial artifact verification
 - [Numeric outcome weights](numeric-outcome-weights.md) — options to the user carry outcome/confidence as /10 numbers, context-agnostic; cost in concrete units
 - [Model rules expire with the model](model-rules-expire-with-the-model.md) — a rule naming a tier's capability dies on upgrade; delete, don't reinterpret
-- [Opus effort ceiling: high](opus-medium-effort.md) — Opus at medium or high; never xhigh/max
 - [Quality over cost ruling](quality-over-cost-ruling.md) — quality outranks time/coding/change cost; replacing whole technologies is in scope (licensing still gates)
 - [Serious project, not learning](serious-project-not-learning.md) — evaluate on engineering merit only
 - [Pre-content foundation stage](pre-content-foundation-stage.md) — no real enemies/NPCs yet; benchmarks guide foundation fixes
@@ -11,7 +12,7 @@
 - [Save state = notes only](save-state-means-notes-only.md) — "save the state" means write notes and stop; no new code, no runs
 - [AA art direction](aa-art-direction.md) — semi-realistic dark fantasy locked; low-poly rejected; player+environment scope
 - [Model asset full autonomy](model-asset-full-autonomy.md) — choose assets yourself under a written place premise; don't ask
-- [Visual verification](visual-verification.md) — headless only; Opus judges in-engine gameplay-framing renders; turntables never clear a ship
+- [Visual verification](visual-verification.md) — headless evidence; an independent Sol judge reviews in-engine gameplay-framing renders; turntables never clear a ship
 - [Image base: Z-Image](image-base-zimage.md) — ruled on trainability; Qwen fallback; 3 constraints
 - [Strict NC tooling ruling](strict-nc-tooling-ruling.md) — NC-licensed tools never touch the shipping asset path; Hi3DGen primary, TRELLIS eval-only
 - [Incumbent tools ≠ gates](incumbent-tools-not-gates.md) — never reject a candidate for incompatibility with a current tool; licensing is the only gate

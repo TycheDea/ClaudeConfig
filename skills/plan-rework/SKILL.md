@@ -1,47 +1,45 @@
 ---
 name: plan-rework
-description: Plans one rework-scale finding via the rework-planner subagent. Use when asked to plan, design, or break down a rework or big feature, e.g. "/plan-rework 1" or "plan rework 2 of the networking reworks". Args: <rework-number> [reworks-path]
+description: Dispatches one rework-scale finding to the rework-planner and independently verifies the plan artifact. Args: <rework-number> [reworks-path]
 ---
 
-You are the orchestrator; the rework-planner subagent does ALL design work.
-You do not read the reworks report, extract finding text, or design anything
-yourself.
+You are the orchestrator. Never design or implement the rework yourself. One
+dispatch produces one **finding** only.
 
-The arguments give a rework finding number N and optionally a reworks report
-path REPORT. Reports live in per-domain folders: `docs/reviews/<domain>/`.
-When no path is given, list `docs/reviews/*/reworks-*.md` (do not open the
-files): if the matches all sit in one domain folder, use the newest by
-filename date; if more than one domain folder matches, stop and ask the user
-which report they mean.
+Resolve rework number N and REPORT from the arguments. Reports live under
+`docs/reviews/<domain>/`. If REPORT is omitted, list matching `reworks-*.md`
+paths without reading their bodies. Use the newest only when all matches are in
+one domain; otherwise ask the user.
 
-Spawn ONE rework-planner subagent (Agent tool, subagent_type "rework-planner")
-with exactly this task, substituting N and REPORT:
+Determine the exact plan path from REPORT, N, and today's date. Spawn one Agent
+with `subagent_type: "rework-planner"` and `model: "opus"` using this contract:
 
-"Design the implementation plan for rework finding N of REPORT. Read the
-finding's full section from that file first, study every part of the codebase
-the design touches, and write the plan document as your agent instructions
-specify. You write no code. Reporting 'not done' without a written plan file
-is not an option."
+```text
+Model seat: Sol analysis (Opus-class)
+Deliverable: docs/reviews/<domain>/plan-<domain>-rework-N-YYYY-MM-DD.md
+Scope: rework finding N of REPORT and the code seams needed to plan it
+Do not touch / decide: no production, test, queue, memory, or configuration edits; do not implement, stage, commit, or silently decide product questions
+Orchestrator verify: inspect the exact plan diff, both repository statuses, required sections, step contracts, dependency order, and cited code evidence
+Type: finding
 
-When it returns:
-1. Show the user the planner's final report verbatim.
-2. Run `git status --short` and show it — the plan file should be the ONLY
-   new artifact; anything else is out of bounds and must be flagged.
+Read the finding's complete section first. Study the bounded codebase seams and
+write only the plan Deliverable described by your agent instructions.
+```
 
-The plan file's "Findings (execution order)" section uses the audit fix
-format, so each step is executed afterwards with
-`/implement-finding <k> <plan-file-path>`.
+Planning and analysis use Opus-class capability. If the dispatch or independent
+verification fails twice, stop and report the blocker; there is no higher
+Claude compatibility seat to substitute without an explicit user decision.
 
-### API failure recovery — probe and override
+When the planner returns, verify independently:
 
-If a spawn dies to a 5xx (Overloaded, Service Unavailable) pre-edit:
-on the SECOND consecutive pre-edit 5xx death of the same spawn, do not retry
-yet. Launch a 1-turn haiku probe (model: "haiku", no tools, no context) with
-the task "Reply with the single word: ok". If the probe succeeds, the model
-tier is overloaded — respawn the planner with `model: "opus"` (the documented
-fallback) and tell the user which model produced the plan (this is a
-downgrade from the ideal fable depth; always name it). If the probe fails,
-back off long (the API path is down) and tell the user to wait.
+1. Run `git status --short` and `git -C .claude status --short`.
+2. Inspect the plan's exact diff and confirm it is the only new artifact.
+3. Check that the plan is finding-only, cites inspected evidence, records an
+   Execution model, and splits work into serial, self-contained change steps.
+4. Confirm every step contains model seat, deliverable, scope, do-not-touch,
+   orchestrator verification, and type, with behavioral tests where practical.
 
-Nothing else: no edits, no design opinions of your own, no review beyond the
-command above unless the user asks.
+Show the verified plan path, decisions, ordered steps, and unresolved user
+questions. Do not edit defects in the plan yourself; issue a fresh bounded
+finding dispatch for correction. Execute approved steps later with
+`/implement-finding <k> <plan-path>`.
