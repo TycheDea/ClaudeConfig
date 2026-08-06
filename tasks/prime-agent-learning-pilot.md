@@ -1,19 +1,28 @@
-# Prime Agent learning-loop pilot — QUEUED 2026-08-06
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; USER CHECKPOINT / PHASE 2 BLOCKED — 2026-08-06
 
 ## User direction
 
-Pause the current texture A/B loop and evaluate setting up Prime Agent instead
-of Pi dev so the repeated asset/model-quality campaign can retain learning
-across iterations. The exact product identity is still ambiguous; next session
-must first confirm whether this means Prime Intellect's PRIME Agent.
+Pause the current texture A/B loop and evaluate Prime Intellect's **PRIME
+Agent** as a possible way for the repeated asset/model-quality campaign to
+retain learning across iterations. The user confirmed that product identity and
+authorized **`v0.7.0` commit
+`be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`** as the immutable phase-1 audit
+baseline. This does **not** establish that commit as the 2026-08-05 launch
+revision; that historical binding remains unresolved.
 
-This is an architecture/setup fork, not permission to install immediately.
-Prime must demonstrate persistent learning from trajectories, rewards, and
-replay; merely changing agent harnesses does not improve asset quality.
+Pi and PRIME must coexist on this intermittently powered machine. Any later
+eligible pilot must recover correctly after both orderly shutdown and abrupt
+host loss, preserve and separate Pi/PRIME state, and expose the disposition of
+in-flight work. Docker is not assumed to be installed, required, supported, or
+the recovery mechanism.
+
+This remains an architecture/setup fork, not permission to install or run
+PRIME. PRIME must demonstrate persistent learning from trajectories, rewards,
+and replay; merely changing agent harnesses does not improve asset quality.
 
 ## Goal
 
-Establish whether Prime can run Vordar's long asset-quality loop with durable,
+Establish whether PRIME can run Vordar's long asset-quality loop with durable,
 measurable improvement across episodes while preserving the existing licensing,
 visual-judgment, provenance, and one-heavy-GPU-job gates.
 
@@ -29,44 +38,102 @@ Observable success requires all of:
    cost, licensing state, and operational complexity against Pi as the control.
 5. Independent Sol visual judgment remains separate from frame production;
    metrics pre-screen but do not ship visuals.
+6. Pi and PRIME coexist without state or resource collision and recover with
+   observable outcomes after orderly shutdown and abrupt host loss.
+
+## Phase-1 result and resume
+
+Phase 1 is complete under the [audit
+plan](prime-agent-feasibility-audit-plan.md), with findings retained in the
+[P1–P10 directory](../docs/research/prime-agent/phase-1/). The final [P10
+synthesis](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md)
+sets the phase-2 matched-pilot planning gate to **`INSUFFICIENT EVIDENCE`**.
+Phase 2 is therefore not yet authorized or eligible; no option has been adopted
+and no setup is authorized.
+
+Evidence-backed resume facts from P10:
+
+- Source demonstrates durable supplemental-context refinement reaching a later
+  prompt, but not weight learning, observed reward-to-update learning, or
+  matched improvement.
+- Complete trajectory/reward/replay evidence is not source-satisfied. Required
+  identity, artifact/reward provenance, learned-artifact linkage, later-use
+  receipt, deterministic replay/re-execution, and crash-safe disposition remain
+  absent or unresolved.
+- Reproducible source/runtime closure and execution/rights closure are blocked.
+- Still-image input exists through a declared image-capable remote model, but
+  the Vordar visual gate remains external: PRIME supplies no capture pipeline,
+  visual reward, reviewed-frame binding, or independent-judge enforcement.
+- Linux/macOS are official packaged targets; native Windows RLM is unsupported,
+  WSL2 is unknown, and core Docker support is absent.
+- Intermittent-host recovery and Pi/PRIME coexistence remain unmeasured and
+  require a later executable red-proof covering orderly shutdown, abrupt host
+  loss, persisted-byte integrity, in-flight disposition, idempotent
+  resume/replay, restart ordering, state separation, and resource contention.
+- No qualifying head-to-head against installed Pi `0.80.6` exists.
+
+P10 records these independent options exactly:
+
+| Option | Expected outcome | Confidence |
+|---|---:|---:|
+| Replace Pi as campaign harness | `4/10` | `2/10` |
+| Sandboxed PRIME sidecar; Pi remains orchestrator/control | `7/10` | `3/10` |
+| No adoption; continue Pi `0.80.6` | `5/10` | `6/10` |
+
+Direct phase-1 findings:
+[P1](../docs/research/prime-agent/phase-1/01-identity-source-lock.md) ·
+[P2](../docs/research/prime-agent/phase-1/02-component-runtime-closure.md) ·
+[P3](../docs/research/prime-agent/phase-1/03-license-weights-service-closure.md) ·
+[P4](../docs/research/prime-agent/phase-1/04-learning-persistence-dataflow.md) ·
+[P5](../docs/research/prime-agent/phase-1/05-observability-replay-failures.md) ·
+[P6](../docs/research/prime-agent/phase-1/06-multimodal-visual-support.md) ·
+[P7](../docs/research/prime-agent/phase-1/07-platform-gpu-vram.md) ·
+[P8](../docs/research/prime-agent/phase-1/08-pricing-operations.md) ·
+[P9](../docs/research/prime-agent/phase-1/09-comparative-practitioner-evidence.md) ·
+[P10](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md).
+
+**Next user decision boundary:** choose whether to keep PRIME paused and resume
+the held Pi texture loop, or separately authorize work to close P10's phase-2
+entry gates. Neither choice by itself authorizes setup, credentials,
+user-global changes, heavy runs, or phase-2 matched-pilot planning.
 
 ## Execution model
 
 Finding before change, serial gates, exact-path commits, Pi retained as the
-control until Prime wins the matched pilot.
+control until PRIME wins a matched pilot.
 
-1. **Sol analysis — product and feasibility audit.** Identify the exact Prime
-   Agent project/version and authoritative source; inspect license and complete
-   runtime/weight dependency closure; determine what actually learns, where
-   trajectories/rewards persist, multimodal and visual-evaluation support,
-   Windows/WSL/Linux requirements, GPU/VRAM needs, costs, and integration
-   boundaries with Vordar. Compare replacement, sidecar-worker, and no-adoption
-   outcomes independently. No install, download, web-derived license rewrite,
-   or user-global changes.
-2. **Sol planning — matched pilot protocol.** Freeze one real task, artifact
-   inputs, reward channels, red proofs, independent visual gate, sandbox write
-   boundary, control arm, success/failure thresholds, expected wall/GPU time,
-   and rollback. The protocol must prove learning across episodes rather than a
+1. **COMPLETE — Sol analysis, product and feasibility audit.** Executed under
+   the [phase-1 plan](prime-agent-feasibility-audit-plan.md); retained artifacts
+   are in the [P1–P10 finding
+   directory](../docs/research/prime-agent/phase-1/). P10's final gate is
+   **`INSUFFICIENT EVIDENCE`**.
+2. **BLOCKED / NOT AUTHORIZED — Sol planning, matched pilot protocol.** Phase-2
+   planning is not eligible until P10's entry gates close. A later eligible
+   protocol must freeze one real task, artifact inputs, reward channels, red
+   proofs, independent visual gate, sandbox write boundary, Pi control arm,
+   recovery/coexistence proof, success/failure thresholds, expected wall/GPU
+   time, and rollback. It must prove learning across episodes rather than a
    one-off stronger model.
-3. **User checkpoint.** Present outcome/confidence as /10 values and concrete
-   setup/download/GPU/token costs. Ask before installation, user-global config,
-   credentials, or any heavy run not already approved.
-4. **Bounded setup change.** Only after approval: Luna performs exact mechanical
-   acquisition; Terra or Sol hard-implement handles integration according to
-   sensitivity; security/license and reproducibility gates run before access to
-   project tools.
-5. **Matched pilot and verdict.** Serialize heavy jobs, keep Pi as control,
-   preserve every ruling-cited artifact, use a separate Sol visual judge, and
-   adopt Prime only on a measured quality win with no licensing or provenance
-   regression.
+3. **CURRENT — User checkpoint.** Review the independent option scores and
+   concrete cost formulas in P10, then decide whether to pause PRIME or
+   authorize gate-closing work. Ask separately before installation, user-global
+   config, credentials, or any heavy run.
+4. **NOT AUTHORIZED — Bounded setup change.** Only after all prior gates and
+   explicit approval: Luna performs exact mechanical acquisition; Terra or Sol
+   hard-implement handles integration according to sensitivity; security/license
+   and reproducibility gates run before access to project tools.
+5. **NOT AUTHORIZED — Matched pilot and verdict.** Serialize heavy jobs, keep Pi
+   as control, preserve every ruling-cited artifact, use a separate Sol visual
+   judge, and adopt PRIME only on a measured quality win with no licensing or
+   provenance regression.
 
 ## Do not touch or decide
 
 - Do not replace or disable Pi before the matched verdict.
-- Do not install/download Prime, alter user-global configuration, provide
-  credentials, change license verdicts, or run training/GPU jobs during the
-  audit.
-- Do not let Prime train on or emit shipping assets until the sandbox,
+- Do not install/download PRIME, alter user-global configuration, provide
+  credentials, change license verdicts, or run training/GPU jobs without a later
+  explicit authorization and satisfied gates.
+- Do not let PRIME train on or emit shipping assets until the sandbox,
   provenance, and license gates pass.
 - Do not treat self-reported reward, a single successful episode, or faster wall
   time as evidence of retained learning.
