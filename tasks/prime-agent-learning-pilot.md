@@ -1,4 +1,4 @@
-# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; USER CHECKPOINT / PHASE 2 BLOCKED — 2026-08-06
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 SELECTED / GATE-CLOSING PLANNING QUEUED FOR 2026-08-07
 
 ## User direction
 
@@ -19,6 +19,11 @@ the recovery mechanism.
 This remains an architecture/setup fork, not permission to install or run
 PRIME. PRIME must demonstrate persistent learning from trajectories, rewards,
 and replay; merely changing agent harnesses does not improve asset quality.
+
+On 2026-08-06, the user selected option 2: a separate gate-closing campaign for
+the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. This
+checkpoint records a stop-state only, to resume on 2026-08-07 (the user's
+“tomorrow”). No gate-closing work or planning starts in this session.
 
 ## Goal
 
@@ -48,8 +53,9 @@ plan](prime-agent-feasibility-audit-plan.md), with findings retained in the
 [P1–P10 directory](../docs/research/prime-agent/phase-1/). The final [P10
 synthesis](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md)
 sets the phase-2 matched-pilot planning gate to **`INSUFFICIENT EVIDENCE`**.
-Phase 2 is therefore not yet authorized or eligible; no option has been adopted
-and no setup is authorized.
+Phase 2 is therefore not yet authorized or eligible. Option 2 has been selected
+only as the direction for a separate gate-closing planning campaign; PRIME has
+not been adopted and no setup is authorized.
 
 Evidence-backed resume facts from P10:
 
@@ -92,10 +98,14 @@ Direct phase-1 findings:
 [P9](../docs/research/prime-agent/phase-1/09-comparative-practitioner-evidence.md) ·
 [P10](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md).
 
-**Next user decision boundary:** choose whether to keep PRIME paused and resume
-the held Pi texture loop, or separately authorize work to close P10's phase-2
-entry gates. Neither choice by itself authorizes setup, credentials,
-user-global changes, heavy runs, or phase-2 matched-pilot planning.
+**Current checkpoint / exact next action:** On 2026-08-07, first dispatch a Sol
+planning finding to dependency-order closure of the platform/WSL-or-Linux
+target, immutable runtime/dependency bytes, rights/service terms, Pi/PRIME
+isolation, and shutdown/recovery evidence. The 2026-08-06 decision authorizes
+only that next-session gate-closing planning campaign—not installation/download,
+credentials, user-global changes, host/container/GPU execution, phase-2
+matched-pilot planning, or adoption. No gate-closing work or planning starts in
+this session.
 
 ## Execution model
 
@@ -114,10 +124,12 @@ control until PRIME wins a matched pilot.
    recovery/coexistence proof, success/failure thresholds, expected wall/GPU
    time, and rollback. It must prove learning across episodes rather than a
    one-off stronger model.
-3. **CURRENT — User checkpoint.** Review the independent option scores and
-   concrete cost formulas in P10, then decide whether to pause PRIME or
-   authorize gate-closing work. Ask separately before installation, user-global
-   config, credentials, or any heavy run.
+3. **NEXT SESSION / FIRST ACTION — Sol planning finding for option 2.** On
+   2026-08-07, first dispatch a Sol planning finding to dependency-order closure
+   of the platform/WSL-or-Linux target, immutable runtime/dependency bytes,
+   rights/service terms, Pi/PRIME isolation, and shutdown/recovery evidence.
+   This is a queued stop-state; none of that planning or gate-closing work starts
+   in this session.
 4. **NOT AUTHORIZED — Bounded setup change.** Only after all prior gates and
    explicit approval: Luna performs exact mechanical acquisition; Terra or Sol
    hard-implement handles integration according to sensitivity; security/license
