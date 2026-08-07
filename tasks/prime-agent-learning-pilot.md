@@ -1,4 +1,4 @@
-# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G0 BLOCKED / DRIFT REQUIRES REPLAN
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G0 FRESH / G1 AWAITS HOST-PROBE APPROVAL
 
 ## User direction
 
@@ -24,12 +24,12 @@ On 2026-08-06, the user selected option 2: a separate gate-closing campaign for
 the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. On
 2026-08-07, the queued Sol planning finding landed at
 [`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md).
-G0 was rerun on 2026-08-07 after project-local public read-only web tools were
-enabled for Sol analysis. The retained freshness ledger ends
-`DRIFT REQUIRES REPLAN`: excluded beta-channel mutation, newly exposed stable
-asset digests, package-source clarification, and provider catalog/rate changes
-must be reconciled into the campaign plan. G1 and all later gates remain
-blocked. Setup, acquisition, credentials, and host probing remain unauthorized.
+G0 was rerun on 2026-08-07 after the campaign plan reconciled the observed
+drift. The retained freshness ledger now ends `FRESH`; stable `v0.7.0` remains
+the sole authorized baseline and the beta channel remains excluded. G1 is the
+next gate but requires separate explicit user approval for read-only host
+probing. Setup, acquisition, credentials, and mutating host work remain
+unauthorized.
 
 ## Goal
 
@@ -106,12 +106,13 @@ Direct phase-1 findings:
 
 **Current checkpoint / exact next action:** G0 is retained at
 [`00-evidence-freshness.md`](../docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md)
-with `DRIFT REQUIRES REPLAN`. Do not dispatch G1. Review/approve one Sol planning
-finding to reconcile the exact plan sections listed by G0 while preserving the
-authorized `v0.7.0` commit/tree and excluding the beta channel; then rerun G0.
-G1 still needs separate host-probe approval after a positive G0.
-Installation/download, credentials, user-global changes, host/container/GPU
-execution, phase-2 matched-pilot planning, and adoption remain unauthorized.
+with `FRESH`. Obtain explicit user approval before dispatching G1’s judgment-free,
+read-only host and guest-capability inventory. G1 may record Windows/WSL,
+virtualization, storage, Pi identity/state-path names, and GPU-exposure facts,
+but may not install/start a mutating guest, change configuration, capture
+environment or credential values, or access PRIME. Installation/download,
+credentials, user-global changes, host/container/GPU execution, phase-2
+matched-pilot planning, and adoption remain unauthorized.
 
 ## Execution model
 
