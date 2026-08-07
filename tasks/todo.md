@@ -4432,14 +4432,16 @@ further fineness must come from the atlas.
   claimed to verify zones.ron, so there is nothing to un-overwrite. The shipped
   topology is verified separately by `shipped_topology_is_valid`.
 
-## Prime Agent learning-loop pilot — OPTION 2 PLAN READY 2026-08-07
+## Prime Agent learning-loop pilot — G0 SOURCE UNAVAILABLE 2026-08-07
 
 - [x] Sol option-2 gate-closing plan complete and committed in ClaudeConfig as
-      `065f29a`: `tasks/prime-agent-option2-gate-closing-plan.md`. It
-      dependency-orders platform/WSL-or-Linux, immutable-byte, rights/service,
-      Pi/PRIME isolation, and shutdown/recovery closure. No gate execution,
-      setup, acquisition, credentials, host probing, matched-pilot planning, or
-      adoption is authorized by the plan.
-- [ ] **NEXT:** review/approve plan execution before G0. G1 host inventory has a
-      separate explicit host-probe approval gate. Pi remains the control;
+      `065f29a`: `tasks/prime-agent-option2-gate-closing-plan.md`.
+- [ ] **BLOCKED AT G0:** both available Sol analysis routes lacked public
+      HTTP/web tooling, so
+      `docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md`
+      ends `SOURCE UNAVAILABLE`. Do not dispatch G1. Provide a Sol analysis
+      worker public read-only web access and rerun G0; main-session research is
+      not an allowed substitute. G1 host inventory retains its separate explicit
+      host-probe approval gate. Setup, acquisition, credentials, matched-pilot
+      planning, and adoption remain unauthorized. Pi remains the control;
       texture item (2) and retablo placement stay held.

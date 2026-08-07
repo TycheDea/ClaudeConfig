@@ -1,4 +1,4 @@
-# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 GATE-CLOSING PLAN COMPLETE / EXECUTION NOT AUTHORIZED
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G0 BLOCKED / SOURCE UNAVAILABLE
 
 ## User direction
 
@@ -24,8 +24,10 @@ On 2026-08-06, the user selected option 2: a separate gate-closing campaign for
 the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. On
 2026-08-07, the queued Sol planning finding landed at
 [`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md).
-No gate-closing execution, setup, acquisition, credentials, or host probing is
-authorized by that planning artifact.
+G0 was authorized and attempted on 2026-08-07, but both available Sol analysis
+routes lacked public HTTP/web tooling. The retained freshness ledger therefore
+ends `SOURCE UNAVAILABLE`; G1 and all later gates remain blocked. Setup,
+acquisition, credentials, and host probing remain unauthorized.
 
 ## Goal
 
@@ -100,13 +102,14 @@ Direct phase-1 findings:
 [P9](../docs/research/prime-agent/phase-1/09-comparative-practitioner-evidence.md) ·
 [P10](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md).
 
-**Current checkpoint / exact next action:** The Sol planning finding is complete
-and committed in ClaudeConfig as `065f29a`. Review/approve execution of
-[`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md)
-before dispatching G0. G1 host inventory separately requires explicit host-probe
-approval. Installation/download, credentials, user-global changes,
-host/container/GPU execution, phase-2 matched-pilot planning, and adoption remain
-unauthorized.
+**Current checkpoint / exact next action:** G0 is retained at
+[`00-evidence-freshness.md`](../docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md)
+with `SOURCE UNAVAILABLE`. Do not dispatch G1. The next permissible action is to
+provide a Sol analysis worker public read-only HTTP/web access and rerun G0;
+the main orchestrator must not substitute its own web research. G1 still needs
+separate host-probe approval after a positive G0. Installation/download,
+credentials, user-global changes, host/container/GPU execution, phase-2
+matched-pilot planning, and adoption remain unauthorized.
 
 ## Execution model
 
