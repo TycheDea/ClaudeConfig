@@ -1,142 +1,130 @@
-# PRIME Agent option 2 evidence-freshness ledger
+# G0 — Evidence Freshness and Scope Reconciliation
 
-**Refresh date:** 2026-08-07
-**Authorized baseline:** PRIME Agent `v0.7.0`, commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`, tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`
-**Prior retrieval date:** 2026-08-06 unless a row states otherwise
-**Scope:** G0 public read-only freshness review only; no bytes, accounts, credentials, host probes, setup, execution, or baseline change
+## Run record
 
-## Retrieval result
+- **Previous evidence snapshot:** `2026-08-06`
+- **Refresh date:** `2026-08-07`
+- **Method:** public, unauthenticated, read-only HTTP retrieval only. No downloads, execution, installation, accounts, credentials, purchases, host probes, or repository changes.
+- **Identity rule:** commit, tree, and Git-blob SHAs are immutable evidence. Tags, release objects, installer endpoints, documentation, policies, package-registry metadata, and pricing pages are mutable even when they currently advertise digests.
+- **Mutable-page limitation:** where the public response exposes no content hash, identity is the exact URL, retrieval date, page title or effective date, and the quoted decision-bearing fact.
+- **Comparison basis:** the Phase-1 findings, especially `01-identity-source-lock.md`, `03-license-weights-service-closure.md`, `07-platform-gpu-vram.md`, and `08-pricing-operations.md`, against the current public sources.
+- The previous source-access failure is cleared for the decision-bearing repository, release, platform, service, policy, and provider-pricing sources. Some optional mutable sources remain incomplete as recorded below.
 
-The worker had repository-file read access but no network-capable fetch tool. Consequently, no external primary citation could be re-opened on 2026-08-07, no mutable page could receive a current content hash or HTTP identity, and no current release-list query could establish whether a newer PRIME release appeared.
+## Authorized baseline lock
 
-This is an availability failure, not evidence of no drift. Every affected row below is explicitly marked unassessable. Prior preserved facts remain historical observations only and are not promoted to current facts.
+The authorized baseline does not change:
 
-## Immutable baseline ledger
+| Field | Current identity | Evidence class |
+|---|---|---|
+| Repository | `PrimeIntellect-ai/prime-agent`, repository ID `1232493406`; organization display name `Prime Intellect` | Mutable repository metadata, retrieved `2026-08-07` |
+| Version | `v0.7.0` | Mutable tag/release name |
+| Commit | `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387` | Immutable commit identity |
+| Tree | `0625a8fd0550a8de7ff05e8d9248e75563e5b520` | Immutable tree identity |
+| Baseline license blob | `e15dcd837b11cfb1f627e388561f3ea6405097c1` | Immutable Git-blob identity |
 
-Commit-SHA citations are content-addressed and cannot drift while they resolve to the recorded Git object. Their current online availability was not confirmed, but mutable branch or tag state cannot alter their identity.
+Current lightweight tag targets are:
 
-| Claim | Prior source | Prior retrieval | Current source | Current retrieval | Immutable revision/content identity | Drift | Controlling downstream task | Impact |
-|---|---|---:|---|---:|---|---|---|---|
-| Authorized source baseline | https://github.com/PrimeIntellect-ai/prime-agent/commit/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387 | 2026-08-06 | Same commit permalink; not re-opened | 2026-08-07 attempted; inaccessible | Commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`; tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520` | Content identity cannot drift; availability unconfirmed | G2, G4, G6, G14, G20 | Baseline identity remains recorded, but current tag/release association is not established. |
-| Complete source-tree boundary | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/git/trees/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387?recursive=1 | 2026-08-06 | Same commit-tree endpoint; not re-opened | 2026-08-07 attempted; inaccessible | Tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`; prior response reported `1281` entries and `truncated:false` | Content identity cannot drift; current availability unconfirmed | G2, G4, G6, G7 | Prior closed-tree enumeration remains tied to the immutable tree, not to current repository state. |
-| Source npm lock | https://github.com/PrimeIntellect-ai/prime-agent/blob/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/package-lock.json | 2026-08-06 | Same blob permalink; not re-opened | 2026-08-07 attempted; inaccessible | Git blob `909fda27b6f2846b4355433dda7f500bb72a5f1b`; lockfile v3; prior count `428` external install paths | Content identity cannot drift | G4, G6, G7 | The source lock remains historical exact-baseline evidence; it still does not close packaged installation bytes. |
-| Internal package declarations | Commit-pinned root and `packages/{agent,ai,coding-agent,tui}/package.json` citations in P1–P3 | 2026-08-06 | Same commit-pinned paths; not re-opened | 2026-08-07 attempted; inaccessible | Root `prime-agent@0.7.0`; four internal `@earendil-works/*@0.7.0` declarations under the authorized commit | Content identity cannot drift | G4, G6, G7 | Manifest declarations remain pinned but do not prove registry publication or registry-byte identity. |
-| Runtime, persistence, replay, platform, and isolation-relevant behavior | Commit-pinned citations listed in P2, P4, P5, and P7 | 2026-08-06 | Same SHA-pinned citations; not re-opened | 2026-08-07 attempted; inaccessible | All cited paths are under commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387` | Content identity cannot drift | G2, G8–G19 | Prior behavior findings remain exact-baseline findings; no claim is made about newer releases. |
-| PRIME source license | https://raw.githubusercontent.com/PrimeIntellect-ai/prime-agent/be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387/LICENSE | 2026-08-06 | Same SHA-pinned raw object; not re-opened | 2026-08-07 attempted; inaccessible | Commit-pinned MIT text; copyright notices for Mario Zechner and Prime Intellect | Content identity cannot drift | G7 | Covers only the committed source; it does not close release-package notices, provenance, dependencies, models, or services. |
+- `v0.6.0` → `7db7b69c60be0f7b271faf948864891813b27182`
+- `v0.6.1` → `8bd7c18f16bfdc356c1cd20fb9fcf01119147cda`
+- `v0.7.0` → `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`
 
-## Mutable release and identity ledger
+The stable release object remains release ID `365741496`, published `2026-08-05T18:41:37Z`, targeting the authorized commit. Its `immutable` field is `false`; therefore the release object and tag remain mutable references, not substitutes for the commit/tree lock.
 
-| Claim | Prior source | Prior retrieval | Current source | Current retrieval | Preserved prior/current identity | Drift | Controlling downstream task | Impact |
-|---|---|---:|---|---:|---|---|---|---|
-| Product, launch date, and repository link | https://www.primeintellect.ai/blog/prime-agent | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior: displayed `AUG 05TH, 2026`, “Today, we are launching Prime Agent,” and linked `PrimeIntellect-ai/prime-agent`; no prior hash or revision marker. Current identity unavailable. | Unassessable | G0, G20 | Historical launch-to-release binding remains unresolved; page changes cannot be excluded. |
-| Publisher organization identity | https://api.github.com/orgs/PrimeIntellect-ai | 2026-08-06 | Same API object; inaccessible | 2026-08-07 attempted | Prior: organization node `O_kgDOCNMXhA`, display name “Prime Intellect,” `updated_at=2026-07-25T19:08:27Z`. Current `updated_at` and body hash unavailable. | Unassessable | G0 | No current ownership-metadata comparison is available. |
-| Canonical repository identity/current state | https://api.github.com/repos/PrimeIntellect-ai/prime-agent | 2026-08-06 | Same API object; inaccessible | 2026-08-07 attempted | Prior: repository ID `1232493406`, node `R_kgDOSXZbXg`, `updated_at=2026-08-06T18:31:39Z`, `pushed_at=2026-08-06T18:25:42Z`. Current timestamps/body hash unavailable. | Unassessable | G0, G2 | Repository identity is historically preserved, but current pushes/default-branch state cannot be assessed. |
-| `v0.6.0` release metadata | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/releases/365289118 | 2026-08-06 | Same release object; inaccessible | 2026-08-07 attempted | Prior: release ID `365289118`, published/updated `2026-08-05T04:36:20Z`; no preserved response hash. Current identity unavailable. | Unassessable | G0 | Same-day launch ambiguity cannot be refreshed. |
-| `v0.6.1` release metadata | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/releases/365606154 | 2026-08-06 | Same release object; inaccessible | 2026-08-07 attempted | Prior: release ID `365606154`, published/updated `2026-08-05T14:55:26Z`; no preserved response hash. Current identity unavailable. | Unassessable | G0 | Same-day launch ambiguity cannot be refreshed. |
-| Authorized `v0.7.0` release metadata and asset list | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/releases/365741496 | 2026-08-06 | Same release object; inaccessible | 2026-08-07 attempted | Prior: release ID `365741496`, `immutable:false`, published/updated `2026-08-05T18:41:37Z`; current body and asset-array identity unavailable. | Unassessable | G0, G4, G5, G6 | Current asset deletion, replacement, renaming, digest change, or metadata change cannot be excluded. Acquisition must not begin. |
-| `v0.6.0` lightweight tag | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/git/refs/tags/v0.6.0 | 2026-08-06 | Same ref endpoint; inaccessible | 2026-08-07 attempted | Prior target `7db7b69c60be0f7b271faf948864891813b27182`; current ref target unavailable. | Unassessable | G0 | Current mutable ref cannot be treated as unchanged. |
-| `v0.6.1` lightweight tag | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/git/refs/tags/v0.6.1 | 2026-08-06 | Same ref endpoint; inaccessible | 2026-08-07 attempted | Prior target `8bd7c18f16bfdc356c1cd20fb9fcf01119147cda`; current ref target unavailable. | Unassessable | G0 | Current mutable ref cannot be treated as unchanged. |
-| Authorized `v0.7.0` lightweight tag | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/git/refs/tags/v0.7.0 | 2026-08-06 | Same ref endpoint; inaccessible | 2026-08-07 attempted | Prior target `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`; current ref target unavailable. | Unassessable | G0, G4, G6 | The recorded commit remains authoritative, but tag movement cannot be ruled out. |
-| Whether a newer PRIME release exists | No prior complete release-list identity was preserved | Not established | https://api.github.com/repos/PrimeIntellect-ai/prime-agent/releases?per_page=100 | 2026-08-07 attempted; inaccessible | No current release-list body, newest release ID/tag, `ETag`, `updated_at`, or body hash available | Unassessable | G0, G2 | The campaign cannot prove that source drift did not introduce a newer release requiring a user checkpoint. |
+The unresolved launch-revision binding identified in `01-identity-source-lock.md` remains unresolved. Neither the stable release record nor the beta channel proves that the authorized baseline is the exact launch revision.
 
-### Preserved `v0.7.0` asset observations
+## Freshness and drift ledger
 
-These are prior GitHub API observations, not acquired bytes and not current release-object facts.
+| ID | Domain and prior state (`2026-08-06`) | Current evidence (`2026-08-07`) | Drift classification | Downstream control and impact |
+|---|---|---|---|---|
+| R1 | **Stable release:** `v0.7.0` targeted the authorized commit. The release API supplied an asset inventory but no recorded content digests. | [Release list](https://api.github.com/repos/PrimeIntellect-ai/prime-agent/releases) still places stable `v0.7.0` at commit `be9e2fa…`. The same release object now exposes SHA-256 digests for every stable asset. | **Metadata drift; no stable-code drift.** Server-advertised asset digests are newly available relative to P1. | Baseline remains unchanged. Reconcile the G4 acquisition manifest to asset ID, URL, advertised digest, retrieval date, and independently computed post-acquisition SHA-256. Do not treat mutable release metadata as the byte check itself. **Material inventory impact.** |
+| R2 | **Prerelease channel:** beta/build references were excluded from the authorized baseline; no post-snapshot beta identity was recorded. | Mutable release ID `355959266`, tag `beta`, is now titled `Beta (v0.7.0-beta.460.1.b9a4461)` and targets `b9a4461149419156599d60174dddf15458e2b9ee`. It is `prerelease: true`, `immutable: false`, created `2026-08-07T02:40:56Z`, updated `2026-08-07T02:42:30Z`, while retaining an older `published_at` date. The current ordered release list shows this beta object first and stable `v0.7.0` second; beta is the displayed object with post-snapshot creation/update timestamps. | **Material mutable-channel drift.** This is a beta build/channel mutation, not proof of a newly published stable version and not an authorized upgrade. | Explicitly exclude `beta`, its commit, and its asset digests from G1–G13. The plan requires a checkpoint rather than silent baseline adaptation. **Blocking.** |
+| R3 | **Packages:** exact acquired-package hashes were absent. Source package names and release assets were known only incompletely. | Commit-pinned manifests now establish exact source identities listed below. Exact public npm registry lookups for all four scoped packages at `0.7.0` returned HTTP `404 Not Found`; GitHub release assets remain the public package source evidenced for this version. | **Evidence closure plus package-source clarification.** Registry publication is not established; the stable release assets now have advertised digests. | G4 must acquire only the approved stable release assets, never infer equivalent bytes from a package name or mutable installer. A registry 404 does not prove absence from private registries and is not a license verdict. **Material G4/G7 impact.** |
+| R4 | **Installer/platform:** P7 required Node `>=22.8.0`, treated WSL2 as unproved until execution, and documented native-Windows defects. | Mutable [installer](https://app.primeintellect.ai/install.sh) currently defaults to channel `stable` and R2 base `https://pub-728493de92a943e2a9b2d17b4719f318.r2.dev`. Its preflight checks `20.6.0`, while the immutable baseline root manifest requires Node `>=22.8.0`. Native-Windows issues [#660](https://github.com/PrimeIntellect-ai/prime-agent/issues/660) and [#665](https://github.com/PrimeIntellect-ai/prime-agent/issues/665) remain open. No direct source proving WSL2 support was found. | **No platform closure; mutable installer/package-floor mismatch persists.** No evidence supports extending native-Windows reports to WSL2. | Preserve the stricter baseline Node floor. G4 must not execute the mutable installer; G5 remains responsible for actual WSL2 behavior. **No baseline change, but platform risk remains open.** |
+| R5 | **License/upstream:** baseline was MIT; the exact upstream fork base and retained/dropped path provenance were unresolved. | Baseline LICENSE remains Git blob `e15dcd…`. The transferred upstream route `badlogic/pi-mono` resolves to `earendil-works/pi`; current mutable `main` is `709aa03194301afd008a07d64ff1bf12e4f7ece6`, dated `2026-08-07T09:27:41Z`, and current upstream LICENSE is blob `b0a8e9b81083294360c69b4ec45d3d39a2b28197`. This moving head does not identify PRIME’s fork base. | **Moving-reference and ownership-route clarification; provenance gap unchanged.** | G7 must derive provenance from immutable history and acquired bytes, not current upstream `main`. No legal conclusion follows from matching license labels alone. **G7 remains blocking.** |
+| R6 | **Prime services and prices:** Prime Inference documented token billing without public per-model rates; sandbox rates were mutable; hosted execution needed explicit cost attribution. | [Inference Overview](https://docs.primeintellect.ai/inference/overview) still says input/output tokens are billed by model but that detailed rates will be provided later and through the models endpoint. Hosted evaluations state that default Prime Inference does not separately bill sandbox runtime, while a custom endpoint incurs Prime sandbox compute plus external-provider token charges. [Sandboxes Overview](https://docs.primeintellect.ai/sandboxes/overview) currently states `$0.05/core-hour`, `$0.01/GB-memory-hour`, and `$0.001/GB-disk-hour`; GPU sandboxes remain roadmap-only. A dedicated pricing URL no longer yielded the complete readable table, but the overview did. A static current GPU availability/rate table was not recoverable through the permitted read-only fetch. | **Rates unchanged where revalidated; source-location/rendering drift and unresolved Prime model/GPU rates.** | G9 must snapshot the selected model, execution mode, current rate source, and retrieval date. Do not reuse P8 GPU examples or infer Prime model rates. **Material pricing-source impact.** |
+| R7 | **Provider prices:** P8 used GPT-5.2 and Claude 4.x examples to exercise the cost formulas. | [OpenAI pricing](https://openai.com/api/pricing/) now foregrounds GPT-5.6: Sol short-context input/cached-input/cache-write/output is `$5.00/$0.50/$6.25/$30.00` per million tokens; Terra is `$2.00/$0.20/$2.50/$12.00`; Luna is `$0.20/$0.02/$0.25/$1.20`. [Anthropic pricing](https://www.anthropic.com/pricing) now lists Fable 5 at `$10/$50`, Opus 5 at `$5/$25`, Sonnet 5 at introductory `$2/$10` through `2026-08-31` and `$3/$15` thereafter, and Haiku 4.5 at `$1/$5` per million input/output tokens. | **Material model-catalog and pricing drift.** Some tier rates are unchanged, but identities, current defaults, cache charges, long-context treatment, and temporary pricing differ from P8’s examples. | P8 formulas remain usable, but its model examples are not current campaign quotes. G9 must select and pin exact model IDs and rates before any budget gate; G10/G11 must consume that profile without substitution. **Blocking plan/inventory drift.** |
+| R8 | **Legal/service/privacy:** P3 recorded mutable service terms and privacy sources, with Notion’s exact MCP profile unresolved. | Current dated identities include: npm Open-Source Terms last updated `2022-03-10`; GitHub Terms effective `2026-04-27`; Prime Terms and Privacy updated `2024-02-23`; OpenAI Services Agreement effective `2026-01-01`; Linear Terms effective `2026-06-09`; Linear Privacy effective `2025-03-17`. Anthropic Commercial Terms and Privacy pages were readable but exposed no stable content hash or explicit fixed page-version identifier in the fetched body. OpenAI’s fetched privacy page likewise exposed no fixed page-version identity. Notion’s prior MCP terms URL returned “page couldn’t be found”; its general terms URL redirects to the external terms hub and its privacy route did not expose the needed MCP-specific profile. | **No observed date drift among sources with displayed dates; mutable-page identity limits and Notion gap persist.** | G3 must retain URL, retrieval date, displayed effective/update date, and quoted technical data-handling facts. Keep optional Notion integration disabled unless its exact service profile is reviewed. This ledger is technical provenance, not legal advice or a license/service verdict. |
+| R9 | **Launch and scope reconciliation:** P1/P10 could not bind the launch revision or close all installation, provenance, service, and price gates. | Stable commit/tree identity is unchanged, but the beta mutation, newly exposed stable asset digests, package-source clarification, and provider catalog/rate changes alter the evidence inventory used by G4 and G9. | **Material plan/inventory drift.** | Preserve the authorized baseline and scope, but reconcile the plan’s source and pricing manifests before dispatching G1. **Blocking.** |
 
-| Asset ID | Prior name | Prior size | Prior API-reported digest | Current identity |
-|---:|---|---:|---|---|
-| `502961048` | `latest.json` | 820 B | `sha256:65af98a9541d109df58679bf8ecab633f8744b4ccb6fea8308d15cb33540bac0` | Unavailable |
-| `502961047` | `prime-agent-0.7.0.tgz` | 9,323,789 B | `sha256:88b6578518c72cd51a825bc80f28e0fef9a64c67de4a7d6fd7afd7ca1b34da0b` | Unavailable |
-| `502961049` | `prime-agent-ai-0.7.0.tgz` | 533,591 B | `sha256:7cdbb3e835f48dd103325f7a351ce540b27af4d161aeb9c7b9bdcc12fe7909af` | Unavailable |
-| `502961050` | `prime-agent-core-0.7.0.tgz` | 62,815 B | `sha256:0313373089831d9a2ce06e874fab8b9c05762c0094ff9fc202908cf7db7f99cd` | Unavailable |
-| `502961057` | `prime-agent-tui-0.7.0.tgz` | 444,299 B | `sha256:3225f7f92e87db80fe2c9005d1f7770735ae625c32935ef2283688fc9bd33951` | Unavailable |
-| `502961051` | `SHA256SUMS` | 364 B | `sha256:424d629dc97dfe07a7fc5806c2698bf7eb1d1d49e249159792073aad83a5abd7` | Unavailable |
-| `502961058` | `stable` | 7 B | `sha256:22d24eb4aeab009537ebbd099e54562d35ce546add330e4cdecd28ede260c83c` | Unavailable |
+## Exact baseline package identities
 
-The four prior tarball sizes total `10,364,494` bytes. That remains a historical public-byte floor, not a current download or storage estimate.
+These are immutable Git-blob identities at the authorized commit, not npm-registry publication evidence:
 
-## Mutable package and provenance ledger
+| Source package | Version/state | Git blob |
+|---|---|---|
+| Root `prime-agent` monorepo | `0.7.0`, private | `0794d88d295f935bcf3ef2e5a7bafc110160eb51` |
+| `@earendil-works/pi-coding-agent` | `0.7.0` | `b498e5b9e1a0642d6ec99912046ea71cdf605f8c` |
+| `@earendil-works/pi-ai` | `0.7.0` | `555069c83ec41c9802e1f9ac3effd43df5480bb4` |
+| `@earendil-works/pi-agent-core` | `0.7.0` | `ac3b56f1d74f94ea3889db1bab2bf51a74f7a6c8` |
+| `@earendil-works/pi-tui` | `0.7.0` | `fc79d23d6fe9db7114b7ed75ea03d16e0a2bfbeb` |
 
-| Claim | Prior source | Prior retrieval | Current source | Current retrieval | Preserved prior/current identity | Drift | Controlling downstream task | Impact |
-|---|---|---:|---|---:|---|---|---|---|
-| Registry identity for `@earendil-works/pi-coding-agent@0.7.0` | No registry object was bound in P1–P3; only the commit-pinned manifest was observed | 2026-08-06 gap | https://registry.npmjs.org/@earendil-works%2Fpi-coding-agent/0.7.0 | 2026-08-07 attempted; inaccessible | Prior immutable declaration exists; registry version, dist integrity, tarball URL, publication time, deprecation state, and response hash unavailable | Unassessable | G4, G6, G7 | Registry publication and byte identity remain unknown. |
-| Registry identity for `@earendil-works/pi-agent-core@0.7.0` | No registry object previously bound | 2026-08-06 gap | https://registry.npmjs.org/@earendil-works%2Fpi-agent-core/0.7.0 | 2026-08-07 attempted; inaccessible | Current package metadata/content identity unavailable | Unassessable | G4, G6, G7 | Cannot bind source declaration to registry bytes. |
-| Registry identity for `@earendil-works/pi-ai@0.7.0` | No registry object previously bound | 2026-08-06 gap | https://registry.npmjs.org/@earendil-works%2Fpi-ai/0.7.0 | 2026-08-07 attempted; inaccessible | Current package metadata/content identity unavailable | Unassessable | G4, G6, G7 | Cannot bind source declaration to registry bytes. |
-| Registry identity for `@earendil-works/pi-tui@0.7.0` | No registry object previously bound | 2026-08-06 gap | https://registry.npmjs.org/@earendil-works%2Fpi-tui/0.7.0 | 2026-08-07 attempted; inaccessible | Current package metadata/content identity unavailable | Unassessable | G4, G6, G7 | Cannot bind source declaration to registry bytes. |
-| Current upstream pi license comparison | https://raw.githubusercontent.com/badlogic/pi-mono/main/LICENSE | 2026-08-06 | Same mutable branch path; inaccessible | 2026-08-07 attempted | Prior observed Mario Zechner MIT text; no upstream commit or body hash was preserved. Current identity unavailable. | Unassessable | G7 | Does not close PRIME’s fork base, inherited-file map, or notice provenance. |
-| Current `earendil-works/pi` license comparison | https://raw.githubusercontent.com/earendil-works/pi/main/LICENSE | 2026-08-06 | Same mutable branch path; inaccessible | 2026-08-07 attempted | Prior observed Mario Zechner MIT text; no upstream commit or body hash was preserved. Current identity unavailable. | Unassessable | G7 | Does not close fork provenance or release-package notice preservation. |
+Exact public npm lookups returning HTTP 404 on `2026-08-07`:
 
-## Mutable legal, service, and privacy ledger
+- `https://registry.npmjs.org/@earendil-works%2fpi-coding-agent/0.7.0`
+- `https://registry.npmjs.org/@earendil-works%2fpi-ai/0.7.0`
+- `https://registry.npmjs.org/@earendil-works%2fpi-agent-core/0.7.0`
+- `https://registry.npmjs.org/@earendil-works%2fpi-tui/0.7.0`
 
-No current legal page was opened. The summaries below preserve the prior finding’s decision-bearing facts; they are not current legal conclusions.
+## Stable release asset identities
 
-| Claim | Prior source | Prior retrieval | Current source | Current retrieval | Preserved prior/current identity | Drift | Controlling downstream task | Impact |
-|---|---|---:|---|---:|---|---|---|---|
-| npm registry access terms | https://docs.npmjs.com/policies/open-source-terms | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior page said last updated `2022-03-10`; commercial/public API acquisition allowed while package rights remain publisher-controlled. No prior hash; current effective date/hash unavailable. | Unassessable | G7 | Registry-service compatibility and automation terms must be refreshed before closure. |
-| Prime Intellect service terms | https://www.primeintellect.ai/terms-of-service | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior displayed update `2024-02-23`; preserved concerns included personal-use language, automation restrictions, commercial-use ambiguity, export/territory restrictions, and incorporated third-party terms. Current effective date/hash unavailable. | Unassessable | G2, G7 | Prime-hosted execution remains blocked; changed terms cannot be excluded. |
-| Prime Intellect privacy policy | https://www.primeintellect.ai/privacy-policy | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior displayed update `2024-02-23`; permitted service/R&D analytics, provider/marketing sharing, international processing, and non-numeric retention. Current effective date/hash unavailable. | Unassessable | G7 | Data use, subprocessors, retention, deletion, and account-class requirements are not fresh. |
-| OpenAI business/API terms | https://openai.com/policies/business-terms/ | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior effective date `2026-01-01`; preserved facts: customer retains input/owns output and no training without explicit agreement, subject to incorporated policies and account/model restrictions. Current identity unavailable. | Unassessable | G7, G15, G18 | Cannot select or budget an OpenAI path from stale terms. |
-| Anthropic commercial terms | https://www.anthropic.com/legal/commercial-terms | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior page exposed no revision date; preserved facts: customer retains inputs/owns outputs and Anthropic stated it may not train on customer content. No prior or current hash. | Unassessable | G7, G15, G18 | Effective/current terms and account/model-specific additions remain unbound. |
-| GitHub/Copilot terms | https://docs.github.com/en/site-policy/github-terms/github-terms-of-service | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior effective date `2026-04-27`; preserved facts included account-dependent AI training controls, output similarity/licensing risk, automation rules, and trade controls. Current identity unavailable. | Unassessable | G7 | Copilot/OAuth path cannot be approved from stale terms. |
-| Linear service terms | https://linear.app/terms | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior effective date `2026-06-09`; preserved facts: internal business use, API limits, sanctions restrictions, and normally 30-day post-termination deletion. Current identity unavailable. | Unassessable | G7 | Optional MCP path must remain disabled unless refreshed and selected. |
-| Notion MCP/service terms | No primary legal object was bound in P3 | 2026-08-06 gap | No current primary source could be discovered or opened | 2026-08-07 attempted | No prior or current content identity | Unassessable | G2, G7 | Notion MCP must remain disabled; it cannot be represented as rights-closed. |
-| Arbitrary/custom MCP and provider terms | No finite source set exists until the profile selects exact services | 2026-08-06 gap | Not applicable until G2 selects one bounded profile | 2026-08-07 | No content identity | Open frontier, not unchanged | G2, G7 | G2 must disable these edges by construction or name exact sources for G7. |
+The mutable stable release record currently advertises:
 
-## Mutable platform documentation and issue ledger
+| Asset | Asset ID | Size | Advertised SHA-256 |
+|---|---:|---:|---|
+| `latest.json` | `502961048` | 820 | `65af98a9541d109df58679bf8ecab633f8744b4ccb6fea8308d15cb33540bac0` |
+| `prime-agent-0.7.0.tgz` | `502961047` | 9,323,789 | `88b6578518c72cd51a825bc80f28e0fef9a64c67de4a7d6fd7afd7ca1b34da0b` |
+| `prime-agent-ai-0.7.0.tgz` | `502961049` | 533,591 | `7cdbb3e835f48dd103325f7a351ce540b27af4d161aeb9c7b9bdcc12fe7909af` |
+| `prime-agent-core-0.7.0.tgz` | `502961050` | 62,815 | `0313373089831d9a2ce06e874fab8b9c05762c0094ff9fc202908cf7db7f99cd` |
+| `prime-agent-tui-0.7.0.tgz` | `502961057` | 444,299 | `3225f7f92e87db80fe2c9005d1f7770735ae625c32935ef2283688fc9bd33951` |
+| `SHA256SUMS` | `502961051` | 364 | `424d629dc97dfe07a7fc5806c2698bf7eb1d1d49e249159792073aad83a5abd7` |
+| `stable` | `502961058` | 7 | `22d24eb4aeab009537ebbd099e54562d35ce546add330e4cdecd28ede260c83c` |
 
-| Claim | Prior source | Prior retrieval | Current source | Current retrieval | Preserved prior/current identity | Drift | Controlling downstream task | Impact |
-|---|---|---:|---|---:|---|---|---|---|
-| Windows managed-kernel failure reported on `0.7.0` | https://github.com/PrimeIntellect-ai/prime-agent/issues/660 | 2026-08-06 | Same issue; inaccessible | 2026-08-07 attempted | Prior: created `2026-08-06T00:04:53Z`; Windows 11 Pro, Node `22.14.0`, npm `10.9.2`, uv `0.12.2`, Python `3.13.9`; commit omitted. Current issue state, edits, comments, labels, `updated_at`, and body hash unavailable. | Unassessable | G2, G14 | Prior issue only corroborates immutable source analysis; current resolution/workaround status is unknown. |
-| Adjacent Windows installer issue | https://github.com/PrimeIntellect-ai/prime-agent/issues/665 | 2026-08-06 | Same issue; inaccessible | 2026-08-07 attempted | Prior: created `2026-08-06T00:21:11Z`; stated a different commit `c98941a2`. Current issue identity unavailable. | Unassessable | G2 | Must remain non-baseline context; closure or edits cannot be assessed. |
-| Hosted-training placement/prerequisites | https://docs.primeintellect.ai/hosted-training/getting-started.md | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior mutable page said hosted training could launch from a CPU machine with no local GPU; no prior revision/hash. Current identity unavailable. | Unassessable | G2, G7 | Optional hosted training cannot enter the minimal profile on current evidence. |
-| Self-managed `prime-rl` GPU context | https://docs.primeintellect.ai/prime-rl/overview.md | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior page listed NVIDIA RTX 3090/4090/5090, A100/H100/H200/B200 as adjacent current context, not baseline support. Current identity unavailable. | Unassessable | G2 | Must remain disabled and cannot establish baseline GPU support. |
-| Dynamic GPU availability documentation | https://docs.primeintellect.ai/cli-reference/check-gpu-availability.md | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior page showed an `H100_80GB` example and a dynamic two-H100 configuration; no revision/hash. Current identity unavailable. | Unassessable | G2, G15, G18 | No current availability, region, stock, or rate can be used. |
-| WSL2 support status | No exact-baseline source, issue, or official document named WSL2 | 2026-08-06 gap | Current repository issues/docs search unavailable | 2026-08-07 attempted | No current search result ledger or source identity | Unassessable | G2, G14 | WSL2 remains unknown; it cannot be selected without later measured qualification. |
-| Core Docker support status | Immutable tree showed no Dockerfile, Compose, OCI manifest, image digest, or core launcher | 2026-08-06 | Mutable current docs/issues search unavailable; immutable baseline remains controlling | 2026-08-07 attempted | Baseline absence is pinned to tree `0625a8...`; current product documentation identity unavailable | Baseline result cannot drift; current-product context unassessable | G2, G14 | Core baseline still supplies no Docker path; no newer documentation may be imported automatically. |
+These are server-advertised identities only. G4 must independently hash the acquired bytes and reject any mismatch against both the pinned manifest and the acquired `SHA256SUMS`.
 
-## Mutable pricing ledger
+## Required reconciliation before another G0 pass
 
-All prices below are prior observations used only as arithmetic comparators. None is current enough for a user approval ceiling.
+1. Preserve `v0.7.0` commit/tree as the sole authorized baseline.
+2. Record release ID `355959266` and commit `b9a4461…` as explicitly excluded beta-channel drift.
+3. Update the planned G4 source manifest to include stable asset IDs, URLs, sizes, and advertised SHA-256 values, while retaining independent byte hashing as the actual gate.
+4. Update G9’s pricing inputs to require a newly selected exact model profile; remove reliance on P8’s GPT-5.2 and Claude 4.x examples as current quotes.
+5. Preserve the stricter Node `>=22.8.0` floor and the separation between native-Windows evidence and unproved WSL2 behavior.
+6. Keep Notion disabled and retain the unresolved upstream-base and launch-revision bindings as open gates.
+7. Rerun G0 after the plan and evidence inventory have been reconciled; do not dispatch G1 against the stale manifests.
 
-| Claim | Prior source | Prior retrieval | Current source | Current retrieval | Preserved prior/current identity | Drift | Controlling downstream task | Impact |
-|---|---|---:|---|---:|---|---|---|---|
-| Prime Inference billing model | https://docs.primeintellect.ai/inference/overview | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior: token billing/account balance; public model prices deferred to an authenticated models API. No public unit rate or page hash. | Unassessable | G2, G15, G18 | No Prime Inference dollar ceiling can be displayed. |
-| OpenAI `gpt-5.6-sol` comparator | https://developers.openai.com/api/docs/models/gpt-5.6-sol | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior: `$5/M` input, `$30/M` output, `$0.50/M` cached input; long-context multipliers and Tier-1 limits were recorded. Current price/effective date/hash unavailable. | Unassessable | G15, G18 | Prior arithmetic cannot authorize paid calls. |
-| Hosted-evaluation billing and timeout | https://docs.primeintellect.ai/tutorials-environments/hosted-evaluations | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior: Prime Inference mode did not separately bill sandbox runtime; custom endpoint mode added sandbox and external-token costs; timeout range `120–1440` minutes, default `1440`. Current identity unavailable. | Unassessable | G2, G7 | Optional hosted evaluation must remain disabled. |
-| Hosted-training model rates | https://docs.primeintellect.ai/hosted-training/models-and-pricing | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior example `Qwen3.5-35B-A3B`: `$0.25/M` input, `$0.75/M` output, `$1.00/M` training tokens. Current model/rate list unavailable. | Unassessable | G2, G7 | Optional hosted training must remain disabled and unpriced. |
-| Remote GPU example rate | https://docs.primeintellect.ai/cli-reference/check-gpu-availability | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior example: two H100 80GB GPUs at `$5.40/config-hour`, `$0.09/config-minute`, `$0.045/GPU-minute`. Current stock/rate/region identity unavailable. | Unassessable | G15, G18 | Cannot support an approval ceiling or availability assumption. |
-| Network-disk rates | https://docs.primeintellect.ai/cli-reference/managing-disks | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior displayed `$0.00007000–0.00011546/GB-hour`, equivalent to `$0.05110–0.0842858/GB-month` at 730 hours. Current identity unavailable. | Unassessable | G2, G15 | No current storage ceiling; optional remote disk remains out of profile. |
-| Prime sandbox rates and limits | https://docs.primeintellect.ai/sandboxes/overview | 2026-08-06 | Same page; inaccessible | 2026-08-07 attempted | Prior: `$0.05/core-hour + $0.01/GB-RAM-hour + $0.001/GB-disk-hour`; default 1 core, 2 GB RAM, 10 GB disk = `$0.08/hour`; timeout 1–1440 minutes, default 60. Current identity unavailable. | Unassessable | G2, G7 | Optional remote Docker sandbox cannot be selected or priced. |
+## RED-proof fixtures
 
-## Drift judgment
+Each ledger record must contain:
 
-1. The authorized commit and tree remain immutable identifiers. They are not replaced by a tag, release page, branch, or newer version.
-2. No mutable source was successfully retrieved on 2026-08-07.
-3. Current tag targets, release assets, newly published releases, registry metadata, issues, platform documentation, legal text, service/privacy terms, and pricing are therefore unknown.
-4. No unavailable source is classified as unchanged.
-5. No baseline switch, compatibility redesign, provider selection, service selection, or legal/license conclusion is made.
-6. P2 and P3 remain blocked; P5 remains not source-satisfied; P7 remains insufficiently evidenced. This ledger supplies no new evidence capable of relaxing those findings.
-7. The current public-byte total, selected-provider rate, exact call/token ceiling, and final dollar ceiling required by later approval checkpoints cannot be stated.
+`claim_id`, `prior_retrieved_at`, `current_retrieved_at`, `prior_identity`, `current_identity`, `prior_value`, `current_value`, `drift`, `downstream_control`, and `impact`.
 
-## RED-proof review fixtures
+### Fixture A — missing date and identity
 
-Review must reject each of the following fixtures:
+```yaml
+claim_id: legal-notion-mcp
+prior_retrieved_at: 2026-08-06
+current_retrieved_at:
+prior_identity: prior Notion MCP terms URL
+current_identity:
+drift: NONE
+```
 
-| Fixture | Required failure |
-|---|---|
-| A mutable row omits either its 2026-08-06 prior retrieval date or 2026-08-07 current retrieval attempt | `missing retrieval date` |
-| A mutable row says “unchanged” without a current response identity such as a body hash, immutable revision, `ETag` plus preserved body, or API `updated_at` plus preserved content | `missing current content identity` |
-| A release/tag/API object changes target, asset digest, `updated_at`, effective date, or body hash but is labeled no drift | `drift mislabeled` |
-| An inaccessible page is copied forward as current evidence | `unavailable source treated as current` |
-| The release-list discovery check is absent, so a newly published PRIME version could be missed | `new-release check absent` |
-| A page hash is supplied without retaining the quoted decision-bearing fact or effective metadata it identifies | `identity lacks reviewable content` |
-| A SHA-pinned source is described as mutable merely because its branch, tag, or hosting page changed | `immutable and mutable identities conflated` |
-| A mutable tag or release object is allowed to replace the authorized commit | `unauthorized baseline substitution` |
+**Expected result:** fail with missing `current_retrieved_at` and `current_identity`; the record cannot support a freshness decision.
 
-The actual ledger intentionally does not pass the positive freshness gate: mutable rows lack current source bodies and current content identities because retrieval was unavailable. Treating this report as positive freshness would itself trigger the fixtures above.
+### Fixture B — falsely labeled no drift
 
-## Gate consequence
+```yaml
+claim_id: provider-price-profile
+prior_retrieved_at: 2026-08-06
+current_retrieved_at: 2026-08-07
+prior_identity: OpenAI GPT-5.2 pricing example
+current_identity: OpenAI GPT-5.6 Sol pricing table
+prior_value: input=1.75,cached_input=0.175,output=14.00
+current_value: input=5.00,cached_input=0.50,cache_write=6.25,output=30.00
+drift: NONE
+```
 
-G1 may not proceed. The plan permits G1 only after G0 positively establishes freshness; this report cannot do so. The next permissible action is a new G0 retrieval using public read-only web access, preserving current bodies or hashes and comparing every row before any host probe is dispatched.
+**Expected result:** fail because normalized model identity and rate fields differ. A no-drift classification must be impossible when any decision-bearing identity or value changes.
 
-SOURCE UNAVAILABLE
+**Verdict:** `DRIFT REQUIRES REPLAN`
+
+**G1 may proceed:** No.
