@@ -1,8 +1,8 @@
 # PRIME Agent option 2 evidence-freshness ledger
 
-**Refresh date:** 2026-08-07  
-**Authorized baseline:** PRIME Agent `v0.7.0`, commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`, tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`  
-**Prior retrieval date:** 2026-08-06 unless a row states otherwise  
+**Refresh date:** 2026-08-07
+**Authorized baseline:** PRIME Agent `v0.7.0`, commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`, tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`
+**Prior retrieval date:** 2026-08-06 unless a row states otherwise
 **Scope:** G0 public read-only freshness review only; no bytes, accounts, credentials, host probes, setup, execution, or baseline change
 
 ## Retrieval result
