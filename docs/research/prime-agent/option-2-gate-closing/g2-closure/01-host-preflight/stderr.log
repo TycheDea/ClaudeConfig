@@ -1,0 +1,16 @@
+powershell.exe ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-Command', "$ErrorActionPreference='Stop'; Get-VMFirmware -VMName 'VordarPrimeOption2' -ErrorAction Stop | ConvertTo-Json -Compress -Depth 8"]: Get-VMFirmware : No dispone del permiso necesario para completar esta tarea. P�ngase en contacto con el administrador
+de la directiva de autorizaci�n del equipo 'PEEPO'.
+En l�nea: 1 Car�cter: 32
++ ... nce='Stop'; Get-VMFirmware -VMName 'VordarPrimeOption2' -ErrorAction  ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-VMFirmware], VirtualizationException
+    + FullyQualifiedErrorId : Unspecified,Microsoft.HyperV.PowerShell.Commands.GetVMFirmware
+
+
+powershell.exe ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-Command', "$ErrorActionPreference='Stop'; [pscustomobject]@{vms=@(Get-VM -ErrorAction Stop | Select-Object Name,Id,State);switches=@(Get-VMSwitch -ErrorAction Stop | Select-Object Name,Id,SwitchType);adapters=@(Get-VMNetworkAdapter -VMName * -ErrorAction Stop | Select-Object VMName,MacAddress,Name,SwitchName)} | ConvertTo-Json -Compress -Depth 8"]: Get-VM : No dispone del permiso necesario para completar esta tarea. P�ngase en contacto con el administrador de la
+directiva de autorizaci�n del equipo 'PEEPO'.
+En l�nea: 1 Car�cter: 56
++ ... ence='Stop'; [pscustomobject]@{vms=@(Get-VM -ErrorAction Stop | Selec ...
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Get-VM], VirtualizationException
+    + FullyQualifiedErrorId : Unspecified,Microsoft.HyperV.PowerShell.Commands.GetVM

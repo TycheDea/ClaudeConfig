@@ -1,0 +1,1155 @@
+[
+  {
+    "arguments": [
+      "-C",
+      "C:\\Users\\egm_8\\IdeaProjects\\vordar",
+      "rev-parse",
+      "HEAD"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:06.816817Z",
+    "executable": "git",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:06.798874Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 41,
+      "sha256": "d7e985179e50359a1db18f1f8081aa06d170caa8517122fde8efccdacc3290a3"
+    }
+  },
+  {
+    "arguments": [
+      "-C",
+      "C:\\Users\\egm_8\\IdeaProjects\\vordar",
+      "status",
+      "--porcelain=v1",
+      "-z",
+      "--untracked-files=all"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:06.844231Z",
+    "executable": "git",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:06.816872Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 725,
+      "sha256": "11a8534c17b59d57e4e50a717959663646bcc20117154cca361c429c1eaff9aa"
+    }
+  },
+  {
+    "arguments": [
+      "-C",
+      "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude",
+      "rev-parse",
+      "HEAD"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:06.861773Z",
+    "executable": "git",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:06.844292Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 41,
+      "sha256": "97f7a6e58b58c951af2a5a136241fe8a63fa1a4d9529c71da3bf28069fb4bdd3"
+    }
+  },
+  {
+    "arguments": [
+      "-C",
+      "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude",
+      "status",
+      "--porcelain=v1",
+      "-z",
+      "--untracked-files=all"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:06.884461Z",
+    "executable": "git",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:06.861812Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 1028,
+      "sha256": "d707c3a30678eddebd14e13319f5ff096953491ab7fd563240b102ab8b12052b"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; [pscustomobject]@{Path=(Get-Command powershell.exe -ErrorAction Stop).Source;Version=$PSVersionTable.PSVersion.ToString();Edition=$PSEdition;LanguageMode=$ExecutionContext.SessionState.LanguageMode.ToString();Elevated=([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)} | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:07.107058Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:06.884501Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 169,
+      "sha256": "0f41fefba242199ceac7eab618a5731bff15f8cc1391c45bf89f37f49c67e29c"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VM' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VM';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VM';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:07.387231Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:07.107124Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 424,
+      "sha256": "8d0d916d56b70138d3bb391793699d51ed5c230793e046d2f10814625f73c8ee"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'New-VM' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='New-VM';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='New-VM';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:07.665081Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:07.387661Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 641,
+      "sha256": "b3e8e756661ed0df7211265e73b9e8d3f5a359f1874a99d8b39ae8d5cab50688"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Remove-VM' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Remove-VM';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Remove-VM';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:07.946595Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:07.665413Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 457,
+      "sha256": "88ab12f4fe1495f7f34baba3eafc093fef2c3c34de2f4a6059f46fba09b92559"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'New-VHD' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='New-VHD';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='New-VHD';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:08.223272Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:07.946925Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 616,
+      "sha256": "6c6cb81cf90dc8760da53e8f372f258e24bc1c3f25936dbf2ec18f1a8a61a514"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Set-VM' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Set-VM';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Set-VM';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:08.519230Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:08.223630Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 1009,
+      "sha256": "81fe7ede291153429b747aaf8e75a864e0b954aef6cc4ae93ac85a3847535ba3"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Set-VMMemory' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Set-VMMemory';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Set-VMMemory';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:08.797697Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:08.519528Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 672,
+      "sha256": "4defa7945b5b3574df3881b4601eabf1b7aa4c78d84ead096f499c5045f6e767"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Set-VMProcessor' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Set-VMProcessor';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Set-VMProcessor';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:09.064549Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:08.798019Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 920,
+      "sha256": "6de67ae280ad5ec0f3a923f4c8d1c7a5b0bd6a2cf62b5fb3d6c0bb6b4f45204f"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VMFirmware' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VMFirmware';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VMFirmware';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:09.335138Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:09.064880Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 431,
+      "sha256": "524f21e405eca06f62a3658a4b7d8ff626eb5c5915c317fc0e9221fef60d3b8f"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Set-VMFirmware' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Set-VMFirmware';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Set-VMFirmware';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:09.614095Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:09.335410Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 623,
+      "sha256": "22b0ffeec32636ac915f8e2bd5f8f148ee62b10158aef025c03d96d47f665962"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Add-VMDvdDrive' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Add-VMDvdDrive';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Add-VMDvdDrive';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:09.889969Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:09.614486Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 557,
+      "sha256": "0398f6a1d8e2555f6e29c46710593ec17d0c0f8e1770af61ca0ebbbb08332dad"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Remove-VMDvdDrive' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Remove-VMDvdDrive';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Remove-VMDvdDrive';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:10.159271Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:09.890425Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 499,
+      "sha256": "c581ffd094f5bbeeb1ed80f4d9bbed5ad34a6694e5ae33f5384ac9d52a56ee00"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VMDvdDrive' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VMDvdDrive';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VMDvdDrive';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:10.425776Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:10.159572Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 491,
+      "sha256": "223a772b6935ed2b063a3dab7e47665e1a6133ab3df2931824bfb14e1d26123c"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Add-VMHardDiskDrive' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Add-VMHardDiskDrive';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Add-VMHardDiskDrive';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:10.700123Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:10.426104Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 704,
+      "sha256": "3dc6b278e8b4a4de31145c3bdd27b056b7c5b0c52123124c698b488cde650813"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VMHardDiskDrive' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VMHardDiskDrive';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VMHardDiskDrive';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:10.971659Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:10.700436Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 513,
+      "sha256": "3f92756a2193743a8e7769b472c6daabc05b523e549b5b0cf0591013bea5134d"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VMNetworkAdapter' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VMNetworkAdapter';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VMNetworkAdapter';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:11.240284Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:10.972135Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 489,
+      "sha256": "084c1e4d7cf75d2f7b015220601c74e767a7d7e9b3a16c584b14ffb135af6cb0"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Set-VMNetworkAdapter' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Set-VMNetworkAdapter';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Set-VMNetworkAdapter';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:11.515801Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:11.240592Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 1352,
+      "sha256": "1b4aab91ca71e471ffb563d3a8fad1abf981058898a79c7b50555f19f2362b06"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Connect-VMNetworkAdapter' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Connect-VMNetworkAdapter';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Connect-VMNetworkAdapter';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:11.790905Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:11.516174Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 528,
+      "sha256": "57e2ca429fe81eb07b1a51878769a4adfecf47056d439773f2a721d5f1db9583"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Disconnect-VMNetworkAdapter' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Disconnect-VMNetworkAdapter';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Disconnect-VMNetworkAdapter';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:12.068585Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:11.791338Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 482,
+      "sha256": "8f296085acdb1840aac29e97e1739503a538376a807e63af8beb4a4c6613a2a4"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VMSwitch' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VMSwitch';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VMSwitch';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:12.343189Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:12.069083Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 446,
+      "sha256": "efaa4b3390626d9dd4981c0d9424b963f5668832c79e51cd9a1ae3fb67cd0c3c"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'New-VMSwitch' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='New-VMSwitch';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='New-VMSwitch';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:12.626090Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:12.343490Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 624,
+      "sha256": "94cd26de995cb54e505c581526291b23f69c1a1b108d9063feaea4d268eaa403"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Remove-VMSwitch' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Remove-VMSwitch';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Remove-VMSwitch';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:12.893263Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:12.626393Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 469,
+      "sha256": "6cc9c42633c670f7514d6b7d607a9230ee41d7e9bfbf4eaf2652f8b44060f3c6"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-VMIntegrationService' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-VMIntegrationService';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-VMIntegrationService';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:13.169098Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:12.893807Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 448,
+      "sha256": "972a18a3ba1e9794600c0dc6ca5f5ad7f731354cd591831c184e3caf02b475d5"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Disable-VMIntegrationService' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Disable-VMIntegrationService';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Disable-VMIntegrationService';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:13.437423Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:13.169405Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 492,
+      "sha256": "404f1fd2592cd1c7fba58ae5b1db9400acdda4729a1614d0e65ed221f243ab2e"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Start-VM' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Start-VM';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Start-VM';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:13.705968Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:13.437879Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 448,
+      "sha256": "d2e57c8adcba64b3f9b0277db4d16dcac8dd92210df427fdb45b3d0c2ba589ea"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Stop-VM' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Stop-VM';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Stop-VM';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:13.973533Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:13.706282Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 472,
+      "sha256": "37f11f03c4449bc4316e2ad409e82ae2d188cda58472cb8bc8ab8ed065a8a164"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-NetIPAddress' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-NetIPAddress';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-NetIPAddress';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:14.447725Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:13.973921Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 639,
+      "sha256": "1fbf7c0e4eff3d8e5ece292ec31650e2f24738266a38102d7c9a2959ea6e5405"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'New-NetIPAddress' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='New-NetIPAddress';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='New-NetIPAddress';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:14.921538Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:14.448215Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 581,
+      "sha256": "4386adc4686dc4916bb43208be55d4f4dca3442cee6071af1dced46544ce7875"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Remove-NetIPAddress' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Remove-NetIPAddress';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Remove-NetIPAddress';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:15.390361Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:14.921821Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 679,
+      "sha256": "4e69e10f0ed97d6eb93d158136508f8d125bcf9ff8ab0b22dfde8cb7ef402ae3"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-NetRoute' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-NetRoute';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-NetRoute';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:15.859355Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:15.390692Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 648,
+      "sha256": "a3c0664945843a2479b775634a36ec9f96bd56d737fbcb35b3e197bc6acd62e0"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-DnsClientServerAddress' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-DnsClientServerAddress';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-DnsClientServerAddress';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:16.227678Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:15.859775Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 459,
+      "sha256": "198a91611e42ca982547e2b44484f3835a1be3555e7dfccfc3ad2ea5ab0b43bb"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Get-NetFirewallRule' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Get-NetFirewallRule';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Get-NetFirewallRule';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:16.904644Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:16.228092Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 1022,
+      "sha256": "143b9a7385535b23f7729984985dc545d7966a15b864a655c8b501632a399dc1"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'New-NetFirewallRule' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='New-NetFirewallRule';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='New-NetFirewallRule';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:17.576634Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:16.904945Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 934,
+      "sha256": "1cb5a7a2fe335d18fffa1a5930a2771fae28bdcd85482a712378be09142d245f"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $c=Get-Command -Name 'Remove-NetFirewallRule' -ErrorAction SilentlyContinue; $result=if($null -ne $c){[pscustomobject]@{name='Remove-NetFirewallRule';presence=$true;parameters=@($c.Parameters.Keys|Sort-Object);module=$c.Module.Name;version=$c.Module.Version.ToString();path=$c.Module.Path}}else{[pscustomobject]@{name='Remove-NetFirewallRule';presence=$false;parameters=@();module=$null;version=$null;path=$null;reason='command absent'}}; $result | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:18.261046Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:17.576985Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 1069,
+      "sha256": "0e913cb165e2ca1c5b8ec1ef8f5d5dd810aac9ca52526f3b08ee970a0a11ca8c"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; Get-VMFirmware -VMName 'VordarPrimeOption2' -ErrorAction Stop | ConvertTo-Json -Compress -Depth 8"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:18.658560Z",
+    "executable": "powershell.exe",
+    "exit_code": 1,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:18.261460Z",
+    "stderr": {
+      "bytes": 545,
+      "sha256": "b845ea19a55d3ac370581172a9492a9cf2510b78c799fe1d3747c6cb7506bf9c"
+    },
+    "stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; [pscustomobject]@{vms=@(Get-VM -ErrorAction Stop | Select-Object Name,Id,State);switches=@(Get-VMSwitch -ErrorAction Stop | Select-Object Name,Id,SwitchType);adapters=@(Get-VMNetworkAdapter -VMName * -ErrorAction Stop | Select-Object VMName,MacAddress,Name,SwitchName)} | ConvertTo-Json -Compress -Depth 8"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:19.061190Z",
+    "executable": "powershell.exe",
+    "exit_code": 1,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:18.658673Z",
+    "stderr": {
+      "bytes": 513,
+      "sha256": "b4ac50cc9db3fc57ca8db2f86f3e37b28412b8224b05c8fba002ed6e5b5e6969"
+    },
+    "stdout": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; [pscustomobject]@{addresses=@(Get-NetIPAddress -ErrorAction Stop | Select-Object IPAddress,PrefixLength,InterfaceAlias,AddressFamily,InterfaceIndex,AddressState,PolicyStore);routes=@(Get-NetRoute -ErrorAction Stop | Select-Object DestinationPrefix,NextHop,RouteMetric,InterfaceAlias,InterfaceIndex,AddressFamily,PolicyStore);dns=@(Get-DnsClientServerAddress -ErrorAction Stop | Select-Object InterfaceAlias,InterfaceIndex,AddressFamily,ServerAddresses);firewall=@(Get-NetFirewallRule -ErrorAction Stop | Select-Object Name,DisplayName,InstanceID,Enabled,Direction,Action,Profile,PolicyStoreSourceType)} | ConvertTo-Json -Compress -Depth 12"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.195843Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:19.061275Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 366057,
+      "sha256": "5dcf6beeb5a41cf926b41c817a1c2e131cbbd3b07f76761acd08ee6b8070c293"
+    }
+  },
+  {
+    "arguments": [
+      "--list",
+      "--verbose"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\wsl-list.raw",
+    "end_utc": "2026-08-07T12:50:21.234444Z",
+    "executable": "wsl.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.199644Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 246,
+      "sha256": "c72dc6957bb71f0f7d032525a14a3d6ca9cb3c7307ddceac2cc648d51492b6c0"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; $root=Get-ItemProperty -LiteralPath 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Lxss' -ErrorAction Stop; $records=@(Get-ChildItem -LiteralPath 'HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Lxss' -ErrorAction Stop | Where-Object {$_.PSChildName -match '^\\{[0-9A-Fa-f-]{36}\\}$'} | ForEach-Object {$p=Get-ItemProperty -LiteralPath $_.PSPath -ErrorAction Stop; if($null -ne $p.DistributionName){[pscustomobject]@{guid=$_.PSChildName;name=$p.DistributionName;base_path=$p.BasePath;registry_version=$p.Version}}}); [pscustomobject]@{default_guid=$root.DefaultDistribution;records=$records} | ConvertTo-Json -Compress -Depth 6"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.473564Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.235689Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 448,
+      "sha256": "09dbdfb6a07751c624b5c76928929c8297179ddfd9b63b33bc1786e24c7ea000"
+    }
+  },
+  {
+    "arguments": [
+      "--version"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.491807Z",
+    "executable": "C:\\Program Files\\Git\\usr\\bin\\gpg.EXE",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.474409Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 566,
+      "sha256": "68c6e8778ccac25b9bf77c25c16a4dc883de53299499d1b232e9bfae400729ef"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; Get-AuthenticodeSignature -LiteralPath 'C:\\Program Files\\Git\\usr\\bin\\gpg.EXE' -ErrorAction Stop | Select-Object Status,StatusMessage | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.723443Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.491845Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 365,
+      "sha256": "e703d97878843323b6c3b4153431a5bfe4f5cf960d282a654acfb05c14dc7b30"
+    }
+  },
+  {
+    "arguments": [
+      "--version"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.741821Z",
+    "executable": "C:\\Program Files\\Git\\usr\\bin\\gpgv.EXE",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.725647Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 263,
+      "sha256": "660c05421e1e5fe44a927762301a9aa2a86bc068d17a88b034b9a43d94e4ff79"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; Get-AuthenticodeSignature -LiteralPath 'C:\\Program Files\\Git\\usr\\bin\\gpgv.EXE' -ErrorAction Stop | Select-Object Status,StatusMessage | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.972360Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.741859Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 366,
+      "sha256": "9f5255f2455127c9247dad7723f359bf4882462d38dc7ee4032ccbf29250a30f"
+    }
+  },
+  {
+    "arguments": [
+      "--version"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:21.993199Z",
+    "executable": "C:\\Program Files\\Git\\usr\\bin\\tar.EXE",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.980660Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 313,
+      "sha256": "b112e5578260c103cafae7150e33b8fe1b5d0720a158d88be5ea8f6d9d26f478"
+    }
+  },
+  {
+    "arguments": [
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "Bypass",
+      "-Command",
+      "$ErrorActionPreference='Stop'; Get-AuthenticodeSignature -LiteralPath 'C:\\Program Files\\Git\\usr\\bin\\tar.EXE' -ErrorAction Stop | Select-Object Status,StatusMessage | ConvertTo-Json -Compress"
+    ],
+    "capture_destination": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\g2-closure\\01-host-preflight\\raw.json",
+    "end_utc": "2026-08-07T12:50:22.222281Z",
+    "executable": "powershell.exe",
+    "exit_code": 0,
+    "mutation_expected": false,
+    "start_utc": "2026-08-07T12:50:21.993253Z",
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 365,
+      "sha256": "81c1345ef78170dabad65fc7b7cece9b14f56a54288583009a2ea4b852755345"
+    }
+  }
+]
