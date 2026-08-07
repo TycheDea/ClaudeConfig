@@ -2,7 +2,13 @@
 
 ## Status and retained contract
 
-**Status:** Approved for persistence and Task 1 public research. Current Task 2 remains **BLOCKED**. No acquisition, extraction, execution, or original Task 3 is authorized.
+**Status:** **BLOCKED AT TASK 1 — Tasks 2–8 parked**
+
+Task 1 public research is committed as `90728fd` at `.claude/docs/research/prime-agent/option-2-gate-closing/g2-closure/02-bootstrap-object-manifest/blocker-closure/00-public-research/` and ends `BLOCKED`. The aligned retained member is `etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg`; the discarded draft member was never persisted as selected.
+
+The exact public ledger is: 8 candidate bodies, 6 known sizes, 2 unknown sizes, 8,121,066 known bytes, UNKNOWN complete bytes/storage, 0 eligible bodies, 16 direct dependency declarations, 26 patches, and 10 blockers.
+
+The first causal gap remains no Task-1-approved zstd extraction/member byte-digest-packet closure. Additional endpoint, Ubuntu checksum digest, MSYS2 package/source/build binding, Git-for-Windows provenance, dependency/license, and ceiling gaps remain. No host probe, body acquisition, extraction, execution, credentials, VM/WSL/Docker/GPU, fallback, or original Task 3 occurred. Exact next action: stop. Blocker Tasks 2–8 and original Tasks 3–14 are parked. Any continuation requires a new explicit user decision on a fresh Sol plan; this does not imply host-probe approval.
 
 This is a Sol analysis plan limited to existing Task 1, Task 2, and G2 evidence plus public primary sources. The retained route is limited to the Ubuntu Noble keyring and the Task-1-observed Git-for-Windows `gpgv` 2.4.9 route. No fallback, credentials, host probe until separately approved, global-state change, or change to retained decisions is allowed.
 
