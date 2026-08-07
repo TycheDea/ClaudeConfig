@@ -1,0 +1,4 @@
+schema_red_missing_required_fields: EXPECTED RED (exit 1)
+SCHEMA FAIL: missing required fields: host.windows.build, wsl.state, wsl.external_guest_termination_capability, storage.project_volume.free_bytes, storage.candidate_guest_storage_volume.free_bytes, pi.executable_identity, gpu.host_adapters, gpu.management_visibility, gpu.wsl_guest_visibility
+schema_intact_raw: PASS (exit 0)
+SCHEMA PASS: all required fields present

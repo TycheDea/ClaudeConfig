@@ -1,0 +1,583 @@
+{
+  "schema_version": "g1-host-platform-inventory-v1",
+  "captured_at_utc": "2026-08-07T10:54:21.787566Z",
+  "capture_started_at_utc": "2026-08-07T10:54:13.574745Z",
+  "dependency": {
+    "g0_artifact": ".claude/docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md",
+    "observed_verdict": "FRESH"
+  },
+  "host": {
+    "windows": {
+      "build": {
+        "value": {
+          "product_name": "Windows 10 Pro",
+          "display_version": "25H2",
+          "release_id": "2009",
+          "current_build": "26200",
+          "current_build_number": "26200",
+          "ubr": 8973,
+          "build_lab_ex": "26100.1.amd64fre.ge_release.240331-1435",
+          "version": "10.0.26200",
+          "build_number": "26200",
+          "os_architecture": "64 bits",
+          "caption": "Microsoft Windows 11 Pro"
+        },
+        "source_command_id": "windows_os"
+      },
+      "version": {
+        "value": {
+          "product_name": "Windows 10 Pro",
+          "display_version": "25H2",
+          "release_id": "2009",
+          "current_build": "26200",
+          "current_build_number": "26200",
+          "ubr": 8973,
+          "build_lab_ex": "26100.1.amd64fre.ge_release.240331-1435",
+          "version": "10.0.26200",
+          "build_number": "26200",
+          "os_architecture": "64 bits",
+          "caption": "Microsoft Windows 11 Pro"
+        },
+        "source_command_id": "windows_os"
+      },
+      "architecture": {
+        "value": "64 bits",
+        "source_command_id": "windows_os"
+      }
+    },
+    "cpu": {
+      "architecture": {
+        "value": {
+          "runtime_os_architecture": "X64",
+          "processors": [
+            {
+              "name": "12th Gen Intel(R) Core(TM) i7-12700",
+              "architecture_code": 9,
+              "address_width": 64,
+              "number_of_cores": 12,
+              "number_of_logical_processors": 20
+            }
+          ]
+        },
+        "source_command_id": "cpu_memory"
+      },
+      "logical_cores": {
+        "value": 20,
+        "source_command_id": "cpu_memory"
+      }
+    },
+    "memory": {
+      "total_ram_bytes": {
+        "value": 34134220800,
+        "source_command_id": "cpu_memory"
+      }
+    },
+    "virtualization": {
+      "value": {
+        "hypervisor_present": true,
+        "processors": [
+          {
+            "name": "12th Gen Intel(R) Core(TM) i7-12700",
+            "virtualization_firmware_enabled": false,
+            "vm_monitor_mode_extensions": false,
+            "second_level_address_translation_extensions": false
+          }
+        ]
+      },
+      "source_command_id": "virtualization_capability"
+    },
+    "windows_optional_features": {
+      "value": [
+        {
+          "name": "Microsoft-Windows-Subsystem-Linux",
+          "install_state": 1,
+          "caption": "Subsistema de Windows para Linux"
+        },
+        {
+          "name": "VirtualMachinePlatform",
+          "install_state": 1,
+          "caption": "Plataforma de máquina virtual"
+        },
+        {
+          "name": "HypervisorPlatform",
+          "install_state": 2,
+          "caption": "Plataforma del hipervisor de Windows"
+        },
+        {
+          "name": "Microsoft-Hyper-V-Hypervisor",
+          "install_state": 1,
+          "caption": "Hipervisor Hyper-V"
+        }
+      ],
+      "source_command_id": "windows_virtualization_features"
+    }
+  },
+  "storage": {
+    "project_volume": {
+      "free_bytes": {
+        "value": 181652307968,
+        "source_command_id": "storage_volumes"
+      },
+      "observed": {
+        "value": {
+          "label": "project",
+          "path": "C:\\Users\\egm_8\\IdeaProjects\\vordar",
+          "volume_root": "C:\\",
+          "drive_format": "NTFS",
+          "drive_type": "Fixed",
+          "total_bytes": 999151366144,
+          "free_bytes": 181652307968
+        },
+        "source_command_id": "storage_volumes"
+      }
+    },
+    "candidate_guest_storage_volume": {
+      "free_bytes": {
+        "value": 181652307968,
+        "source_command_id": "storage_volumes"
+      },
+      "observed": {
+        "value": {
+          "label": "windows_local_application_data",
+          "path": "C:\\Users\\egm_8\\AppData\\Local",
+          "volume_root": "C:\\",
+          "drive_format": "NTFS",
+          "drive_type": "Fixed",
+          "total_bytes": 999151366144,
+          "free_bytes": 181652307968
+        },
+        "source_command_id": "storage_volumes"
+      },
+      "basis": "Windows LocalApplicationData volume; no guest platform or target selected."
+    },
+    "registered_distribution_locations": {
+      "value": [
+        {
+          "registration_id": "AppxInstallerCache",
+          "distribution_name": null,
+          "state": null,
+          "version": null,
+          "base_path": null,
+          "flags": null,
+          "default_uid": null,
+          "package_family_name": null
+        },
+        {
+          "registration_id": "{1b4d64c7-4860-4fc8-ad80-360014ff76d3}",
+          "distribution_name": "Ubuntu",
+          "state": 1,
+          "version": 2,
+          "base_path": "C:\\Users\\egm_8\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState",
+          "flags": 15,
+          "default_uid": 1000,
+          "package_family_name": "CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc"
+        },
+        {
+          "registration_id": "{aa1b6640-3bfe-4701-9953-964a5b0c73e7}",
+          "distribution_name": "docker-desktop",
+          "state": 1,
+          "version": 2,
+          "base_path": "\\\\?\\C:\\Users\\egm_8\\AppData\\Local\\Docker\\wsl\\main",
+          "flags": 15,
+          "default_uid": 0,
+          "package_family_name": null
+        }
+      ],
+      "source_command_id": "wsl_registration_registry"
+    }
+  },
+  "wsl": {
+    "state": {
+      "value": {
+        "status_stdout": "Distribución predeterminada: Ubuntu\nVersión predeterminada: 2\n",
+        "status_exit_code": 0,
+        "feature_states": [
+          {
+            "name": "Microsoft-Windows-Subsystem-Linux",
+            "install_state": 1,
+            "caption": "Subsistema de Windows para Linux"
+          },
+          {
+            "name": "VirtualMachinePlatform",
+            "install_state": 1,
+            "caption": "Plataforma de máquina virtual"
+          },
+          {
+            "name": "HypervisorPlatform",
+            "install_state": 2,
+            "caption": "Plataforma del hipervisor de Windows"
+          },
+          {
+            "name": "Microsoft-Hyper-V-Hypervisor",
+            "install_state": 1,
+            "caption": "Hipervisor Hyper-V"
+          }
+        ]
+      },
+      "source_command_id": "wsl_status"
+    },
+    "version": {
+      "value": "Versión de WSL: 2.4.13.0\nVersión de kernel: 5.15.167.4-1\nVersión de WSLg: 1.0.65\nVersión de MSRDC: 1.2.5716\nVersión de Direct3D: 1.611.1-81528511\nVersión DXCore: 10.0.26100.1-240331-1435.ge-release\nVersión de Windows: 10.0.26200.8973\n",
+      "source_command_id": "wsl_version"
+    },
+    "registered_distributions": {
+      "value": [
+        {
+          "name": "Ubuntu",
+          "state": "Stopped",
+          "version": "2",
+          "default": true
+        },
+        {
+          "name": "docker-desktop",
+          "state": "Running",
+          "version": "2",
+          "default": false
+        }
+      ],
+      "source_command_id": "wsl_registered_distributions"
+    },
+    "running_distribution_names": {
+      "value": [
+        "docker-desktop"
+      ],
+      "source_command_id": "wsl_registered_distributions"
+    },
+    "registration_metadata": {
+      "value": {
+        "exists": true,
+        "default_distribution": "{1b4d64c7-4860-4fc8-ad80-360014ff76d3}",
+        "distributions": [
+          {
+            "registration_id": "AppxInstallerCache",
+            "distribution_name": null,
+            "state": null,
+            "version": null,
+            "base_path": null,
+            "flags": null,
+            "default_uid": null,
+            "package_family_name": null
+          },
+          {
+            "registration_id": "{1b4d64c7-4860-4fc8-ad80-360014ff76d3}",
+            "distribution_name": "Ubuntu",
+            "state": 1,
+            "version": 2,
+            "base_path": "C:\\Users\\egm_8\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState",
+            "flags": 15,
+            "default_uid": 1000,
+            "package_family_name": "CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc"
+          },
+          {
+            "registration_id": "{aa1b6640-3bfe-4701-9953-964a5b0c73e7}",
+            "distribution_name": "docker-desktop",
+            "state": 1,
+            "version": 2,
+            "base_path": "\\\\?\\C:\\Users\\egm_8\\AppData\\Local\\Docker\\wsl\\main",
+            "flags": 15,
+            "default_uid": 0,
+            "package_family_name": null
+          }
+        ]
+      },
+      "source_command_id": "wsl_registration_registry"
+    },
+    "external_guest_termination_capability": {
+      "value": {
+        "help_exit_code": 4294967295,
+        "wsl_terminate_option_listed": true,
+        "wsl_shutdown_option_listed": true,
+        "commands_not_invoked": [
+          "wsl.exe --terminate <DistributionName>",
+          "wsl.exe --shutdown"
+        ]
+      },
+      "source_command_id": "wsl_external_termination_help"
+    },
+    "filesystem_mount_defaults": {
+      "value": "UNKNOWN",
+      "source_command_id": "wsl_registration_registry",
+      "reason": "Not established without reading guest configuration or entering a distribution; neither was done."
+    },
+    "interop_defaults": {
+      "value": "UNKNOWN",
+      "source_command_id": "wsl_registration_registry",
+      "reason": "Not established without reading guest configuration or entering a distribution; neither was done."
+    },
+    "cgroup_capability": {
+      "value": "UNKNOWN",
+      "source_command_id": "wsl_registered_distributions",
+      "reason": "Not established without entering a distribution; no distribution was entered or started."
+    },
+    "systemd_capability": {
+      "value": "UNKNOWN",
+      "source_command_id": "wsl_registered_distributions",
+      "reason": "Not established without entering a distribution; no distribution was entered or started."
+    }
+  },
+  "gpu": {
+    "host_adapters": {
+      "value": [
+        {
+          "name": "Intel(R) UHD Graphics 770",
+          "adapter_compatibility": "Intel Corporation",
+          "adapter_ram_bytes": 2147479552,
+          "driver_version": "32.0.101.7082",
+          "driver_date": "/Date(1764547200000)/",
+          "video_processor": "Intel(R) UHD Graphics Family",
+          "status": "OK",
+          "pnp_device_id": "PCI\\VEN_8086&DEV_4680&SUBSYS_7D321462&REV_0C\\3&11583659&0&10"
+        },
+        {
+          "name": "NVIDIA GeForce RTX 3080 Ti",
+          "adapter_compatibility": "NVIDIA",
+          "adapter_ram_bytes": 4293918720,
+          "driver_version": "32.0.15.9186",
+          "driver_date": "/Date(1768867200000)/",
+          "video_processor": "NVIDIA GeForce RTX 3080 Ti",
+          "status": "OK",
+          "pnp_device_id": "PCI\\VEN_10DE&DEV_2208&SUBSYS_88021043&REV_A1\\4&1EB8EEAE&0&0008"
+        }
+      ],
+      "source_command_id": "host_graphics_adapters"
+    },
+    "management_visibility": {
+      "value": {
+        "installed": true,
+        "executable": "C:\\Windows\\system32\\nvidia-smi.exe",
+        "query_exit_code": 0,
+        "query_output": [
+          "NVIDIA GeForce RTX 3080 Ti, 591.86, 12288"
+        ]
+      },
+      "source_command_id": "gpu_management_visibility"
+    },
+    "wsl_guest_visibility": {
+      "value": "UNKNOWN",
+      "source_command_id": "wsl_registered_distributions",
+      "reason": "Not obtainable without entering a distribution; no distribution was entered or started."
+    }
+  },
+  "pi": {
+    "installed_version": {
+      "value": "0.80.6",
+      "source_command_id": "pi_version"
+    },
+    "executable_identity": {
+      "value": [
+        {
+          "name": "pi.ps1",
+          "command_type": "ExternalScript",
+          "source": "C:\\Users\\egm_8\\AppData\\Roaming\\npm\\pi.ps1",
+          "path": "C:\\Users\\egm_8\\AppData\\Roaming\\npm\\pi.ps1",
+          "version": null,
+          "sha256": "9F02069EBE672550FE79750ED07B067C18A51877C13DAEAD108B802D01DEFED9"
+        },
+        {
+          "name": "pi.cmd",
+          "command_type": "Application",
+          "source": "C:\\Users\\egm_8\\AppData\\Roaming\\npm\\pi.cmd",
+          "path": "C:\\Users\\egm_8\\AppData\\Roaming\\npm\\pi.cmd",
+          "version": "0.0.0.0",
+          "sha256": "7F4C35FBBBE908301C12E06B9E6B7017C6B9CBCC24C34E26615A08F9F60FA53E"
+        },
+        {
+          "name": "pi",
+          "command_type": "Application",
+          "source": "C:\\Users\\egm_8\\AppData\\Roaming\\npm\\pi",
+          "path": "C:\\Users\\egm_8\\AppData\\Roaming\\npm\\pi",
+          "version": "0.0.0.0",
+          "sha256": "4BC7FA52FD6C8C41CEAE8EB9274ECC9415507917A07F496A2679FC4B713B4291"
+        }
+      ],
+      "source_command_id": "pi_executable_identity"
+    },
+    "process_ids_names_paths_only": {
+      "value": [
+        {
+          "process_id": 13200,
+          "name": "node",
+          "executable_path": "C:\\Program Files\\nodejs\\node.exe"
+        },
+        {
+          "process_id": 31588,
+          "name": "node",
+          "executable_path": "C:\\Program Files\\nodejs\\node.exe"
+        }
+      ],
+      "source_command_id": "pi_process_candidates"
+    },
+    "state_path_names_existence_metadata_only": {
+      "value": [
+        {
+          "label": "user_pi_root",
+          "path": "C:\\Users\\egm_8\\.pi",
+          "exists": true,
+          "metadata": {
+            "name": ".pi",
+            "full_name": "C:\\Users\\egm_8\\.pi",
+            "is_directory": true,
+            "length": 1,
+            "creation_time_utc": "2026-07-11T09:25:14.9436145Z",
+            "last_write_time_utc": "2026-07-11T09:25:14.9446145Z",
+            "attributes": "Directory"
+          },
+          "children": [
+            {
+              "name": "agent",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-07-11T09:25:14.9446145Z",
+              "last_write_time_utc": "2026-08-07T10:53:18.7464081Z",
+              "attributes": "Directory"
+            }
+          ]
+        },
+        {
+          "label": "user_pi_agent",
+          "path": "C:\\Users\\egm_8\\.pi\\agent",
+          "exists": true,
+          "metadata": {
+            "name": "agent",
+            "full_name": "C:\\Users\\egm_8\\.pi\\agent",
+            "is_directory": true,
+            "length": 1,
+            "creation_time_utc": "2026-07-11T09:25:14.9446145Z",
+            "last_write_time_utc": "2026-08-07T10:54:21.3021891Z",
+            "attributes": "Directory"
+          },
+          "children": [
+            {
+              "name": "agents",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\agents",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-07-11T10:04:26.7993843Z",
+              "last_write_time_utc": "2026-07-11T10:07:29.1868962Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "bin",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\bin",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-07-11T09:25:15.2939135Z",
+              "last_write_time_utc": "2026-07-11T09:25:15.8480705Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "npm",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\npm",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-07-11T10:01:10.5594125Z",
+              "last_write_time_utc": "2026-07-11T10:01:11.7891357Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "sessions",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\sessions",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-07-11T09:25:14.9446145Z",
+              "last_write_time_utc": "2026-07-27T18:55:18.1053381Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "auth.json",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\auth.json",
+              "is_directory": false,
+              "length": 2525,
+              "creation_time_utc": "2026-07-11T09:25:14.9481195Z",
+              "last_write_time_utc": "2026-08-06T14:23:31.5611974Z",
+              "attributes": "Archive"
+            },
+            {
+              "name": "settings.json",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\settings.json",
+              "is_directory": false,
+              "length": 336,
+              "creation_time_utc": "2026-07-11T09:25:14.9894305Z",
+              "last_write_time_utc": "2026-08-06T16:02:53.8160871Z",
+              "attributes": "Archive"
+            },
+            {
+              "name": "trust.json",
+              "full_name": "C:\\Users\\egm_8\\.pi\\agent\\trust.json",
+              "is_directory": false,
+              "length": 53,
+              "creation_time_utc": "2026-08-06T16:19:07.3261167Z",
+              "last_write_time_utc": "2026-08-06T16:19:07.3261167Z",
+              "attributes": "Archive"
+            }
+          ]
+        },
+        {
+          "label": "project_pi_root",
+          "path": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.pi",
+          "exists": true,
+          "metadata": {
+            "name": ".pi",
+            "full_name": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.pi",
+            "is_directory": true,
+            "length": 1,
+            "creation_time_utc": "2026-08-06T15:36:12.2986282Z",
+            "last_write_time_utc": "2026-08-06T15:36:12.2986282Z",
+            "attributes": "Directory, ReparsePoint"
+          },
+          "children": [
+            {
+              "name": "agents",
+              "full_name": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.pi\\agents",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-08-06T15:05:25.6752880Z",
+              "last_write_time_utc": "2026-08-06T15:05:25.6772912Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "extensions",
+              "full_name": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.pi\\extensions",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-08-06T14:59:06.9876563Z",
+              "last_write_time_utc": "2026-08-06T14:59:06.9876563Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "skills",
+              "full_name": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.pi\\skills",
+              "is_directory": true,
+              "length": 1,
+              "creation_time_utc": "2026-08-06T15:06:48.4308758Z",
+              "last_write_time_utc": "2026-08-06T15:06:48.4318756Z",
+              "attributes": "Directory"
+            },
+            {
+              "name": "settings.json",
+              "full_name": "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.pi\\settings.json",
+              "is_directory": false,
+              "length": 251,
+              "creation_time_utc": "2026-08-06T15:04:52.6558963Z",
+              "last_write_time_utc": "2026-08-06T15:35:54.0756689Z",
+              "attributes": "Archive"
+            }
+          ]
+        }
+      ],
+      "source_command_id": "pi_state_path_metadata"
+    },
+    "state_file_contents_accessed": false,
+    "process_command_lines_accessed": false
+  },
+  "capture_constraints": {
+    "environment_variable_values_captured": false,
+    "distribution_entered_or_started": false,
+    "termination_command_invoked": false,
+    "configuration_changed": false,
+    "gpu_workload_run": false,
+    "prime_or_docker_workload_run": false,
+    "recommendation_or_target_selection_made": false
+  }
+}

@@ -1,0 +1,311 @@
+{
+  "schema_version": "g1-command-transcript-v1",
+  "generated_at_utc": "2026-08-07T10:54:21.875242Z",
+  "working_directory": "C:\\Users\\egm_8\\IdeaProjects\\vordar",
+  "environment_variable_values_captured": false,
+  "commands": [
+    {
+      "id": "windows_os",
+      "purpose": "Read Windows build, version, and architecture from the CurrentVersion registry key and Win32_OperatingSystem.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$cv=Get-ItemProperty -LiteralPath 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion';$os=Get-CimInstance -ClassName Win32_OperatingSystem;[pscustomobject]@{product_name=$cv.ProductName;display_version=$cv.DisplayVersion;release_id=$cv.ReleaseId;current_build=$cv.CurrentBuild;current_build_number=$cv.CurrentBuildNumber;ubr=$cv.UBR;build_lab_ex=$cv.BuildLabEx;version=$os.Version;build_number=$os.BuildNumber;os_architecture=$os.OSArchitecture;caption=$os.Caption}|ConvertTo-Json -Compress -Depth 5"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$cv=Get-ItemProperty -LiteralPath 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion';$os=Get-CimInstance -ClassName Win32_OperatingSystem;[pscustomobject]@{product_name=$cv.ProductName;display_version=$cv.DisplayVersion;release_id=$cv.ReleaseId;current_build=$cv.CurrentBuild;current_build_number=$cv.CurrentBuildNumber;ubr=$cv.UBR;build_lab_ex=$cv.BuildLabEx;version=$os.Version;build_number=$os.BuildNumber;os_architecture=$os.OSArchitecture;caption=$os.Caption}|ConvertTo-Json -Compress -Depth 5\"",
+      "started_at_utc": "2026-08-07T10:54:13.574760Z",
+      "ended_at_utc": "2026-08-07T10:54:13.957817Z",
+      "exit_code": 0,
+      "stdout": "{\"product_name\":\"Windows 10 Pro\",\"display_version\":\"25H2\",\"release_id\":\"2009\",\"current_build\":\"26200\",\"current_build_number\":\"26200\",\"ubr\":8973,\"build_lab_ex\":\"26100.1.amd64fre.ge_release.240331-1435\",\"version\":\"10.0.26200\",\"build_number\":\"26200\",\"os_architecture\":\"64 bits\",\"caption\":\"Microsoft Windows 11 Pro\"}\n",
+      "stderr": ""
+    },
+    {
+      "id": "cpu_memory",
+      "purpose": "Read CPU architecture/core counts and total physical RAM.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$cs=Get-CimInstance -ClassName Win32_ComputerSystem;$cpus=@(Get-CimInstance -ClassName Win32_Processor|ForEach-Object{[pscustomobject]@{name=$_.Name;architecture_code=$_.Architecture;address_width=$_.AddressWidth;number_of_cores=$_.NumberOfCores;number_of_logical_processors=$_.NumberOfLogicalProcessors}});[pscustomobject]@{runtime_os_architecture=[Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString();computer_system_logical_processors=$cs.NumberOfLogicalProcessors;total_physical_memory_bytes=$cs.TotalPhysicalMemory;processors=$cpus}|ConvertTo-Json -Compress -Depth 6"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$cs=Get-CimInstance -ClassName Win32_ComputerSystem;$cpus=@(Get-CimInstance -ClassName Win32_Processor|ForEach-Object{[pscustomobject]@{name=$_.Name;architecture_code=$_.Architecture;address_width=$_.AddressWidth;number_of_cores=$_.NumberOfCores;number_of_logical_processors=$_.NumberOfLogicalProcessors}});[pscustomobject]@{runtime_os_architecture=[Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString();computer_system_logical_processors=$cs.NumberOfLogicalProcessors;total_physical_memory_bytes=$cs.TotalPhysicalMemory;processors=$cpus}|ConvertTo-Json -Compress -Depth 6\"",
+      "started_at_utc": "2026-08-07T10:54:13.957889Z",
+      "ended_at_utc": "2026-08-07T10:54:15.259648Z",
+      "exit_code": 0,
+      "stdout": "{\"runtime_os_architecture\":\"X64\",\"computer_system_logical_processors\":20,\"total_physical_memory_bytes\":34134220800,\"processors\":[{\"name\":\"12th Gen Intel(R) Core(TM) i7-12700\",\"architecture_code\":9,\"address_width\":64,\"number_of_cores\":12,\"number_of_logical_processors\":20}]}\n",
+      "stderr": ""
+    },
+    {
+      "id": "storage_volumes",
+      "purpose": "Read free bytes for the project volume and the Windows LocalApplicationData volume used as the unselected guest-storage candidate location.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';function Measure-PathVolume([string]$label,[string]$path){$full=[IO.Path]::GetFullPath($path);$root=[IO.Path]::GetPathRoot($full);$drive=[IO.DriveInfo]::new($root);[pscustomobject]@{label=$label;path=$full;volume_root=$root;drive_format=$drive.DriveFormat;drive_type=$drive.DriveType.ToString();total_bytes=$drive.TotalSize;free_bytes=$drive.AvailableFreeSpace}};$project=(Get-Location).Path;$local=[Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData);[pscustomobject]@{project_volume=(Measure-PathVolume 'project' $project);candidate_guest_storage_volume=(Measure-PathVolume 'windows_local_application_data' $local)}|ConvertTo-Json -Compress -Depth 6"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';function Measure-PathVolume([string]$label,[string]$path){$full=[IO.Path]::GetFullPath($path);$root=[IO.Path]::GetPathRoot($full);$drive=[IO.DriveInfo]::new($root);[pscustomobject]@{label=$label;path=$full;volume_root=$root;drive_format=$drive.DriveFormat;drive_type=$drive.DriveType.ToString();total_bytes=$drive.TotalSize;free_bytes=$drive.AvailableFreeSpace}};$project=(Get-Location).Path;$local=[Environment]::GetFolderPath([Environment+SpecialFolder]::LocalApplicationData);[pscustomobject]@{project_volume=(Measure-PathVolume 'project' $project);candidate_guest_storage_volume=(Measure-PathVolume 'windows_local_application_data' $local)}|ConvertTo-Json -Compress -Depth 6\"",
+      "started_at_utc": "2026-08-07T10:54:15.259739Z",
+      "ended_at_utc": "2026-08-07T10:54:15.480012Z",
+      "exit_code": 0,
+      "stdout": "{\"project_volume\":{\"label\":\"project\",\"path\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\",\"volume_root\":\"C:\\\\\",\"drive_format\":\"NTFS\",\"drive_type\":\"Fixed\",\"total_bytes\":999151366144,\"free_bytes\":181652307968},\"candidate_guest_storage_volume\":{\"label\":\"windows_local_application_data\",\"path\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Local\",\"volume_root\":\"C:\\\\\",\"drive_format\":\"NTFS\",\"drive_type\":\"Fixed\",\"total_bytes\":999151366144,\"free_bytes\":181652307968}}\n",
+      "stderr": ""
+    },
+    {
+      "id": "windows_virtualization_features",
+      "purpose": "Read WSL and virtualization optional-feature states without changing them.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$names=@('Microsoft-Windows-Subsystem-Linux','VirtualMachinePlatform','HypervisorPlatform','Microsoft-Hyper-V-Hypervisor');$items=@(foreach($name in $names){$item=Get-CimInstance -ClassName Win32_OptionalFeature -Filter (\"Name='$name'\") -ErrorAction SilentlyContinue;if($null -eq $item){[pscustomobject]@{name=$name;install_state='UNKNOWN';caption=$null}}else{[pscustomobject]@{name=$item.Name;install_state=$item.InstallState;caption=$item.Caption}}});$items|ConvertTo-Json -Compress -Depth 5"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$names=@('Microsoft-Windows-Subsystem-Linux','VirtualMachinePlatform','HypervisorPlatform','Microsoft-Hyper-V-Hypervisor');$items=@(foreach($name in $names){$item=Get-CimInstance -ClassName Win32_OptionalFeature -Filter (\\\"Name='$name'\\\") -ErrorAction SilentlyContinue;if($null -eq $item){[pscustomobject]@{name=$name;install_state='UNKNOWN';caption=$null}}else{[pscustomobject]@{name=$item.Name;install_state=$item.InstallState;caption=$item.Caption}}});$items|ConvertTo-Json -Compress -Depth 5\"",
+      "started_at_utc": "2026-08-07T10:54:15.480084Z",
+      "ended_at_utc": "2026-08-07T10:54:17.107811Z",
+      "exit_code": 0,
+      "stdout": "[{\"name\":\"Microsoft-Windows-Subsystem-Linux\",\"install_state\":1,\"caption\":\"Subsistema de Windows para Linux\"},{\"name\":\"VirtualMachinePlatform\",\"install_state\":1,\"caption\":\"Plataforma de máquina virtual\"},{\"name\":\"HypervisorPlatform\",\"install_state\":2,\"caption\":\"Plataforma del hipervisor de Windows\"},{\"name\":\"Microsoft-Hyper-V-Hypervisor\",\"install_state\":1,\"caption\":\"Hipervisor Hyper-V\"}]\n",
+      "stderr": ""
+    },
+    {
+      "id": "wsl_status",
+      "purpose": "Read WSL status without entering a distribution.",
+      "argv": [
+        "wsl.exe",
+        "--status"
+      ],
+      "command": "wsl.exe --status",
+      "started_at_utc": "2026-08-07T10:54:17.107902Z",
+      "ended_at_utc": "2026-08-07T10:54:17.142361Z",
+      "exit_code": 0,
+      "stdout": "Distribución predeterminada: Ubuntu\nVersión predeterminada: 2\n",
+      "stderr": ""
+    },
+    {
+      "id": "wsl_version",
+      "purpose": "Read WSL component versions without entering a distribution.",
+      "argv": [
+        "wsl.exe",
+        "--version"
+      ],
+      "command": "wsl.exe --version",
+      "started_at_utc": "2026-08-07T10:54:17.142383Z",
+      "ended_at_utc": "2026-08-07T10:54:17.168661Z",
+      "exit_code": 0,
+      "stdout": "Versión de WSL: 2.4.13.0\nVersión de kernel: 5.15.167.4-1\nVersión de WSLg: 1.0.65\nVersión de MSRDC: 1.2.5716\nVersión de Direct3D: 1.611.1-81528511\nVersión DXCore: 10.0.26100.1-240331-1435.ge-release\nVersión de Windows: 10.0.26200.8973\n",
+      "stderr": ""
+    },
+    {
+      "id": "wsl_registered_distributions",
+      "purpose": "List registered distribution names, states, and versions without starting one.",
+      "argv": [
+        "wsl.exe",
+        "--list",
+        "--verbose"
+      ],
+      "command": "wsl.exe --list --verbose",
+      "started_at_utc": "2026-08-07T10:54:17.168683Z",
+      "ended_at_utc": "2026-08-07T10:54:17.199606Z",
+      "exit_code": 0,
+      "stdout": "  NAME              STATE           VERSION\n* Ubuntu            Stopped         2\n  docker-desktop    Running         2\n",
+      "stderr": ""
+    },
+    {
+      "id": "wsl_external_termination_help",
+      "purpose": "Read wsl.exe help to detect externally invocable termination options without invoking them.",
+      "argv": [
+        "wsl.exe",
+        "--help"
+      ],
+      "command": "wsl.exe --help",
+      "started_at_utc": "2026-08-07T10:54:17.199627Z",
+      "ended_at_utc": "2026-08-07T10:54:17.226419Z",
+      "exit_code": 4294967295,
+      "stdout": "Copyright (c) Microsoft Corporation. Todos los derechos reservados.\nPara obtener información de privacidad sobre este producto, visita https://aka.ms/privacy.\n\nUso: wsl.exe [Argumento] [Opciones...] [CommandLine]\n\nArgumentos para ejecutar archivos binarios de Linux:\n\n    Si no se proporciona ninguna línea de comandos, wsl.exe inicia el shell predeterminado.\n\n    --exec, -e <CommandLine>\n        Ejecuta el comando especificado sin usar el shell de Linux predeterminado.\n\n    --shell-type <standard|login|none>\n        Ejecuta el comando especificado con el tipo de shell proporcionado.\n\n    --\n        Pasa la línea de comandos restante tal cual.\n\nOpciones:\n    --cd <Directory>\n        Establece el directorio especificado como el directorio de trabajo actual.\n        Si se usa ~, se usará la ruta de acceso principal del usuario de Linux. Si la ruta de acceso comienza\n        con un carácter /, se interpretará como una ruta de acceso absoluta de Linux.\n        De lo contrario, el valor debe ser una ruta de acceso absoluta de Windows.\n\n    --distribution, -d <DistroName>\n        Ejecuta la distribución especificada.\n\n    --distribution-id <DistroGuid>\n        Ejecuta la distribución especificada.\n\n    --user, -u <UserName>\n        Ejecuta como el usuario especificado.\n\n    --system\n        Inicia un shell para la distribución del sistema.\n\nArgumentos para administrar el Subsistema de Windows para Linux:\n\n    --help\n        Muestra información de uso.\n\n    --debug-shell\n        Abre un shell de depuración WSL2 con fines de diagnóstico.\n\n    --install [Distro] [Options...]\n        Instala una distribución de Subsistema de Windows para Linux.\n        Para obtener una lista de distribuciones válidas, use 'wsl.exe --list --online'.\n\n        Opciones:\n            --enable-wsl1\n                Habilita la compatibilidad con WSL1.\n\n            --from-file <Path>\n                Instala una distribución desde un archivo local.\n\n            --legacy\n                Usa el manifiesto de distribución heredado.\n\n            --location <Location>\n                Establece la ruta de instalación para la distribución.\n\n            --name <Name>\n                Establece el nombre de la distribución.\n\n            --no-distribution\n                Solo se instalan los componentes opcionales necesarios, no se instala una distribución.\n\n            --no-launch, -n\n                No inicia la distribución después de la instalación.\n\n            --version <Version>\n                Especifica la versión que se va a usar para la nueva distribución.\n\n            --web-download\n                Descarga la distribución desde Internet en lugar de la Microsoft Store.\n\n    --manage <Distro> <Options...>\n        Cambia las opciones específicas de distribución.\n\n        Opciones:\n            --move <Location>\n                Mueve la distribución a una nueva ubicación.\n\n            --set-sparse, -s <true|false>\n                Establece el vhdx de la distribución para que sea disperso, lo que permite que el espacio en disco se recupere automáticamente.\n\n            --set-default-user <Username>\n                Establece el usuario predeterminado de la distribución.\n\n    --mount <Disk>\n        Conecta y monta un disco físico o virtual en todas las distribuciones de WSL 2.\n\n        Opciones:\n            --vhd\n                Especifica que <Disk> hace referencia a un disco duro virtual.\n\n            --bare\n                Conecta el disco a WSL2, pero no lo monta.\n\n            --name <Name>\n                Monta el disco con un nombre personalizado para el punto de montaje.\n\n            --type <Type>\n                Sistema de archivos que se va a usar al montar un disco; si no se especifica, el valor predeterminado es ext4.\n\n            --options <Options>\n                Opciones de montaje adicionales.\n\n            --partition <Index>\n                Índice de la partición que se va a montar; si no se especifica, el valor predeterminado es todo el disco.\n\n    --set-default-version <Version>\n        Cambia la versión de instalación predeterminada para las nuevas distribuciones.\n\n    --shutdown\n        Finaliza inmediatamente todas las distribuciones en ejecución y la\n        máquina virtual de utilidad ligera WSL 2.\n\n    --status\n        Muestra el estado del Subsistema de Windows para Linux.\n\n    --unmount [Disk]\n        Desmonta y desasocia un disco de todas las distribuciones de WSL2.\n        Desmonta y desasocia todos los discos si se llama sin argumento.\n\n    --uninstall\n        Desinstala el paquete de Subsistema de Windows para Linux de este equipo.\n\n    --update\n        Actualiza el paquete de Subsistema de Windows para Linux.\n\n        Opciones:\n            --pre-release\n                Descarga una versión preliminar si está disponible.\n\n    --version, -v\n        Muestra información de la versión.\n\nArgumentos para administrar distribuciones en Subsistema de Windows para Linux:\n\n    --export <Distro> <FileName> [Options]\n        Exporta la distribución a un archivo tar.\n        El nombre de archivo puede ser - para stdout.\n\n        Opciones:\n            --format <Format>\n                Especifica el formato de exportación. Valores admitidos: tar, tar.gz, vhd.\n\n    --import <Distro> <InstallLocation> <FileName> [Options]\n        Importa el archivo tar especificado como una nueva distribución.\n        El nombre de archivo puede ser - para stdin.\n\n        Opciones:\n            --version <Version>\n                Especifica la versión que se va a usar para la nueva distribución.\n\n            --vhd\n                Especifica que el archivo proporcionado es un archivo .vhdx, no un archivo tar.\n                Esta operación realiza una copia del archivo .vhdx en la ubicación de instalación especificada.\n\n    --import-in-place <Distro> <FileName>\n        Importa el archivo .vhdx especificado como una nueva distribución.\n        Este disco duro virtual debe tener el formato del tipo de sistema de archivos ext4.\n\n    --list, -l [Options]\n        Enumera las distribuciones.\n\n        Opciones:\n            --all\n                Enumera todas las distribuciones, incluidas las distribuciones que\n                actualmente se está instalando o desinstalando.\n\n            --running\n                Enumera solo las distribuciones que se están ejecutando actualmente.\n\n            --quiet, -q\n                Muestra solo los nombres de distribución.\n\n            --verbose, -v\n                Muestra información detallada sobre todas las distribuciones.\n\n            --online, -o\n                Muestra una lista de las distribuciones disponibles para instalar con 'wsl.exe --install'.\n\n    --set-default, -s <Distro>\n        Establece la distribución como predeterminada.\n\n    --set-version <Distro> <Version>\n        Cambia la versión de la distribución especificada.\n\n    --terminate, -t <Distro>\n        Finaliza la distribución especificada.\n\n    --unregister <Distro>\n        Anula el registro de la distribución y elimina el sistema de archivos raíz.\n",
+      "stderr": ""
+    },
+    {
+      "id": "virtualization_capability",
+      "purpose": "Read hypervisor presence and processor virtualization capability flags.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$cs=Get-CimInstance -ClassName Win32_ComputerSystem;$cpus=@(Get-CimInstance -ClassName Win32_Processor|ForEach-Object{[pscustomobject]@{name=$_.Name;virtualization_firmware_enabled=$_.VirtualizationFirmwareEnabled;vm_monitor_mode_extensions=$_.VMMonitorModeExtensions;second_level_address_translation_extensions=$_.SecondLevelAddressTranslationExtensions}});[pscustomobject]@{hypervisor_present=$cs.HypervisorPresent;processors=$cpus}|ConvertTo-Json -Compress -Depth 6"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$cs=Get-CimInstance -ClassName Win32_ComputerSystem;$cpus=@(Get-CimInstance -ClassName Win32_Processor|ForEach-Object{[pscustomobject]@{name=$_.Name;virtualization_firmware_enabled=$_.VirtualizationFirmwareEnabled;vm_monitor_mode_extensions=$_.VMMonitorModeExtensions;second_level_address_translation_extensions=$_.SecondLevelAddressTranslationExtensions}});[pscustomobject]@{hypervisor_present=$cs.HypervisorPresent;processors=$cpus}|ConvertTo-Json -Compress -Depth 6\"",
+      "started_at_utc": "2026-08-07T10:54:17.226441Z",
+      "ended_at_utc": "2026-08-07T10:54:18.503875Z",
+      "exit_code": 0,
+      "stdout": "{\"hypervisor_present\":true,\"processors\":[{\"name\":\"12th Gen Intel(R) Core(TM) i7-12700\",\"virtualization_firmware_enabled\":false,\"vm_monitor_mode_extensions\":false,\"second_level_address_translation_extensions\":false}]}\n",
+      "stderr": ""
+    },
+    {
+      "id": "wsl_registration_registry",
+      "purpose": "Read registered WSL distribution metadata from the host registry without entering or starting a distribution.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$root='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Lxss';if(-not(Test-Path -LiteralPath $root)){[pscustomobject]@{exists=$false;default_distribution=$null;distributions=@()}|ConvertTo-Json -Compress -Depth 6;exit 0};$rootItem=Get-ItemProperty -LiteralPath $root;$distros=@(Get-ChildItem -LiteralPath $root|ForEach-Object{$p=Get-ItemProperty -LiteralPath $_.PSPath;[pscustomobject]@{registration_id=$_.PSChildName;distribution_name=$p.DistributionName;state=$p.State;version=$p.Version;base_path=$p.BasePath;flags=$p.Flags;default_uid=$p.DefaultUid;package_family_name=$p.PackageFamilyName}});[pscustomobject]@{exists=$true;default_distribution=$rootItem.DefaultDistribution;distributions=$distros}|ConvertTo-Json -Compress -Depth 7"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$root='HKCU:\\Software\\Microsoft\\Windows\\CurrentVersion\\Lxss';if(-not(Test-Path -LiteralPath $root)){[pscustomobject]@{exists=$false;default_distribution=$null;distributions=@()}|ConvertTo-Json -Compress -Depth 6;exit 0};$rootItem=Get-ItemProperty -LiteralPath $root;$distros=@(Get-ChildItem -LiteralPath $root|ForEach-Object{$p=Get-ItemProperty -LiteralPath $_.PSPath;[pscustomobject]@{registration_id=$_.PSChildName;distribution_name=$p.DistributionName;state=$p.State;version=$p.Version;base_path=$p.BasePath;flags=$p.Flags;default_uid=$p.DefaultUid;package_family_name=$p.PackageFamilyName}});[pscustomobject]@{exists=$true;default_distribution=$rootItem.DefaultDistribution;distributions=$distros}|ConvertTo-Json -Compress -Depth 7\"",
+      "started_at_utc": "2026-08-07T10:54:18.503933Z",
+      "ended_at_utc": "2026-08-07T10:54:18.727844Z",
+      "exit_code": 0,
+      "stdout": "{\"exists\":true,\"default_distribution\":\"{1b4d64c7-4860-4fc8-ad80-360014ff76d3}\",\"distributions\":[{\"registration_id\":\"AppxInstallerCache\",\"distribution_name\":null,\"state\":null,\"version\":null,\"base_path\":null,\"flags\":null,\"default_uid\":null,\"package_family_name\":null},{\"registration_id\":\"{1b4d64c7-4860-4fc8-ad80-360014ff76d3}\",\"distribution_name\":\"Ubuntu\",\"state\":1,\"version\":2,\"base_path\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Local\\\\Packages\\\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\\\LocalState\",\"flags\":15,\"default_uid\":1000,\"package_family_name\":\"CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\"},{\"registration_id\":\"{aa1b6640-3bfe-4701-9953-964a5b0c73e7}\",\"distribution_name\":\"docker-desktop\",\"state\":1,\"version\":2,\"base_path\":\"\\\\\\\\?\\\\C:\\\\Users\\\\egm_8\\\\AppData\\\\Local\\\\Docker\\\\wsl\\\\main\",\"flags\":15,\"default_uid\":0,\"package_family_name\":null}]}\n",
+      "stderr": ""
+    },
+    {
+      "id": "host_graphics_adapters",
+      "purpose": "Read host graphics-adapter identities and driver metadata.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$items=@(Get-CimInstance -ClassName Win32_VideoController|ForEach-Object{[pscustomobject]@{name=$_.Name;adapter_compatibility=$_.AdapterCompatibility;adapter_ram_bytes=$_.AdapterRAM;driver_version=$_.DriverVersion;driver_date=$_.DriverDate;video_processor=$_.VideoProcessor;status=$_.Status;pnp_device_id=$_.PNPDeviceID}});$items|ConvertTo-Json -Compress -Depth 6"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$ErrorActionPreference='Stop';$items=@(Get-CimInstance -ClassName Win32_VideoController|ForEach-Object{[pscustomobject]@{name=$_.Name;adapter_compatibility=$_.AdapterCompatibility;adapter_ram_bytes=$_.AdapterRAM;driver_version=$_.DriverVersion;driver_date=$_.DriverDate;video_processor=$_.VideoProcessor;status=$_.Status;pnp_device_id=$_.PNPDeviceID}});$items|ConvertTo-Json -Compress -Depth 6\"",
+      "started_at_utc": "2026-08-07T10:54:18.727916Z",
+      "ended_at_utc": "2026-08-07T10:54:19.012315Z",
+      "exit_code": 0,
+      "stdout": "[{\"name\":\"Intel(R) UHD Graphics 770\",\"adapter_compatibility\":\"Intel Corporation\",\"adapter_ram_bytes\":2147479552,\"driver_version\":\"32.0.101.7082\",\"driver_date\":\"\\/Date(1764547200000)\\/\",\"video_processor\":\"Intel(R) UHD Graphics Family\",\"status\":\"OK\",\"pnp_device_id\":\"PCI\\\\VEN_8086\\u0026DEV_4680\\u0026SUBSYS_7D321462\\u0026REV_0C\\\\3\\u002611583659\\u00260\\u002610\"},{\"name\":\"NVIDIA GeForce RTX 3080 Ti\",\"adapter_compatibility\":\"NVIDIA\",\"adapter_ram_bytes\":4293918720,\"driver_version\":\"32.0.15.9186\",\"driver_date\":\"\\/Date(1768867200000)\\/\",\"video_processor\":\"NVIDIA GeForce RTX 3080 Ti\",\"status\":\"OK\",\"pnp_device_id\":\"PCI\\\\VEN_10DE\\u0026DEV_2208\\u0026SUBSYS_88021043\\u0026REV_A1\\\\4\\u00261EB8EEAE\\u00260\\u00260008\"}]\n",
+      "stderr": ""
+    },
+    {
+      "id": "gpu_management_visibility",
+      "purpose": "Use nvidia-smi only if already installed to read management visibility; no GPU workload is run.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$cmd=Get-Command nvidia-smi.exe -ErrorAction SilentlyContinue;if($null -eq $cmd){[pscustomobject]@{installed=$false;executable=$null;query_exit_code=$null;query_output=$null}|ConvertTo-Json -Compress -Depth 5;exit 0};$output=@(& $cmd.Source --query-gpu=name,driver_version,memory.total --format=csv,noheader,nounits);$code=$LASTEXITCODE;[pscustomobject]@{installed=$true;executable=$cmd.Source;query_exit_code=$code;query_output=$output}|ConvertTo-Json -Compress -Depth 5;exit $code"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$cmd=Get-Command nvidia-smi.exe -ErrorAction SilentlyContinue;if($null -eq $cmd){[pscustomobject]@{installed=$false;executable=$null;query_exit_code=$null;query_output=$null}|ConvertTo-Json -Compress -Depth 5;exit 0};$output=@(& $cmd.Source --query-gpu=name,driver_version,memory.total --format=csv,noheader,nounits);$code=$LASTEXITCODE;[pscustomobject]@{installed=$true;executable=$cmd.Source;query_exit_code=$code;query_output=$output}|ConvertTo-Json -Compress -Depth 5;exit $code\"",
+      "started_at_utc": "2026-08-07T10:54:19.012366Z",
+      "ended_at_utc": "2026-08-07T10:54:19.242125Z",
+      "exit_code": 0,
+      "stdout": "{\"installed\":true,\"executable\":\"C:\\\\Windows\\\\system32\\\\nvidia-smi.exe\",\"query_exit_code\":0,\"query_output\":[\"NVIDIA GeForce RTX 3080 Ti, 591.86, 12288\"]}\n",
+      "stderr": ""
+    },
+    {
+      "id": "pi_executable_identity",
+      "purpose": "Read installed Pi command identity and executable/shim digest without reading Pi state contents.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$commands=@(Get-Command pi -All -ErrorAction SilentlyContinue|ForEach-Object{$hash=$null;if($_.Path -and (Test-Path -LiteralPath $_.Path -PathType Leaf)){$hash=(Get-FileHash -Algorithm SHA256 -LiteralPath $_.Path).Hash};$version=$null;if($null -ne $_.Version){$version=$_.Version.ToString()};[pscustomobject]@{name=$_.Name;command_type=$_.CommandType.ToString();source=$_.Source;path=$_.Path;version=$version;sha256=$hash}});$commands|ConvertTo-Json -Compress -Depth 6"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$commands=@(Get-Command pi -All -ErrorAction SilentlyContinue|ForEach-Object{$hash=$null;if($_.Path -and (Test-Path -LiteralPath $_.Path -PathType Leaf)){$hash=(Get-FileHash -Algorithm SHA256 -LiteralPath $_.Path).Hash};$version=$null;if($null -ne $_.Version){$version=$_.Version.ToString()};[pscustomobject]@{name=$_.Name;command_type=$_.CommandType.ToString();source=$_.Source;path=$_.Path;version=$version;sha256=$hash}});$commands|ConvertTo-Json -Compress -Depth 6\"",
+      "started_at_utc": "2026-08-07T10:54:19.242186Z",
+      "ended_at_utc": "2026-08-07T10:54:19.508289Z",
+      "exit_code": 0,
+      "stdout": "[{\"name\":\"pi.ps1\",\"command_type\":\"ExternalScript\",\"source\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Roaming\\\\npm\\\\pi.ps1\",\"path\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Roaming\\\\npm\\\\pi.ps1\",\"version\":null,\"sha256\":\"9F02069EBE672550FE79750ED07B067C18A51877C13DAEAD108B802D01DEFED9\"},{\"name\":\"pi.cmd\",\"command_type\":\"Application\",\"source\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Roaming\\\\npm\\\\pi.cmd\",\"path\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Roaming\\\\npm\\\\pi.cmd\",\"version\":\"0.0.0.0\",\"sha256\":\"7F4C35FBBBE908301C12E06B9E6B7017C6B9CBCC24C34E26615A08F9F60FA53E\"},{\"name\":\"pi\",\"command_type\":\"Application\",\"source\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Roaming\\\\npm\\\\pi\",\"path\":\"C:\\\\Users\\\\egm_8\\\\AppData\\\\Roaming\\\\npm\\\\pi\",\"version\":\"0.0.0.0\",\"sha256\":\"4BC7FA52FD6C8C41CEAE8EB9274ECC9415507917A07F496A2679FC4B713B4291\"}]\n",
+      "stderr": ""
+    },
+    {
+      "id": "pi_version",
+      "purpose": "Invoke Pi's read-only version option.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$cmd=Get-Command pi -ErrorAction SilentlyContinue;if($null -eq $cmd){Write-Error 'Pi executable not found';exit 127};& $cmd.Source --version;exit $LASTEXITCODE"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$cmd=Get-Command pi -ErrorAction SilentlyContinue;if($null -eq $cmd){Write-Error 'Pi executable not found';exit 127};& $cmd.Source --version;exit $LASTEXITCODE\"",
+      "started_at_utc": "2026-08-07T10:54:19.508345Z",
+      "ended_at_utc": "2026-08-07T10:54:21.328657Z",
+      "exit_code": 0,
+      "stdout": "0.80.6\n",
+      "stderr": ""
+    },
+    {
+      "id": "pi_process_candidates",
+      "purpose": "Read only IDs, names, and executable paths for Pi/node process candidates; command lines are not requested.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$items=@(Get-Process -ErrorAction SilentlyContinue|Where-Object{$_.ProcessName -in @('pi','node')}|ForEach-Object{$path=$null;try{$path=$_.Path}catch{};[pscustomobject]@{process_id=$_.Id;name=$_.ProcessName;executable_path=$path}});$items|ConvertTo-Json -Compress -Depth 5"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$items=@(Get-Process -ErrorAction SilentlyContinue|Where-Object{$_.ProcessName -in @('pi','node')}|ForEach-Object{$path=$null;try{$path=$_.Path}catch{};[pscustomobject]@{process_id=$_.Id;name=$_.ProcessName;executable_path=$path}});$items|ConvertTo-Json -Compress -Depth 5\"",
+      "started_at_utc": "2026-08-07T10:54:21.328704Z",
+      "ended_at_utc": "2026-08-07T10:54:21.554745Z",
+      "exit_code": 0,
+      "stdout": "[{\"process_id\":13200,\"name\":\"node\",\"executable_path\":\"C:\\\\Program Files\\\\nodejs\\\\node.exe\"},{\"process_id\":31588,\"name\":\"node\",\"executable_path\":\"C:\\\\Program Files\\\\nodejs\\\\node.exe\"}]\n",
+      "stderr": ""
+    },
+    {
+      "id": "pi_state_path_metadata",
+      "purpose": "Read only Pi state-path names, existence, and filesystem metadata; no state file contents are read.",
+      "argv": [
+        "powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$profile=[Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile);$paths=@([pscustomobject]@{label='user_pi_root';path=(Join-Path $profile '.pi')},[pscustomobject]@{label='user_pi_agent';path=(Join-Path $profile '.pi\\agent')},[pscustomobject]@{label='project_pi_root';path=(Join-Path (Get-Location).Path '.pi')});$results=@(foreach($spec in $paths){$exists=Test-Path -LiteralPath $spec.path;$self=$null;$children=@();if($exists){$item=Get-Item -LiteralPath $spec.path -Force;$self=[pscustomobject]@{name=$item.Name;full_name=$item.FullName;is_directory=$item.PSIsContainer;length=$item.Length;creation_time_utc=$item.CreationTimeUtc.ToString('o');last_write_time_utc=$item.LastWriteTimeUtc.ToString('o');attributes=$item.Attributes.ToString()};$children=@(Get-ChildItem -LiteralPath $spec.path -Force|ForEach-Object{[pscustomobject]@{name=$_.Name;full_name=$_.FullName;is_directory=$_.PSIsContainer;length=$_.Length;creation_time_utc=$_.CreationTimeUtc.ToString('o');last_write_time_utc=$_.LastWriteTimeUtc.ToString('o');attributes=$_.Attributes.ToString()}})};[pscustomobject]@{label=$spec.label;path=$spec.path;exists=$exists;metadata=$self;children=$children}});$results|ConvertTo-Json -Compress -Depth 8"
+      ],
+      "command": "powershell.exe -NoLogo -NoProfile -NonInteractive -Command \"$ProgressPreference='SilentlyContinue';$OutputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new($false);$profile=[Environment]::GetFolderPath([Environment+SpecialFolder]::UserProfile);$paths=@([pscustomobject]@{label='user_pi_root';path=(Join-Path $profile '.pi')},[pscustomobject]@{label='user_pi_agent';path=(Join-Path $profile '.pi\\agent')},[pscustomobject]@{label='project_pi_root';path=(Join-Path (Get-Location).Path '.pi')});$results=@(foreach($spec in $paths){$exists=Test-Path -LiteralPath $spec.path;$self=$null;$children=@();if($exists){$item=Get-Item -LiteralPath $spec.path -Force;$self=[pscustomobject]@{name=$item.Name;full_name=$item.FullName;is_directory=$item.PSIsContainer;length=$item.Length;creation_time_utc=$item.CreationTimeUtc.ToString('o');last_write_time_utc=$item.LastWriteTimeUtc.ToString('o');attributes=$item.Attributes.ToString()};$children=@(Get-ChildItem -LiteralPath $spec.path -Force|ForEach-Object{[pscustomobject]@{name=$_.Name;full_name=$_.FullName;is_directory=$_.PSIsContainer;length=$_.Length;creation_time_utc=$_.CreationTimeUtc.ToString('o');last_write_time_utc=$_.LastWriteTimeUtc.ToString('o');attributes=$_.Attributes.ToString()}})};[pscustomobject]@{label=$spec.label;path=$spec.path;exists=$exists;metadata=$self;children=$children}});$results|ConvertTo-Json -Compress -Depth 8\"",
+      "started_at_utc": "2026-08-07T10:54:21.554913Z",
+      "ended_at_utc": "2026-08-07T10:54:21.787228Z",
+      "exit_code": 0,
+      "stdout": "[{\"label\":\"user_pi_root\",\"path\":\"C:\\\\Users\\\\egm_8\\\\.pi\",\"exists\":true,\"metadata\":{\"name\":\".pi\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T09:25:14.9436145Z\",\"last_write_time_utc\":\"2026-07-11T09:25:14.9446145Z\",\"attributes\":\"Directory\"},\"children\":[{\"name\":\"agent\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T09:25:14.9446145Z\",\"last_write_time_utc\":\"2026-08-07T10:53:18.7464081Z\",\"attributes\":\"Directory\"}]},{\"label\":\"user_pi_agent\",\"path\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\",\"exists\":true,\"metadata\":{\"name\":\"agent\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T09:25:14.9446145Z\",\"last_write_time_utc\":\"2026-08-07T10:54:21.3021891Z\",\"attributes\":\"Directory\"},\"children\":[{\"name\":\"agents\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\agents\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T10:04:26.7993843Z\",\"last_write_time_utc\":\"2026-07-11T10:07:29.1868962Z\",\"attributes\":\"Directory\"},{\"name\":\"bin\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\bin\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T09:25:15.2939135Z\",\"last_write_time_utc\":\"2026-07-11T09:25:15.8480705Z\",\"attributes\":\"Directory\"},{\"name\":\"npm\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\npm\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T10:01:10.5594125Z\",\"last_write_time_utc\":\"2026-07-11T10:01:11.7891357Z\",\"attributes\":\"Directory\"},{\"name\":\"sessions\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\sessions\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-07-11T09:25:14.9446145Z\",\"last_write_time_utc\":\"2026-07-27T18:55:18.1053381Z\",\"attributes\":\"Directory\"},{\"name\":\"auth.json\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\auth.json\",\"is_directory\":false,\"length\":2525,\"creation_time_utc\":\"2026-07-11T09:25:14.9481195Z\",\"last_write_time_utc\":\"2026-08-06T14:23:31.5611974Z\",\"attributes\":\"Archive\"},{\"name\":\"settings.json\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\settings.json\",\"is_directory\":false,\"length\":336,\"creation_time_utc\":\"2026-07-11T09:25:14.9894305Z\",\"last_write_time_utc\":\"2026-08-06T16:02:53.8160871Z\",\"attributes\":\"Archive\"},{\"name\":\"trust.json\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\.pi\\\\agent\\\\trust.json\",\"is_directory\":false,\"length\":53,\"creation_time_utc\":\"2026-08-06T16:19:07.3261167Z\",\"last_write_time_utc\":\"2026-08-06T16:19:07.3261167Z\",\"attributes\":\"Archive\"}]},{\"label\":\"project_pi_root\",\"path\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\\\\.pi\",\"exists\":true,\"metadata\":{\"name\":\".pi\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\\\\.pi\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-08-06T15:36:12.2986282Z\",\"last_write_time_utc\":\"2026-08-06T15:36:12.2986282Z\",\"attributes\":\"Directory, ReparsePoint\"},\"children\":[{\"name\":\"agents\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\\\\.pi\\\\agents\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-08-06T15:05:25.6752880Z\",\"last_write_time_utc\":\"2026-08-06T15:05:25.6772912Z\",\"attributes\":\"Directory\"},{\"name\":\"extensions\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\\\\.pi\\\\extensions\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-08-06T14:59:06.9876563Z\",\"last_write_time_utc\":\"2026-08-06T14:59:06.9876563Z\",\"attributes\":\"Directory\"},{\"name\":\"skills\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\\\\.pi\\\\skills\",\"is_directory\":true,\"length\":1,\"creation_time_utc\":\"2026-08-06T15:06:48.4308758Z\",\"last_write_time_utc\":\"2026-08-06T15:06:48.4318756Z\",\"attributes\":\"Directory\"},{\"name\":\"settings.json\",\"full_name\":\"C:\\\\Users\\\\egm_8\\\\IdeaProjects\\\\vordar\\\\.pi\\\\settings.json\",\"is_directory\":false,\"length\":251,\"creation_time_utc\":\"2026-08-06T15:04:52.6558963Z\",\"last_write_time_utc\":\"2026-08-06T15:35:54.0756689Z\",\"attributes\":\"Archive\"}]}]\n",
+      "stderr": ""
+    },
+    {
+      "id": "schema_red_missing_required_fields",
+      "purpose": "Named RED fixture omitting OS build, WSL state, external termination, free disk, Pi identity, and GPU-exposure fields; expected exit code 1.",
+      "argv": [
+        "C:\\Python314\\python.exe",
+        "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\schema_check.py",
+        "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\_temporary-missing-required-fields.json"
+      ],
+      "command": "C:\\Python314\\python.exe C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\schema_check.py C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\_temporary-missing-required-fields.json",
+      "started_at_utc": "2026-08-07T10:54:21.788877Z",
+      "ended_at_utc": "2026-08-07T10:54:21.832290Z",
+      "exit_code": 1,
+      "stdout": "SCHEMA FAIL: missing required fields: host.windows.build, wsl.state, wsl.external_guest_termination_capability, storage.project_volume.free_bytes, storage.candidate_guest_storage_volume.free_bytes, pi.executable_identity, gpu.host_adapters, gpu.management_visibility, gpu.wsl_guest_visibility\n",
+      "stderr": ""
+    },
+    {
+      "id": "schema_intact_raw",
+      "purpose": "Validate the intact retained raw.json; expected exit code 0.",
+      "argv": [
+        "C:\\Python314\\python.exe",
+        "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\schema_check.py",
+        "C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\raw.json"
+      ],
+      "command": "C:\\Python314\\python.exe C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\schema_check.py C:\\Users\\egm_8\\IdeaProjects\\vordar\\.claude\\docs\\research\\prime-agent\\option-2-gate-closing\\01-host-platform-inventory\\raw.json",
+      "started_at_utc": "2026-08-07T10:54:21.832336Z",
+      "ended_at_utc": "2026-08-07T10:54:21.874624Z",
+      "exit_code": 0,
+      "stdout": "SCHEMA PASS: all required fields present\n",
+      "stderr": ""
+    }
+  ]
+}
