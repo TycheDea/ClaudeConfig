@@ -1,0 +1,17 @@
+120 candidates over 16 slots
+
+percentile black point (vfx_post --black-point):
+  p0.5   pass   0/120  subtracted level   0.0-  5.2/255  empty slots 16
+  p50    pass   4/120  subtracted level   0.0- 13.9/255  empty slots 13
+  p90    pass  28/120  subtracted level   1.8-245.6/255  empty slots 9
+  p95    pass  46/120  subtracted level   3.0-250.8/255  empty slots 5
+  p97    pass  65/120  subtracted level   3.2-251.0/255  empty slots 3
+  p98    pass  78/120  subtracted level   3.9-251.3/255  empty slots 1
+  p99    pass  97/120  subtracted level   4.2-252.0/255  empty slots 0
+
+absolute black level (no vfx_post equivalent):
+   4/255 pass   3/120  midtone kept 0.93  empty slots 14
+   6/255 pass  21/120  midtone kept 0.90  empty slots 3
+   8/255 pass  48/120  midtone kept 0.88  empty slots 1
+  10/255 pass  64/120  midtone kept 0.85  empty slots 1
+  12/255 pass  71/120  midtone kept 0.82  empty slots 1

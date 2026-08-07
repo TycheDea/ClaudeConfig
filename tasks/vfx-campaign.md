@@ -121,13 +121,37 @@ Single-sprite quality confirmed high (photoreal incense wisp on first try).
 
 ## Phase 4 — Style packs (after 1.5 + sprites installed)
 
-- [~] 4.0 Terra: IN FLIGHT (GPU run 2, ~20–30 min) — 40 cells / 8×8 / 2048²:
-      pyro_{ember,flash,smoke×8}, wisp_{soft,streak,flame×8},
-      sigil_{glyph_a,b,c,spark}, censer_{haze,mote,smoke×8},
-      shard_{sliver,flare,twinkle×4}. 3 candidates/frame, vfx_post triage,
-      pack→BC4 bake→install with {source,images} manifest. Sigil constraint:
-      abstract ornamental geometry only, no script/real symbols. Authorized:
-      --cell-size Lanczos in packer if load_cell only validates.
+- [~] 4.0 Terra: generation ran (120 candidates, 28 min GPU, ComfyUI down
+      after) but STOPPED correctly — no atlas shipped. Root cause: Z-Image
+      decoder noise floor 1.5–8/255 in the void; border gate <2/255 fails
+      0/120; vfx_post's PERCENTILE black point measures element coverage not
+      floor (p95: −3/255 on a spark, −91/255 on a smoke puff) — pass rate
+      never plateaus, knob tunes against its own gate. Evidence:
+      assets/vfx/showcase/void_floor_sweep.{py,txt} + triage.md.
+      Slot content: 8 slots strong; sigil_glyph_b REJECTED (hexagram — the
+      no-real-symbols constraint fired); ~6 slots need re-prompts
+      (wisp_flame candle contamination, censer_haze orb-not-veil,
+      pyro_smoke≈censer_smoke, edge-runners). --cell-size Lanczos landed in
+      packer (18 pytest green).
+      RULINGS: vfx_post → ABSOLUTE --black-level, REQUIRED arg, calibrated
+      from decoder control renders (black-prompt), never candidates;
+      120 candidates kept on disk for offline re-post — only bad slots
+      re-generate (fits approved ~10-min re-roll);
+      scripts/ai-pipeline/assets/ gitignored (2599c53).
+      vfx_post fix LANDED (20d3b25): percentile deleted, discriminating
+      regression fixture (37%-coverage disk: percentile provably erases the
+      body), refusal message points at calibration; 12 pytest green, grep
+      percentile = 0. Ruling evidence archived to docs/vfx/
+      (void_floor_sweep.{py,txt} archived as-run — the .py cites the pre-fix
+      API by design; triage.md v1). Env note: use `py -3.14` for pipeline
+      scripts (bare `py` finds MSYS Python without numpy).
+- [~] 4.0b Terra: IN FLIGHT — one ComfyUI session: 3 black-prompt control
+      renders → level = max floor + 2 (sanity band 4–12, >20 = stop);
+      ~21 re-prompt images (glyph_b knotwork, wisp_flame isolated, censer_haze
+      veil, pyro_smoke puff, edge-runner reframes); offline re-post of ALL
+      candidates at calibrated level; triage v2; pack --cell-size 256 → BC4
+      bake → install with manifests; content_lint green. Thin slots ship
+      honestly, never by relaxing the level.
 - [ ] 4.1–4.5 Terra: author pyro/wisp/sigil/censer/shard packs,
       content/vfx/showcase/<style>/{cast,projectile,aoe}.ron.
 
