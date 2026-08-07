@@ -4432,12 +4432,14 @@ further fineness must come from the atlas.
   claimed to verify zones.ron, so there is nothing to un-overwrite. The shipped
   topology is verified separately by `shipped_topology_is_valid`.
 
-## Prime Agent learning-loop pilot — QUEUED 2026-08-06
+## Prime Agent learning-loop pilot — OPTION 2 PLAN READY 2026-08-07
 
-- [ ] **NEXT SESSION:** start with `tasks/prime-agent-learning-pilot.md`.
-      User asked to pause the texture A/B and evaluate Prime Agent instead of
-      Pi dev so the long asset/model-quality loop can retain learning. Confirm
-      the exact Prime product first; audit learning mechanism, license/runtime
-      closure, hardware/cost, and integration before any install. Keep Pi as
-      the matched control until a sandboxed repeated-episode pilot proves a
-      measured quality win. Texture item (2) and retablo placement are held.
+- [x] Sol option-2 gate-closing plan complete and committed in ClaudeConfig as
+      `065f29a`: `tasks/prime-agent-option2-gate-closing-plan.md`. It
+      dependency-orders platform/WSL-or-Linux, immutable-byte, rights/service,
+      Pi/PRIME isolation, and shutdown/recovery closure. No gate execution,
+      setup, acquisition, credentials, host probing, matched-pilot planning, or
+      adoption is authorized by the plan.
+- [ ] **NEXT:** review/approve plan execution before G0. G1 host inventory has a
+      separate explicit host-probe approval gate. Pi remains the control;
+      texture item (2) and retablo placement stay held.

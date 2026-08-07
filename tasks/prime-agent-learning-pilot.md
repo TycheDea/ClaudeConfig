@@ -1,4 +1,4 @@
-# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 SELECTED / GATE-CLOSING PLANNING QUEUED FOR 2026-08-07
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 GATE-CLOSING PLAN COMPLETE / EXECUTION NOT AUTHORIZED
 
 ## User direction
 
@@ -21,9 +21,11 @@ PRIME. PRIME must demonstrate persistent learning from trajectories, rewards,
 and replay; merely changing agent harnesses does not improve asset quality.
 
 On 2026-08-06, the user selected option 2: a separate gate-closing campaign for
-the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. This
-checkpoint records a stop-state only, to resume on 2026-08-07 (the user's
-“tomorrow”). No gate-closing work or planning starts in this session.
+the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. On
+2026-08-07, the queued Sol planning finding landed at
+[`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md).
+No gate-closing execution, setup, acquisition, credentials, or host probing is
+authorized by that planning artifact.
 
 ## Goal
 
@@ -98,14 +100,13 @@ Direct phase-1 findings:
 [P9](../docs/research/prime-agent/phase-1/09-comparative-practitioner-evidence.md) ·
 [P10](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md).
 
-**Current checkpoint / exact next action:** On 2026-08-07, first dispatch a Sol
-planning finding to dependency-order closure of the platform/WSL-or-Linux
-target, immutable runtime/dependency bytes, rights/service terms, Pi/PRIME
-isolation, and shutdown/recovery evidence. The 2026-08-06 decision authorizes
-only that next-session gate-closing planning campaign—not installation/download,
-credentials, user-global changes, host/container/GPU execution, phase-2
-matched-pilot planning, or adoption. No gate-closing work or planning starts in
-this session.
+**Current checkpoint / exact next action:** The Sol planning finding is complete
+and committed in ClaudeConfig as `065f29a`. Review/approve execution of
+[`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md)
+before dispatching G0. G1 host inventory separately requires explicit host-probe
+approval. Installation/download, credentials, user-global changes,
+host/container/GPU execution, phase-2 matched-pilot planning, and adoption remain
+unauthorized.
 
 ## Execution model
 
@@ -124,12 +125,11 @@ control until PRIME wins a matched pilot.
    recovery/coexistence proof, success/failure thresholds, expected wall/GPU
    time, and rollback. It must prove learning across episodes rather than a
    one-off stronger model.
-3. **NEXT SESSION / FIRST ACTION — Sol planning finding for option 2.** On
-   2026-08-07, first dispatch a Sol planning finding to dependency-order closure
-   of the platform/WSL-or-Linux target, immutable runtime/dependency bytes,
-   rights/service terms, Pi/PRIME isolation, and shutdown/recovery evidence.
-   This is a queued stop-state; none of that planning or gate-closing work starts
-   in this session.
+3. **COMPLETE — Sol planning finding for option 2.** The dependency-ordered
+   campaign is recorded in
+   [`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md)
+   and committed as `065f29a`. Execution awaits review/approval; G1 additionally
+   requires explicit host-probe approval.
 4. **NOT AUTHORIZED — Bounded setup change.** Only after all prior gates and
    explicit approval: Luna performs exact mechanical acquisition; Terra or Sol
    hard-implement handles integration according to sensitivity; security/license
