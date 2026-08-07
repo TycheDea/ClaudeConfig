@@ -1,0 +1,314 @@
+{
+  "schema_id": "vordar.prime-agent.g2.blocker-closure.public-research.endpoint-ledger",
+  "schema_version": "1.0.0",
+  "artifact_type": "endpoint-ledger",
+  "research_date": "2026-08-07",
+  "status": "BLOCKED",
+  "retained_route_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+  "retained_verifier_route_id": "task1-git-for-windows-gpgv-2.4.9",
+  "selected_key_member": "etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg",
+  "alternative_key_members": [],
+  "acquisition_authorized": false,
+  "object_bodies_acquired": 0,
+  "host_access_performed": false,
+  "first_causal_gap": "The retained Debian ar package uses data.tar.zst, but no Task-1-approved zstd-capable extractor and no extracted retained-member bytes, digest, or packet sequence exist.",
+  "field_contract": {
+    "unknown_sentinel": "UNKNOWN",
+    "body_size_bytes": "nonnegative integer or UNKNOWN",
+    "sha256": "64 lowercase hexadecimal characters or UNKNOWN",
+    "observed_status": "integer HTTP status or UNKNOWN",
+    "redirect_count": "nonnegative integer or UNKNOWN",
+    "eligible": "boolean; true is forbidden while any required field or relation remains unresolved"
+  },
+  "expected_key_identity": {
+    "fingerprint": "843938DF228D22F7B3742BC0D94AA3F0EFE21092",
+    "uid": "Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>",
+    "verification_state": "EXPECTED_BUT_UNVERIFIED",
+    "observed_fingerprint": "UNKNOWN",
+    "observed_uid": "UNKNOWN",
+    "packet_sequence": "UNKNOWN"
+  },
+  "candidate_bodies": [
+    {
+      "object_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+      "purpose": "Retained package containing the sole selected CD-image trust member",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1_all.deb",
+      "authority": "Canonical Ubuntu archive",
+      "identity_source": "https://packages.ubuntu.com/noble/all/ubuntu-keyring/download",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": 11124,
+      "sha256": "36de43b15853ccae0028e9a767613770c704833f82586f28eb262f0311adb8a8",
+      "digest_authority": "Canonical Ubuntu package record",
+      "mutability": "VERSIONED_FILENAME_ENDPOINT_IMMUTABILITY_NOT_MEASURED",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "ENDPOINT_IMMUTABILITY_NOT_PROVEN",
+        "RETAINED_KEY_MEMBER_EXTRACTION_CLOSURE_UNKNOWN"
+      ]
+    },
+    {
+      "object_id": "ubuntu-keyring-dsc-2023.11.28.1",
+      "purpose": "Ubuntu keyring source descriptor",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1.dsc",
+      "authority": "Canonical Ubuntu archive",
+      "identity_source": "https://lists.snapcraft.io/archives/noble-changes/2023-November/003972.html",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": 1872,
+      "sha256": "c71c8e5a1dd5e8ef682b7104645a88f0bc9eeb9380bf64288adcf78f40bcf68b",
+      "digest_authority": "Canonical Noble source acceptance record",
+      "mutability": "VERSIONED_FILENAME_ENDPOINT_IMMUTABILITY_NOT_MEASURED",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "ENDPOINT_IMMUTABILITY_NOT_PROVEN"
+      ]
+    },
+    {
+      "object_id": "ubuntu-keyring-source-2023.11.28.1",
+      "purpose": "Ubuntu keyring native source archive",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1.tar.xz",
+      "authority": "Canonical Ubuntu archive",
+      "identity_source": "https://lists.snapcraft.io/archives/noble-changes/2023-November/003972.html",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": 20236,
+      "sha256": "aecd455ae15561371d6e454f121f079f0641d5e1b579a5563a2bc363fc74aa2e",
+      "digest_authority": "Canonical Noble source acceptance record",
+      "mutability": "VERSIONED_FILENAME_ENDPOINT_IMMUTABILITY_NOT_MEASURED",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "ENDPOINT_IMMUTABILITY_NOT_PROVEN"
+      ]
+    },
+    {
+      "object_id": "ubuntu-24.04.4-SHA256SUMS",
+      "purpose": "Ubuntu 24.04.4 release checksum fixture",
+      "url": "https://releases.ubuntu.com/24.04.4/SHA256SUMS",
+      "authority": "Canonical Ubuntu releases",
+      "identity_source": "https://releases.ubuntu.com/24.04.4/",
+      "publication_or_modification_date": "2026-02-12T14:46:00Z",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": 594,
+      "sha256": "UNKNOWN",
+      "digest_authority": "UNKNOWN",
+      "mutability": "VERSION_SPECIFIC_DIRECTORY_GENERIC_FILENAME_REPLACEMENT_NOT_DISPROVEN",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_AUTHORITATIVE_DIGEST",
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "ENDPOINT_IMMUTABILITY_NOT_PROVEN"
+      ]
+    },
+    {
+      "object_id": "ubuntu-24.04.4-SHA256SUMS.gpg",
+      "purpose": "Ubuntu 24.04.4 detached checksum signature fixture",
+      "url": "https://releases.ubuntu.com/24.04.4/SHA256SUMS.gpg",
+      "authority": "Canonical Ubuntu releases",
+      "identity_source": "https://releases.ubuntu.com/24.04.4/",
+      "publication_or_modification_date": "2026-02-12T14:46:00Z",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": 833,
+      "sha256": "UNKNOWN",
+      "digest_authority": "UNKNOWN",
+      "mutability": "VERSION_SPECIFIC_DIRECTORY_GENERIC_FILENAME_REPLACEMENT_NOT_DISPROVEN",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_AUTHORITATIVE_DIGEST",
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "ENDPOINT_IMMUTABILITY_NOT_PROVEN"
+      ]
+    },
+    {
+      "object_id": "msys2-gnupg-2.4.9-1-x86_64-package",
+      "purpose": "Research-only package candidate containing /usr/bin/gpgv.exe",
+      "selection_status": "RESEARCH_CANDIDATE_ONLY",
+      "url": "https://repo.msys2.org/msys/x86_64/gnupg-2.4.9-1-x86_64.pkg.tar.zst",
+      "authority": "MSYS2 project repository",
+      "identity_source": "https://packages.msys2.org/packages/gnupg?variant=x86_64",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": "UNKNOWN",
+      "sha256": "cd95fe16cc87700372549294a21f35b4adeed8bf57451cd2147e7f82f9e582eb",
+      "digest_authority": "Official MSYS2 package record",
+      "mutability": "VERSIONED_FILENAME_ENDPOINT_IMMUTABILITY_NOT_MEASURED",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_EXACT_SIZE",
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "BINARY_TO_RECIPE_COMMIT_BINDING_UNKNOWN",
+        "GIT_FOR_WINDOWS_HOST_PACKAGE_BINDING_UNKNOWN"
+      ]
+    },
+    {
+      "object_id": "msys2-gnupg-2.4.9-1-source-package",
+      "purpose": "Research-only source package directly associated by the official MSYS2 package record",
+      "selection_status": "RESEARCH_CANDIDATE_ONLY",
+      "url": "https://repo.msys2.org/msys/sources/gnupg-2.4.9-1.src.tar.zst",
+      "authority": "MSYS2 project repository",
+      "identity_source": "https://packages.msys2.org/packages/gnupg?variant=x86_64",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": "UNKNOWN",
+      "sha256": "UNKNOWN",
+      "digest_authority": "UNKNOWN",
+      "source_object_metadata": "UNKNOWN",
+      "mutability": "VERSIONED_FILENAME_ENDPOINT_IMMUTABILITY_NOT_MEASURED",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_EXACT_SIZE",
+        "UNKNOWN_AUTHORITATIVE_DIGEST",
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "SOURCE_PACKAGE_TO_RECIPE_COMMIT_BINDING_UNKNOWN"
+      ]
+    },
+    {
+      "object_id": "gnupg-2.4.9-source",
+      "purpose": "Upstream source selected by the research-only immutable MSYS2 recipe candidate",
+      "selection_status": "NON_TRUST_BEARING_SOURCE_CANDIDATE",
+      "url": "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.9.tar.bz2",
+      "authority": "GnuPG Project primary distribution server",
+      "identity_source": "https://www.gnupg.org/download/integrity_check.html",
+      "release_date": "2025-12-30",
+      "expected_status": 200,
+      "observed_status": "UNKNOWN",
+      "redirect_count": "UNKNOWN",
+      "body_size_bytes": 8086407,
+      "sha256": "dd17ab2e9a04fd79d39d853f599cbc852062ddb9ab52a4ddeb4176fd8b302964",
+      "digest_authority": "GnuPG primary integrity record and immutable MSYS2 recipe",
+      "mutability": "VERSIONED_FILENAME_ENDPOINT_IMMUTABILITY_NOT_MEASURED",
+      "corresponding_source_for_retained_verifier": "UNKNOWN",
+      "eligible": false,
+      "blockers": [
+        "UNKNOWN_OBSERVED_STATUS",
+        "UNKNOWN_REDIRECT_COUNT",
+        "ENDPOINT_IMMUTABILITY_NOT_PROVEN",
+        "GIT_FOR_WINDOWS_CORRESPONDING_SOURCE_BINDING_UNKNOWN"
+      ]
+    }
+  ],
+  "explicitly_ineligible_routes": [
+    {
+      "pattern": "https://mirror.msys2.org/**",
+      "reason": "GEO_REDIRECTOR"
+    },
+    {
+      "pattern": "https://github.com/**/releases/download/**",
+      "reason": "GITHUB_RELEASE_DOWNLOAD"
+    },
+    {
+      "pattern": "mutable package index, branch, ref, or latest URL",
+      "reason": "MUTABLE_REFERENCE"
+    }
+  ],
+  "arithmetic": {
+    "candidate_body_count": 8,
+    "known_size_body_count": 6,
+    "unknown_size_body_count": 2,
+    "known_bytes_expression": "11124 + 1872 + 20236 + 594 + 833 + 8086407",
+    "known_bytes": 8121066,
+    "unknown_bytes": "UNKNOWN",
+    "known_digest_body_count": 5,
+    "unknown_digest_body_count": 3,
+    "eligible_body_count": 0,
+    "direct_dependency_count": 16,
+    "patch_count": 26,
+    "blocker_count": 10,
+    "complete_candidate_body_count": "UNKNOWN",
+    "complete_candidate_bytes": "UNKNOWN",
+    "storage_ceiling_bytes": "UNKNOWN"
+  },
+  "verification_tests": [
+    {
+      "id": "red-malformed-or-missing-key-json",
+      "fixture": "Malformed JSON or removal of a required schema, status, route, object, URL, size, digest, redirect, eligibility, count, or blocker field.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-mutable-url",
+      "fixture": "Use a mutable index, latest URL, branch, ref, or otherwise unproven immutable URL.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-unknown-or-nonzero-redirect",
+      "fixture": "Set redirect_count to UNKNOWN or to any integer greater than zero.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-missing-digest-size-source-or-license",
+      "fixture": "Remove or set to UNKNOWN a required digest, exact size, source relation, notice, or license relation.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-version-only-source",
+      "fixture": "Treat matching package or upstream version text as direct corresponding-source proof.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-observed-digest-as-trust",
+      "fixture": "Use an observed host or post-acquisition digest as pretrusted acquisition identity.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-wrong-key-member",
+      "fixture": "Select any package member other than etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "red-cross-file-mismatch",
+      "fixture": "Change a route, verifier route, member, object ID, count, arithmetic value, blocker, or status in only one artifact.",
+      "expected": "REJECT",
+      "result": "REJECT"
+    },
+    {
+      "id": "green-intact",
+      "fixture": "All required endpoints and package/source/license/member relations are immutable, status 200, zero redirect, exactly sized, authoritatively digested, recursively closed, and cross-file consistent.",
+      "expected": "PASS",
+      "result": "NOT SATISFIED"
+    },
+    {
+      "id": "terminal-consistency",
+      "fixture": "Current evidence requires BLOCKED in all four artifacts.",
+      "expected": "PASS",
+      "result": "PASS"
+    }
+  ],
+  "blockers": [
+    "RETAINED_KEY_MEMBER_EXTRACTION_CLOSURE_UNKNOWN",
+    "NO_MEASURED_ZERO_REDIRECT_ENDPOINT",
+    "UBUNTU_CHECKSUM_OBJECT_DIGESTS_UNKNOWN",
+    "MSYS2_BINARY_PACKAGE_EXACT_SIZE_UNKNOWN",
+    "MSYS2_SOURCE_PACKAGE_SIZE_AND_DIGEST_UNKNOWN",
+    "MSYS2_BINARY_TO_RECIPE_COMMIT_BINDING_UNKNOWN",
+    "GIT_FOR_WINDOWS_HOST_PACKAGE_BINDING_UNKNOWN",
+    "RECURSIVE_DEPENDENCY_PACKAGE_SOURCE_LICENSE_CLOSURE_UNKNOWN",
+    "NOTICE_AND_LICENSE_CLOSURE_INCOMPLETE",
+    "COMPLETE_OBJECT_COUNT_BYTES_AND_STORAGE_UNKNOWN"
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "schema_id": "vordar.prime-agent.g2.blocker-closure.public-research.license-candidates",
+  "schema_version": "1.0.0",
+  "artifact_type": "license-candidates",
+  "research_date": "2026-08-07",
+  "status": "BLOCKED",
+  "retained_route_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+  "retained_verifier_route_id": "task1-git-for-windows-gpgv-2.4.9",
+  "selected_key_member": "etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg",
+  "alternative_key_members": [],
+  "license_verdict_made": false,
+  "credits_change_authorized": false,
+  "acquisition_authorized": false,
+  "first_causal_gap": "The retained Debian ar package uses data.tar.zst, but no Task-1-approved zstd-capable extractor and no extracted retained-member bytes, digest, or packet sequence exist.",
+  "expected_key_identity": {
+    "fingerprint": "843938DF228D22F7B3742BC0D94AA3F0EFE21092",
+    "uid": "Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>",
+    "verification_state": "EXPECTED_BUT_UNVERIFIED",
+    "observed_fingerprint": "UNKNOWN",
+    "observed_uid": "UNKNOWN"
+  },
+  "license_candidates": [
+    {
+      "license_candidate_id": "lic-ubuntu-keyring-2023.11.28.1",
+      "subject_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+      "subject": "ubuntu-keyring 2023.11.28.1",
+      "selection_status": "RETAINED_PACKAGE_LICENSE_CANDIDATE",
+      "eligible": false,
+      "declaration_status": "EVIDENCED",
+      "declared_terms": [
+        "Key material: stated not to fall under copyright",
+        "Other package support files: GNU GPL version 2 or later"
+      ],
+      "retained_key_member": "etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg",
+      "packaged_notice_member": "usr/share/doc/ubuntu-keyring/copyright",
+      "source_record": "https://changelogs.ubuntu.com/changelogs/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1/copyright",
+      "source_archive_object_id": "ubuntu-keyring-source-2023.11.28.1",
+      "verdict": "NOT_MADE",
+      "status": "BLOCKED",
+      "remaining_gaps": [
+        "Retained key-member bytes, digest, and packet sequence require authorized extraction.",
+        "Packaged notice bytes and digest require authorized extraction.",
+        "No endpoint has a measured zero redirect count."
+      ]
+    },
+    {
+      "license_candidate_id": "lic-gnupg-2.4.9",
+      "subject_id": "msys2-gnupg-2.4.9-1-x86_64",
+      "subject": "GnuPG 2.4.9 as represented by the research-only MSYS2 package candidate",
+      "selection_status": "RESEARCH_CANDIDATE_ONLY",
+      "eligible": false,
+      "package_declaration": "GPL",
+      "upstream_declaration": "GPLv3+ with some files under mixed LGPLv3+/GPLv2+ terms",
+      "declaration_sources": [
+        "https://packages.msys2.org/base/gnupg",
+        "https://www.gnupg.org/faq/HACKING.html"
+      ],
+      "source_package_object_id": "msys2-gnupg-2.4.9-1-source-package",
+      "upstream_source_object_id": "gnupg-2.4.9-source",
+      "known_notice_member_candidates": [
+        "/usr/share/doc/gnupg/DCO",
+        "/usr/share/doc/gnupg/README",
+        "/usr/share/doc/gnupg/HACKING"
+      ],
+      "exact_copying_file_inventory": "UNKNOWN",
+      "patch_notice_inventory": "UNKNOWN",
+      "binary_package_notice_completeness": "UNKNOWN",
+      "corresponding_source_for_retained_verifier": "UNKNOWN",
+      "verdict": "NOT_MADE",
+      "status": "BLOCKED",
+      "remaining_gaps": [
+        "MSYS2 binary package exact size is UNKNOWN.",
+        "Exact MSYS2 source package size and digest are UNKNOWN.",
+        "Published binary to immutable recipe commit binding is UNKNOWN.",
+        "Git-for-Windows host executable to package binding is UNKNOWN.",
+        "Exact copying files and per-file exceptions for release 2.4.9 have not been inventoried from acquired source bytes.",
+        "Patch notices and complete binary-package notice inventory are not closed.",
+        "Recursive dependency package, source, notice, and license closure is UNKNOWN."
+      ]
+    },
+    {
+      "license_candidate_id": "lic-msys2-recipe-repository",
+      "subject_id": "msys2-gnupg-recipe-705cff2db01a907c02352781fc5cd2fcac61b50b",
+      "subject": "MSYS2-packages packaging repository material",
+      "selection_status": "EVIDENCE_ONLY",
+      "eligible": false,
+      "declared_terms": [
+        "BSD-3-Clause repository declaration"
+      ],
+      "source_record": "https://api.github.com/repos/msys2/MSYS2-packages",
+      "scope_warning": "This declaration applies to packaging-repository material and does not replace GnuPG, patch, dependency, or retained-verifier license records.",
+      "verdict": "NOT_MADE",
+      "status": "EVIDENCE_ONLY"
+    }
+  ],
+  "dependency_license_candidates": [
+    {"license_candidate_id": "lic-dep-bzip2-unresolved", "package_name": "bzip2", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/bzip2?variant=x86_64", "source_record": "https://packages.msys2.org/base/bzip2", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libassuan-unresolved", "package_name": "libassuan", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libassuan?variant=x86_64", "source_record": "https://packages.msys2.org/base/libassuan", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libbz2-unresolved", "package_name": "libbz2", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libbz2?variant=x86_64", "source_record": "https://packages.msys2.org/base/bzip2", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libcurl-unresolved", "package_name": "libcurl", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libcurl?variant=x86_64", "source_record": "https://packages.msys2.org/base/curl", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libgcrypt-unresolved", "package_name": "libgcrypt", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libgcrypt?variant=x86_64", "source_record": "https://packages.msys2.org/base/libgcrypt", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libgpg-error-unresolved", "package_name": "libgpg-error", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libgpg-error?variant=x86_64", "source_record": "https://packages.msys2.org/base/libgpg-error", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libgnutls-unresolved", "package_name": "libgnutls", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libgnutls?variant=x86_64", "source_record": "https://packages.msys2.org/base/gnutls", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libiconv-unresolved", "package_name": "libiconv", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libiconv?variant=x86_64", "source_record": "https://packages.msys2.org/base/libiconv", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libintl-unresolved", "package_name": "libintl", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libintl?variant=x86_64", "source_record": "https://packages.msys2.org/base/gettext", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libksba-unresolved", "package_name": "libksba", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libksba?variant=x86_64", "source_record": "https://packages.msys2.org/base/libksba", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libnpth-unresolved", "package_name": "libnpth", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libnpth?variant=x86_64", "source_record": "https://packages.msys2.org/base/npth", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libreadline-unresolved", "package_name": "libreadline", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libreadline?variant=x86_64", "source_record": "https://packages.msys2.org/base/readline", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-libsqlite-unresolved", "package_name": "libsqlite", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/libsqlite?variant=x86_64", "source_record": "https://packages.msys2.org/base/sqlite3", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-nettle-unresolved", "package_name": "nettle", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/nettle?variant=x86_64", "source_record": "https://packages.msys2.org/base/nettle", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-pinentry-unresolved", "package_name": "pinentry", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/pinentry?variant=x86_64", "source_record": "https://packages.msys2.org/base/pinentry", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"},
+    {"license_candidate_id": "lic-dep-zlib-unresolved", "package_name": "zlib", "exact_package_version": "UNKNOWN", "package_record": "https://packages.msys2.org/packages/zlib?variant=x86_64", "source_record": "https://packages.msys2.org/base/zlib", "source_object_id": "UNKNOWN", "declared_license": "UNKNOWN", "notice_inventory": "UNKNOWN", "eligible": false, "status": "BLOCKED"}
+  ],
+  "extractor_license_candidate": {
+    "candidate_id": null,
+    "selected_alternative_extractor": false,
+    "status": "NOT_AUTHORIZED",
+    "rule": "Do not add a package, source, or license candidate for another extractor route."
+  },
+  "counts": {
+    "root_license_candidate_count": 3,
+    "declared_dependency_license_candidate_count": 16,
+    "extractor_license_candidate_count": 0,
+    "closed_license_candidate_count": 0,
+    "license_verdict_count": 0,
+    "candidate_body_count": 8,
+    "known_size_body_count": 6,
+    "unknown_size_body_count": 2,
+    "known_bytes": 8121066,
+    "unknown_bytes": "UNKNOWN",
+    "direct_dependency_count": 16,
+    "patch_count": 26,
+    "blocker_count": 10,
+    "complete_recursive_license_candidate_count": "UNKNOWN",
+    "complete_candidate_body_count": "UNKNOWN",
+    "complete_candidate_bytes": "UNKNOWN",
+    "storage_ceiling_bytes": "UNKNOWN"
+  },
+  "verification_tests": [
+    {"id": "red-malformed-or-missing-key-json", "fixture": "Malformed JSON or removal of a required schema, route, member, source, license, count, blocker, or status field.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-mutable-url", "fixture": "Use a mutable source, package index, branch, ref, or latest URL as qualified license provenance.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-unknown-or-nonzero-redirect", "fixture": "Accept UNKNOWN or nonzero redirects for an object needed by a license/source relation.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-missing-digest-size-source-or-license", "fixture": "Remove or accept UNKNOWN for a required digest, exact size, source, notice, corresponding source, or license relation.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-version-only-source", "fixture": "Treat matching package or GnuPG version text as corresponding-source proof for Git for Windows.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-observed-digest-as-trust", "fixture": "Use an observed host digest as package, source, license, or acquisition trust.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-wrong-key-member", "fixture": "Attach retained key-material declarations to any selected member other than etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-cross-file-mismatch", "fixture": "Change a route, subject/object ID, member, count, arithmetic value, blocker, or status independently.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-generic-license-substitution", "fixture": "Treat generic GPL or repository BSD-3-Clause declarations as complete per-file GnuPG, patch, dependency, or retained-verifier inventories.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "red-unknown-as-empty", "fixture": "Convert UNKNOWN source, notice, dependency, license, object, byte, or storage fields to empty or zero.", "expected": "REJECT", "result": "REJECT"},
+    {"id": "green-intact", "fixture": "Every exact package is directly bound to exact source, recipe, patches, notices, license texts, recursively closed dependencies, retained member identity, endpoint facts, and matching cross-file arithmetic.", "expected": "PASS", "result": "NOT SATISFIED"},
+    {"id": "terminal-consistency", "fixture": "Incomplete extraction, source, notice, dependency, endpoint, and license relations require BLOCKED and no license verdict.", "expected": "PASS", "result": "PASS"}
+  ],
+  "blockers": [
+    "RETAINED_KEY_MEMBER_EXTRACTION_CLOSURE_UNKNOWN",
+    "NO_MEASURED_ZERO_REDIRECT_ENDPOINT",
+    "UBUNTU_CHECKSUM_OBJECT_DIGESTS_UNKNOWN",
+    "MSYS2_BINARY_PACKAGE_EXACT_SIZE_UNKNOWN",
+    "MSYS2_SOURCE_PACKAGE_SIZE_AND_DIGEST_UNKNOWN",
+    "MSYS2_BINARY_TO_RECIPE_COMMIT_BINDING_UNKNOWN",
+    "GIT_FOR_WINDOWS_HOST_PACKAGE_BINDING_UNKNOWN",
+    "RECURSIVE_DEPENDENCY_PACKAGE_SOURCE_LICENSE_CLOSURE_UNKNOWN",
+    "NOTICE_AND_LICENSE_CLOSURE_INCOMPLETE",
+    "COMPLETE_OBJECT_COUNT_BYTES_AND_STORAGE_UNKNOWN"
+  ]
+}
