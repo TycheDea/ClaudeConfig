@@ -1,0 +1,81 @@
+{
+  "schema_version": "vordar-prime-option2-bootstrap-manifest-v1",
+  "status": "BLOCKED",
+  "type": "finding",
+  "model_seat": "Sol analysis",
+  "evidence_date": "2026-08-07",
+  "repository_evidence": {
+    "task1": {
+      "commit": "52e2c56",
+      "raw_path": ".claude/docs/research/prime-agent/option-2-gate-closing/g2-closure/01-host-preflight/raw.json",
+      "raw_sha256": "b8861db61ebd57c28770ea52eb947d2ec2e7194cca4d94081dedb5ca95ec2c72"
+    },
+    "g0": {
+      "path": ".claude/docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md",
+      "status": "FRESH"
+    },
+    "g2": {
+      "path": ".claude/docs/research/prime-agent/option-2-gate-closing/g2-closure/",
+      "status": "BLOCKED"
+    },
+    "durable_queue": ".claude/tasks/prime-agent-option2-gate-closing-plan.md",
+    "closure_plan": ".claude/tasks/prime-agent-option2-g2-closure-plan.md"
+  },
+  "acquisition_authorized": false,
+  "selected_routes": {
+    "trust_anchor_route_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+    "verifier_route_id": "task1-git-for-windows-gpgv-2.4.9",
+    "fallback_routes": []
+  },
+  "identity_semantics": {
+    "pretrusted_identity": "A pinned source identity and verification chain established before acquisition.",
+    "post_acquisition_observed_digest": "An observed digest records acquired bytes only and cannot bootstrap trust."
+  },
+  "endpoint_policy": {
+    "allowed_hosts": ["releases.ubuntu.com", "archive.ubuntu.com", "gnupg.org"],
+    "redirect_hops": 0,
+    "protocol": "HTTPS",
+    "version_specific_urls_required": true
+  },
+  "objects": [
+    {"id": "ubuntu-24.04.4-live-server-amd64.iso", "url": "https://releases.ubuntu.com/24.04.4/ubuntu-24.04.4-live-server-amd64.iso", "bytes": 3405469696, "ceiling_bytes": 3405469696, "sha256": "e907d92eeec9df64163a7e454cbc8d7755e8ddc7ed42f99dbc80c40f1a138433", "purpose": "installer image", "trust_class": "post-signature authenticated payload"},
+    {"id": "ubuntu-24.04.4-SHA256SUMS", "url": "https://releases.ubuntu.com/24.04.4/SHA256SUMS", "bytes": 594, "ceiling_bytes": 594, "sha256": null, "purpose": "ISO checksum manifest", "trust_class": "signed metadata; digest not pretrusted"},
+    {"id": "ubuntu-24.04.4-SHA256SUMS.gpg", "url": "https://releases.ubuntu.com/24.04.4/SHA256SUMS.gpg", "bytes": 833, "ceiling_bytes": 833, "sha256": null, "purpose": "checksum-manifest signature", "trust_class": "signature input; digest not pretrusted"},
+    {"id": "ubuntu-noble-keyring-deb-2023.11.28.1", "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1_all.deb", "bytes": 11124, "ceiling_bytes": 11124, "sha256": "36de43b15853ccae0028e9a767613770c704833f82586f28eb262f0311adb8a8", "purpose": "pretrusted Ubuntu CD-image public-key package", "trust_class": "authoritative pretrusted digest"},
+    {"id": "ubuntu-keyring-source-2023.11.28.1", "url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1.tar.xz", "bytes": 20236, "ceiling_bytes": 20236, "sha256": "aecd455ae15561371d6e454f121f079f0641d5e1b579a5563a2bc363fc74aa2e", "purpose": "keyring package source", "trust_class": "authoritative source digest"},
+    {"id": "gnupg-2.4.9-source", "url": "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.9.tar.bz2", "bytes": null, "ceiling_bytes": 8388608, "sha256": "dd17ab2e9a04fd79d39d853f599cbc852062ddb9ab52a4ddeb4176fd8b302964", "purpose": "non-trust-bearing upstream source candidate", "trust_class": "not proven corresponding source for Git-for-Windows"}
+  ],
+  "arithmetic": {
+    "known_bytes": 3405502483,
+    "network_quarantine_ceiling_bytes": 3413891091,
+    "formula": "3405502483 + 8388608 = 3413891091",
+    "runtime_storage_bytes": null,
+    "combined_storage_bytes": null,
+    "runtime_storage_status": "UNKNOWN",
+    "combined_storage_status": "UNKNOWN"
+  },
+  "mechanical_validation": {
+    "ready_requires": "All objects, trust, extraction, runtime dependencies, licenses, and storage must be closed without global mutation.",
+    "red_cases": [
+      {"id": "mutable-url", "mutation": "Replace a version-specific object URL with a mutable URL.", "expected_result": "RED"},
+      {"id": "redirect", "mutation": "Require one or more HTTP redirect hops.", "expected_result": "RED"},
+      {"id": "size", "mutation": "Make an acquired object size differ from its exact bytes or hard ceiling.", "expected_result": "RED"},
+      {"id": "digest", "mutation": "Make an authoritative digest differ from acquired bytes.", "expected_result": "RED"},
+      {"id": "observed-only-trust", "mutation": "Use a post-acquisition observed digest as the trust anchor.", "expected_result": "RED"},
+      {"id": "keyserver", "mutation": "Obtain trust material from a keyserver.", "expected_result": "RED"},
+      {"id": "key-packet", "mutation": "Permit an extra key or packet in the required member.", "expected_result": "RED"},
+      {"id": "unmeasured-helper", "mutation": "Use an extraction helper without exact measured bytes.", "expected_result": "RED"},
+      {"id": "dependency", "mutation": "Leave a runtime dependency unclosed or unbounded.", "expected_result": "RED"},
+      {"id": "license", "mutation": "Leave a required license, notice, or corresponding source unclosed.", "expected_result": "RED"},
+      {"id": "global-mutation", "mutation": "Use global installer, user keyring, registry, PATH, service, update, network, or profile state.", "expected_result": "RED"}
+    ]
+  },
+  "blockers": {
+    "first_causal": "extraction: the Debian ar package stores the required member through data.tar.zst, but no Task1-approved zstd extractor, member bytes, member digest, or packet sequence exists.",
+    "additional": [
+      "verifier PE/delay imports, private DLLs, API/system leaves, data/config, exact Git-for-Windows binary package/build recipe, notices/licenses/corresponding sources are unknown",
+      "runtime storage is UNKNOWN",
+      "combined storage is UNKNOWN"
+    ]
+  }
+}

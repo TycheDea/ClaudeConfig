@@ -1,0 +1,81 @@
+{
+  "schema_version": "vordar-prime-option2-dependency-expectations-v1",
+  "status": "BLOCKED",
+  "manifest_schema_version": "vordar-prime-option2-bootstrap-manifest-v1",
+  "selected_routes": {
+    "trust_anchor_route_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+    "verifier_route_id": "task1-git-for-windows-gpgv-2.4.9",
+    "fallback_routes": []
+  },
+  "task1_evidence": {
+    "commit": "52e2c56",
+    "raw_path": ".claude/docs/research/prime-agent/option-2-gate-closing/g2-closure/01-host-preflight/raw.json",
+    "raw_sha256": "b8861db61ebd57c28770ea52eb947d2ec2e7194cca4d94081dedb5ca95ec2c72"
+  },
+  "trust_package": {
+    "package_format": "Debian ar",
+    "data_member": "data.tar.zst",
+    "required_member": "etc/apt/trusted.gpg.d/ubuntu-keyring-2012-cdimage.gpg",
+    "required_member_bytes": null,
+    "required_member_sha256": null,
+    "expected_fingerprint": "843938DF228D22F7B3742BC0D94AA3F0EFE21092",
+    "expected_uid": "Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>",
+    "primary_key_count": 1,
+    "packet_sequence": null,
+    "extra_packets": "none permitted",
+    "readiness": "NOT_READY",
+    "blocking": "No Task1-approved zstd extractor, member bytes, member digest, or packet sequence exists.",
+    "status": "BLOCKED"
+  },
+  "extractor_candidates": [
+    {"name": "7z", "task1_status": "absent", "status": "BLOCKED"},
+    {"name": "GNU tar", "version": "1.35", "sha256": "df0582941d1f451a76337863ba1dc8d8986ad0faf44f0e5f5c34afeb43c36453", "zstd_support": "UNKNOWN", "dependencies": "UNKNOWN", "license": "UNKNOWN", "status": "BLOCKED"}
+  ],
+  "verifier": {
+    "task1_host_path": "C:\\Program Files\\Git\\usr\\bin\\gpgv.EXE",
+    "version": "2.4.9",
+    "bytes": 514306,
+    "sha256": "f4d13204d77fdf63c02b0e6742230f83a833128c28f7b715709c2c63a96c427b",
+    "authenticode_status": 2,
+    "selection": "observed candidate only",
+    "materialization": "task-local verifier root",
+    "intended_invocation": "isolated explicit task-local paths only",
+    "intended_invocation_approved": false,
+    "unknown_import_lists": {
+      "PE_imports": [],
+      "delay_imports": [],
+      "private_DLLs": [],
+      "API_system_leaves": [],
+      "data_config": [],
+      "meaning": "empty because unresolved, not closed",
+      "readiness": "UNKNOWN",
+      "status": "BLOCKED"
+    },
+    "readiness": "NOT_READY",
+    "blocking": "PE and delay imports, private DLLs, API/system leaves, data/config, exact Git-for-Windows binary package/build recipe, notices/licenses, and corresponding sources are unknown.",
+    "status": "BLOCKED"
+  },
+  "prohibited_global_state": ["global installer", "user keyring", "registry", "PATH", "service", "update", "network", "profile"],
+  "task4_required_resolution": [
+    "Task1-approved zstd-capable extraction helper and its exact bytes, dependencies, and license",
+    "extracted required-member bytes and digest",
+    "complete packet sequence with exactly one primary key and no extras",
+    "Git-for-Windows gpgv binary package and build recipe",
+    "all PE and delay imports",
+    "all private DLLs and bounded Windows system-DLL leaves",
+    "all data/config leaves",
+    "notices, licenses, and corresponding sources",
+    "task-local materialization manifest and isolated invocation"
+  ],
+  "red_cases": [
+    {"id": "unknown-dependency", "mutation": "Leave a dependency unknown.", "expected_error": "RED: unknown dependency"},
+    {"id": "system-dependency-unbounded", "mutation": "Use a system dependency without an explicit bound.", "expected_error": "RED: system dependency not explicitly bounded"},
+    {"id": "private-dependency-unknown", "mutation": "Leave a private DLL dependency unknown.", "expected_error": "RED: private dependency unknown"},
+    {"id": "extra-dependency", "mutation": "Introduce an undeclared dependency.", "expected_error": "RED: extra dependency"},
+    {"id": "path-use", "mutation": "Resolve the verifier through PATH.", "expected_error": "RED: PATH use"},
+    {"id": "global-mutation", "mutation": "Use prohibited global state.", "expected_error": "RED: global mutation"},
+    {"id": "unmeasured-helper", "mutation": "Use an extraction helper without exact measured bytes.", "expected_error": "RED: unmeasured helper"},
+    {"id": "extra-key", "mutation": "Accept more than one primary key.", "expected_error": "RED: extra key"},
+    {"id": "packet-extra", "mutation": "Accept a packet outside the required sequence.", "expected_error": "RED: packet extra"}
+  ]
+}

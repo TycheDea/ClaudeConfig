@@ -1,0 +1,49 @@
+{
+  "schema_version": "vordar-prime-option2-license-sources-v1",
+  "status": "BLOCKED",
+  "manifest_schema_version": "vordar-prime-option2-bootstrap-manifest-v1",
+  "selected_routes": {
+    "trust_anchor_route_id": "ubuntu-noble-keyring-deb-2023.11.28.1",
+    "verifier_route_id": "task1-git-for-windows-gpgv-2.4.9",
+    "fallback_routes": []
+  },
+  "license_verdict_change": false,
+  "keyring_source_mapping": {
+    "status": "closed only for package source identity",
+    "source_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1.tar.xz",
+    "dsc_url": "https://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1.dsc",
+    "copyright_url": "https://changelogs.ubuntu.com/changelogs/pool/main/u/ubuntu-keyring/ubuntu-keyring_2023.11.28.1/copyright",
+    "key_bytes_copyright": "not copyrighted",
+    "support_files_license": "GPL-2.0-or-later"
+  },
+  "gnupg_upstream_source_mapping": {
+    "status": "BLOCKED",
+    "url": "https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.4.9.tar.bz2",
+    "sha256": "dd17ab2e9a04fd79d39d853f599cbc852062ddb9ab52a4ddeb4176fd8b302964",
+    "reason": "not proven corresponding source for Git-for-Windows"
+  },
+  "runtime_gpgv_mapping": {
+    "status": "BLOCKED",
+    "missing": ["Git-for-Windows package", "build recipe", "corresponding source", "notices", "licenses"]
+  },
+  "unknown_dependency_classes": {
+    "private_DLLs": "UNKNOWN",
+    "system_DLLs": "UNKNOWN",
+    "data_config": "UNKNOWN"
+  },
+  "licensing_rules": {
+    "no_verdict_change": "This finding records no project-license-verdict change.",
+    "required_closure": "All notices, licenses, and corresponding sources must be closed before readiness.",
+    "gnupg_source_rule": "The upstream GnuPG tarball cannot be inferred as the corresponding source for Git-for-Windows by version alone."
+  },
+  "red_cases": [
+    {"id": "version-only-source-inference", "mutation": "Treat the GnuPG version match as corresponding-source proof.", "expected_result": "RED"},
+    {"id": "missing-dll-mapping", "mutation": "Omit runtime DLL source or license mapping.", "expected_result": "RED"},
+    {"id": "unknown-treated-as-closed", "mutation": "Treat an UNKNOWN dependency class as closed.", "expected_result": "RED"},
+    {"id": "omitted-source", "mutation": "Omit a required corresponding source.", "expected_result": "RED"},
+    {"id": "omitted-notice", "mutation": "Omit a required notice.", "expected_result": "RED"},
+    {"id": "license-verdict-change", "mutation": "Change the project license verdict.", "expected_result": "RED"},
+    {"id": "mutable-route", "mutation": "Use a mutable source route.", "expected_result": "RED"},
+    {"id": "global-route", "mutation": "Use a global route.", "expected_result": "RED"}
+  ]
+}
