@@ -8,6 +8,7 @@ Open only the memory body whose trigger applies; this file is an index, not a se
 - [Orchestration model](orchestration-model.md) — role-based Sol/Terra/Luna routing across pi and Claude; main orchestrates only; findings and changes are separate; explicit contracts, upward substitution, serial artifact verification
 - [Numeric outcome weights](numeric-outcome-weights.md) — options to the user carry outcome/confidence as /10 numbers, context-agnostic; cost in concrete units
 - [Model rules expire with the model](model-rules-expire-with-the-model.md) — a rule naming a tier's capability dies on upgrade; delete, don't reinterpret
+- [Claude seat mapping](claude-seat-mapping.md) — Sol→Fable, Terra→Opus, Luna→Sonnet when dispatching from Claude Code
 - [Quality over cost ruling](quality-over-cost-ruling.md) — quality outranks time/coding/change cost; replacing whole technologies is in scope (licensing still gates)
 - [Serious project, not learning](serious-project-not-learning.md) — evaluate on engineering merit only
 - [Pre-content foundation stage](pre-content-foundation-stage.md) — no real enemies/NPCs yet; benchmarks guide foundation fixes

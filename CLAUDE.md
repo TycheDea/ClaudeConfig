@@ -51,8 +51,8 @@ fixes, tools, or next steps. The orchestrator decides what follows.
 
 These are semantic seats, not permanent product IDs. In pi, use the available
 Sol/Terra/Luna model IDs shown by the runtime. Claude compatibility mapping is:
-strongest reasoning/vision model for Sol roles, Sonnet-class model for Terra,
-and Haiku-class model for Luna. Re-evaluate capability claims when models
+Fable-class model for Sol roles, Opus-class model for Terra, and Sonnet-class
+model for Luna. Re-evaluate capability claims when models
 change; preserve the roles and gates.
 
 ## 3. Every worker gets a six-part contract

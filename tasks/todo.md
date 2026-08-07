@@ -1,3 +1,5 @@
+> Parallel campaign: VFX register exploration → `tasks/vfx-campaign.md` (2026-08-07)
+
 # Start-Town Campaign (2026-07-30 →) — ACTIVE
 
 Plan: `~/.claude/plans/zippy-wibbling-pancake.md` (approved 2026-07-30). Real start
