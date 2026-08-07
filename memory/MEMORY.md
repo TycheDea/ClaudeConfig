@@ -2,6 +2,9 @@
 
 Open only the memory body whose trigger applies; this file is an index, not a second standing-law body.
 
+- [Audit cleanup sessions](audit-cleanup-sessions.md) — "make audits + clean done reviews" = audit and remove only; fresh audits are the cleanup; trims are pure deletion keeping parked/ruling content
+- [Glob absence needs ls](glob-absence-needs-ls.md) — a glob miss is not evidence a file is missing; confirm with ls before claiming absence
+
 - [Orchestration model](orchestration-model.md) — role-based Sol/Terra/Luna routing across pi and Claude; main orchestrates only; findings and changes are separate; explicit contracts, upward substitution, serial artifact verification
 - [Numeric outcome weights](numeric-outcome-weights.md) — options to the user carry outcome/confidence as /10 numbers, context-agnostic; cost in concrete units
 - [Model rules expire with the model](model-rules-expire-with-the-model.md) — a rule naming a tier's capability dies on upgrade; delete, don't reinterpret
