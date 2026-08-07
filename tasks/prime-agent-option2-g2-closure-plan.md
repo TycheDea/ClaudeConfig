@@ -1,8 +1,16 @@
 # PRIME Agent option 2 — G2 closure queue
 
-**Status:** **APPROVED — execute serially until first blocker**
+**Status:** **BLOCKED AT TASK 2 — Tasks 3–14 parked**
 
-**User decision (2026-08-07):** Continue through this queue until a blocker. This approval authorizes only the settled retained candidate and the serial task contracts below. It does not authorize a fallback, expansion, credential, irreversible fork, or G3 absent the final checkpoint interpretation below.
+**User decision (2026-08-07):** Continue through this queue until a blocker. The queue correctly stopped at its first blocker in Task 2. This approval authorized only the settled retained candidate and the serial task contracts below; it did not authorize a fallback, expansion, credential, irreversible fork, or G3.
+
+## Current checkpoint
+
+- Task 1 host preflight is complete/green at commit `52e2c56`.
+- Task 2 bootstrap-object manifest ends `BLOCKED` at commit `48b063c`; artifact: `.claude/docs/research/prime-agent/option-2-gate-closing/g2-closure/02-bootstrap-object-manifest/`.
+- The first causal gap is no Task-1-approved zstd-capable extraction/member byte-digest-packet closure for the selected Ubuntu keyring `data.tar.zst`.
+- An independent additional blocker is the observed Git-for-Windows `gpgv` PE/runtime/build/license/corresponding-source graph.
+- Task 3 acquisition is unauthorized; Tasks 3–14 are parked. No download, VM, credentials, or fallback occurred.
 
 ## Goal
 

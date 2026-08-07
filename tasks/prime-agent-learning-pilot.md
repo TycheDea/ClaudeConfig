@@ -26,10 +26,9 @@ the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. On
 [`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md).
 G0 was rerun on 2026-08-07 after the campaign plan reconciled the observed
 drift and ends `FRESH`. G1’s read-only host inventory is complete. G2 retains a
-dedicated Hyper-V Ubuntu candidate but ends `BLOCKED`: the exact OpenPGP
-trust-anchor/verifier object set and deterministic credential-free unattended
-provisioning/receipt path are not closed. No guest was downloaded, created, or
-started; no concurrent VFX/effects/particles work was touched.
+dedicated Hyper-V Ubuntu candidate but ends `BLOCKED` at Task 2. No guest was
+downloaded, created, or started; no concurrent VFX/effects/particles work was
+touched.
 
 ## Goal
 
@@ -104,17 +103,23 @@ Direct phase-1 findings:
 [P9](../docs/research/prime-agent/phase-1/09-comparative-practitioner-evidence.md) ·
 [P10](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md).
 
-**Current checkpoint / exact next action:** G1 is retained under
-[`01-host-platform-inventory/`](../docs/research/prime-agent/option-2-gate-closing/01-host-platform-inventory/).
-G2 is retained at
-[`02-target-and-profile-decision.md`](../docs/research/prime-agent/option-2-gate-closing/02-target-and-profile-decision.md)
-and ends `BLOCKED`. Do not dispatch G3. Measured reality requires a new Sol
-planning finding and user checkpoint before attempting to close the exact
-OpenPGP verifier/trust-anchor, zero-touch autoinstall, credential-free bootstrap,
-and bounded receipt-export gaps. No fallback to WSL2, another image/provider,
-or manual improvisation is authorized. Installation/download, credentials,
-user-global changes, host/container/GPU execution, phase-2 matched-pilot
-planning, and adoption remain unauthorized.
+**Current checkpoint / exact next action:** G0 is `FRESH`; G1 is complete at
+commit `52e2c56` with artifact
+[`01-host-preflight/`](../docs/research/prime-agent/option-2-gate-closing/g2-closure/01-host-preflight/).
+G2 is `BLOCKED` at Task 2, as recorded in the
+[`G2 closure plan`](prime-agent-option2-g2-closure-plan.md), at commit
+`48b063c` with artifact
+[`02-bootstrap-object-manifest/`](../docs/research/prime-agent/option-2-gate-closing/g2-closure/02-bootstrap-object-manifest/).
+The first causal gap is no Task-1-approved zstd-capable extraction/member
+byte-digest-packet closure for the selected Ubuntu keyring `data.tar.zst`; the
+independent additional blocker is the observed Git-for-Windows `gpgv`
+PE/runtime/build/license/corresponding-source graph. **Exact next action: stop;
+no Task 3 or G3.** Any continuation requires a new Sol finding/plan that closes
+the measured extractor and verifier provenance/dependency/license facts without
+fallback or boundary weakening. Tasks 3–14 are parked. No download, VM,
+credentials, fallback, or VFX/effects/particles or concurrent work was touched.
+Installation/download, credentials, user-global changes, host/container/GPU
+execution, phase-2 matched-pilot planning, and adoption remain unauthorized.
 
 ## Execution model
 
