@@ -3,468 +3,494 @@
 ## Run record
 
 - **Model seat:** Sol analysis
-- **Type:** finding
-- **Deliverable:** exact body for `.claude/docs/research/prime-agent/option-2-gate-closing/02-target-and-profile-decision.md`
-- **Scope:** G0 `FRESH`, retained G1 inventory, P2/P3/P4/P5/P7/P8/P10, and current public primary platform/provider documentation.
-- **Do not touch or decide:** No host probe, provisioning, download, install, guest or WSL lifecycle command, Docker/GPU/process workload, credential/account action, provider call, phase-2 plan, compatibility shim, fallback, Vordar/game/content/VFX/effects/particles access, or concurrent `.claude` edit.
-- **Verification criterion:** Exactly one target and one provider profile; WSL2 and the separate Linux guest remain distinct; external power-cut equivalent exists; every P2 node/edge is classified; every disabled path has enforcement and a later check; image/resource approval quantities are exact enough for G3; mutable installers and beta cannot enter.
+- **Type:** finding correction
+- **Deliverable:** complete replacement body for `.claude/docs/research/prime-agent/option-2-gate-closing/02-target-and-profile-decision.md`
+- **Scope:** Current G2, campaign-plan G3, G0/G1, and current public Ubuntu, cloud-init, and Hyper-V primary documentation.
+- **Do not touch or decide:** No probe, download, setup, VM/WSL/Docker lifecycle, GPU/process workload, credential access, repository edit, provider substitution, fallback, baseline change, game/VFX access, or concurrent work.
+- **Verification criterion:** Luna must have a deterministic, offline, noninteractive G3 recipe using only approved or measured mechanisms; every input and signer must have exact identity and bytes; receipt export must require neither a host-folder mount nor a secret; quantities must be exact. Any unapproved tool, unmeasured helper, credential, interactive step, package installation, or weakened boundary blocks.
 - **Retrieval date:** 2026-08-07
 
-## Decision
+## Verdict
 
-Select one new **Ubuntu Server 24.04.4 LTS AMD64 Generation-2 Hyper-V virtual machine**, named `VordarPrimeOption2`, with no fallback.
+The selected candidate remains a dedicated Ubuntu Server 24.04.4 LTS AMD64 Generation-2 Hyper-V VM named `VordarPrimeOption2`. WSL2 is not a fallback and may not be invoked.
 
-The selected external abrupt-loss mechanism is:
+The provider/profile candidate remains:
+
+```text
+OpenAI business/developer API project service account
+openai / openai-responses / gpt-5.2-2025-12-11
+api.openai.com
+no fallback
+```
+
+This candidate is **not implementation-ready for G3**. The current approval packet requires cryptographic verification of `SHA256SUMS.gpg`, but neither G0, G1, nor G2 supplies or approves:
+
+1. the exact public-key object bytes used as the verification trust anchor; or
+2. an exact OpenPGP verifier and its complete executable/runtime identity.
+
+Ubuntu’s primary verification procedure requires an OpenPGP implementation and runs `gpg --verify SHA256SUMS.gpg SHA256SUMS`. Windows PowerShell’s measured `Get-FileHash` use in G1 can compute SHA-256 but does not verify an OpenPGP detached signature. G1 did not measure `gpg`, `gpgv`, another OpenPGP verifier, or an equivalent approved verifier object. Their absence is not inferred; their presence and immutable identity are `UNKNOWN`.
+
+The task contract requires failure on an unmeasured helper and prohibits adding an unapproved tool. Consequently Luna cannot execute the first image-authentication step deterministically. No VM creation, seed construction, boot, or fallback is authorized.
+
+## Retained immutable baseline
+
+The PRIME baseline remains exactly:
+
+- version `v0.7.0`;
+- commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`;
+- tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`;
+- Node floor `>=22.8.0`;
+- beta release ID `355959266`, tag `beta`, and commit `b9a4461149419156599d60174dddf15458e2b9ee` prohibited;
+- no mutable installer, update channel, Docker dependency, local model, local GPU, compatibility shim, or fallback.
+
+G0 ends `FRESH`. G1 records:
+
+- Windows 11 Pro `10.0.26200`, UBR `8973`;
+- 20 logical CPUs and `34,134,220,800` bytes RAM;
+- an active hypervisor and enabled `Microsoft-Hyper-V-Hypervisor`;
+- `181,652,307,968` free bytes on the candidate storage volume;
+- existing `Ubuntu` and `docker-desktop` WSL registrations that must remain untouched;
+- no guest entry/start, termination command, configuration change, Docker workload, or GPU workload;
+- raw inventory SHA-256 `a922eb4e76f88e35228004afd627092655f96b9d7e311e67ae5e4b2e49c8a3f4`.
+
+G1 did not test Hyper-V cmdlet availability, Secure Boot template availability, OpenPGP helpers, unattended installer behavior, or receipt transport.
+
+## Candidate target retained without provisioning authorization
+
+- **OS:** Ubuntu Server 24.04.4 LTS AMD64, no GUI
+- **VM:** `VordarPrimeOption2`
+- **Hypervisor:** Hyper-V
+- **Generation:** 2
+- **Abrupt-loss command:**
 
 ```powershell
 Stop-VM -Name 'VordarPrimeOption2' -TurnOff -Confirm:$false
 ```
 
-Microsoft defines `Stop-VM -TurnOff` as equivalent to disconnecting power from the VM. The recovery controller must bind the recorded Hyper-V `VMId` as well as the exact name before invoking it. Failure to provision or qualify this target blocks the campaign; it does not fall through to WSL2.
+The controller must first bind both the exact VM name and recorded `VMId`. A missing VM, name/ID mismatch, wildcard selection, or command without `-TurnOff` fails. Microsoft documents `Stop-VM -TurnOff` as equivalent to disconnecting power.
 
-The retained PRIME baseline remains exactly:
+Failure blocks the campaign. It does not authorize WSL2, another image, another VM provider, or manual provisioning.
 
-- version `v0.7.0`;
-- commit `be9e2fa0714e7cd1c6bd9bdb1b554d2cc6550387`;
-- tree `0625a8fd0550a8de7ff05e8d9248e75563e5b520`;
-- Node engine floor `>=22.8.0`;
-- beta release ID `355959266`, tag `beta`, and commit `b9a4461149419156599d60174dddf15458e2b9ee` prohibited;
-- no mutable installer, update channel, Docker dependency, local model, or local GPU.
+## Ubuntu installation-object identity
 
-## Controlling repository evidence
+| Field | Required value |
+|---|---|
+| Object | `ubuntu-24.04.4-live-server-amd64.iso` |
+| URL | `https://releases.ubuntu.com/24.04/ubuntu-24.04.4-live-server-amd64.iso` |
+| Size | `3,405,469,696` bytes |
+| SHA-256 | `e907d92eeec9df64163a7e454cbc8d7755e8ddc7ed42f99dbc80c40f1a138433` |
+| Checksum object | `https://releases.ubuntu.com/24.04/SHA256SUMS` |
+| Checksum size | `594` bytes |
+| Signature object | `https://releases.ubuntu.com/24.04/SHA256SUMS.gpg` |
+| Signature size | `833` bytes |
+| Signature issuer fingerprint | `843938DF228D22F7B3742BC0D94AA3F0EFE21092` |
+| Signer UID | `Ubuntu CD Image Automatic Signing Key (2012) <cdimage@ubuntu.com>` |
 
-G0 ends `FRESH` and preserves the stable commit/tree, Node floor, beta exclusion, task ownership, and mutable-source cautions: `.claude/docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md`.
+The fingerprint is exact: it is carried by the current detached signature and matches Ubuntu’s documented CD-image signing identity. It does not by itself supply a trust anchor.
 
-Exact retained G1 fields from `.claude/docs/research/prime-agent/option-2-gate-closing/01-host-platform-inventory/raw.json` are:
+### Unclosed signing-key bytes
 
-| Field | Retained value | Decision use |
-|---|---|---|
-| `host.windows.build.value.caption` | `Microsoft Windows 11 Pro` | Windows client Hyper-V host |
-| `host.windows.build.value.version` / `ubr` | `10.0.26200` / `8973` | Recorded host baseline |
-| `host.cpu.logical_cores.value` | `20` | VM CPU ceiling |
-| `host.memory.total_ram_bytes.value` | `34134220800` | VM RAM ceiling |
-| `host.virtualization.value.hypervisor_present` | `true` | Active host hypervisor evidence |
-| `host.windows_optional_features.value[name=Microsoft-Hyper-V-Hypervisor].install_state` | `1` | Microsoft documents `1` as enabled |
-| `storage.candidate_guest_storage_volume.free_bytes.value` | `181652307968` | Guest-storage approval basis |
-| `wsl.version.value` | WSL `2.4.13.0`, kernel `5.15.167.4-1` | WSL candidate identity, not selected target |
-| `wsl.registered_distributions.value` | `Ubuntu` stopped; `docker-desktop` running | Must remain uninspected and untouched |
-| `wsl.external_guest_termination_capability.value` | `--terminate` and `--shutdown` listed, neither invoked | WSL comparison only |
-| `wsl.filesystem_mount_defaults`, `interop_defaults`, `cgroup_capability`, `systemd_capability` | `UNKNOWN` | Cannot be promoted into measured WSL support |
-| `gpu.host_adapters.value` | Intel UHD 770 and RTX 3080 Ti | Selected VM receives neither |
-| `gpu.wsl_guest_visibility.value` | `UNKNOWN` | No WSL GPU inference |
-| `pi.installed_version.value` | `0.80.6` | Pi remains host orchestrator/control |
-| `pi.state_path_names_existence_metadata_only` | host/project Pi roots recorded | Guest must not mount or read them |
+Potential public sources include Ubuntu’s keyserver and the Ubuntu archive keyring, but the present G2 packet does not pin one exact response body by:
 
-The G1 command transcript records `distribution_entered_or_started:false`, `termination_command_invoked:false`, and `configuration_changed:false`. Its retained `raw.json` SHA-256 is `a922eb4e76f88e35228004afd627092655f96b9d7e311e67ae5e4b2e49c8a3f4`.
+- URL;
+- byte count;
+- independently recorded SHA-256;
+- exact exported packet set;
+- signer fingerprint derived from those bytes; and
+- approval as a G3 input object.
 
-P2 establishes Linux as the official packaged path, the complete EP/N/E/P graph, no core Docker layer, unrestricted same-user shell exposure, and open Node/Python/dynamic dependencies. P3 blocks unresolved bytes, provenance, services, and optional paths. P4/P5 require explicit refinement and recovery-state evidence rather than replay inference. P7 leaves WSL2 and quantitative host fit unknown. P8 supplies formulas rather than a current provider quote. P10 requires a dedicated guest, disabled optional edges, Pi separation, and external recovery proof.
+A keyserver lookup is mutable and can include certifications beyond the requested primary key. The archive keyring contains multiple keys. Neither may be reduced or selected manually during G3.
 
-## Target comparison — not merged
+### Unclosed verifier
 
-| Criterion | New dedicated WSL2 distribution | New dedicated Hyper-V Linux guest |
-|---|---|---|
-| Candidate OS object | Canonical `ubuntu-24.04.4-wsl-amd64.wsl`, `391541571` bytes, SHA-256 `9b2f7730dc68227dd04a9f3e5eab86ad85caf556b8606ad94f1f29ff5c4fd3f5` | Canonical `ubuntu-24.04.4-live-server-amd64.iso`, `3405469696` bytes, SHA-256 `e907d92eeec9df64163a7e454cbc8d7755e8ddc7ed42f99dbc80c40f1a138433` |
-| Linux status for PRIME | WSL2 remains unnamed and unmeasured by PRIME’s source/CI | Native Linux is the documented packaged target |
-| External loss | `wsl.exe --terminate <name>` stops one distribution | `Stop-VM -TurnOff` is documented as power disconnection |
-| Hypervisor boundary | Shares the WSL2 utility-VM/kernel facility | Independent Generation-2 VM and VHDX |
-| Hard RAM/CPU boundary | `.wslconfig` controls the shared WSL2 VM globally; Microsoft says it applies to all WSL2 distributions | Per-VM processor and fixed-memory settings |
-| Existing guest impact | Global WSL settings or `wsl --shutdown` could affect the retained Ubuntu and running `docker-desktop`; this is prohibited | No WSL command, registration, kernel setting, or distribution state is involved |
-| Mount/interop isolation | Per-distribution `wsl.conf` can disable automount/interop, but G1 measured both defaults as `UNKNOWN` | No host filesystem device or enhanced guest-service sharing is attached |
-| GPU denial | Per-distribution configuration exists, but G1 visibility is `UNKNOWN` and WSL GPU plumbing is shared host infrastructure | No GPU partition/DDA device is assigned; compute-device absence is independently testable |
-| Egress | Per-distribution controls coexist with shared WSL networking/firewall behavior | Dedicated internal virtual switch and no default route |
-| Rollback identity | Rootfs export plus shared mutable WSL kernel/package identity | Offline installed-root manifest plus immutable clean VHDX digest |
-| Selection result | **Rejected** | **Selected** |
+No approved G3 object provides:
 
-WSL2 is rejected because its VM-level CPU/RAM configuration is global to WSL2 while G1 records another distribution running, and because the WSL kernel/runtime, cgroup/systemd behavior, filesystem defaults, and GPU visibility are not measured. The dedicated distribution could be terminated externally, but it is not the stronger independent boundary on this host.
+- an OpenPGP verifier executable;
+- its exact version, source, bytes, digest, dependencies, and license;
+- an exact invocation that rejects an unexpected signer, additional valid signer, weak/different digest, malformed data, or signature over different checksum bytes.
 
-## Selected guest and immutable OS identity
+A hash comparison against a value copied into this finding is not a substitute for the promised signature verification.
 
-### Installation object
+## Corrected object and quantity ledger
 
-- **Product:** Ubuntu Server 24.04.4 LTS, AMD64, no GUI
-- **Endpoint:** `https://releases.ubuntu.com/24.04/ubuntu-24.04.4-live-server-amd64.iso`
-- **Exact size:** `3,405,469,696` bytes
-- **Expected SHA-256:** `e907d92eeec9df64163a7e454cbc8d7755e8ddc7ed42f99dbc80c40f1a138433`
-- **Checksum endpoint:** `https://releases.ubuntu.com/24.04/SHA256SUMS`
-- **Checksum body size:** `594` bytes
-- **Signature endpoint:** `https://releases.ubuntu.com/24.04/SHA256SUMS.gpg`
-- **Signature body size:** `833` bytes
+### Currently identified public objects
 
-The versioned filename plus independently computed digest controls identity; the mutable directory name or current-release page does not. G3 must use an already approved exact endpoint, compute the ISO hash independently, verify the signed checksum using a separately recorded Ubuntu signing-key identity, and block on disagreement.
+| Object | Count | Bytes |
+|---|---:|---:|
+| Ubuntu ISO | 1 | `3,405,469,696` |
+| `SHA256SUMS` | 1 | `594` |
+| `SHA256SUMS.gpg` | 1 | `833` |
+| **Known subtotal** | **3** | **`3,405,471,123`** |
 
-### Installed-image identity strategy
+### Additional mandatory inputs
 
-G3 must install with the VM NIC disconnected and installer refresh, package updates, third-party repositories, snaps, remote SSH acquisition, and unattended upgrades disabled. Identity consists of:
+| Requirement | Minimum count | Bytes | Status |
+|---|---:|---:|---|
+| Exact signing-key object | 1 | `UNKNOWN` | Not selected, pinned, or approved |
+| Exact OpenPGP verifier distribution | At least 1 | `UNKNOWN` | Not measured, manifested, or approved |
+| Verifier runtime/dependencies | `UNKNOWN` | `UNKNOWN` | Not recursively enumerated |
+| Autoinstall `user-data` | 1 generated object | `UNKNOWN` | Exact bytes not settled |
+| NoCloud `meta-data` | 1 generated object | `UNKNOWN` | Exact bytes not settled |
+| Seed carrier VHD/VHDX | 1 generated object | `UNKNOWN` | Exact byte identity not settled |
+| Guest receipt | 1 generated object | `UNKNOWN` | Exact schema/export protocol not settled |
+| Host receipt listener/controller | At least 1 generated object | `UNKNOWN` | Exact implementation not settled |
 
-1. ISO filename, URL, exact size, computed SHA-256, `SHA256SUMS`, signature, and signing-key fingerprint;
-2. SHA-256 of the unattended-install seed or exact manual answer transcript;
-3. Generation-2 VM configuration manifest and Hyper-V `VMId`;
-4. installed package/version/architecture manifest;
-5. complete offline root manifest of path, type, mode, owner, size, and SHA-256;
-6. clean shutdown followed by a SHA-256 of the clean golden VHDX;
-7. an operational VHDX cloned from that golden object.
+Therefore:
 
-The clean golden VHDX is never booted again. Rollback destroys the operational clone and creates another clone from the verified golden object. An ISO mismatch, network access during installation, package refresh, mutable Ubuntu channel substitution, or unmanifested installed byte blocks G3.
+- exact public download object count: **at least 5**, final count `UNKNOWN`;
+- exact approved HTTP body total: **greater than `3,405,471,123` bytes**, final total `UNKNOWN`;
+- generated provisioning object count: **at least 5**, final count `UNKNOWN`;
+- exact storage total and hard approval ceiling: **not computable from closed objects**.
 
-## Boundary and operating profile
+The previous three-object, `3,405,471,123`-byte packet is incomplete and cannot authorize G3.
+
+## Offline unattended provisioning status
+
+Ubuntu documents NoCloud seed media containing `user-data` and `meta-data` on a filesystem labeled `CIDATA`. Ubuntu also documents that truly zero-touch Subiquity installation requires `autoinstall` on the kernel command line to bypass the destructive-action confirmation.
+
+A possible seed carrier can be created with Windows/Hyper-V storage mechanisms and attached as a second virtual disk, but that alone does not establish how the unmodified Ubuntu ISO receives the required `autoinstall` kernel argument.
+
+The current packet does not approve or specify any deterministic mechanism to:
+
+1. inject that kernel argument before the installer starts;
+2. remaster and re-sign the ISO;
+3. synthesize boot keystrokes without timing or visual judgment; or
+4. use a prebuilt cloud image proven compatible with the selected Gen2/Secure-Boot profile.
+
+Interactive GRUB editing, VMConnect keystrokes, timed key injection, visual confirmation, ISO remastering with an unapproved authoring tool, network boot, package installation, or image substitution is forbidden.
+
+This is an independent downstream blocker, but it is not reached because image-signature verification fails first.
+
+## Seed, bootstrap, and receipt requirements not credited as closed
+
+Any later corrected recipe would have to pin exact bytes for all of the following before Luna execution:
+
+### NoCloud identity
+
+- volume label exactly `CIDATA`;
+- root files exactly `user-data` and `meta-data`;
+- fixed `instance-id`;
+- fixed `local-hostname`;
+- top-level cloud-config `autoinstall` key;
+- exact autoinstall schema version;
+- update/refresh, SSH acquisition, third-party repository, snap refresh, and package-network paths disabled;
+- NIC disconnected from external networks throughout installation.
+
+### Credential-free bootstrap
+
+- no plaintext or reusable password;
+- no SSH authorized key;
+- no host credential;
+- no user-console secret;
+- root login disabled;
+- any bootstrap account locked;
+- no passwordless interactive administrative account;
+- all required G3 actions performed by installer/cloud-init directives already present in the approved seed.
+
+An identity password hash, temporary password, manually typed console value, SSH key, or host secret would violate the boundary.
+
+### Receipt export
+
+Receipt export may not use:
+
+- a host-folder mount;
+- Hyper-V Guest Service file copy;
+- enhanced-session drive sharing;
+- clipboard transfer;
+- SSH/SCP credential;
+- Pi state;
+- host environment secrets;
+- guest credential;
+- manual transcription.
+
+An internal-switch, guest-initiated one-shot receipt transfer could satisfy the topology only after its listener, protocol, destination address, schema, byte limit, timeout, replay behavior, and red fixtures are exact and approved. Those details are not present.
+
+## Hyper-V order and parameter requirements not credited as closed
+
+A future executable recipe would have to bind and preflight exact identities for every required cmdlet before mutation, including at minimum:
+
+- `New-VMSwitch`;
+- `New-VHD`;
+- `New-VM`;
+- `Set-VM`;
+- `Set-VMMemory`;
+- `Set-VMProcessor`;
+- `Set-VMFirmware`;
+- `Add-VMDvdDrive`;
+- `Add-VMHardDiskDrive`;
+- `Connect-VMNetworkAdapter`;
+- `Disconnect-VMNetworkAdapter`;
+- `Start-VM`;
+- `Stop-VM`;
+- `Remove-VM`;
+- `Remove-VMSwitch`;
+- `Get-VM`;
+- `Get-VMFirmware`;
+- `Get-VMNetworkAdapter`;
+- `Get-VMHardDiskDrive`;
+- `Get-VMDvdDrive`.
+
+The intended order remains:
+
+1. authenticate all public image objects;
+2. validate exact storage and object totals;
+3. preflight cmdlets and Secure Boot template without mutation;
+4. create the task root and rollback journal;
+5. create the isolated internal switch;
+6. create the 32-GiB dynamic VHDX;
+7. create the Generation-2 VM with fixed 8-GiB RAM;
+8. set four virtual processors and disable Dynamic Memory;
+9. disable automatic checkpoints;
+10. set automatic start to `Nothing` and stop to `ShutDown`;
+11. enable Secure Boot with template `MicrosoftUEFICertificateAuthority`;
+12. attach the authenticated installer ISO and exact seed carrier;
+13. set DVD as first boot device for installation;
+14. prove no external switch, NAT, default route, host share, GPU partition, DDA device, or Guest Service Interface;
+15. start unattended installation;
+16. receive the bounded non-secret receipt over the isolated path;
+17. shut down cleanly;
+18. detach installer and seed media;
+19. set the installed VHDX first in firmware boot order;
+20. boot once for receipt verification;
+21. shut down cleanly;
+22. hash the clean golden VHDX;
+23. create an operational clone;
+24. execute red checks;
+25. retain exact rollback inventory.
+
+The host has not been probed for these cmdlets or the named Secure Boot template. Their presence must not be assumed.
+
+## Retained boundary profile
 
 ### Host placement
 
-All host-side VM material is confined to:
+All task-owned VM material remains confined to:
 
 ```text
 C:\Users\egm_8\AppData\Local\VordarPrimeOption2\
 ```
 
-This root contains the approved ISO/checksum objects, Hyper-V configuration, active VHDX, golden rollback VHDX, and receipts. It is outside the Vordar tree, `.claude`, user Pi state, project Pi state, existing WSL registrations, Docker storage, and game/content/VFX paths.
+No Vordar, `.claude`, Pi, WSL, Docker, game, content, VFX, effects, or particles path may be read, mounted, copied, or modified.
 
-No host directory is mounted into the VM. Hyper-V Guest Service Interface, drive sharing, clipboard/file redirection, enhanced-session sharing, automatic checkpoints, GPU partitioning, and discrete-device assignment remain disabled.
+No host directory is mounted into the VM. Guest Service Interface, drive sharing, clipboard/file redirection, enhanced-session sharing, automatic checkpoints, GPU partitioning, and discrete-device assignment remain disabled.
 
-### Guest filesystem
+### Guest paths
 
-| Path | Owner/mode and purpose |
+| Path | Purpose |
 |---|---|
-| `/opt/vordar-prime-option2/runtime/<manifest-sha256>/` | `root:root`, non-writable; exact G6 runtime |
-| `/var/lib/vordar-prime-option2/home/` | fixed `vordar-prime` home and PRIME global state |
-| `/var/lib/vordar-prime-option2/state/` | recovery journals and external disposition records |
-| `/srv/vordar-prime-option2/work/` | only working-data root |
-| `/var/log/vordar-prime-option2/` | local bounded logs |
-| `/run/vordar-prime-option2/` | tmpfs IPC/temp and transient controller state |
-| `/run/credentials/vordar-prime-option2.service/` | systemd credential mount; one named slot, no retained value |
+| `/opt/vordar-prime-option2/runtime/<manifest-sha256>/` | Root-owned immutable G6 runtime |
+| `/var/lib/vordar-prime-option2/home/` | Fixed PRIME home and global state |
+| `/var/lib/vordar-prime-option2/state/` | Recovery journals and dispositions |
+| `/srv/vordar-prime-option2/work/` | Only working-data root |
+| `/var/log/vordar-prime-option2/` | Local bounded logs |
+| `/run/vordar-prime-option2/` | Private transient IPC/temp |
+| `/run/credentials/vordar-prime-option2.service/` | Future systemd credential mount; no G3 value |
 
-`/home`, `/mnt`, `/media`, `/workspace`, `/vordar`, host-drive paths, Pi paths, Docker sockets, and shared temp are absent from the service mount namespace. `HOME`, `TMPDIR`, PRIME state overrides, PATH, and locale are supplied from a root-owned allowlist; inherited `PI_*`, host, user-session, SSH-agent, cloud, Docker, and GPU environment names are removed.
+`/home`, `/mnt`, `/media`, `/workspace`, `/vordar`, host-drive paths, Pi paths, Docker sockets, and shared temp remain outside the service mount namespace.
 
-### Supervisor
-
-Ubuntu’s pinned `systemd` is PID 1. A root-owned `vordar-prime-option2.target` owns:
-
-1. isolation/egress policy;
-2. PRIME daemon supervisor;
-3. catalog and worker descendants;
-4. kernel/forkserver descendants;
-5. controlled shutdown and evidence collection.
-
-PRIME runs as fixed no-login user `vordar-prime`. The VM is configured with automatic start action `Nothing` and automatic stop action `ShutDown`; only the external campaign controller starts it. Closing a client cannot be treated as stopping the daemon.
-
-### Resource mechanisms
-
-External Hyper-V ceiling:
+### Resource profile
 
 - 4 virtual processors;
-- fixed 8 GiB RAM; Dynamic Memory disabled;
-- one dynamically allocated VHDX with a 32 GiB virtual maximum;
-- no host swap guarantee and no assigned GPU;
+- fixed 8 GiB RAM;
+- Dynamic Memory disabled;
+- one dynamic VHDX with 32-GiB virtual maximum;
 - no nested virtualization;
-- no VM automatic start;
-- no checkpoint growth.
+- no automatic checkpoints;
+- no GPU assignment;
+- PRIME slice: `MemoryMax=6G`, `MemorySwapMax=0`, `CPUQuota=300%`, `TasksMax=512`.
 
-Internal cgroup-v2/systemd ceiling for the complete PRIME slice:
+The prior 70-GiB host ceiling is not reauthorized because the mandatory verifier/key/seed/receipt object totals are incomplete.
 
-- `MemoryMax=6G`;
-- `MemorySwapMax=0`;
-- `CPUQuota=300%`;
-- `TasksMax=512`;
-- bounded open files and process IDs;
-- log and work-directory quotas whose totals must fit within the 32 GiB guest-disk ceiling.
+### Network profile
 
-G8 must convert these preliminary values into exact unit properties and attack probes. G11 must inspect the actual cgroup files and process ancestry. Exceeding a configured ceiling is a failure, not authority to enlarge it.
-
-### Network and egress
-
-The VM uses one dedicated Hyper-V **internal** virtual switch, `VordarPrimeOption2-Internal`, with a fixed host/guest `/30` subnet. It receives:
-
+- one dedicated internal switch: `VordarPrimeOption2-Internal`;
+- fixed host/guest `/30`;
 - no external-switch attachment;
 - no NAT;
 - no default route;
 - no guest DNS server;
 - no inbound forwarding;
-- no access to host LAN addresses or services.
+- no LAN/service access during G3.
 
-During later approved provider execution, a host-controlled TCP relay binds only the internal-switch host address and forwards only TLS port 443 to the G7/G15-pinned provider hostname. The guest maps that provider hostname to the relay address, preserving end-to-end TLS hostname validation. Host and guest firewall rules permit only the fixed guest address to that one relay listener. All other traffic is rejected.
+Later provider execution remains limited to a separately approved host relay for `api.openai.com:443`. G3 authorizes no provider traffic.
 
-For the selected candidate, the only runtime service hostname is `api.openai.com`. If G7 discovers another required hostname, the candidate is blocked; this finding does not authorize widening or substituting a provider. G5 acquisition occurs into the approved host quarantine and G13 installs offline, so package, GitHub, npm, PyPI, Astral, update, trace, MCP, and model-catalog endpoints are never runtime egress.
+### Secret profile
 
-### Secret slot
-
-The sole candidate slot is:
+G3 creates or reads no credential value. The future sole provider slot remains:
 
 ```text
 /run/credentials/vordar-prime-option2.service/openai-api-key
 ```
 
-It is populated later by the user through the guest console after approval, exposed through systemd’s read-only credential mount, and removed when the unit stops. A root-owned launcher reads it without echoing and sets the one PRIME provider variable only in the PRIME service environment. No value enters PowerShell, Pi, `.claude`, host environment, command history, unit files, `auth.json`, logs, or evidence.
+No value may enter PowerShell, Pi, `.claude`, host environment, command history, unit files, `auth.json`, logs, or evidence.
 
-Evidence records only slot name, provider, account/project class, owner/mode, redacted presence, and lifecycle timestamps. Missing presence blocks execution. A fixture containing the value in any transcript or environment dump must fail.
+### GPU profile
 
-### GPU boundary
+No `Add-VMGpuPartitionAdapter`, DDA assignment, CUDA device, WSL GPU bridge, local model, or GPU workload is permitted.
 
-No `Add-VMGpuPartitionAdapter`, DDA assignment, CUDA device, WSL GPU bridge, or local model is permitted. Later verification requires:
+### Rollback profile
 
-- no Hyper-V GPU partition adapter for the recorded VM;
-- no `/dev/dxg`, `/dev/nvidia*`, or `/dev/dri/render*`;
-- no CUDA/NVIDIA process;
-- an attempted GPU/heavy-owner admission rejected before launch.
+Rollback may remove only:
 
-The basic virtual console display is not evidence of compute-GPU exposure.
+- VM registration `VordarPrimeOption2` after matching recorded `VMId`;
+- switch `VordarPrimeOption2-Internal`;
+- exact task-owned firewall/listener rules;
+- `C:\Users\egm_8\AppData\Local\VordarPrimeOption2\`.
 
-### Rollback
+No WSL, Docker, Pi, repository, game, content, or VFX operation participates.
 
-Before PRIME acquisition, rollback is:
-
-1. stop only `VordarPrimeOption2`;
-2. remove only its Hyper-V registration;
-3. remove only `VordarPrimeOption2-Internal` and its exact firewall/relay rules;
-4. delete only `C:\Users\egm_8\AppData\Local\VordarPrimeOption2\`;
-5. confirm the task-owned receipt lists every removed object.
-
-After the clean golden VHDX exists, operational rollback replaces the active clone from the hash-verified golden VHDX. No checkpoint chain, WSL unregister, Docker operation, Pi change, repository edit, or VFX/content path participates.
-
-The retained `Ubuntu` and running `docker-desktop` distributions are neither inspected nor acted upon. G3’s transcript must contain no `wsl.exe`, WSL registry write, Docker command, game/content/VFX/effects/particles path, or project-tree path.
-
-## Candidate provider/account/model decision
-
-### Minimal comparison
-
-| Candidate | Current evidence | Fit |
-|---|---|---|
-| Prime Inference | Public documentation says token billing but defers executable model rates to authenticated data; P3 records unresolved service-specific terms and automation/commercial tension | Rejected |
-| Direct Anthropic API | Commercial terms are public, but G0 did not establish a current exact executable model/rate/revision source for this campaign | Rejected |
-| Direct OpenAI API | Business/developer agreement effective 2026-01-01; project-scoped service accounts; exact dated model snapshot; public token rates; Responses API exposes response IDs/status and retrieval | Selected |
-
-### Selected candidate
-
-- **Provider:** direct OpenAI API, provider ID `openai`
-- **Account class:** business/developer API organization, one dedicated project, one project-scoped service account, not consumer OAuth
-- **Model candidate:** `gpt-5.2-2025-12-11`
-- **Adapter:** `openai-responses`
-- **Endpoint class:** `/v1/responses`
-- **Runtime hostname:** `api.openai.com`
-- **Provider tools:** all disabled
-- **Fallback/routing:** none
-- **Local model/GPU:** none
-
-The current model page identifies `gpt-5.2-2025-12-11` as a snapshot and displays, per 1M tokens, `$1.75` input, `$0.175` cached input, and `$14.00` output. These are current candidate evidence, not G15 execution authority.
-
-The OpenAI Services Agreement states that the customer retains input and owns output, and that customer content is not used to improve services unless explicitly agreed. Current data documentation says API data is not used for training by default, abuse-monitoring logs may be retained up to 30 days, and stored Responses API application state is retained for at least 30 days. Responses can be retrieved by response ID. This supports later reconciliation better than the compared candidates, but does not eliminate the interval before a response ID is durably recorded. Such a request must remain `uncertain` and must not be automatically retried.
-
-G7 must still close the exact account, project, territory, service terms, privacy/retention, output use, model availability, credential lifecycle, and whether `store:true` is acceptable. G15 must refresh and pin the exact model ID, current rates, retrieval date, calls/tokens, and dollar ceiling. If the snapshot, endpoint, rate fields, stored-response behavior, or account class cannot be fixed, the campaign blocks without provider substitution.
-
-## Complete P2 execution-profile enumeration
-
-“Disabled” means its effect cannot influence the selected runtime through configuration, filesystem, executable admission, credential, or network access. Mere non-use is not the mechanism.
+## Complete retained P2 disposition
 
 ### Entrypoints EP1–EP10
 
-| ID | State | Enforcement | Later verification |
-|---|---|---|---|
-| EP1 release `prime-agent` | Enabled | Exact G6 stable bundle only; root-owned immutable prefix | Installed-tree manifest and version/commit reconciliation |
-| EP2 source/package `pi` bin | Disabled | Source path absent; no `pi` command exposed in service PATH | `command -v pi` fails; no Pi-named executable in runtime PATH |
-| EP3 `prime-agent.sh` | Disabled | Source checkout and `tsx` absent | Path and process-ledger absence |
-| EP4 compiled Bun `dist/pi` | Disabled | Bun and binary omitted from G4 graph | Object/install manifests reject Bun or `dist/pi` |
-| EP5 `pi-ai` CLI | Disabled; library remains internal | CLI bin not linked into PATH; executable admission denies direct entry | Direct invocation fails; no separate process |
-| EP6 modes | Interactive/text client and daemon-backed operation enabled; `json`, `rpc`, and `acp` modes disabled | External controller allowlists the selected client/daemon path; no ACP/RPC listener | Process/socket ledger contains only selected mode |
-| EP7 public commands | `agents`, `list`, `attach`, `rename`, `send`, `stop`, `status`, `doctor`, `shutdown` enabled. `schedule`, `package`, `update`, `model`, `login`, `logout`, `mcp`, `traces`, `config` disabled | Controller command allowlist; scheduled-job/config/auth/package paths denied or root-read-only; no acquisition/service egress | Invoke every disabled command against a disposable fixture; require denial or zero state change plus unchanged manifests |
-| EP8 `postinstall.cjs` | Disabled | G5 resolves scripts-disabled; hook absent from execution ledger; runtime preassembled offline | Process ledger rejects lifecycle scripts; first start makes no acquisition |
-| EP9 SDK/embed entry | Disabled | No embedding caller or import path outside packaged CLI | Process/import ledger contains no embedder |
-| EP10 Python scripts/modules | Enabled: `agent_message`, `agent_observe`, `compact`, `goal`, `refine`, `rlm_heartbeat`. Disabled: `attach_image`, `edit`, `websearch`, `linear`, `notion` | Only enabled projects enter the locked venv and skill allowlist; disabled service credentials/egress absent | Import/entrypoint matrix: enabled succeeds offline; every disabled module/command is unavailable |
+| ID | State |
+|---|---|
+| EP1 | Stable release `prime-agent` enabled only from exact G6 bytes |
+| EP2 | Source/package `pi` bin disabled |
+| EP3 | `prime-agent.sh` disabled |
+| EP4 | Bun `dist/pi` disabled |
+| EP5 | `pi-ai` CLI disabled; library internal only |
+| EP6 | Interactive/text and daemon-backed paths enabled; JSON/RPC/ACP disabled |
+| EP7 | `agents`, `list`, `attach`, `rename`, `send`, `stop`, `status`, `doctor`, `shutdown` enabled; `schedule`, `package`, `update`, `model`, `login`, `logout`, `mcp`, `traces`, `config` disabled |
+| EP8 | `postinstall.cjs` disabled |
+| EP9 | SDK/embed entry disabled |
+| EP10 | `agent_message`, `agent_observe`, `compact`, `goal`, `refine`, `rlm_heartbeat` enabled; `attach_image`, `edit`, `websearch`, `linear`, `notion` disabled |
 
 ### Runtime nodes N1–N16
 
-| ID | State | Enforcement | Later verification |
-|---|---|---|---|
-| N1 CLI client | Enabled | Controller-owned client, no host paths | Exact process ancestry and socket evidence |
-| N2 daemon supervisor | Enabled | systemd service and private guest IPC | Start/status/shutdown and abrupt restart evidence |
-| N3 catalog subprocess | Enabled | Child of N2 only | Process tree and restart-order receipt |
-| N4 session worker | Enabled, one root tree | systemd/cgroup slice and admission count | More than one root is refused |
-| N5 AgentSession/Agent | Enabled | Selected stable code and bounded state roots | Session and terminal-disposition evidence |
-| N6 adapter/provider | Enabled only for direct OpenAI `gpt-5.2-2025-12-11` | One root-owned model entry, one credential slot, one relay hostname, no fallback | Requested/response provider+model IDs must match; substitution red |
-| N7 IPython kernel | Enabled | Locked Python 3.11 environment, private loopback/IPC | Kernel lifecycle and exact venv manifest |
-| N8 Linux forkserver | Enabled | Exact stable implementation, private `/run` socket | Forkserver identity, child ancestry, cleanup and fallback-fire detection |
-| N9 RLM shim/selected skills | Enabled only for EP10 allowlist | Locked venv and root-owned skill manifest | Import and process ledger |
-| N10 RLM child AgentSession | Enabled, maximum depth 1 and one active child | External admission plus cgroup/task limits | Second/deeper child refused |
-| N11 shell/tool subprocess tree | Enabled but guest-confined | No host mount/default route; immutable executable set; cgroup/AppArmor descendants | Attempt host path, dynamic acquisition, escape, and orphan; all denied/reaped |
-| N12 MCP/HTTP service | Disabled, including Linear, Notion, custom MCP | No MCP package/credential/config; E8 denied; only OpenAI relay exists | MCP catalog empty; connection and Notion fixture red |
-| N13 continual refine | Enabled only by explicit manual local/global request; automatic refine disabled | Root-owned setting disables auto trigger; no background refinement admission | No refine without registered operation; explicit refine emits exact ID |
-| N14 telemetry/logging | Local bounded logs enabled; Prime trace upload disabled | Trace setting off, no trace credential/hostname, E14 denied | Local logs exist; upload attempt denied |
-| N15 installer/updater | Disabled | Installer absent; `/opt` read-only; channels unreachable; update/config writes denied | Installer/update process fixture red; runtime tree unchanged |
-| N16 sandbox/container | Disabled/not applicable | No Docker socket, binary, image, bubblewrap extension, sandbox package, or Prime platform service | Container/socket/image scan empty; attempted Docker access denied |
+| ID | State |
+|---|---|
+| N1 | CLI client enabled |
+| N2 | Daemon supervisor enabled |
+| N3 | Catalog subprocess enabled |
+| N4 | One session-worker root enabled |
+| N5 | AgentSession/Agent enabled |
+| N6 | Only `openai/openai-responses/gpt-5.2-2025-12-11` candidate enabled |
+| N7 | Locked Python 3.11 IPython kernel enabled |
+| N8 | Linux forkserver enabled |
+| N9 | Selected RLM shim/skills enabled |
+| N10 | One depth-1 child AgentSession enabled |
+| N11 | Guest-confined shell/tool subprocess tree enabled |
+| N12 | MCP/HTTP services disabled |
+| N13 | Explicit registered refine only; automatic refine disabled |
+| N14 | Local bounded logging enabled; trace upload disabled |
+| N15 | Installer/updater disabled |
+| N16 | Docker/container/sandbox path disabled |
 
-### Process/service edges E1–E16
+### Edges E1–E16
 
-| Edge | State | Enforcement and later check |
-|---|---|---|
-| E1 N1→N2 local JSONL socket | Enabled | Private `/run` socket; verify permissions, cursor outcome, and restart |
-| E2 N2→N4 private framed socket | Enabled | Private guest IPC/token; verify generation fencing and adoption |
-| E3 N2→N3 spawn/pipe | Enabled | N2-only child; kill fixture must fail catalog request and restart in order |
-| E4 N4→N5 in-process | Enabled | Stable bundle only; worker-death fixture must expose disposition |
-| E5 N5/N10→N6 inference | Enabled only for selected OpenAI snapshot | One credential and relay; provider/model/hostname substitution rejected |
-| E6 N5→N7 Jupyter | Enabled | Loopback/private temp only; inspect five ephemeral sockets and cleanup |
-| E7 N7→N5 host calls | Enabled for selected RLM modules | Typed call allowlist; unlisted host call rejected |
-| E8 N7→N12 MCP | Disabled | N12 absent, no credential or egress; direct and configured MCP probes fail |
-| E9 N5→N10 child admission | Enabled with depth/count ceiling | Second/deeper/concurrent child probe rejected |
-| E10 N5/N7→N11 subprocess | Enabled inside guest boundary | AppArmor/cgroup/mount/network constraints; escape/acquisition/orphan probes red |
-| E11 N5→N13 refine | Enabled only for explicit registered operation | Auto trigger disabled; unregistered refine rejected |
-| E12 N13→P3 harness | Enabled | Exact local/global paths; state/history bytes hashed before and after |
-| E13 N4→P2 persistence | Enabled | Guest-local persistent state only; torn/corrupt fixtures preserve bytes and block silence |
-| E14 N4→N14 trace upload | Disabled | Trace config/credential absent and hostname unreachable; upload probe denied |
-| E15 N15→EP1 replacement | Disabled | N15 absent, `/opt` immutable, no release/network path; changed-byte fixture red |
-| E16 N15→N2 update restart | Disabled | No update manifest/coordinator; injected update checkpoint rejected |
+| ID | State |
+|---|---|
+| E1 | N1→N2 private JSONL socket enabled |
+| E2 | N2→N4 private framed socket enabled |
+| E3 | N2→N3 spawn/pipe enabled |
+| E4 | N4→N5 in-process enabled |
+| E5 | N5/N10→N6 enabled only for selected provider tuple |
+| E6 | N5→N7 Jupyter enabled |
+| E7 | N7→N5 selected host calls enabled |
+| E8 | N7→N12 MCP disabled |
+| E9 | N5→N10 enabled within depth/count ceiling |
+| E10 | N5/N7→N11 enabled inside guest boundary |
+| E11 | N5→N13 explicit registered refine only |
+| E12 | N13→P3 harness enabled |
+| E13 | N4→P2 persistence enabled |
+| E14 | N4→N14 trace upload disabled |
+| E15 | N15→EP1 replacement disabled |
+| E16 | N15→N2 update restart disabled |
 
-### Persistence stores P1–P8
+### Persistence P1–P8
 
-| Store | State | Enforcement and later check |
-|---|---|---|
-| P1 config/auth/resources | Root-owned settings/model/skill manifests enabled; on-disk `auth.json`, project resources, extensions, themes and package roots disabled | Verify immutable config hashes, absent auth value, and rejected writes |
-| P2 sessions/artifacts | Enabled under `/var/lib/vordar-prime-option2/home/.prime/agent/` | Hash exact restart-consumed bytes; torn-tail fixture red |
-| P3 harness/refine | Enabled for explicit local/global refinement | Hash state/history/session links; split-publication fixtures red |
-| P4 daemon control | Enabled | Fsynced journal and descriptor identities retained; same-ID cases checked |
-| P5 queues/schedules | Live queues enabled; schedules disabled | Deny `scheduled-jobs.json`; no scheduled process/tick after restart |
-| P6 goals/child registry | Enabled for the bounded child path | Parent/child IDs and artifacts joined; orphan/missing registry red |
-| P7 logs/traces | Local rotated logs enabled; remote traces disabled | Quota/rotation measured; no remote request |
-| P8 kernel/tool temp | Enabled only in private `/run/vordar-prime-option2/` and private work temp | `PrivateTmp`, no `pi-extensions`, no host temp; stale socket/process cleanup verified |
+| ID | State |
+|---|---|
+| P1 | Root-owned selected settings/model/skill manifests only; auth, extensions, themes, package roots disabled |
+| P2 | Guest-local sessions/artifacts enabled |
+| P3 | Explicit local/global refinement state enabled |
+| P4 | Daemon-control journal enabled |
+| P5 | Live queues enabled; schedules disabled |
+| P6 | Bounded child registry enabled |
+| P7 | Local rotated logs enabled; remote traces disabled |
+| P8 | Private `/run` and work temp only |
 
 ### Acquisition/runtime classes
 
-| Class | Profile disposition |
+| Class | Disposition |
 |---|---|
-| Four stable PRIME 0.7.0 release packages | Enabled only after G4–G6 exact-byte closure |
-| Root/source npm workspace and developer graph | Disabled |
-| Shipped npm transitive runtime | Enabled only as exact G4/G5 objects; no ranges remain |
-| Node | Enabled at one exact G4 version satisfying `>=22.8.0` |
-| npm | Assembly-only, exact version; unavailable to operational PRIME |
-| Python 3.11, uv, wheels, build backends | Enabled only as exact offline G4/G5 objects; uv/build tooling unavailable operationally |
-| Selected Python skills | Enabled only as EP10 allowlist |
-| Managed `fd`/`rg` from `releases/latest` | Disabled; mutable helper download unreachable |
-| Packages/extensions/git/local capability acquisition | Disabled |
-| Prime platform skill/CLI/services | Disabled |
-| Bun/source build/test/benchmark/CI tools | Disabled |
-| Docker, OCI, Compose, remote sandbox | Disabled/not applicable |
-| Local model server/weights | Disabled |
+| Stable PRIME 0.7.0 release packages | Enabled only after G4–G6 closure |
+| Source npm workspace/developer graph | Disabled |
+| npm transitive runtime | Exact G4/G5 objects only |
+| Node | One exact version satisfying `>=22.8.0` |
+| npm | Assembly-only; unavailable operationally |
+| Python/uv/wheels/build backends | Exact offline objects only |
+| Selected Python skills | EP10 allowlist only |
+| Managed `fd`/`rg` from `latest` | Disabled |
+| Package/extension/git/local acquisition | Disabled |
+| Prime platform products | Disabled |
+| Bun/build/test/benchmark/CI tools | Disabled |
+| Docker/OCI/Compose/remote sandbox | Disabled |
+| Local model/weights | Disabled |
 | Updates/version checks/catalog regeneration | Disabled |
-| Beta release/assets/commit | Globally rejected |
+| Beta release/assets/commit | Rejected |
 
 ### Provider and adapter closure
 
-Enabled provider ID: `openai`.
+Enabled provider candidate: `openai`.
 
-Disabled provider IDs: `amazon-bedrock`, `anthropic`, `azure-openai-responses`, `cerebras`, `cloudflare-ai-gateway`, `cloudflare-workers-ai`, `deepseek`, `fireworks`, `github-copilot`, `google`, `google-vertex`, `groq`, `huggingface`, `kimi-coding`, `minimax`, `minimax-cn`, `mistral`, `moonshotai`, `moonshotai-cn`, `openai-codex`, `opencode`, `opencode-go`, `openrouter`, `prime-inference`, `vercel-ai-gateway`, `xai`, `xiaomi`, `xiaomi-token-plan-ams`, `xiaomi-token-plan-cn`, `xiaomi-token-plan-sgp`, and `zai`.
+Enabled adapter candidate: `openai-responses`.
 
-Enabled adapter: `openai-responses`.
+All other provider IDs and adapters remain disabled by construction. No custom `models.json`, OAuth, fallback, alternate hostname, or routing substitution is allowed.
 
-Disabled adapters: `anthropic-messages`, `openai-completions`, `mistral-conversations`, `azure-openai-responses`, `openai-codex-responses`, `google-generative-ai`, `google-vertex`, and `bedrock-converse-stream`.
+## RED-proof requirements
 
-Enforcement is one root-owned model entry, no custom `models.json`, no OAuth, one provider credential slot, one relay hostname, and a startup assertion that the effective provider/model/adapter tuple is exact. Later verification mutates each tuple field and requires refusal before a request.
-
-## Exact G3 approval packet
-
-Approval of this packet authorizes guest provisioning only, not PRIME/runtime acquisition or execution.
-
-### Object and network quantity
-
-| Object | Bytes |
-|---|---:|
-| Ubuntu ISO | `3,405,469,696` |
-| `SHA256SUMS` | `594` |
-| `SHA256SUMS.gpg` | `833` |
-| **Expected HTTP body total** | **`3,405,471,123`** |
-
-Protocol overhead is not part of file-body size. The approved transfer must stop if body size exceeds the listed object size or redirects outside `releases.ubuntu.com`.
-
-### Guest and host ceilings
-
-- VM name: `VordarPrimeOption2`
-- Generation: 2
-- CPU: 4 vCPUs; PRIME slice `CPUQuota=300%`
-- RAM: fixed 8 GiB; Dynamic Memory off; PRIME `MemoryMax=6G`, swap off
-- Guest VHDX: dynamic, maximum 32 GiB
-- Worst-case host disk reservation:
-  - active VHDX: 32 GiB;
-  - clean golden VHDX: 32 GiB;
-  - ISO/checksum material: under 3.18 GiB;
-  - configuration/transcript headroom: under 2.82 GiB;
-  - **hard approval ceiling: 70 GiB**
-- G1 free-space basis: `181652307968` bytes
-- GPU: zero assigned compute adapters
-- Network: one new internal switch, no NAT/default route
-- Wall estimate: 2.5 hours expected; **4 wall-hours hard approval ceiling**
-- Provider calls/credentials/GPU work: zero
-
-### Host/global impact
-
-G3 requires administrative Hyper-V operations, one VM registration, one internal virtual switch, fixed RAM while the VM is running, CPU scheduling for four vCPUs, up to 70 GiB task-owned host storage, and the displayed public download. It does not change WSL settings, start/stop/register/unregister a WSL distribution, invoke Docker, alter Pi, inspect or touch the concurrent VFX/effects/particles work, or edit either repository.
-
-If Hyper-V cmdlets, Generation-2 boot, Secure Boot with the Microsoft UEFI Certificate Authority template, storage, or the exact external turn-off operation fail on this host, G3 returns blocked. It does not retry using WSL2 or another image.
-
-## RED-proof mapping
-
-| Claim | Required RED mutation and expected failure |
+| Claim | Required failure |
 |---|---|
-| Platforms remain distinct | Replace Hyper-V fields with WSL fields or include `wsl.exe` in the selected recipe → `TARGET_MERGED` |
-| External abrupt boundary | Remove `-TurnOff`, use wildcard VM selection, or mismatch recorded `VMId` → `NO_POWER_CUT_EQUIVALENT` |
-| Immutable image | Alter one ISO byte, size, endpoint, checksum, signature, seed, installed manifest, or golden VHDX → `IMAGE_IDENTITY_MISMATCH` |
-| Offline provisioning | Record any installer/package network destination → `MUTABLE_INSTALL_PATH` |
-| Resource ceiling | Configure more than 4 vCPU, 8 GiB RAM, 32 GiB guest disk, 70 GiB host disk, or any GPU adapter → `RESOURCE_ENVELOPE_EXCEEDED` |
-| P2 completeness | Remove any EP1–EP10, N1–N16, E1–E16, P1–P8, provider ID, or adapter disposition → `PROFILE_NODE_OR_EDGE_MISSING` |
-| Disabled edge | Mark disabled without configuration/filesystem/executable/credential/network enforcement and a later probe → `DISABLE_NOT_ENFORCED` |
-| Stable baseline | Insert release ID `355959266`, beta tag/commit, another commit/tree, `latest`, or mutable installer → `UNAUTHORIZED_BASELINE` |
-| Node floor | Select or install Node below `22.8.0` → `NODE_FLOOR_VIOLATION` |
-| Provider identity | Change provider, account class, model, adapter, hostname, or enable fallback → `PROVIDER_PROFILE_SUBSTITUTION` |
-| Secret boundary | Place a credential value in host/Pi environment, file, command, transcript, or log → `SECRET_LEAK` |
-| Host isolation | Expose any Vordar/Pi/host path, shared temp, host process channel, or unrestricted route → `HOST_BOUNDARY_OPEN` |
-| Existing WSL/Docker | Invoke a WSL/Docker lifecycle/configuration command or write their storage/registration paths → `EXISTING_GUEST_TOUCHED` |
-| GPU denial | Add a GPU partition/DDA adapter or expose a compute device → `GPU_VISIBLE` |
-| No fallback | On selected-target or provider failure, attempt WSL2, another VM, provider, model, image, or revision → `FALLBACK_FORBIDDEN` |
+| Signer identity | Different key fingerprint or unpinned key bytes → `IMAGE_SIGNER_MISMATCH` |
+| Verifier identity | Missing, unmeasured, changed, or network-installed verifier → `UNAPPROVED_VERIFIER` |
+| Image identity | Changed ISO/checksum/signature/key byte, size, URL, or digest → `IMAGE_IDENTITY_MISMATCH` |
+| Zero-touch install | Confirmation prompt, VMConnect input, timed key injection, or visual judgment → `INTERACTIVE_PROVISIONING` |
+| Seed identity | Changed/missing `CIDATA`, `user-data`, `meta-data`, instance ID, or seed digest → `SEED_IDENTITY_MISMATCH` |
+| Credential-free bootstrap | Password, SSH key, console secret, or host secret required → `BOOTSTRAP_CREDENTIAL_REQUIRED` |
+| Receipt export | Host mount, Guest Service copy, secret, manual transcription, or unbounded payload → `RECEIPT_BOUNDARY_OPEN` |
+| Secure Boot | Wrong/absent template, disabled Secure Boot, or unmeasured template substitution → `SECURE_BOOT_PROFILE_MISMATCH` |
+| Network | External switch, NAT, default route, DNS, LAN, or package destination → `MUTABLE_INSTALL_PATH` |
+| Resource envelope | More than 4 vCPU, 8 GiB RAM, 32-GiB VHDX, or any GPU → `RESOURCE_ENVELOPE_EXCEEDED` |
+| Existing guests | Any WSL/Docker lifecycle or configuration command → `EXISTING_GUEST_TOUCHED` |
+| Stable baseline | Beta, mutable installer, `latest`, or another PRIME revision → `UNAUTHORIZED_BASELINE` |
+| No fallback | WSL2, alternate image, VM provider, provider, model, or adapter attempt → `FALLBACK_FORBIDDEN` |
+| Profile completeness | Missing EP/N/E/P or disabled-path enforcement → `PROFILE_NODE_OR_EDGE_MISSING` |
 
-The intact decision is green only when all required identifiers are present, every negative fixture fails for its named reason, and the selected tuple is exactly:
+## Assumptions and risks
 
-```text
-Hyper-V Generation 2
-Ubuntu Server 24.04.4 AMD64
-VordarPrimeOption2
-OpenAI business/developer API project service account
-openai / openai-responses / gpt-5.2-2025-12-11
-```
+- The exact Ubuntu signer fingerprint is established, but fingerprint identity is not equivalent to approved trust-anchor bytes.
+- G1’s lack of OpenPGP-helper evidence means `UNKNOWN`, not proven absence.
+- Hyper-V enablement does not prove the required cmdlets or Secure Boot template are available.
+- A NoCloud seed disk does not itself suppress Subiquity’s destructive-action confirmation.
+- No downstream recipe, total, or green check may be credited while the first authentication dependency is unresolved.
+- No fallback is permitted.
 
-## Assumptions and blocking risks
+## Primary evidence
 
-- G1 demonstrates an active hypervisor and enabled Hyper-V hypervisor feature, but did not execute Hyper-V cmdlets. G3 owns the first approved creation test.
-- Ubuntu’s endpoint is mutable; only the independently computed approved digest and retained signed metadata count.
-- The 8 GiB/4-vCPU/32-GiB envelope is a hard qualification ceiling, not a measured minimum. If the locked runtime cannot operate within it, the target blocks.
-- Hyper-V host overhead beyond configured guest memory is not measured here and must be recorded by G3/G11 without enlarging the approved envelope.
-- OS package rights, PRIME provenance, transitive packages, and the selected OpenAI profile remain G7 closure work.
-- Stored OpenAI responses improve post-ID reconciliation but cannot prove the outcome of a request whose response ID was never durably observed. Such work remains `uncertain`.
-- The selected model’s current availability and rates can drift. G15 must refresh and pin them; drift blocks rather than substitutes.
-- WSL2 qualification, phase-2 planning, adoption, Vordar exposure, visual work, and the unresolved launch-revision binding remain outside this decision.
+### Repository
 
-## Primary sources
-
-### Repository evidence
-
-- `.claude/tasks/prime-agent-option2-gate-closing-plan.md`
+- `.claude/tasks/prime-agent-option2-gate-closing-plan.md`, G2/G3
 - `.claude/docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md`
 - `.claude/docs/research/prime-agent/option-2-gate-closing/01-host-platform-inventory/raw.json`
 - `.claude/docs/research/prime-agent/option-2-gate-closing/01-host-platform-inventory/commands.json`
 - `.claude/docs/research/prime-agent/phase-1/02-component-runtime-closure.md`
-- `.claude/docs/research/prime-agent/phase-1/03-license-weights-service-closure.md`
-- `.claude/docs/research/prime-agent/phase-1/04-learning-persistence-dataflow.md`
-- `.claude/docs/research/prime-agent/phase-1/05-observability-replay-failures.md`
-- `.claude/docs/research/prime-agent/phase-1/07-platform-gpu-vram.md`
-- `.claude/docs/research/prime-agent/phase-1/08-pricing-operations.md`
 - `.claude/docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md`
 
-### Current public primary documentation
+### Public primary documentation
 
-- Ubuntu 24.04.4 release objects: <https://releases.ubuntu.com/24.04/>
+- Ubuntu 24.04 release objects: <https://releases.ubuntu.com/24.04/>
 - Ubuntu checksums: <https://releases.ubuntu.com/24.04/SHA256SUMS>
-- Hyper-V VM creation: <https://learn.microsoft.com/en-us/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v>
+- Ubuntu signature: <https://releases.ubuntu.com/24.04/SHA256SUMS.gpg>
+- Ubuntu download verification: <https://ubuntu.com/tutorials/how-to-verify-ubuntu>
+- Ubuntu zero-touch autoinstall: <https://canonical-subiquity.readthedocs-hosted.com/en/latest/explanation/zero-touch-autoinstall.html>
+- Ubuntu autoinstall configuration delivery: <https://canonical-subiquity.readthedocs-hosted.com/en/latest/tutorial/providing-autoinstall.html>
+- Cloud-init NoCloud datasource: <https://cloudinit.readthedocs.io/en/latest/reference/datasources/nocloud.html>
+- Hyper-V cmdlets: <https://learn.microsoft.com/en-us/powershell/module/hyper-v/>
+- Hyper-V firmware configuration: <https://learn.microsoft.com/en-us/powershell/module/hyper-v/set-vmfirmware?view=windowsserver2025-ps>
 - Hyper-V abrupt turn-off: <https://learn.microsoft.com/en-us/powershell/module/hyper-v/stop-vm?view=windowsserver2025-ps>
-- WSL commands and termination: <https://learn.microsoft.com/en-us/windows/wsl/basic-commands>
-- WSL global/per-distribution configuration: <https://learn.microsoft.com/en-us/windows/wsl/wsl-config>
-- Windows optional-feature state values: <https://learn.microsoft.com/en-us/windows/win32/cimwin32prov/win32-optionalfeature>
-- OpenAI GPT-5.2 snapshot and rates: <https://developers.openai.com/api/docs/models/gpt-5.2>
-- OpenAI Responses retrieval: <https://developers.openai.com/api/reference/resources/responses/methods/retrieve/>
-- OpenAI API data controls and retention: <https://developers.openai.com/api/docs/guides/your-data>
-- OpenAI project/service-account scope: <https://help.openai.com/en/articles/9186755-managing-your-work-in-the-api-platform-with-projects>
-- OpenAI Services Agreement, effective 2026-01-01: <https://openai.com/policies/business-terms/>
 
-TARGET SELECTED
+First causal gap: G3 requires OpenPGP verification before executing the Ubuntu ISO, but the exact trust-anchor bytes and exact verifier/runtime are neither measured nor approved; satisfying that requirement would add an unapproved tool/object set with unknown quantities.
+
+BLOCKED
