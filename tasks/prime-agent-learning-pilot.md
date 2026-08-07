@@ -1,4 +1,4 @@
-# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G0 BLOCKED / SOURCE UNAVAILABLE
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G0 BLOCKED / DRIFT REQUIRES REPLAN
 
 ## User direction
 
@@ -24,10 +24,12 @@ On 2026-08-06, the user selected option 2: a separate gate-closing campaign for
 the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. On
 2026-08-07, the queued Sol planning finding landed at
 [`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md).
-G0 was authorized and attempted on 2026-08-07, but both available Sol analysis
-routes lacked public HTTP/web tooling. The retained freshness ledger therefore
-ends `SOURCE UNAVAILABLE`; G1 and all later gates remain blocked. Setup,
-acquisition, credentials, and host probing remain unauthorized.
+G0 was rerun on 2026-08-07 after project-local public read-only web tools were
+enabled for Sol analysis. The retained freshness ledger ends
+`DRIFT REQUIRES REPLAN`: excluded beta-channel mutation, newly exposed stable
+asset digests, package-source clarification, and provider catalog/rate changes
+must be reconciled into the campaign plan. G1 and all later gates remain
+blocked. Setup, acquisition, credentials, and host probing remain unauthorized.
 
 ## Goal
 
@@ -104,12 +106,12 @@ Direct phase-1 findings:
 
 **Current checkpoint / exact next action:** G0 is retained at
 [`00-evidence-freshness.md`](../docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md)
-with `SOURCE UNAVAILABLE`. Do not dispatch G1. The next permissible action is to
-provide a Sol analysis worker public read-only HTTP/web access and rerun G0;
-the main orchestrator must not substitute its own web research. G1 still needs
-separate host-probe approval after a positive G0. Installation/download,
-credentials, user-global changes, host/container/GPU execution, phase-2
-matched-pilot planning, and adoption remain unauthorized.
+with `DRIFT REQUIRES REPLAN`. Do not dispatch G1. Review/approve one Sol planning
+finding to reconcile the exact plan sections listed by G0 while preserving the
+authorized `v0.7.0` commit/tree and excluding the beta channel; then rerun G0.
+G1 still needs separate host-probe approval after a positive G0.
+Installation/download, credentials, user-global changes, host/container/GPU
+execution, phase-2 matched-pilot planning, and adoption remain unauthorized.
 
 ## Execution model
 

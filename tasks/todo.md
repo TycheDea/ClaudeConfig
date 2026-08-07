@@ -4432,16 +4432,19 @@ further fineness must come from the atlas.
   claimed to verify zones.ron, so there is nothing to un-overwrite. The shipped
   topology is verified separately by `shipped_topology_is_valid`.
 
-## Prime Agent learning-loop pilot — G0 SOURCE UNAVAILABLE 2026-08-07
+## Prime Agent learning-loop pilot — G0 DRIFT REQUIRES REPLAN 2026-08-07
 
 - [x] Sol option-2 gate-closing plan complete and committed in ClaudeConfig as
       `065f29a`: `tasks/prime-agent-option2-gate-closing-plan.md`.
-- [ ] **BLOCKED AT G0:** both available Sol analysis routes lacked public
-      HTTP/web tooling, so
+- [x] Project-local Sol public read-only web tools enabled in `0560c2e`; G0 web
+      refresh and task-reference correction committed as `e64640e` and
+      `4ca60de`.
+- [ ] **BLOCKED AT G0:**
       `docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md`
-      ends `SOURCE UNAVAILABLE`. Do not dispatch G1. Provide a Sol analysis
-      worker public read-only web access and rerun G0; main-session research is
-      not an allowed substitute. G1 host inventory retains its separate explicit
-      host-probe approval gate. Setup, acquisition, credentials, matched-pilot
-      planning, and adoption remain unauthorized. Pi remains the control;
-      texture item (2) and retablo placement stay held.
+      ends `DRIFT REQUIRES REPLAN`. Do not dispatch G1. Review/approve one Sol
+      planning finding to reconcile the exact plan sections listed by G0 while
+      preserving the authorized `v0.7.0` commit/tree and excluding the beta
+      channel; then rerun G0. G1 retains its separate explicit host-probe
+      approval gate. Setup, acquisition, credentials, matched-pilot planning,
+      and adoption remain unauthorized. Pi remains the control; texture item
+      (2) and retablo placement stay held.
