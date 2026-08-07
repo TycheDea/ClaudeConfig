@@ -145,15 +145,24 @@ Single-sprite quality confirmed high (photoreal incense wisp on first try).
       (void_floor_sweep.{py,txt} archived as-run — the .py cites the pre-fix
       API by design; triage.md v1). Env note: use `py -3.14` for pipeline
       scripts (bare `py` finds MSYS Python without numpy).
-- [~] 4.0b Terra: IN FLIGHT — one ComfyUI session: 3 black-prompt control
-      renders → level = max floor + 2 (sanity band 4–12, >20 = stop);
-      ~21 re-prompt images (glyph_b knotwork, wisp_flame isolated, censer_haze
-      veil, pyro_smoke puff, edge-runner reframes); offline re-post of ALL
-      candidates at calibrated level; triage v2; pack --cell-size 256 → BC4
-      bake → install with manifests; content_lint green. Thin slots ship
-      honestly, never by relaxing the level.
-- [ ] 4.1–4.5 Terra: author pyro/wisp/sigil/censer/shard packs,
-      content/vfx/showcase/<style>/{cast,projectile,aoe}.ron.
+- [x] 4.0b Terra: ATLAS SHIPPED (505e323) — 28 cells: 12 sprites + 3
+      flipbooks (pyro_smoke 2f, wisp_flame 5f, shard_twinkle 9f), BC4 2048².
+      Level 10 = floor 8 + 2, derived twice independently (2 clean controls
+      max 8/7; corner patches of 6 dimmest candidates max 8); one control
+      refused emptiness → declared fallback used, recorded in
+      calibration.json. 77/153 candidates passed. Lint 24/24 green,
+      red-proofed by DDS byte-flip. GPU 415 s, port dead after.
+      THIN SLOTS (ruled: ship as-is, fidelity pass comes post-verdict for the
+      winner): wisp_streak 0/6 (bottom-edge spill is real content — gate
+      correct; velocity-stretch on wisp_soft covers the role), censer_smoke
+      1 cell (churn via spin+curves), pyro_smoke 2 frames ("cauliflower"
+      prompt taken literally by the model — content-rejected).
+      Orchestrator eyeballed staged atlas: strong, sigils abstract, flames
+      isolated, void clean.
+- [~] 4.1–4.5 Terra ×5 IN FLIGHT (parallel, disjoint dirs): author
+      pyro/wisp/sigil/censer/shard packs, own-prefix cells only, VQ-A4 player
+      band (censer volume in ambient-band greys, motes in player band),
+      iterate via vfx_review renders, cap-free stats ≤600 peak.
 
 ## Phase 5 — Judgment
 
