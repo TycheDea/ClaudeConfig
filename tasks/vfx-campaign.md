@@ -159,10 +159,26 @@ Single-sprite quality confirmed high (photoreal incense wisp on first try).
       prompt taken literally by the model — content-rejected).
       Orchestrator eyeballed staged atlas: strong, sigils abstract, flames
       isolated, void clean.
-- [~] 4.1–4.5 Terra ×5 IN FLIGHT (parallel, disjoint dirs): author
-      pyro/wisp/sigil/censer/shard packs, own-prefix cells only, VQ-A4 player
-      band (censer volume in ambient-band greys, motes in player band),
-      iterate via vfx_review renders, cap-free stats ≤600 peak.
+- [x] 4.1–4.5 ALL FIVE PACKS COMMITTED, each visually iterated, lint-green,
+      cap-free, frames verified by orchestrator: pyro 83be74c, wisp bd1b14b,
+      sigil f415684, censer 019ab86, shard 7bcbccd.
+      Mid-phase blocker (found by censer): vfx_review hardcoded core atlas —
+      two-atlas rule was in the lint but not the harness. Per-effect routing
+      fix committed f558213 (red-proofed: mixed core→showcase→core run,
+      cleave frame-identical solo vs after showcase = grid rebind works).
+      Cross-pack craft findings (verdict-doc + judge-brief material):
+      · Rendered-frame color measurement is the real VQ-A4 check — additive
+        over lit grey through ACES @0.576 crushes authored S; my contract's
+        "in-band example" (0.7,1.9,2.0) was actually out of band (H185/S.65,
+        from pre-campaign content).
+      · Radiance grades by sprite footprint: alpha-blend broad media, save
+        additive HDR for small cores (wisp), and occluding media must sit
+        BELOW field radiance ~0.32 to read as soot (censer).
+      · stretch × spin are mutually exclusive (shader alignment wins) —
+        every kinetic pack split streak/tumble emitters; noted as the one
+        expressiveness gap.
+      · Directional sprites need per-beat rotation bands, not full circle
+        (censer: ±38/±52/±72 by beat).
 
 ## Phase 5 — Judgment
 
