@@ -39,11 +39,22 @@ stage exact pathspecs only, never sweep.
 - [x] 1.5 Orchestrator: `cargo test --workspace` ALL GREEN (0 failures across
       every suite). Committed 9eba159 (engine v2 batch, 18 files) +
       b5e6a7a (sprite tooling, 4 files), exact pathspecs.
-- [ ] 1.2 Terra: atlas-as-asset (facade load + VfxAtlasMeta); export fallback
-      `content/textures/vfx/core/` atlas; DELETE atlas_pixels/create_particle_atlas/
-      ATLAS_GRID + 2 atlas tests; headless rotated-particle analytic test.
-- [ ] 1.6 Luna: hot-reload watcher for content/vfx (notify, debounced,
-      parse-error keeps old library).
+- [x] 1.2 Terra: atlas-as-asset DONE (facade set_particle_atlas, PNG via
+      existing image path, white-placeholder default, resize preserves grid;
+      atlas_pixels/ATLAS_GRID + 2 tests deleted; core atlas.png 2×2 256²
+      verified per-pixel vs atlas_pixels before generator deletion; offscreen
+      harness gained the particle pass with live-frame-identical compose
+      split; rotated-streak analytic test red-proofed both directions).
+      Approved boundary crossing: game vfx.rs:606 grid assert 4→2 (forced by
+      grid change). Stale atlas_pixels citations in vfx_post repointed
+      (orchestrator, comment-only). VERIFIED 296 tests 0 fail across 3 crates.
+      Committed 941c30e.
+- [x] 1.6 Luna: hot-reload watcher DONE (vfx_reload.rs; pre-validates all
+      RONs then whole-library swap, else keeps old; VfxGeneration bump clears
+      trail cache — defense-in-depth, honestly documented as not-currently-
+      coupled; caught+regression-tested a drain bug in the copied engine.ron
+      precedent: any() short-circuits the batch). VERIFIED 81 tests green.
+      Committed e649f99.
 
 ## Phase 2 — Sprite tooling (after 1.3 locks atlas.ron shape)
 
@@ -71,19 +82,52 @@ Single-sprite quality confirmed high (photoreal incense wisp on first try).
       glyph + curves). Revisit only if pack authoring hits the wall.
 - [ ] 2.3-deferred: install_asset.py `vfx-atlas` kind — BLOCKED: file dirty
       from the models/textures session; dispatch after it commits.
-- [ ] 2.3 Luna: vfx_atlas_pack.py + pytest; install_asset.py `vfx-atlas` kind;
-      bake_textures.mjs BC4 class.
-- [ ] 2.4 Luna: content_lint — atlas sidecars + sprite-name resolution.
+- [x] 2.3a Luna: vfx_atlas_pack.py + 7 pytest green (pixel-exact placement,
+      row-boundary flipbook contiguity, >64-cell refusal red-proof,
+      determinism, duplicate-name refusal); bake_textures.mjs `mask` mode
+      BC4_UNORM linear, verified via DDS DX10 header dxgiFormat=80 + texconv
+      stdout. VERIFIED + committed de190d4. (install_asset.py part split off
+      to 2.3-deferred below.)
+- [x] 2.4 Luna: content_lint — vfx_atlas_sidecars_are_fresh (VQ-C5;
+      {source?, images} manifest convention; missing manifest OK for core,
+      stale hash red) + vfx_sprites_resolve_in_atlas (VQ-E3; via real
+      load_dir; showcase defs → showcase atlas else counted skip; prefab
+      trails + impacts via RawValue pattern). Both red-proofed. One
+      correction round: worker minted colliding VQ tags blind (visual-quality
+      law lives in .claude/, outside its Glob) — relabeled to VQ-C5.
+      VERIFIED 24/24 green. Committed a3edc0e.
+- [x] pre-4.0 Terra: set_particle_atlas DDS routing DONE (one
+      load_color_texture helper, both facade + offscreen callers; BC4_UNorm
+      DXGI mapping added to parse_dds; BC4 fixture test; worker e2e-verified
+      real BC4 atlas renders on adapter). Found while reconciling packer
+      manifest vs lint: staging keeps packer manifest as
+      generation_manifest.json; install writes {source, images} content
+      manifest. VERIFIED 127 tests green. Committed bb84c26.
 
 ## Phase 3 — Harness (after 1.4)
 
-- [ ] 3.1 Terra: bin/vfx_review.rs (per-frame PNGs, stats.json, seeded,
-      skip-clean w/o GPU) + smoke test.
+- [x] 3.1 Terra: bin/vfx_review.rs DONE after one correct STOP (offscreen had
+      no mesh+particles entry point — ruled entry-point gap; render_scene
+      delegate authorized). Approved deviations: VfxLibrary::keys() sorted,
+      hand-beat lateral offset (spawn inside capsule was invisible), zone
+      lighting from zones.ron (exposure 0.576 — bloom unjudgeable at wrong
+      exposure), MovingEmitter accumulator (ActiveEmitter pins pos).
+      --vfx-dir + fixtures make all 3 staging branches red-able; 2 checks
+      red-proofed by breakage. VERIFIED: 6 gated tests + live bolt run
+      reproduced stats byte-identically + frame eyeballed (capsule, shadow,
+      bloomed sparks). NOTE: gated tests need explicit
+      `cargo test -p vordar-client --features offscreen --bin vfx_review`.
+      Committed 4f3a75d.
 
 ## Phase 4 — Style packs (after 1.5 + sprites installed)
 
-- [ ] 4.0 Terra: generate + gate + install showcase sprites (GPU run 2) →
-      content/textures/vfx/showcase/.
+- [~] 4.0 Terra: IN FLIGHT (GPU run 2, ~20–30 min) — 40 cells / 8×8 / 2048²:
+      pyro_{ember,flash,smoke×8}, wisp_{soft,streak,flame×8},
+      sigil_{glyph_a,b,c,spark}, censer_{haze,mote,smoke×8},
+      shard_{sliver,flare,twinkle×4}. 3 candidates/frame, vfx_post triage,
+      pack→BC4 bake→install with {source,images} manifest. Sigil constraint:
+      abstract ornamental geometry only, no script/real symbols. Authorized:
+      --cell-size Lanczos in packer if load_cell only validates.
 - [ ] 4.1–4.5 Terra: author pyro/wisp/sigil/censer/shard packs,
       content/vfx/showcase/<style>/{cast,projectile,aoe}.ron.
 
