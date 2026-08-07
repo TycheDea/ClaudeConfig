@@ -1,4 +1,4 @@
-# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G0 FRESH / G1 AWAITS HOST-PROBE APPROVAL
+# PRIME Agent learning-loop pilot — PHASE 1 COMPLETE; OPTION 2 G1 COMPLETE / G2 BLOCKED
 
 ## User direction
 
@@ -25,11 +25,11 @@ the sandboxed PRIME sidecar path, with Pi remaining orchestrator/control. On
 2026-08-07, the queued Sol planning finding landed at
 [`prime-agent-option2-gate-closing-plan.md`](prime-agent-option2-gate-closing-plan.md).
 G0 was rerun on 2026-08-07 after the campaign plan reconciled the observed
-drift. The retained freshness ledger now ends `FRESH`; stable `v0.7.0` remains
-the sole authorized baseline and the beta channel remains excluded. G1 is the
-next gate but requires separate explicit user approval for read-only host
-probing. Setup, acquisition, credentials, and mutating host work remain
-unauthorized.
+drift and ends `FRESH`. G1’s read-only host inventory is complete. G2 retains a
+dedicated Hyper-V Ubuntu candidate but ends `BLOCKED`: the exact OpenPGP
+trust-anchor/verifier object set and deterministic credential-free unattended
+provisioning/receipt path are not closed. No guest was downloaded, created, or
+started; no concurrent VFX/effects/particles work was touched.
 
 ## Goal
 
@@ -104,15 +104,17 @@ Direct phase-1 findings:
 [P9](../docs/research/prime-agent/phase-1/09-comparative-practitioner-evidence.md) ·
 [P10](../docs/research/prime-agent/phase-1/10-vordar-boundary-synthesis.md).
 
-**Current checkpoint / exact next action:** G0 is retained at
-[`00-evidence-freshness.md`](../docs/research/prime-agent/option-2-gate-closing/00-evidence-freshness.md)
-with `FRESH`. Obtain explicit user approval before dispatching G1’s judgment-free,
-read-only host and guest-capability inventory. G1 may record Windows/WSL,
-virtualization, storage, Pi identity/state-path names, and GPU-exposure facts,
-but may not install/start a mutating guest, change configuration, capture
-environment or credential values, or access PRIME. Installation/download,
-credentials, user-global changes, host/container/GPU execution, phase-2
-matched-pilot planning, and adoption remain unauthorized.
+**Current checkpoint / exact next action:** G1 is retained under
+[`01-host-platform-inventory/`](../docs/research/prime-agent/option-2-gate-closing/01-host-platform-inventory/).
+G2 is retained at
+[`02-target-and-profile-decision.md`](../docs/research/prime-agent/option-2-gate-closing/02-target-and-profile-decision.md)
+and ends `BLOCKED`. Do not dispatch G3. Measured reality requires a new Sol
+planning finding and user checkpoint before attempting to close the exact
+OpenPGP verifier/trust-anchor, zero-touch autoinstall, credential-free bootstrap,
+and bounded receipt-export gaps. No fallback to WSL2, another image/provider,
+or manual improvisation is authorized. Installation/download, credentials,
+user-global changes, host/container/GPU execution, phase-2 matched-pilot
+planning, and adoption remain unauthorized.
 
 ## Execution model
 
